@@ -39,9 +39,14 @@ class TeamAnnouncementsIndex extends Component
     {
         $this->announcement->delete();
         $this->showConfirmModal = false;
+        $this->updated();
 
+    }
+
+    public function updated()
+    {
         return $this->displayedAnnouncement = TeamAnnouncement::with('owner')
-                    ->orderBy('updated_at', 'desc')->first();
+                            ->orderBy('updated_at', 'desc')->first();
     }
 
     public function cancel()

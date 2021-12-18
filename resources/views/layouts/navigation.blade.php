@@ -1,67 +1,61 @@
-<nav x-data="{ open: false }" x-cloak class="bg-black h-20">
-    <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            <div class="flex items-center">
-                @if (!Route::is('home'))
-                    <a href="/" class="flex h-full items-center">
-                        <x-logo class="w-24" />
+<nav x-data="{ open: false }" class="bg-black py-2">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
 
-                        <div class="text-xl text-white font-bold tracking-tight -ml-4 pt-2">
-                            Lambert Track
-                        </div>
-                    </a>
-                @endif
-            </div>
-            <div class="flex w-1/2 pt-2">
-                <x-nav-link href="#">Our Team</x-nav-link>
-            </div>
-            <div class="flex pt-2">
-                @auth
-                    <div class="ml-4 flex items-center md:ml-6">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex-shrink-0">
+                    @if (!Route::is('home'))
+                        <a href="/" class="flex h-full items-center">
+                            <x-logo class="w-12 lg:w-24" />
 
-                        <!-- Profile dropdown -->
-                        <div class="ml-3 relative">
-                            <div>
-                                <x-dropdown.dropdown>
-                                    <x-slot name="trigger"
-                                            class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                        <span class="sr-only">Open user menu</span>
-
-                                        <x-avatar />
-
-                                    </x-slot>
-                                    <x-slot name="content">
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <x-dropdown-link href="{{ route('logout') }}"
-                                                             onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
-                                                Logout
-                                            </x-dropdown-link>
-                                        </form>
-{{--                                        <div class="px-2">--}}
-{{--                                            <hr>--}}
-{{--                                        </div>--}}
-{{--                                        <x-dropdown.link>--}}
-{{--                                            Edit--}}
-{{--                                        </x-dropdown.link>--}}
-{{--                                        <x-dropdown.link>--}}
-{{--                                            Delete--}}
-{{--                                        </x-dropdown.link>--}}
-                                    </x-slot>
-                                </x-dropdown.dropdown>
+                            <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">
+                                Lambert Track
                             </div>
-
-                        </div>
+                        </a>
+                    @endif
+                </div>
+                <div class="hidden sm:block sm:ml-6 lg:ml-12 pt-3">
+                    <div class="flex space-x-4">
+                        <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
+                        <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
                     </div>
-                @endauth
-                @guest
-                    <x-nav-link href="{{ route('login') }}">Login</x-nav-link>
-                @endguest
+                </div>
+                <div class="hidden md:flex justify-end pt-3">
+                    <x-nav-link route="login">Login</x-nav-link>
+                </div>
             </div>
+            <div class="hidden sm:ml-6 sm:block">
+                <div class="flex items-center">
 
-            <div class="-mr-2 flex md:hidden">
+
+                    <!-- Profile dropdown -->
+                    @auth
+                        <div class="ml-3 relative">
+                            <x-dropdown.dropdown>
+                                <x-slot name="trigger"
+                                        class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+
+                                    <x-avatar />
+
+                                </x-slot>
+                                <x-slot name="content">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <x-dropdown-link href="{{ route('logout') }}"
+                                                         onclick="event.preventDefault();
+                                      this.closest('form').submit();">
+                                            Logout
+                                        </x-dropdown-link>
+                                    </form>
+                                </x-slot>
+                            </x-dropdown.dropdown>
+                        </div>
+                    @endauth
+                </div>
+            </div>
+            <div class="-mr-2 flex sm:hidden">
                 <!-- Mobile menu button -->
                 <button @click="open = !open"
                         type="button"
@@ -78,38 +72,38 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div x-show="open"
          x-transition:enter="transition ease-in-out duration-300 transform"
-         x-transition:enter-start="-translate-x-full"
-         x-transition:enter-end="translate-x-0"
+         x-transition:enter-start="-translate-y-full"
+         x-transition:enter-end="translate-y-0"
          x-transition:leave="transition ease-in-out duration-300 transform"
-         x-transition:leave-start="translate-x-0"
-         x-transition:leave-end="-translate-x-full"
-         class="border-b border-gray-700 md:hidden"
+         x-transition:leave-start="translate-y-0"
+         x-transition:leave-end="-translate-y-full"
+         class="border-b border-gray-700 sm:hidden bg-black mb-4"
          id="mobile-menu"
     >
-        <div class="px-2 py-3 space-y-1 sm:px-3">
+
+        <div class="px-2 pt-2 pb-3 space-y-1">
             <x-navigation.mobile-link route="home">Home</x-navigation.mobile-link>
+            <x-navigation.mobile-link route="Boys Roster">Boys Roster</x-navigation.mobile-link>
+            <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">
-            <div class="flex items-center px-5">
-                <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-500">
-                    <span class="font-medium leading-none text-white">TW</span>
-                </span>
-                <div class="ml-3">
-                    <div class="text-base font-medium leading-none text-white"></div>
-                </div>
-            </div>
-            <div class="mt-3 px-2 space-y-1">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-navigation.mobile-link
-                        onclick="event.preventDefault();
-                        this.closest('form').submit();"
-                        route="logout"
-                    >
-                        Logout
-                    </x-navigation.mobile-link>
-                </form>
+            <div class="px-2">
+                @guest
+                    <x-navigation.mobile-link route="login">Sign In</x-navigation.mobile-link>
+                @endguest
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-navigation.mobile-link route="logout"
+                                                  onclick="event.preventDefault();
+                                                  this.closest('form').submit();"
+                        >
+                            Logout
+                        </x-navigation.mobile-link>
+                    </form>
+                @endauth
             </div>
         </div>
     </div>
 </nav>
+

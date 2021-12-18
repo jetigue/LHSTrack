@@ -2,8 +2,11 @@
 
 use App\Http\Livewire\Athletes\AthletesIndex;
 use App\Http\Livewire\Communication\TeamAnnouncementsIndex;
+use App\Http\Livewire\Communication\TeamEventsIndex;
+use App\Http\Livewire\Main\OurTeam;
+use App\Http\Livewire\Main\TeamRoster;
+use App\Http\Livewire\Main\Welcome;
 use App\Http\Livewire\Users\UsersIndex;
-use App\Http\Livewire\Welcome;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
@@ -19,9 +22,12 @@ require __DIR__.'/auth.php';
 */
 
 Route::get('/', Welcome::class)->name('home');
+Route::get('/boys-roster', TeamRoster::class)->name('Boys Roster');
+Route::get('/girls-roster', TeamRoster::class)->name('Girls Roster');
 
 Route::get('/admin/users/', UsersIndex::class);
 
 Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Announcements')->middleware('auth');
+Route::get('/team-events', TeamEventsIndex::class)->name('Team Events')->middleware('auth');
 
 Route::get('/athletes', AthletesIndex::class)->name('Athletes');

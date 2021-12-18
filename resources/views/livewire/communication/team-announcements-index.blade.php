@@ -2,9 +2,11 @@
     <x-headings.page>
         Team Announcements
         <x-slot name="action">
+            @can('admin')
             <x-button.primary wire:click="showFormModal">
                 <x-icon.plus class="mr-2"/> New Announcement
             </x-button.primary>
+        @endcan
         </x-slot>
     </x-headings.page>
 
@@ -30,6 +32,7 @@
                                     <p class="mt-1 text-sm text-gray-500">
                                         Get started by creating a new project.
                                     </p>
+
                                     <div class="mt-6">
                                         <button type="button"
                                                 class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -43,6 +46,7 @@
                                             New Project
                                         </button>
                                     </div>
+
                                 </div>
                             </div>
                     @endforelse
@@ -81,7 +85,6 @@
                 <span x-show="editing === true">Edit Announcement</span>
                 <span x-show="editing === false">Create an Announcement</span>
             </div>
-
         </x-slot>
 
         <x-slot name="content">

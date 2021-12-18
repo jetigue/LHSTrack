@@ -1,12 +1,9 @@
-@props(['active'])
+@props(['route'])
 
 @php
-$classes = ($active ?? false)
-
-            ? 'bg-gray-900 text-white px-3 py-2 rounded-md font-medium'
-            : 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium';
+$classes = Request::routeIs($route) ? 'bg-gray-900 text-white px-3 py-2 rounded-md font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
+<a href="{{ route($route) }}" {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
 </a>

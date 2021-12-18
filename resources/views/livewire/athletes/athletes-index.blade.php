@@ -3,7 +3,10 @@
     <x-headings.page>
         Athletes
         <x-slot name="action">
-            <x-search />
+            <div class="flex space-x-2">
+                <x-search />
+                <livewire:athletes.import-athletes />
+            </div>
         </x-slot>
     </x-headings.page>
     <div class="flex flex-col space-y-4 mt-4">
@@ -47,10 +50,9 @@
                         Status
                     </x-table.heading>
                     <x-table.heading class="w-1/12">
-                        <livewire:athletes.import-athletes />
-{{--                        <div class="absolute z-20 lg:px-2 top-6 right-7">--}}
-{{--                            <x-button.add />--}}
-{{--                        </div>--}}
+                        <div class="absolute z-20 lg:px-2 top-6 right-5">
+                            <x-button.add />
+                        </div>
                     </x-table.heading>
                 </x-table.header-row>
             </x-slot>
@@ -96,20 +98,7 @@
                         </x-table.cell>
                     </x-table.row>
 
-                    <x-modal.confirmation wire:model.defer="showConfirmModal">
-                        <x-slot name="title">Delete Athlete?</x-slot>
-                        <x-slot name="content">Are you sure you want to delete this athlete? This cannot be
-                            undone.
-                        </x-slot>
-                        <x-slot name="footer">
-                            <x-button.tertiary wire:click="$toggle('showConfirmModal')">
-                                Cancel
-                            </x-button.tertiary>
-                            <x-button.danger wire:click="destroy({{ $athlete->id }})" class="w-full">
-                                Yes, Delete Athlete
-                            </x-button.danger>
-                        </x-slot>
-                    </x-modal.confirmation>
+                    @include('livewire.athletes._confirm-delete-modal')
                 @empty
                     <x-table.row class="flex w-full">
                         <div class="flex flex-col items-center mx-auto">
@@ -136,27 +125,5 @@
     </div>
 
 
-    <x-modal.dialog wire:model.defer="showFormModal">
-        <x-slot name="title">
-            <div x-data="{editing: @entangle('editing')}">
-                <span x-show="editing === true">Edit Athlete</span>
-                <span x-show="editing === false">Add an Athlete</span>
-            </div>
-
-        </x-slot>
-
-        <x-slot name="content">
-            <livewire:athletes.athlete-form />
-        </x-slot>
-
-        <x-slot name="footer">
-            <div x-data="{editing: @entangle('editing')}" class="flex justify-end space-x-2">
-                <x-button.tertiary wire:click="cancel">Cancel</x-button.tertiary>
-                <x-button.primary wire:click="$emit('submitCreate')">
-                    <span x-show="editing === true">Save</span>
-                    <span x-show="editing === false">Create</span>
-                </x-button.primary>
-            </div>
-        </x-slot>
-    </x-modal.dialog>
+@include('livewire.athletes._athlete-form-modal')
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-red-800">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-black">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,8 +37,8 @@
             {{ $banner }}
         @endif
     </div>
-    <main class="">
-        <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
+    <main class="w-full">
+        <div class="max-w-7xl mx-auto pb-2 px-4 sm:px-6 lg:px-8">
             <div class="rounded-md md:px-0 sm:px-6">
                 <div class="rounded-lg">
                     {{ $slot }}
@@ -46,7 +46,7 @@
             </div>
         </div>
     </main>
-    </div>
+</div>
 {{--</div>--}}
 
 @stack('modals')

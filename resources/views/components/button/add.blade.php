@@ -6,6 +6,6 @@
     @mouseleave="show=false"
     class="relative text-red-800 text-lg"
 
-><i class="fas fa-plus"></i>
+><x-icon.plus class="h-8 w-8" />
     <div x-show="show" class="relative z-50 bottom-11 text-xs font-semibold -mx-2">Add</div>
 </button>
