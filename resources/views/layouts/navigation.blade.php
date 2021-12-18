@@ -21,12 +21,13 @@
                     </div>
                 </div>
                 <div class="hidden md:flex justify-end pt-3">
-                    <x-nav-link route="login">Login</x-nav-link>
+                    @guest
+                        <x-nav-link route="login">Sign In</x-nav-link>
+                    @endguest
                 </div>
             </div>
             <div class="hidden sm:ml-6 sm:block">
                 <div class="flex items-center">
-
 
                     <!-- Profile dropdown -->
                     @auth
