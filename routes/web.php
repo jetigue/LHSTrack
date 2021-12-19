@@ -30,4 +30,4 @@ Route::get('/admin/users/', UsersIndex::class)->middleware('auth');
 Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Announcements')->middleware('auth');
 Route::get('/team-events', TeamEventsIndex::class)->name('Team Events')->middleware('auth');
 
-Route::get('/athletes', AthletesIndex::class)->name('Athletes');
+Route::get('/athletes', AthletesIndex::class)->name('Athletes')->middleware('auth');
