@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 if(\Illuminate\Support\Facades\App::environment('production')) {
-    \Illuminate\Support\Facades\URL::forceScheme('httpsgit ');
+    \Illuminate\Support\Facades\URL::forceScheme('https');
 }
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
