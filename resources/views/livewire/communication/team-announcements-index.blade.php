@@ -2,7 +2,7 @@
     <x-headings.page>
         Team Announcements
         <x-slot name="action">
-            @can('admin')
+            @can('coach')
             <x-button.primary wire:click="showFormModal">
                 <x-icon.plus class="mr-2"/> New Announcement
             </x-button.primary>
@@ -43,7 +43,7 @@
                                                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                                       clip-rule="evenodd"/>
                                             </svg>
-                                            New Project
+                                            New Announcement
                                         </button>
                                     </div>
 

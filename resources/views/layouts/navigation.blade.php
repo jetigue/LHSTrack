@@ -18,6 +18,7 @@
                     <div class="flex space-x-4">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
                         <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
+                        <x-nav-link route="Team Announcements">Announcements</x-nav-link>
                     </div>
                 </div>
                 <div class="hidden md:flex justify-end pt-3">
