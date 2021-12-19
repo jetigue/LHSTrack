@@ -25,7 +25,7 @@ Route::get('/', Welcome::class)->name('home');
 Route::get('/boys-roster', TeamRoster::class)->name('Boys Roster');
 Route::get('/girls-roster', TeamRoster::class)->name('Girls Roster');
 
-Route::get('/admin/users/', UsersIndex::class);
+Route::get('/admin/users/', UsersIndex::class)->middleware('auth');
 
 Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Announcements')->middleware('auth');
 Route::get('/team-events', TeamEventsIndex::class)->name('Team Events')->middleware('auth');
