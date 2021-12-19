@@ -37,14 +37,14 @@
             {{ $banner }}
         @endif
     </div>
-    <main class="w-full">
-        <div class="max-w-7xl mx-auto pb-2 px-4 sm:px-6 lg:px-8">
+    <main class="max-w-7xl w-full mx-auto pb-2 px-4 sm:px-6 lg:px-8">
+{{--        <div class="">--}}
             <div class="rounded-md md:px-0 sm:px-6">
                 <div class="rounded-lg">
                     {{ $slot }}
                 </div>
             </div>
-        </div>
+{{--        </div>--}}
     </main>
 </div>
 {{--</div>--}}
