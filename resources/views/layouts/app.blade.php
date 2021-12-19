@@ -38,7 +38,7 @@
             {{ $banner }}
         @endif
     </div>
-    <main class="max-w-7xl w-full mx-auto pb-2 px-4 sm:px-6 lg:px-8">
+    <main class="max-w-7xl w-full mx-auto pb-2 px-4 sm:px-6 lg:px-8 pb-12">
         <div class="rounded-md md:px-0 sm:px-6">
             <div class="rounded-lg">
                 {{ $slot }}

@@ -1,4 +1,4 @@
-<header {{ $attributes->merge(['class'=>'text-xl font-medium text-red-900 py-2']) }}>
+<header {{ $attributes->merge(['class'=>'text-xl font-medium text-red-800 py-2']) }}>
     {{ $heading }}
 </header>
 

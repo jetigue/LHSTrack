@@ -1,13 +1,10 @@
 <div>
 <x-headings.page>
-    Roster
+    {{ $this->gender }} Roster
 </x-headings.page>
 
-<x-card.card-with-header>
-    <x-slot name="header">
-        {{ $this->gender }} Roster
-    </x-slot>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 bg-white">
+<div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 text-gray-400">
         <div class="col-span-1">
             <x-list.ul>
                 <x-slot name="heading">Seniors</x-slot>
@@ -44,5 +41,5 @@
             </x-list.ul>
         </div>
     </div>
-</x-card.card-with-header>
+</div>
 </div>

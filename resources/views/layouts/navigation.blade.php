@@ -18,6 +18,7 @@
                     <div class="flex space-x-4">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
                         <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
+                        <x-nav-link route="Booster Club">Booster Club</x-nav-link>
                         @can('coach')
                             <x-nav-link route="Team Announcements">Announcements</x-nav-link>
                         @endif
@@ -26,7 +27,9 @@
                 </div>
                 <div class="hidden md:flex justify-end pt-3">
                     @guest
-                        <x-nav-link route="login">Sign In</x-nav-link>
+                        @can('coach')
+                            <x-nav-link route="login">Sign In</x-nav-link>
+                        @endcan
                     @endguest
                 </div>
             </div>
@@ -90,6 +93,7 @@
             <x-navigation.mobile-link route="home">Home</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Boys Roster">Boys Roster</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>
+            <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>
             @can('coach')
                 <x-navigation.mobile-link route="Team Announcements">Announcements</x-navigation.mobile-link>
              @endcan
