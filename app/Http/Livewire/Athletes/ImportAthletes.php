@@ -22,6 +22,7 @@ class ImportAthletes extends Component
         'grad_year' => '',
         'dob' => '',
         'status' => '',
+        'user'
     ];
 
     protected $rules = [
@@ -93,10 +94,11 @@ class ImportAthletes extends Component
     public function guessWhichColumnsMapToWhichFields()
     {
         $guesses = [
-            'title' => ['title', 'label'],
-            'amount' => ['amount', 'price'],
-            'status' => ['status', 'state'],
-            'date_for_editing' => ['date_for_editing', 'date', 'time'],
+            'first_name' => ['First', 'First Name', 'first_name'],
+            'last_name' => ['Last', 'Last Name', 'last_name'],
+            'sex' => ['sex', 'gender'],
+            'grad_year' => ['grad_year', 'grade', 'year'],
+            'dob' => ['birthday'],
         ];
 
         foreach ($this->columns as $column) {
