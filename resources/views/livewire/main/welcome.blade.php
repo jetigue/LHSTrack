@@ -1,4 +1,4 @@
-<div class="">
+<div class="w-full">
     <x-slot name="banner">
         @include('layouts.banner')
     </x-slot>
