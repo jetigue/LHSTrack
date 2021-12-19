@@ -22,7 +22,6 @@ class ImportAthletes extends Component
         'grad_year' => '',
         'dob' => '',
         'status' => '',
-        'user'
     ];
 
     protected $rules = [
