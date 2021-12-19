@@ -2,9 +2,10 @@
     <div class="flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full items-center">
         <div class="flex w-full lg:w-2/3 h-full items-center">
             <div class="hidden md:flex md:w-36 lg:w-56">
-                <x-logo class="w-full"/>
+                <x-logo class="w-full" />
             </div>
-            <div class="flex w-full text-2xl md:text-4xl lg:text-4xl xl:text-6xl xl:font-light sm:font-bold text-gray-100 h-full justify-center">
+            <div
+                class="flex w-full text-2xl md:text-4xl lg:text-4xl xl:text-6xl xl:font-light sm:font-bold text-gray-100 h-full justify-center">
                 Lambert Track & Field
             </div>
         </div>
@@ -17,7 +18,9 @@
                 >
                     Sign-up for Emails!
                 </a>
-            <div>
+                <div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
