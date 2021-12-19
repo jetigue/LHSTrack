@@ -8,7 +8,7 @@
             <livewire:main.welcome-page-announcements />
         </div>
 
-        <div class="flex w-full lg:w-1/3 py-2 lg:pl-6git ">
+        <div class="flex w-full lg:w-1/3 py-2 lg:pl-6">
             <div class="w-full">
                 <livewire:main.welcome-page-team-events />
             </div>

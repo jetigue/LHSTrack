@@ -29,8 +29,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="h-full">
-<div class="min-h-full">
+<body class="">
+<div class="container mx-auto h-full">
     <div class="bg-black">
         @include('layouts.navigation')
         @if (isset($banner))
