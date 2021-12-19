@@ -1,4 +1,4 @@
-<div class="flex flex-col w-full">
+<div class="">
     <x-slot name="banner">
         @include('layouts.banner')
     </x-slot>
@@ -9,10 +9,7 @@
         </div>
 
         <div class="col-span-3 md:col-span-1">
-            <div class="w-full">
-                <livewire:main.welcome-page-team-events />
-            </div>
-
+            <livewire:main.welcome-page-team-events />
         </div>
     </div>
 
