@@ -1,3 +1,4 @@
+<div>
 <x-headings.page>
     Roster
 </x-headings.page>
@@ -44,3 +45,4 @@
         </div>
     </div>
 </x-card.card-with-header>
+</div>
