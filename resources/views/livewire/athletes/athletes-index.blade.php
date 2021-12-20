@@ -3,9 +3,12 @@
     <x-headings.page>
         Athletes
         <x-slot name="action">
-            <div class="flex space-x-2">
+            <div class="flex space-x-2 items-center">
                 <x-search />
-                <livewire:athletes.import-athletes />
+                <div class="pt-4">
+                    <livewire:athletes.import-athletes />
+                </div>
+
             </div>
         </x-slot>
     </x-headings.page>
@@ -43,6 +46,13 @@
                         DOB
                     </x-table.heading>
                     <x-table.heading sortable
+                                     wire:click="sortBy('physical_expiration_date')"
+                                     :direction="$sortField === 'physical_expiration_date' ? $sortDirection : null"
+                                     class="hidden lg:inline-block lg:w-2/12"
+                    >
+                        Physical
+                    </x-table.heading>
+                    <x-table.heading sortable
                                      wire:click="sortBy('status')"
                                      :direction="$sortField === 'status' ? $sortDirection : null"
                                      class="hidden lg:inline-block lg:w-1/12"
@@ -69,12 +79,24 @@
                                 {{ $athlete->last_name }}, {{ $athlete->first_name }}
                             </a>
                         </x-table.cell>
-                        <x-table.cell class="hidden lg:inline-block lg:w-2/12">{{ $athlete->sex }}</x-table.cell>
-                        <x-table.cell class="hidden lg:inline-block lg:w-2/12">{{ $athlete->grad_year }}</x-table.cell>
+                        <x-table.cell class="hidden lg:inline-block lg:w-2/12">
+                            {{ $athlete->sex_for_humans }}
+                        </x-table.cell>
+                        <x-table.cell class="hidden lg:inline-block lg:w-2/12">
+                            {{ $athlete->grad_year }}
+                        </x-table.cell>
                         <x-table.cell
-                            class="hidden lg:inline-block lg:w-2/12">{{ $athlete->birthdate_for_humans }}</x-table.cell>
+                            class="hidden lg:inline-block lg:w-2/12">
+                            {{ $athlete->birthdate_for_humans }}
+                        </x-table.cell>
                         <x-table.cell
-                            class="hidden lg:inline-block lg:w-2/12 text-{{ $athlete->status_color }}-500">{{ $athlete->current_status }}</x-table.cell>
+                            class="hidden lg:inline-block lg:w-2/12">
+                            {{ $athlete->physical_expiration_date_for_humans }}
+                        </x-table.cell>
+                        <x-table.cell
+                            class="hidden lg:inline-block lg:w-1/12 text-{{ $athlete->status_color }}-500">
+                            {{ $athlete->current_status }}
+                        </x-table.cell>
                         <x-table.cell class="w-1/12 flex justify-end lg:px-2">
                             <x-dropdown.dropdown>
                                 <x-slot name="trigger">

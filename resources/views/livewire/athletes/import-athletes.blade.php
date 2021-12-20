@@ -1,5 +1,5 @@
 
-<div>
+<div class="py-2">
     <x-button.secondary wire:click="$toggle('showModal')" class="flex items-center space-x-2"><x-icon.upload class="text-gray-500"/> <span>Import</span></x-button.secondary>
 
     <form wire:submit.prevent="import">

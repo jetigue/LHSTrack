@@ -25,11 +25,12 @@
                 </div>
 
                 <div class="mt-8">
-{{--                    <a href="#"--}}
-{{--                       class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">--}}
-{{--                        View Calendar--}}
-{{--                    </a>--}}
-                    <div class="py-4"></div>
+                    @can('coach')
+                    <a href="#"
+                       class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                        View Calendar
+                    </a>
+                    @endcan
                 </div>
                 </section>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models\Athletes;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -10,7 +11,7 @@ class Athlete extends Model
 {
     use HasFactory;
 
-    protected $dates = ['dob'];
+    protected $dates = ['dob', 'physical_expiration_date'];
 
     protected $appends = ['full_name'];
 
@@ -21,7 +22,8 @@ class Athlete extends Model
         'grad_year',
         'status',
         'dob',
-        'user_id'
+        'user_id',
+        'physical_expiration_date'
     ];
 
     public function path(): string
@@ -32,6 +34,13 @@ class Athlete extends Model
     public function getDobForEditingAttribute()
     {
         return $this->dob->format('m/d/Y');
+    }
+
+    public function getPhysicalExpirationDateForEditingAttribute()
+    {
+        if ($this->physical_expiration_date) {
+            return $this->physical_expiration_date->format('m/d/Y');
+        }
     }
 
     public function scopeFilter($query)
@@ -58,6 +67,11 @@ class Athlete extends Model
                     '-' .
                     $athlete->grad_year
             );
+
+            if ($athlete->status === 'a') {
+                $athlete->physical_expiratation_date <= Carbon::now()
+                    ? $athlete->status = 'e' : $athlete->status = 'a';
+                }
         });
     }
 
@@ -70,15 +84,25 @@ class Athlete extends Model
     {
         return [
             'a' => 'green',
-            'i' => 'gray'
+            'i' => 'gray',
+            'e' => 'red'
         ][$this->status] ?? 'gray';
+    }
+
+    public function getSexForHumansAttribute(): string
+    {
+        return [
+            'm' => 'Male',
+            'f' => 'Female'
+        ][$this->sex] ?? '';
     }
 
     public function getCurrentStatusAttribute(): string
     {
         return [
             'a' => 'Active',
-            'i' => 'Inactive'
+            'i' => 'Inactive',
+            'e' => 'Ineligible'
         ][$this->status] ?? 'Undeclared';
     }
 
@@ -90,6 +114,13 @@ class Athlete extends Model
                 : $this->dob->format('M d, Y');
         } else {
             return '';
+        }
+    }
+
+    public function getPhysicalExpirationDateForHumansAttribute()
+    {
+        if ($this->physical_expiration_date) {
+            return $this->physical_expiration_date->format('M d, Y');
         }
     }
 }

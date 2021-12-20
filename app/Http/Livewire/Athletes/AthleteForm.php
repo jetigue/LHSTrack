@@ -15,6 +15,7 @@ class AthleteForm extends Component
     public $grad_year;
     public $status;
     public $user_id;
+    public $physical_expiration_date_for_editing;
 
         protected $listeners = [
             'cancelCreate' => 'resetForm',
@@ -37,6 +38,7 @@ class AthleteForm extends Component
             $this->grad_year = $this->athlete->grad_year;
             $this->status = $this->athlete->status;
             $this->user_id = $this->athlete->user_id;
+            $this->physical_expiration_date_for_editing = $this->athlete->physical_expiration_date_for_editing;
         }
 
         public function rules()
@@ -48,6 +50,7 @@ class AthleteForm extends Component
                 'grad_year' => 'required|integer|between:2010,2030',
                 'dob_for_editing' => 'nullable|date',
                 'status' => 'required|in:a,i',
+                'physical_expiration_date_for_editing' => 'nullable|date'
             ];
         }
 
@@ -62,6 +65,7 @@ class AthleteForm extends Component
                 'grad_year' => $this->grad_year,
                 'dob' => $this->dob_for_editing,
                 'status' => $this->status,
+                'physical_expiration_date' => $this->physical_expiration_date_for_editing,
             ];
 
             if ($this->athlete) {
@@ -72,7 +76,7 @@ class AthleteForm extends Component
                 $this->emit('recordAdded');
             }
             $this->resetForm();
-            $this->emit('hideModal');
+            $this->emit('hideFormModal');
         }
 
         public function resetForm()
@@ -84,7 +88,8 @@ class AthleteForm extends Component
                 'grad_year',
                 'dob_for_editing',
                 'status',
-                'user_id'
+                'user_id',
+                'physical_expiration_date_for_editing'
             ]);
         }
     public function render()

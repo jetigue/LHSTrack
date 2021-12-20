@@ -22,6 +22,7 @@ class CreateAthletesTable extends Migration
             $table->unsignedSmallInteger('grad_year');
             $table->char('status', 1);
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->date('physical_expiration_date')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
 
