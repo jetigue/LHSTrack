@@ -53,7 +53,7 @@
                     <div class="flex flex-col md:h-72 lg:h-96 overflow-y-auto">
                 <p class="text-xl font-medium text-red-900">{{ $displayedAnnouncement->title }}</p>
                 <div class="py-2 h-full no-tailwindcss-base">{!! $displayedAnnouncement->body !!}</div>
-                <p class="text-xs text-gray-400 self-end content-end">
+                <p class="flex mt-3 text-xs text-gray-400 content-end">
                     @if($displayedAnnouncement->updated_at > $displayedAnnouncement->created_at)
                         updated
                     @else
