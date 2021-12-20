@@ -68,9 +68,9 @@ class Athlete extends Model
                     $athlete->grad_year
             );
 
-            if ($athlete->status === 'a') {
-                $athlete->physical_expiratation_date <= Carbon::now()
-                    ? $athlete->status = 'e' : $athlete->status = 'a';
+            if ($athlete->status == 'a') {
+                $athlete->physical_expiratation_date >= Carbon::now()
+                    ? $athlete->status = 'a' : $athlete->status = 'e';
                 }
         });
     }
