@@ -56,6 +56,7 @@
                     <option value=""></option>
                     <option value="a">Active</option>
                     <option value="i">Inactive</option>
+                    <option value="e">Ineligible</option>
             </x-input.select>
         </x-input.group>
 

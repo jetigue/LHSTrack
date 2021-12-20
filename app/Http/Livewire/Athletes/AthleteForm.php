@@ -49,7 +49,7 @@ class AthleteForm extends Component
                 'sex' => 'required|in:m,f',
                 'grad_year' => 'required|integer|between:2010,2030',
                 'dob_for_editing' => 'nullable|date',
-                'status' => 'required|in:a,i',
+                'status' => 'required|in:a,i,e',
                 'physical_expiration_date_for_editing' => 'nullable|date'
             ];
         }
