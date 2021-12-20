@@ -4,7 +4,7 @@
 </x-headings.page>
 
 <div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 text-gray-400">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 text-{{ $athlete->status_color }}-500 font-semibold">
         <div class="col-span-1">
             <x-list.ul>
                 <x-slot name="heading">Seniors</x-slot>
