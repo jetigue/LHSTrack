@@ -69,7 +69,7 @@ class Athlete extends Model
             );
 
             if ($athlete->status == 'a') {
-                $athlete->physical_expiratation_date >= Carbon::now()
+                $athlete->physical_expiratation_date >= Carbon::now()->format('Y-m-d')
                     ? $athlete->status = 'a' : $athlete->status = 'e';
                 }
         });
