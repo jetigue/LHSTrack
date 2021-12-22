@@ -4,7 +4,7 @@
 </x-headings.page>
 
 <div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 px-8 font-semibold">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:px-8 font-semibold">
         <div class="col-span-1">
             <x-list.ul>
                 <x-slot name="heading">Seniors</x-slot>

@@ -2,7 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\User;
+use App\Models\Users\Role;
+use App\Models\Users\User;
 use Tests\TestCase;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Hash;
@@ -40,9 +41,12 @@ class RegisterTest extends TestCase
     {
         Event::fake();
 
+        $role = Role::factory()->create(['id' => 1]);
+
         Livewire::test('auth.register')
             ->set('name', 'Tall Stack')
             ->set('email', 'tallstack@example.com')
+            ->set('user_role_id', $role->id)
             ->set('password', 'password')
             ->set('passwordConfirmation', 'password')
             ->call('register')

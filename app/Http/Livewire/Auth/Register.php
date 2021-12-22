@@ -23,6 +23,8 @@ class Register extends Component
     /** @var string */
     public $passwordConfirmation = '';
 
+    public $user_role_id = 1;
+
     public function register()
     {
         $this->validate([

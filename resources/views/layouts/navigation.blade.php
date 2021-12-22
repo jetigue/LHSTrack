@@ -14,7 +14,7 @@
                         </a>
                     @endif
                 </div>
-                <div class="hidden sm:block sm:ml-6 lg:ml-12 pt-3">
+                <div class="hidden lg:block sm:ml-6 lg:ml-12 pt-3">
                     <div class="flex space-x-4">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
                         <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
@@ -33,7 +33,7 @@
                     @endguest
                 </div>
             </div>
-            <div class="hidden sm:ml-6 sm:block">
+            <div class="hidden lg:ml-6 lg:block">
                 <div class="flex items-center">
 
                     <!-- Profile dropdown -->
@@ -63,7 +63,7 @@
                     @endauth
                 </div>
             </div>
-            <div class="-mr-2 flex sm:hidden">
+            <div class="-mr-2 flex lg:hidden">
                 <!-- Mobile menu button -->
                 <button @click="open = !open"
                         type="button"
@@ -85,7 +85,7 @@
          x-transition:leave="transition ease-in-out duration-300 transform"
          x-transition:leave-start="translate-y-0"
          x-transition:leave-end="-translate-y-full"
-         class="border-b border-gray-700 sm:hidden bg-black mb-4"
+         class="border-b border-gray-700 lg:hidden bg-black mb-4"
          id="mobile-menu"
     >
 

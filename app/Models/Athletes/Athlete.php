@@ -118,4 +118,53 @@ class Athlete extends Model
             return $this->physical_expiration_date->format('M d, Y');
         }
     }
+
+    public function getGradeAttribute()
+    {
+        $m = Carbon::now()->month;
+        $y = Carbon::now()->year;
+        $gy = $this->grad_year;
+
+        switch($m)
+        {
+            case $m >= 6:
+                if ($gy - $y === 5)
+                { return 8; }
+
+                else if ($gy - $y === 4)
+                { return 9; }
+
+                elseif ($gy - $y === 3)
+                { return 10; }
+
+                elseif ($gy - $y === 2)
+                { return 11; }
+
+                elseif ($gy - $y === 1)
+                { return 12; }
+
+                elseif ($gy - $y <= 0)
+                { return 'alum'; }
+
+                else { return ''; }
+            case $m <= 5:
+                if ($gy - $y === 4)
+                { return 8; }
+
+                elseif ($gy - $y === 3)
+                { return 9; }
+
+                elseif ($gy - $y === 2)
+                { return 10; }
+
+                elseif ($gy - $y === 1)
+                { return 11; }
+
+                elseif ($gy - $y === 0)
+                { return 12; }
+
+                else { return 'alum'; }
+        }
+
+    }
 }

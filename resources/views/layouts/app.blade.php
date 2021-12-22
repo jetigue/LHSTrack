@@ -30,7 +30,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="">
+<body class="bg-gray-100">
 <div class="container mx-auto h-full">
     <div class="bg-black">
         @include('layouts.navigation')
@@ -38,9 +38,9 @@
             {{ $banner }}
         @endif
     </div>
-    <main class="max-w-7xl w-full mx-auto pb-2 px-4 sm:px-6 lg:px-8 pb-12">
-        <div class="rounded-md md:px-0 sm:px-6">
-            <div class="rounded-lg">
+    <main class="max-w-7xl w-full mx-auto pb-2 px-4 sm:px-6 lg:px-8">
+        <div class="md:px-0 sm:px-6">
+            <div class="mb-12">
                 {{ $slot }}
             </div>
         </div>
