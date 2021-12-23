@@ -56,8 +56,8 @@
 
                 @endauth
                 @guest
-                        <div class="flex flex-col w-full mx-auto">
-                            <div>
+                        <div class="w-full mx-auto">
+                            <div class="border-b-2 border-red-900">
                                 @include('layouts.navigation')
                             </div>
                             <div>
@@ -65,7 +65,7 @@
                                     {{ $banner }}
                                 @endif
                             </div>
-                            <div class="max-w-screen-xl mx-auto w-full p-4 md:p-6 lg:p-8 border-t-2 border-red-900">
+                            <div class="max-w-screen-xl mx-auto w-full p-4 md:p-6 lg:p-8">
                                 {{ $slot }}
                             </div>
                         </div>

@@ -2,17 +2,17 @@
     <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <div class="flex items-center justify-between w-full">
-{{--                <div class="flex-shrink-0">--}}
-{{--                    @if (!Route::is('home'))--}}
-{{--                        <a href="/" class="flex h-full items-center">--}}
-{{--                            <x-logo class="w-12 lg:w-24" />--}}
+                <div class="flex-shrink-0">
+                    @if (!Route::is('home'))
+                        <a href="/" class="flex h-full items-center">
+                            <x-logo class="w-12 lg:w-24" />
 
-{{--                            <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">--}}
-{{--                                Lambert Track--}}
-{{--                            </div>--}}
-{{--                        </a>--}}
-{{--                    @endif--}}
-{{--                </div>--}}
+                            <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">
+                                Lambert Track
+                            </div>
+                        </a>
+                    @endif
+                </div>
                 <div class="hidden lg:block sm:ml-6 lg:ml-12 pt-3 w-full">
                     <div class="flex w-full justify-center space-x-6">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
