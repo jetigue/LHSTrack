@@ -31,10 +31,10 @@
 </head>
 
 <body class="bg-black min-w-full min-h-screen">
-    <div class="container h-full bg-black">
-        <main class="w-full">
+    <div class="container h-full bg-black min-w-full mx-auto">
+        <main class="min-w-full">
                 @auth
-                <div class="flex w-full">
+                <div class="flex min-w-full">
                     <div>
                         @include('layouts.user-sidebar-navigation')
                     </div>
@@ -56,8 +56,8 @@
 
                 @endauth
                 @guest
-                        <div class="w-full mx-auto">
-                            <div class="border-b-2 border-red-900">
+                        <div class="min-w-full">
+                            <div class="w-full border-b-2 border-red-900">
                                 @include('layouts.navigation')
                             </div>
                             <div>
