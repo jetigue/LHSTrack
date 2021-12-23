@@ -1,4 +1,4 @@
-<div>
+<div class="w-full">
     <x-headings.page>
         Team Announcements
         <x-slot name="action">

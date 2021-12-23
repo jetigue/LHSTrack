@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-black">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,24 +30,51 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="bg-gray-100">
-<div class="container mx-auto h-full">
-    <div class="bg-black">
-        @include('layouts.navigation')
-        @if (isset($banner))
-            {{ $banner }}
-        @endif
-    </div>
-    <main class="max-w-7xl w-full mx-auto pb-2 px-4 sm:px-6 lg:px-8">
-        <div class="md:px-0 sm:px-6">
-            <div class="mb-12">
-                {{ $slot }}
-            </div>
-        </div>
-    </main>
+<body class="bg-black min-w-full min-h-screen">
+    <div class="container h-full bg-black">
+        <main class="w-full">
+                @auth
+                <div class="flex w-full">
+                    <div>
+                        @include('layouts.user-sidebar-navigation')
+                    </div>
+
+                    <div class="flex flex-col w-full">
+                        <div class="">
+                            @include('layouts.navigation')
+                        </div>
+                        <div>
+{{--                            @if (isset($banner))--}}
+{{--                                {{ $banner }}--}}
+{{--                            @endif--}}
+                        </div>
+                        <div class="w-full p-4 md:p-6 lg:p-8 border-double border-t-4 border-l-4 border-red-900 rounded-tl-xl">
+                            {{ $slot }}
+                        </div>
+                    </div>
+                </div>
+
+                @endauth
+                @guest
+                        <div class="flex flex-col w-full">
+                            <div>
+                                @include('layouts.navigation')
+                            </div>
+                            <div>
+                                @if (isset($banner))
+                                    {{ $banner }}
+                                @endif
+                            </div>
+                            <div class="max-w-screen-xl mx-auto w-full p-4 md:p-6 lg:p-8 border-t-2 border-red-900">
+                                {{ $slot }}
+                            </div>
+                        </div>
+                    @endguest
+
+        </main>
+
+
 </div>
-
-
 @stack('modals')
 @livewireScripts
 <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>

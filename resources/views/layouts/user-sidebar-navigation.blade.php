@@ -1,9 +1,20 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div
-    class="hidden lg:flex fixed lg:flex-col lg:w-64 lg:inset-y-0 pt-5 pb-4 bg-white overflow-y-auto mt-20">
+    class="hidden lg:flex lg:flex-col lg:w-64 bg-black overflow-y-auto min-h-full">
 
-    <div class="mt-5 flex-grow flex flex-col">
+    <div class="flex-grow flex flex-col">
         <nav class="flex-1 px-2 space-y-1" aria-label="Sidebar">
+            <div class="flex-shrink-0">
+                @if (!Route::is('home'))
+                    <a href="/" class="flex h-full items-center">
+                        <x-logo class="w-12 lg:w-24" />
+
+                        <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">
+                            Lambert Track
+                        </div>
+                    </a>
+                @endif
+            </div>
 
 {{--            <x-navigation.sidebar-navigation-link route="dashboard">--}}
 {{--                <svg class="text-gray-700 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"--}}
