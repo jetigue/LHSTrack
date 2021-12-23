@@ -56,7 +56,7 @@
 
                 @endauth
                 @guest
-                        <div class="flex flex-col w-full">
+                        <div class="flex flex-col w-full mx-auto">
                             <div>
                                 @include('layouts.navigation')
                             </div>
