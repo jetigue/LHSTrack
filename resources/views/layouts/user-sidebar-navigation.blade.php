@@ -1,8 +1,7 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <div
     class="hidden lg:flex lg:flex-col lg:w-64 bg-black overflow-y-auto min-h-full">
 
-    <div class="flex-grow flex flex-col">
+    <div class="flex-grow flex flex-col pt-4">
         <nav class="flex-1 px-2 space-y-1" aria-label="Sidebar">
             <div class="flex-shrink-0">
                 @if (!Route::is('home'))
@@ -15,6 +14,11 @@
                     </a>
                 @endif
             </div>
+            @can('coach')
+            <div class="w-full text-center text-red-900 font-bold text-2xl pt-12">
+                Coach's Menu
+            </div>
+            @endcan
 
 {{--            <x-navigation.sidebar-navigation-link route="dashboard">--}}
 {{--                <svg class="text-gray-700 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"--}}

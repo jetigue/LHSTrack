@@ -1,7 +1,7 @@
 @props(['route'])
 
 @php
-    $classes = Request::routeIs($route) ? 'bg-red-800 text-gray-100' : 'bg-gray-600 text-gray-200 hover:bg-red-800 hover:text-gray-200';
+    $classes = Request::routeIs($route) ? 'bg-red-900 text-gray-100' : 'bg-black text-gray-200 hover:bg-gray-500 hover:text-gray-200';
 @endphp
 
 <a href="{{ route($route) }}"

@@ -1,10 +1,11 @@
-<nav x-data="{ open: false }" class="bg-black py-2">
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <div class="flex items-center justify-between w-full">
+<nav x-data="{ open: false }" class="bg-black">
+    <div class="w-full px-4">
+        <div class="flex items-center justify-between">
+            <div class="flex h-24 items-center justify-between w-full">
+@guest
                 <div class="flex-shrink-0">
                     @if (!Route::is('home'))
-                        <a href="/" class="flex h-full items-center">
+                        <a href="/" class="flex h-full items-center pr-4">
                             <x-logo class="w-12 lg:w-24" />
 
                             <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">
@@ -13,8 +14,9 @@
                         </a>
                     @endif
                 </div>
-                <div class="hidden lg:block sm:ml-6 lg:ml-12 pt-3 w-full">
-                    <div class="flex w-full justify-center space-x-6">
+                @endguest
+                <div class="hidden lg:flex w-full h-full items-center pt-2">
+                    <div class="flex w-full space-x-6">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
                         <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
                         <x-nav-link route="Booster Club">Booster Club</x-nav-link>

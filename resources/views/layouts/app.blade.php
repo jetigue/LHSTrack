@@ -44,11 +44,11 @@
                             @include('layouts.navigation')
                         </div>
                         <div>
-{{--                            @if (isset($banner))--}}
-{{--                                {{ $banner }}--}}
-{{--                            @endif--}}
+                            @if (isset($banner))
+                                {{ $banner }}
+                            @endif
                         </div>
-                        <div class="w-full p-4 md:p-6 lg:p-8 border-double border-t-4 border-l-4 border-red-900 rounded-tl-xl">
+                        <div class="w-full p-4 lg:px-8 border-double border-t-4 border-l-4 border-red-900 rounded-tl-3xl">
                             {{ $slot }}
                         </div>
                     </div>
