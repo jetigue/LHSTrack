@@ -15,7 +15,7 @@
                                     <div class="text-sm font-bold text-red-800 py-1">
                                         {{ $event->title }}
                                     </div>
-                                    <div class="text-gray-700 text-sm text-left">
+                                    <div class="text-gray-700 text-sm text-left no-tailwindcss-base">
                                         {!! $event->description !!}
                                     </div>
                                 </div>
