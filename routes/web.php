@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Athletes\AthletesIndex;
+use App\Http\Livewire\Calendar\MonthlyCalendar;
 use App\Http\Livewire\Communication\TeamAnnouncementsIndex;
 use App\Http\Livewire\Communication\TeamEventsIndex;
 use App\Http\Livewire\Main\BoosterClubPage;
@@ -26,6 +27,8 @@ Route::get('/', Welcome::class)->name('home');
 Route::get('/boys-roster', TeamRoster::class)->name('Boys Roster');
 Route::get('/girls-roster', TeamRoster::class)->name('Girls Roster');
 Route::get('/booster-club', BoosterClubPage::class)->name('Booster Club');
+
+Route::get('/calendar', MonthlyCalendar::class)->name('calendar');
 
 Route::get('/admin/users/', UsersIndex::class)->middleware('auth');
 

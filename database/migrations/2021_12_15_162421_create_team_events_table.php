@@ -21,6 +21,10 @@ class CreateTeamEventsTable extends Migration
             $table->text('description');
             $table->timestamps();
 
+            $table->foreign('event_date')
+                ->references('calendar_date')
+                ->on('calendar');
+
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         Role::factory(5)->create();
         User::factory(10)->create();
         Athlete::factory(200)->create();
-        TeamAnnouncement::factory(5)->create();
-        TeamEvent::factory(10)->create();
+
+        $this->call([
+            CalendarSeeder::class,
+            CommunicationSeeder::class
+        ]);
     }
 }
