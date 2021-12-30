@@ -1,9 +1,9 @@
-<div class="w-full">
+<div>
     <x-flash />
     <x-headings.page>
         Athletes
         <x-slot name="action">
-            <div class="flex space-x-2 items-center">
+            <div class="flex items-center">
                 <x-search />
             </div>
         </x-slot>

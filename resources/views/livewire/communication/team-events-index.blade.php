@@ -1,4 +1,5 @@
 <div>
+    <x-flash />
     <x-headings.page>
         Team Events
         <x-slot name="action">
@@ -8,7 +9,7 @@
         </x-slot>
     </x-headings.page>
 
-    <div class="grid  grid-cols-4 gap-6">
+    <div class="grid grid-cols-4 gap-6">
         @foreach ($events as $event)
             <div wire:key="{{ $loop->index }}" class="col-span-1 relative bg-white shadow rounded-md px-6 py-4">
             <div class="flex absolute justify-between top-2 right-2 z-10">

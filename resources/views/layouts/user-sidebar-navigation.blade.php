@@ -1,11 +1,11 @@
 <div
-    class="hidden lg:flex lg:flex-col lg:w-64 bg-black overflow-y-auto min-h-full">
+    class="hidden lg:flex lg:flex-col lg:w-48 xl:w-64 bg-black overflow-y-auto min-h-full">
 
-    <div class="flex-grow flex flex-col pt-2">
-        <nav class="flex-1 px-4 space-y-1" aria-label="Sidebar">
+    <div class="flex-grow flex flex-col">
+        <nav class="flex-1" aria-label="Sidebar">
             <div class="flex-shrink-0">
                 @if (!Route::is('home'))
-                    <a href="/" class="flex h-full items-center">
+                    <a href="/" class="flex h-full items-center p-2">
                         <x-logo class="w-12 lg:w-24" />
 
                         <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-4">
@@ -14,16 +14,36 @@
                     </a>
                 @else
                     <div class="flex w-full h-40 items-center justify-center">
-                        <x-logo class="w-48"/>
+                        <x-logo class="w-40"/>
 
                     </div>
                 @endif
             </div>
             @auth
-            <div class="w-full text-gray-500 font-hairline text-2x pb-2">
+               @if (!Route::is('home'))
+                   <div class="invisible h-24"></div>
+                @else
+                    <div class="invisible h-0 -mb-2"></div>
+               @endif
+
+            @endauth
+            <div class="border border-gray-300 px-2 rounded-md space-y-2 py-2 mt-2">
+                <div class="w-full text-gray-500 font-hairline text-2xl pb-2 text-center">
                 {{ ucfirst(Auth::user()->role->name) }}'s Menu
             </div>
-            @endauth
+            <x-navigation.sidebar-navigation-link route="Athletes">
+                <x-icon.user-group class="mr-3"/>
+                Athletes
+            </x-navigation.sidebar-navigation-link>
+                            <x-navigation.sidebar-navigation-menu title="Communication">
+                <x-navigation.sidebar-navigation-menu-item route="Team Announcements">
+                    Announcements
+                </x-navigation.sidebar-navigation-menu-item>
+                <x-navigation.sidebar-navigation-menu-item route="Team Events">
+                    Team Events
+                </x-navigation.sidebar-navigation-menu-item>
+            </x-navigation.sidebar-navigation-menu>
+            </div>
 
 {{--            <x-navigation.sidebar-navigation-link route="dashboard">--}}
 {{--                <svg class="text-gray-700 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"--}}
@@ -34,10 +54,7 @@
 {{--                Dashboard--}}
 {{--            </x-navigation.sidebar-navigation-link>--}}
 
-            <x-navigation.sidebar-navigation-link route="Athletes">
-                <x-icon.user-group class="mr-3"/>
-                Athletes
-            </x-navigation.sidebar-navigation-link>
+
 
 {{--            <x-navigation.sidebar-navigation-link route="users">--}}
 {{--                <x-icon.user-group class="mr-3"/>--}}
@@ -49,14 +66,7 @@
 {{--                Calendar--}}
 {{--            </x-navigation.sidebar-navigation-link>--}}
 
-            <x-navigation.sidebar-navigation-menu title="Communication">
-                <x-navigation.sidebar-navigation-menu-item route="Team Announcements">
-                    Announcements
-                </x-navigation.sidebar-navigation-menu-item>
-                <x-navigation.sidebar-navigation-menu-item route="Team Events">
-                    Team Events
-                </x-navigation.sidebar-navigation-menu-item>
-            </x-navigation.sidebar-navigation-menu>
+
 
 {{--            <x-navigation.sidebar-navigation-menu title="Training">--}}
 {{--                <x-navigation.sidebar-navigation-menu-item route="training dashboard">--}}

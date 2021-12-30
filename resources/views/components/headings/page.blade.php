@@ -1,12 +1,12 @@
-<div class="max-w-7xl mx-auto h-20 mb-4">
-    <div class="flex justify-between items-end min-h-full py-4">
-        <div class="flex flex-col w-full items-baseline">
+<div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-end h-20 py-4">
+        <div class="flex flex-col w-full h-full items-baseline">
             @if (isset($breadcrumbs))
-                <div>
+                <div class="flex">
                     {{ $breadcrumbs }}
                 </div>
             @endif
-            <div class="text-2xl md:text-3xl lg:text-4xl font-light text-gray-100">
+            <div class="flex h-full text-2xl md:text-3xl lg:text-4xl font-light text-gray-100 items-end">
                 {{ $slot }}
             </div>
         </div>
