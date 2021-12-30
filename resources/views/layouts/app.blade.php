@@ -57,7 +57,7 @@
                 @endauth
                 @guest
                         <div class="min-w-full">
-                            <div class="w-full border-b-2 border-red-900">
+                            <div class="w-full">
                                 @include('layouts.navigation')
                             </div>
                             <div>

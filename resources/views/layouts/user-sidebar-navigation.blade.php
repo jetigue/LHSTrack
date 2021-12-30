@@ -1,8 +1,8 @@
 <div
     class="hidden lg:flex lg:flex-col lg:w-64 bg-black overflow-y-auto min-h-full">
 
-    <div class="flex-grow flex flex-col pt-4">
-        <nav class="flex-1 px-2 space-y-1" aria-label="Sidebar">
+    <div class="flex-grow flex flex-col pt-2">
+        <nav class="flex-1 px-4 space-y-1" aria-label="Sidebar">
             <div class="flex-shrink-0">
                 @if (!Route::is('home'))
                     <a href="/" class="flex h-full items-center">
@@ -12,13 +12,17 @@
                             Lambert Track
                         </div>
                     </a>
+                @else
+                    <div class="invisible h-32">
+
+                    </div>
                 @endif
             </div>
-            @can('coach')
-            <div class="w-full text-center text-red-900 font-bold text-2xl pt-12">
-                Coach's Menu
+            @auth
+            <div class="w-full text-red-900 font-bold text-2xl pt-14">
+                {{ ucfirst(Auth::user()->role->name) }}'s Menu
             </div>
-            @endcan
+            @endauth
 
 {{--            <x-navigation.sidebar-navigation-link route="dashboard">--}}
 {{--                <svg class="text-gray-700 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"--}}

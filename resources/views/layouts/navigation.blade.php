@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-black">
     <div class="w-full px-4">
         <div class="flex items-center justify-between">
-            <div class="flex h-24 items-center justify-between w-full">
+            <div class="flex h-20 items-center justify-between w-full">
 @guest
                 <div class="flex-shrink-0">
                     @if (!Route::is('home'))
@@ -15,7 +15,7 @@
                     @endif
                 </div>
                 @endguest
-                <div class="hidden lg:flex w-full h-full items-center pt-2">
+                <div class="hidden lg:flex w-full h-full items-center pt-3">
                     <div class="flex w-full space-x-6">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
                         <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>

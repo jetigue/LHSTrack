@@ -53,8 +53,9 @@
         </div>
 
     </div>
-
+    @can('coach')
     @include('livewire.communication._team-announcement-form-modal')
+        @endcan
 
 
 </div>

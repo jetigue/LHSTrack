@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature;
+namespace Announcements;
 
+use App\Http\Livewire\Communication\TeamAnnouncementsForm;
 use App\Http\Livewire\Communication\TeamAnnouncementsIndex;
 use App\Models\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TeamAnnouncementsIndexTest extends TestCase
@@ -27,9 +27,19 @@ class TeamAnnouncementsIndexTest extends TestCase
     }
 
     /** @test */
-    function only_a_coach_can_create_an_announcement()
+    function only_a_coach_can_see_the_form_modal()
     {
+        $this->signInCoach();
 
+        $this->get('/team-announcements')->assertSeeLivewire(TeamAnnouncementsForm::class);
+    }
+
+    /** @test */
+    function an_athlete_cannot_see_the_form_modal()
+    {
+        $this->signInAthlete();
+
+        $this->get('/team-announcements')->assertDontSeeLivewire(TeamAnnouncementsForm::class);
     }
 
 }

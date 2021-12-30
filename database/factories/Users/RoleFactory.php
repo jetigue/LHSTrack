@@ -18,4 +18,46 @@ class RoleFactory extends Factory
             ])
         ];
     }
+
+
+    public function admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'name' => 'admin',
+            ];
+        });
+    }
+
+    /**
+ * Indicate that the user is suspended.
+ *
+ * @return Factory
+ */
+    public function isCoach(): Factory
+    {
+        return $this->state(function () {
+            return [
+                'name' => 'coach',
+            ];
+        });
+    }
+
+    public function athlete()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'name' => 'athlete',
+            ];
+        });
+    }
+
+    public function booster()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'name' => 'booster',
+            ];
+        });
+    }
 }
