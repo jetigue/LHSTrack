@@ -8,18 +8,19 @@
                     <a href="/" class="flex h-full items-center">
                         <x-logo class="w-12 lg:w-24" />
 
-                        <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">
+                        <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-4">
                             Lambert Track
                         </div>
                     </a>
                 @else
-                    <div class="invisible h-32">
+                    <div class="flex w-full h-40 items-center justify-center">
+                        <x-logo class="w-48"/>
 
                     </div>
                 @endif
             </div>
             @auth
-            <div class="w-full text-red-900 font-bold text-2xl pt-14">
+            <div class="w-full text-gray-500 font-hairline text-2x pb-2">
                 {{ ucfirst(Auth::user()->role->name) }}'s Menu
             </div>
             @endauth

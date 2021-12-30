@@ -5,14 +5,10 @@
         <x-slot name="action">
             <div class="flex space-x-2 items-center">
                 <x-search />
-                <div class="pt-4">
-                    <livewire:athletes.import-athletes />
-                </div>
-
             </div>
         </x-slot>
     </x-headings.page>
-    <div class="flex flex-col space-y-4 mt-4">
+    <div class="flex flex-col space-y-4">
         <x-table.table class="table-fixed relative">
             <x-slot name="head">
                 <x-table.header-row class="">
@@ -61,7 +57,19 @@
                     </x-table.heading>
                     <x-table.heading class="w-1/12">
                         <div class="absolute z-20 lg:px-2 top-6 right-5">
-                            <x-button.add />
+                            <x-dropdown.dropdown>
+                                <x-slot name="trigger">
+                                    <x-icon.plus class="text-red-800 h-7 w-7" />
+                                </x-slot>
+                                <x-slot name="content">
+                                    <x-dropdown.link wire:click="showFormModal">
+                                        Add an Athlete
+                                    </x-dropdown.link>
+                                    <x-dropdown.link wire:click="$emit('showImportModal')">
+                                        Import Athletes
+                                    </x-dropdown.link>
+                                </x-slot>
+                            </x-dropdown.dropdown>
                         </div>
                     </x-table.heading>
                 </x-table.header-row>
@@ -146,6 +154,6 @@
         </div>
     </div>
 
-
+<livewire:athletes.import-athletes />
 @include('livewire.athletes._athlete-form-modal')
 </div>

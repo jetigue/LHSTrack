@@ -48,7 +48,7 @@
                                 {{ $banner }}
                             @endif
                         </div>
-                        <div class="w-full p-4 lg:px-8 border-double border-t-4 border-l-4 border-red-900 rounded-tl-3xl">
+                        <div class="w-full p-4 lg:px-8">
                             {{ $slot }}
                         </div>
                     </div>

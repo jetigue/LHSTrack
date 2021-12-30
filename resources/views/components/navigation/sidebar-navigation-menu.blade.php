@@ -3,10 +3,10 @@
 <div x-data="{ open: false }" class="space-y-1">
     <!-- Current: "bg-gray-100 text-gray-900", Default: "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
     <button @click="open = !open" type="button"
-            class="bg-gray-600 text-gray-200 hover:bg-red-800 hover:text-gray-200 group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-red-800"
+            class="text-gray-200 hover:bg-gray-500 hover:text-gray-200 group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-red-800"
             aria-controls="sub-menu-1" aria-expanded="false">
         <!-- Heroicon name: outline/users -->
-        <svg class="mr-3 flex-shrink-0 h-6 w-6 text-gray-200 group-hover:text-red-800"
+        <svg class="mr-3 flex-shrink-0 h-6 w-6 text-gray-200 group-hover:text-white-200"
              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
              aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,7 +27,7 @@
         </svg>
     </button>
     <!-- Expandable link section, show/hide based on state. -->
-    <div x-show="open" class="space-y-1 bg-white rounded-b-md pb-1" id="sub-menu-1"
+    <div x-show="open" class="space-y-1 rounded-b-md pb-1" id="sub-menu-1"
         x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="transform opacity-0 scale-95"
         x-transition:enter-end="transform opacity-100 scale-100"

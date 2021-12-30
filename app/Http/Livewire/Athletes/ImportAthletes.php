@@ -12,7 +12,7 @@ class ImportAthletes extends Component
 {
     use WithFileUploads;
 
-    public $showModal = false;
+    public $showImportModal = false;
     public $upload;
     public $columns;
     public $fieldColumnMap = [
@@ -23,6 +23,8 @@ class ImportAthletes extends Component
         'dob' => '',
         'status' => '',
     ];
+
+    protected $listeners = ['showImportModal' => 'showModal'];
 
     protected $rules = [
         'fieldColumnMap.first_name' => 'required',
@@ -40,6 +42,11 @@ class ImportAthletes extends Component
         'fieldColumnMap.dob' => 'dob',
         'fieldColumnMap.status' => 'status',
     ];
+
+    public function showModal()
+    {
+        $this->showImportModal = true;
+    }
 
     public function updatingUpload($value)
     {
