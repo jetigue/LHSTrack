@@ -21,7 +21,7 @@
                             </div>
                             <hr>
                             <div class="py-2 text-sm text-gray-600 line-clamp-2">
-                                {{ $event->description }}
+                                {!! $event->description !!}
                             </div>
                         </div>
                     </x-card.basic>
