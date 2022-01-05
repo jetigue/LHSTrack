@@ -8,7 +8,7 @@
         {{ $event['title'] }}
     </p>
     <p class="mt-2 text-xs line-clamp-2">
-        {{ $event['description'] ?? 'No description' }}
+        {!! $event['description'] ?? 'No description' !!}
     </p>
 
 </div>
