@@ -71,7 +71,7 @@ class AthletesIndex extends Component
     {
         $this->athlete = $athlete;
         $this->showConfirmModal = true;
-        $this->athlete = $athlete;
+//        $this->athlete = $athlete;
     }
 
     public function destroy(Athlete $athlete)

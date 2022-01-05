@@ -9,6 +9,7 @@
     class="relative w-full bg-{{ $announcement->cardColor }} shadow rounded-md p-4 md:border-l-8 border-{{ $announcement->cardColor }} border-{{ $borderColor }}"
     wire:click="previewAnnouncement({{ $announcement->id }})"
 >
+    @can('coach')
     <div class="flex absolute justify-between top-2 right-2 z-10">
         <div class="p-1">
             <x-dropdown.dropdown>
@@ -26,6 +27,7 @@
             </x-dropdown.dropdown>
         </div>
     </div>
+    @endcan
     <div class="flex w-full items-center">
         <div class="flex w-3/4 text-red-900 font-semibold">
             {{ $announcement->title }}

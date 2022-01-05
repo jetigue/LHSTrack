@@ -1,4 +1,5 @@
 <div>
+    @can('coach')
     <x-flash/>
 {{--    <x-slot name="header">--}}
 {{--        <x-headings.page>--}}
@@ -143,5 +144,5 @@
             </div>
         </x-slot>
     </x-modal.dialog>
-
+@endcan
 </div>

@@ -23,6 +23,6 @@ class Calendar extends Model
 
     public function teamEvents(): HasMany
     {
-        return $this->hasMany(TeamEvent::class, 'event_date');
+        return $this->hasMany(TeamEvent::class, 'event_date', 'calendar_date');
     }
 }

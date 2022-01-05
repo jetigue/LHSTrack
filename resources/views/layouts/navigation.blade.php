@@ -1,8 +1,8 @@
-<nav x-data="{ open: false }" class="bg-black">
+<nav x-data="{ open: false }" class="min-w-full bg-black">
     <div class="w-full px-4">
         <div class="flex items-center justify-between">
             <div class="flex h-20 items-center justify-between w-full">
-@guest
+
                 <div class="flex-shrink-0">
                     @if (!Route::is('home'))
                         <a href="/" class="flex h-full items-center pr-4">
@@ -14,32 +14,30 @@
                         </a>
                     @endif
                 </div>
-                @endguest
-                <div class="hidden lg:flex w-full h-full items-center pt-3">
-                    <div class="flex w-full space-x-6">
+
+                <div class="hidden lg:flex min-w-full h-full items-center justify-between pt-3">
+                    <div class="flex w-full md:space-x-4 lg:space-x-6">
                         <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
                         <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
                         <x-nav-link route="Booster Club">Booster Club</x-nav-link>
+                        <x-nav-link route="Calendar">Calendar</x-nav-link>
                         @can('coach')
                             <x-nav-link route="Team Announcements">Announcements</x-nav-link>
                         @endif
-
                     </div>
-                </div>
-                <div class="hidden md:flex justify-end pt-3">
                     @guest
-                        @can('coach')
+                        <div class="hidden lg:flex flex-shrink-0 pt-3 justify-end">
                             <x-nav-link route="login">Sign In</x-nav-link>
-                        @endcan
+                        </div>
                     @endguest
                 </div>
             </div>
-            <div class="hidden lg:ml-6 lg:block">
+            <div class="hidden lg:ml-6 md:block">
                 <div class="flex items-center">
 
                     <!-- Profile dropdown -->
                     @auth
-                        <div class="ml-3 relative">
+                        <div class="ml-3 relative pt-3">
                             <x-dropdown.dropdown>
                                 <x-slot name="trigger"
                                         class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -95,6 +93,7 @@
             <x-navigation.mobile-link route="Boys Roster">Boys Roster</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>
+            <x-navigation.mobile-link route="Calendar">Calendar</x-navigation.mobile-link>
             @can('coach')
                 <x-navigation.mobile-link route="Team Announcements">Announcements</x-navigation.mobile-link>
              @endcan

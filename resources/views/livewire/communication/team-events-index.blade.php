@@ -3,15 +3,18 @@
     <x-headings.page>
         Team Events
         <x-slot name="action">
+            @can('coach')
             <x-button.primary wire:click="showFormModal">
                 <x-icon.plus class="mr-2"/> New Event
             </x-button.primary>
+                @endcan
         </x-slot>
     </x-headings.page>
 
     <div class="grid grid-cols-4 gap-6">
         @foreach ($events as $event)
             <div wire:key="{{ $loop->index }}" class="col-span-1 relative bg-white shadow rounded-md px-6 py-4">
+                @can('coach')
             <div class="flex absolute justify-between top-2 right-2 z-10">
                 <div class="p-1">
                     <x-dropdown.dropdown>
@@ -35,6 +38,7 @@
                     </x-dropdown.dropdown>
                 </div>
             </div>
+                @endcan
                 <div class="py-4">
                     <div class="flex flex-col w-full">
                         <div class="flex text-sm text-gray-400 font-semibold justify-center w-full">

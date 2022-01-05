@@ -33,29 +33,29 @@
 <body class="bg-black min-w-full min-h-screen">
     <div class="container h-full bg-black min-w-full mx-auto">
         <main class="min-w-full">
-                @auth
-                <div class="flex min-w-full">
-                    <div>
-                        @include('layouts.user-sidebar-navigation')
-                    </div>
+{{--                @auth--}}
+{{--                <div class="flex min-w-full">--}}
+{{--                    <div>--}}
+{{--                        @include('layouts.user-sidebar-navigation')--}}
+{{--                    </div>--}}
 
-                    <div class="flex flex-col w-full">
-                        <div class="">
-                            @include('layouts.navigation')
-                        </div>
-                        <div>
-                            @if (isset($banner))
-                                {{ $banner }}
-                            @endif
-                        </div>
-                        <div class="w-full p-4 lg:px-8">
-                            {{ $slot }}
-                        </div>
-                    </div>
-                </div>
+{{--                    <div class="flex flex-col w-full">--}}
+{{--                        <div class="">--}}
+{{--                            @include('layouts.navigation')--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            @if (isset($banner))--}}
+{{--                                {{ $banner }}--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
+{{--                        <div class="w-full p-4 lg:px-8">--}}
+{{--                            {{ $slot }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                @endauth
-                @guest
+{{--                @endauth--}}
+{{--                @guest--}}
                         <div class="min-w-full">
                             <div class="w-full">
                                 @include('layouts.navigation')
@@ -69,7 +69,7 @@
                                 {{ $slot }}
                             </div>
                         </div>
-                    @endguest
+{{--                    @endguest--}}
 
         </main>
 
@@ -77,6 +77,7 @@
 </div>
 @stack('modals')
 @livewireScripts
+@livewireCalendarScripts
 <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 </body>
 

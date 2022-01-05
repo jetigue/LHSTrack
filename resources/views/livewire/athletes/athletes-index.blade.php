@@ -1,4 +1,5 @@
 <div>
+    @can('coach')
     <x-flash />
     <x-headings.page>
         Athletes
@@ -156,4 +157,5 @@
 
 <livewire:athletes.import-athletes />
 @include('livewire.athletes._athlete-form-modal')
+        @endcan
 </div>
