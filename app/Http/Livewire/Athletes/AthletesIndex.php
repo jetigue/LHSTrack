@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Athletes;
 
+use App\Exports\AthletesExport;
 use App\Models\Athletes\Athlete;
 use App\Traits\withSorting;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AthletesIndex extends Component
 {
@@ -94,6 +96,11 @@ class AthletesIndex extends Component
         $this->showFormModal = true;
         $this->editing = true;
         $this->emit('editAthlete', $athlete->id);
+    }
+
+    public function export(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        return Excel::download(new AthletesExport, 'athletes.xlsx');
     }
 
     public function render()

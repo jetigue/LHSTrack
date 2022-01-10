@@ -4,7 +4,8 @@
     <x-headings.page>
         Athletes
         <x-slot name="action">
-            <div class="flex items-center">
+            <div class="flex items-end space-x-2">
+                <x-button.primary wire:click="export">Export</x-button.primary>
                 <x-search />
             </div>
         </x-slot>
