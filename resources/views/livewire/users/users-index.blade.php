@@ -1,5 +1,5 @@
 <div>
-    @can('coach')
+    @can('admin')
     <x-flash/>
 {{--    <x-slot name="header">--}}
 {{--        <x-headings.page>--}}
