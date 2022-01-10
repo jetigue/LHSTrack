@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CalendarSeeder::class,
-            CommunicationSeeder::class
+            CommunicationSeeder::class,
+            TrackMeetSeeder::class
         ]);
     }
 }

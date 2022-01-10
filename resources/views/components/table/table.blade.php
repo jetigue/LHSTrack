@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'flex flex-col w-full p-6 rounded-lg shadow bg-gray-50']) }}>
+<div {{ $attributes->merge(['class' => 'flex flex-col w-full p-2 md:p-4 lg:p-6 rounded-lg shadow bg-gray-50']) }}>
     <div>
         {{ $head }}
     </div>

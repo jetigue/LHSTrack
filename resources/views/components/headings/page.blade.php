@@ -2,7 +2,7 @@
     <div class="flex justify-between items-end h-20 py-4">
         <div class="flex flex-col w-full h-full items-baseline">
             @if (isset($breadcrumbs))
-                <div class="flex">
+                <div class="flex -mt-4">
                     {{ $breadcrumbs }}
                 </div>
             @endif
