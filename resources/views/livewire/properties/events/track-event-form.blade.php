@@ -9,8 +9,8 @@
             </x-input.text>
         </x-input.group>
 
-        <x-input.group for="Categories" label="Categories" :error="$errors->first('category_id')">
-           <x-input.select wire:model="category_id">
+        <x-input.group for="Categories" label="Categories" :error="$errors->first('event_category_id')">
+           <x-input.select wire:model="event_category_id">
                <option value="">Category...</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">
