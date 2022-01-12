@@ -60,7 +60,7 @@ class TrackEventForm extends Component
 
     public function resetForm()
     {
-        $this->reset(['name', 'category_id']);
+        $this->reset(['name', 'event_category_id']);
     }
 
     public function render()
