@@ -3,18 +3,17 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\Users\Role;
-use App\Models\Users\User;
 use Livewire\Component;
 
-class UsersForm extends Component
+class UserRoleForm extends Component
 {
-    public $user = null;
-    public $user_role_id;
+    public $userRole = null;
+    public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editUser'
+        'editUserRole'
     ];
 
     public function updated($propertyName)
@@ -22,16 +21,16 @@ class UsersForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function editUser(User $user)
+    public function editCategory(Role $userRole)
     {
-        $this->user = $user;
-        $this->user_role_id = $this->user->user_role_id;
+        $this->userRole = $userRole;
+        $this->name = $this->userRole->name;
     }
 
     public function rules()
     {
         return [
-            'user_role_id' => 'required|integer',
+            'name' => 'required|string|max:50',
         ];
     }
 
@@ -39,28 +38,28 @@ class UsersForm extends Component
     {
         $this->validate();
 
-        $user= [
-            'user_role_id' => $this->user_role_id,
+        $userRole = [
+            'name' => $this->name,
         ];
 
-        if ($this->user) {
-            User::find($this->user->id)->update($user);
+        if ($this->userRole) {
+            Role::find($this->userRole->id)->update($userRole);
             $this->emit('recordUpdated');
+        } else {
+            Role::create($userRole);
+            $this->emit('recordAdded');
         }
-
         $this->resetForm();
         $this->emit('hideFormModal');
     }
 
     public function resetForm()
     {
-        $this->reset(['user_role_id']);
+        $this->reset(['name']);
     }
 
     public function render()
     {
-        return view('livewire.users.users-form', [
-            'userRoles' => Role::all()
-        ]);
+        return view('livewire.users.user-role-form');
     }
 }

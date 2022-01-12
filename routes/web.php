@@ -11,12 +11,15 @@ use App\Http\Livewire\Main\OurTeam;
 use App\Http\Livewire\Main\TeamRoster;
 use App\Http\Livewire\Main\Welcome;
 use App\Http\Livewire\Meets\TrackMeetsIndex;
+use App\Http\Livewire\Properties\Events\EventCategoriesIndex;
+use App\Http\Livewire\Properties\Events\TrackEventsIndex;
 use App\Http\Livewire\Properties\Meets\MeetHostsIndex;
 use App\Http\Livewire\Properties\Meets\TimingMethodsIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackMeetNamesIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackSeasonsIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackSurfacesIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackVenuesIndex;
+use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -50,10 +53,8 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track-meets', TrackMeetsIndex::class)->name('Track Meets');
     Route::get('/track/meet-names', TrackMeetNamesIndex::class);
     Route::get('/track/venues', TrackVenuesIndex::class)->name('Track venues');
-    Route::get('/track/seasons', TrackSeasonsIndex::class)->name('Track Seasons');
-    Route::get('/track/surfaces', TrackSurfacesIndex::class)->name('Track Surfaces');
     Route::get('/meet-hosts', MeetHostsIndex::class)->name('Meet Hosts');
-    Route::get('/timing-methods', TimingMethodsIndex::class)->name('Timing Methods');
+
 
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');
     Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
@@ -61,5 +62,12 @@ Route::group(['middleware' => 'can:coach'], function () {
 
 Route::group(['middleware' => 'can:admin'], function () {
     Route::get('/admin/users/', UsersIndex::class)->name('Users');
+    Route::get('/admin/user-roles/', UserRolesIndex::class)->name('User Roles');
+
+    Route::get('/timing-methods', TimingMethodsIndex::class)->name('Timing Methods');
+    Route::get('/track/event-categories', EventCategoriesIndex::class)->name('Event Categories');
+    Route::get('/track/events', TrackEventsIndex::class)->name('Track Events');
+    Route::get('/track/seasons', TrackSeasonsIndex::class)->name('Track Seasons');
+    Route::get('/track/surfaces', TrackSurfacesIndex::class)->name('Track Surfaces');
 });
 
