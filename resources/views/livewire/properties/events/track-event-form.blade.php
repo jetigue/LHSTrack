@@ -9,6 +9,14 @@
             </x-input.text>
         </x-input.group>
 
+        <x-input.group for="distance_in_meters" label="Distance In Meters" :error="$errors->first('distance_in_meters')">
+            <x-input.text
+                wire:model.defer="distance_in_meters"
+                type="number"
+                >
+            </x-input.text>
+        </x-input.group>
+
         <x-input.group for="Categories" label="Categories" :error="$errors->first('event_category_id')">
            <x-input.select wire:model="event_category_id">
                <option value="">Category...</option>

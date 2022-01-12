@@ -17,7 +17,10 @@
                     <x-table.heading class="w-11/12 lg:w-6/12">
                         Event Name
                     </x-table.heading>
-                    <x-table.heading class="hidden lg:inline-block lg:w-5/12">
+                    <x-table.heading class="hidden lg:inline-block lg:w-2/12">
+                        Distance (m)
+                    </x-table.heading>
+                    <x-table.heading class="hidden lg:inline-block lg:w-3/12">
                         Category
                     </x-table.heading>
 
@@ -39,7 +42,10 @@
                         <x-table.cell class="w-11/12 lg:w-6/12">
                             {{ $trackEvent->name }}
                         </x-table.cell>
-                        <x-table.cell class="hidden lg:inline-block lg:w-5/12">
+                        <x-table.cell class="hidden lg:inline-block lg:w-2/12">
+                                {{ $trackEvent->distance_in_meters }}
+                        </x-table.cell>
+                        <x-table.cell class="hidden lg:inline-block lg:w-3/12">
                                 {{ $trackEvent->category->name }}
                         </x-table.cell>
                         <x-table.cell class="w-1/12 flex justify-end lg:px-2">

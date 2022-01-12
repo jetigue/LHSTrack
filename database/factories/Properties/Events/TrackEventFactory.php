@@ -19,6 +19,7 @@ class TrackEventFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
+            'distance_in_meters' => $this->faker->numberBetween([100, 3200]),
             'event_category_id' => Category::all()->random()->id,
         ];
     }

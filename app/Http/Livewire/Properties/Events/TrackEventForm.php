@@ -11,6 +11,7 @@ class TrackEventForm extends Component
     public $trackEvent = null;
     public $name;
     public $event_category_id;
+    public $distance_in_meters;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
@@ -28,13 +29,15 @@ class TrackEventForm extends Component
         $this->trackEvent = $trackEvent;
         $this->name = $this->trackEvent->name;
         $this->event_category_id = $this->trackEvent->event_category_id;
+        $this->distance_in_meters = $this->trackEvent->distance_in_meters;
     }
 
     public function rules()
     {
         return [
             'name' => 'required|string|max:50',
-            'event_category_id' => 'required|integer'
+            'event_category_id' => 'required|integer',
+            'distance_in_meters' => 'nullable|integer'
         ];
     }
 
@@ -44,7 +47,8 @@ class TrackEventForm extends Component
 
         $trackEvent = [
             'name' => $this->name,
-            'event_category_id' => $this->event_category_id
+            'event_category_id' => $this->event_category_id,
+            'distance_in_meters' => $this->distance_in_meters
         ];
 
         if ($this->trackEvent) {
@@ -60,7 +64,7 @@ class TrackEventForm extends Component
 
     public function resetForm()
     {
-        $this->reset(['name', 'event_category_id']);
+        $this->reset(['name', 'event_category_id', 'distance_in_meters']);
     }
 
     public function render()

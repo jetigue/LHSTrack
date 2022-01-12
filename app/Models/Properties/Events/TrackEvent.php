@@ -12,7 +12,7 @@ class TrackEvent extends Model
 
     protected $table = 'track_events';
 
-    protected $fillable = ['name', 'event_category_id'];
+    protected $fillable = ['name', 'distance_in_meters', 'event_category_id'];
 
     public function category(): BelongsTo
     {

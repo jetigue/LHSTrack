@@ -16,6 +16,7 @@ class CreateTrackEventsTable extends Migration
         Schema::create('track_events', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name', 50);
+            $table->unsignedInteger('distance_in_meters')->nullable();
             $table->unsignedTinyInteger('event_category_id');
             $table->timestamps();
 
