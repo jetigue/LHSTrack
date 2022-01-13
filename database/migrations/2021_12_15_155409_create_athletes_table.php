@@ -21,12 +21,14 @@ class CreateAthletesTable extends Migration
             $table->date('dob')->nullable();
             $table->unsignedSmallInteger('grad_year');
             $table->char('status', 1);
+            $table->unsignedTinyInteger('event_category_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->date('physical_expiration_date')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('event_category_id')->references('id')->on('event_categories');
 
         });
     }

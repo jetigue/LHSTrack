@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Models\Athletes\Athlete;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -48,6 +49,11 @@ class User extends Authenticatable
     public function path(): string
     {
         return '/users/' . $this->slug;
+    }
+
+    public function athlete()
+    {
+        return $this->hasOne(Athlete::class);
     }
 
     public function scopeFilter($query)

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Athletes;
 
 use App\Models\Athletes\Athlete;
+use App\Models\Properties\Events\Category;
 use Livewire\Component;
 
 class AthleteForm extends Component
@@ -15,6 +16,7 @@ class AthleteForm extends Component
     public $grad_year;
     public $status;
     public $user_id;
+    public $event_category_id;
     public $physical_expiration_date_for_editing;
 
     protected $listeners = [
@@ -38,6 +40,7 @@ class AthleteForm extends Component
         $this->grad_year = $this->athlete->grad_year;
         $this->status = $this->athlete->status;
         $this->user_id = $this->athlete->user_id;
+        $this->event_category_id = $this->athlete->event_category_id;
         $this->physical_expiration_date_for_editing = $this->athlete->physical_expiration_date_for_editing;
     }
 
@@ -50,7 +53,8 @@ class AthleteForm extends Component
             'grad_year' => 'required|integer|between:2010,2030',
             'dob_for_editing' => 'nullable|date',
             'status' => 'required|in:a,i,e',
-            'physical_expiration_date_for_editing' => 'nullable|date'
+            'physical_expiration_date_for_editing' => 'nullable|date',
+            'event_category_id' => 'nullable|integer'
         ];
     }
 
@@ -66,6 +70,7 @@ class AthleteForm extends Component
             'dob' => $this->dob_for_editing,
             'status' => $this->status,
             'physical_expiration_date' => $this->physical_expiration_date_for_editing,
+            'event_category_id' => $this->event_category_id,
         ];
 
         if ($this->athlete) {
@@ -88,13 +93,15 @@ class AthleteForm extends Component
             'grad_year',
             'dob_for_editing',
             'status',
-            'user_id',
-            'physical_expiration_date_for_editing'
+            'physical_expiration_date_for_editing',
+            'event_category_id'
         ]);
     }
 
     public function render()
     {
-        return view('livewire.athletes.athlete-form');
+        return view('livewire.athletes.athlete-form', [
+            'categories' => Category::orderBy('name')->get()
+        ]);
     }
 }

@@ -43,6 +43,17 @@
             </x-input.date>
         </x-input.group>
 
+        <x-input.group for="event_category_id" label="Primary Track Events" :error="$errors->first('event_category_id')">
+           <x-input.select wire:model="event_category_id">
+               <option value=""></option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+           </x-input.select>
+        </x-input.group>
+
         <x-input.group for="physical_expiration_date_for_editing" label="Physical Expiration Date" :error="$errors->first('physical_expiration_date_for_editing')">
             <x-input.date
                 wire:model.defer="physical_expiration_date_for_editing"

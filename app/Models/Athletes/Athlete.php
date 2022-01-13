@@ -2,9 +2,12 @@
 
 namespace App\Models\Athletes;
 
+use App\Models\Properties\Events\Category;
+use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class Athlete extends Model
@@ -23,12 +26,23 @@ class Athlete extends Model
         'status',
         'dob',
         'user_id',
+        'event_category_id',
         'physical_expiration_date'
     ];
 
     public function path(): string
     {
         return '/athletes/' . $this->slug;
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function primaryTrackEvent(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'event_category_id');
     }
 
     public function getDobForEditingAttribute()
@@ -106,7 +120,7 @@ class Athlete extends Model
         if ($this->dob) {
             return $this->dob->format('Y-m-d') == '-0001-11-30'
                 ? ''
-                : $this->dob->format('M d, Y');
+                : $this->dob->format('n-d-Y');
         } else {
             return '';
         }

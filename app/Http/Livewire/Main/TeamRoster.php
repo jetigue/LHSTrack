@@ -24,7 +24,7 @@ class TeamRoster extends Component
         if ($sex == 'm') { $this->gender = 'Boys\''; } $this->gender = 'Girls\'';
 
         $athletes = Athlete::query()
-//            ->where('status', '=', 'a')
+            ->where('status', '!=', 'i')
             ->where('sex', '=', $sex)
             ->orderBy('last_name')
             ->get();

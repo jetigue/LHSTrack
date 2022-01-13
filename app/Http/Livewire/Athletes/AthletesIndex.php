@@ -20,6 +20,7 @@ class AthletesIndex extends Component
     public $editing = false;
     public $showFormModal = false;
     public $showConfirmModal = false;
+    public $showLinkModal = false;
 
     protected $queryString = ['sortField', 'sortDirection', 'search'];
 
@@ -40,11 +41,13 @@ class AthletesIndex extends Component
         'confirmDelete',
         'recordAdded',
         'recordUpdated',
-        'refreshAthletes'
+        'refreshAthletes',
+        'hideLinkModal'
     ];
 
     public function showFormModal() { $this->showFormModal = true; }
     public function hideFormModal() { $this->showFormModal = false; }
+    public function hideLinkModal() { $this->showLinkModal = false; }
 
     public function clearSearch()
     {
@@ -73,7 +76,6 @@ class AthletesIndex extends Component
     {
         $this->athlete = $athlete;
         $this->showConfirmModal = true;
-//        $this->athlete = $athlete;
     }
 
     public function destroy(Athlete $athlete)
@@ -86,9 +88,11 @@ class AthletesIndex extends Component
     public function cancel()
     {
         $this->showFormModal = false;
+        $this->showLinkModal = false;
         $this->editing = false;
 
         $this->emit('cancelCreate');
+        $this->emit('cancelLink');
     }
 
     public function editRecord(Athlete $athlete)
@@ -96,6 +100,12 @@ class AthletesIndex extends Component
         $this->showFormModal = true;
         $this->editing = true;
         $this->emit('editAthlete', $athlete->id);
+    }
+
+    public function linkAthlete(Athlete $athlete)
+    {
+        $this->showLinkModal = true;
+        $this->emit('linkAthlete', $athlete->id);
     }
 
     public function export(): \Symfony\Component\HttpFoundation\BinaryFileResponse
@@ -106,7 +116,7 @@ class AthletesIndex extends Component
     public function render()
     {
         return view('livewire.athletes.athletes-index', [
-            'athletes' => Athlete::query()
+            'athletes' => Athlete::with('user', 'primaryTrackEvent')
                 ->where('first_name', 'like', '%' . $this->search . '%')
                 ->orwhere('last_name', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)

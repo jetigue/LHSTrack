@@ -35,9 +35,7 @@
                     </x-table.heading>
 
                     <x-table.heading class="w-1/12">
-                        <div class="absolute z-20 lg:px-2 top-2 md:top-4 lg:top-6 right-3 lg:right-5">
-                            <x-button.add />
-                        </div>
+                        <x-button.add />
                     </x-table.heading>
                 </x-table.header-row>
             </x-slot>
