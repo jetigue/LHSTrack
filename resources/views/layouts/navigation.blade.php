@@ -32,7 +32,7 @@
                     @endguest
                 </div>
             </div>
-            <div class="hidden lg:ml-6 md:block">
+            <div class="hidden lg:ml-6 lg:block">
                 <div class="flex items-center">
 
                     <!-- Profile dropdown -->
@@ -89,10 +89,10 @@
     >
 
         <div class="px-2 pt-2 pb-3 space-y-1">
+            <x-navigation.mobile-link route="home">Home</x-navigation.mobile-link>
             @auth
             <x-navigation.mobile-link route="Dashboard">Dashboard</x-navigation.mobile-link>
             @endauth
-            <x-navigation.mobile-link route="home">Home</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Boys Roster">Boys Roster</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>
             <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>
