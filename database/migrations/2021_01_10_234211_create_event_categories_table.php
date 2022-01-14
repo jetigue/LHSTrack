@@ -13,11 +13,13 @@ class CreateEventCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_categories', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->string('name', 50);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('event_categories')) {
+            Schema::create('event_categories', function (Blueprint $table) {
+                $table->tinyIncrements('id');
+                $table->string('name', 50);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
