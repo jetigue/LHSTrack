@@ -3,8 +3,8 @@
         Dashboard
     </x-headings.page>
 
+    @can('coach')
     <div class="grid grid-cols-4 gap-4">
-
         <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
             <x-card.card-with-header>
                 <x-slot name="header">
@@ -69,4 +69,10 @@
             </x-card.card-with-header>
     </div>
     </div>
+    @else
+        <div class="text-xl text-center mx-auto text-yellow-200">
+            Check back soon for more options
+        </div>
+        @endcan
+
 </div>
