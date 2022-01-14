@@ -13,9 +13,11 @@
             </div>
         </x-slot>
     </x-headings.page>
+    <div class="flex">
+       @include('partials._track-meet-properties-user-menu')
 
-    <div class="flex flex-col space-y-4">
-        <x-table.table class="table-fixed relative">
+        <div class="flex flex-col space-y-4 w-full md:w-2/3 lg:w-3/4">
+            <x-table.table class="table-fixed relative">
             <x-slot name="head">
                 <x-table.header-row class="">
 
@@ -28,9 +30,7 @@
                     </x-table.heading>
 
                     <x-table.heading class="w-1/12">
-                        <div class="absolute z-20 lg:px-2 top-6 right-5">
-                            <x-button.add />
-                        </div>
+                        <x-button.add />
                     </x-table.heading>
                 </x-table.header-row>
             </x-slot>
@@ -97,9 +97,9 @@
             </x-slot>
         </x-table.table>
 
-
-        <div class="text-gray-300">
-            {{ $meetNames->links() }}
+            <div class="text-gray-300">
+                {{ $meetNames->links() }}
+            </div>
         </div>
     </div>
 

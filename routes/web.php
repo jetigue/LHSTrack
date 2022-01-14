@@ -51,8 +51,8 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 
     Route::get('/track-meets', TrackMeetsIndex::class)->name('Track Meets');
-    Route::get('/track/meet-names', TrackMeetNamesIndex::class);
-    Route::get('/track/venues', TrackVenuesIndex::class)->name('Track venues');
+    Route::get('/track/meet-names', TrackMeetNamesIndex::class)->name('Track Meet Names');
+    Route::get('/track/venues', TrackVenuesIndex::class)->name('Track Venues');
     Route::get('/meet-hosts', MeetHostsIndex::class)->name('Meet Hosts');
 
 
@@ -65,7 +65,7 @@ Route::group(['middleware' => 'can:admin'], function () {
     Route::get('/admin/user-roles/', UserRolesIndex::class)->name('User Roles');
 
     Route::get('/timing-methods', TimingMethodsIndex::class)->name('Timing Methods');
-    Route::get('/track/event-categories', EventCategoriesIndex::class)->name('Event Categories');
+    Route::get('/track/event-categories', EventCategoriesIndex::class)->name('Track Event Categories');
     Route::get('/track/events', TrackEventsIndex::class)->name('Track Events');
     Route::get('/track/seasons', TrackSeasonsIndex::class)->name('Track Seasons');
     Route::get('/track/surfaces', TrackSurfacesIndex::class)->name('Track Surfaces');

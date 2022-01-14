@@ -11,8 +11,14 @@
     </x-headings.page>
 
     <div class="min-h-screen">
-        <div class="grid grid-cols-2 gap-4 lg:gap-8">
-            <div class="col-span-2 md:col-span-1">
+        <div class="grid grid-cols-5 gap-4">
+            <div class="hidden lg:grid lg:col-span-1">
+                <x-navigation.user-menu title="Communication">
+                    <x-navigation.user-menu-item route="Team Announcements">Team Announcements</x-navigation.user-menu-item>
+                    <x-navigation.user-menu-item route="Team Events">Team Events</x-navigation.user-menu-item>
+                </x-navigation.user-menu>
+            </div>
+            <div class="col-span-5 md:col-span-2">
                 <ul class="space-y-4 w-full">
                     @forelse($announcements as $announcement)
                     @include('livewire.communication._team-announcement-card')
@@ -27,7 +33,7 @@
                     @endforelse
                 </ul>
             </div>
-            <div class="hidden md:block md:col-span-1">
+            <div class="hidden md:grid md:col-span-3 lg:col-span-2">
                 <x-card.card-with-header>
                     <x-slot name="header">
                         Preview

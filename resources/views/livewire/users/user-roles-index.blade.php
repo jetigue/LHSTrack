@@ -9,7 +9,10 @@
         User Roles
     </x-headings.page>
 
-    <div class="flex flex-col space-y-4">
+    <div class="flex">
+        @include('partials._athletes-users-user-menu')
+
+        <div class="flex flex-col space-y-4 w-full md:w-2/3 lg:w-3/4">
         <x-table.table class="table-fixed relative">
             <x-slot name="head">
                 <x-table.header-row class="">
@@ -84,6 +87,7 @@
                 @endforelse
             </x-slot>
         </x-table.table>
+    </div>
     </div>
 
     <x-modal.dialog wire:model.defer="showFormModal">
