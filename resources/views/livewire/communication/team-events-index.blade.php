@@ -21,7 +21,7 @@
         <div class="flex w-full md:w-2/3 lg:w-3/4">
             <div class="grid grid-cols-4 gap-6">
                     @foreach ($events as $event)
-                        <div wire:key="{{ $loop->index }}" class="col-span-1 relative bg-white shadow rounded-md px-6 py-4">
+                        <div wire:key="{{ $loop->index }}" class=" col-span-4 md:col-span-2 lg:col-span-1 relative bg-white shadow rounded-md px-6 py-4">
                             @can('coach')
                         <div class="flex absolute justify-between top-2 right-2 z-10">
                             <div class="p-1">
