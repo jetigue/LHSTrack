@@ -13,15 +13,17 @@ class CreateTrackEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('track_events', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->string('name', 50);
-            $table->unsignedInteger('distance_in_meters')->nullable();
-            $table->unsignedTinyInteger('event_category_id');
-            $table->timestamps();
+        if (!Schema::hasTable('event_categories')) {
+            Schema::create('track_events', function (Blueprint $table) {
+                $table->tinyIncrements('id');
+                $table->string('name', 50);
+                $table->unsignedInteger('distance_in_meters')->nullable();
+                $table->unsignedTinyInteger('event_category_id');
+                $table->timestamps();
 
-            $table->foreign('event_category_id')->references('id')->on('event_categories');
-        });
+                $table->foreign('event_category_id')->references('id')->on('event_categories');
+            });
+        }
     }
 
     /**
