@@ -1,10 +1,10 @@
 <div class="w-full">
     <x-headings.page>
-        Team Announcements
+        Announcements
         <x-slot name="action">
             @can('coach')
             <x-button.primary wire:click="showFormModal">
-                <x-icon.plus class="mr-2"/> New Announcement
+                <x-icon.plus class="md:mr-2"/> <span class="hidden md:flex">New Announcement</span>
             </x-button.primary>
         @endcan
         </x-slot>

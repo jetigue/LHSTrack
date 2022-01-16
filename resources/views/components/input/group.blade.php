@@ -6,7 +6,7 @@
 ])
 
 <div class="w-full py-1">
-    <label for="{{ $for }}" class="block text-sm font-medium leading-4 text-gray-600">
+    <label for="{{ $for }}" class="block text-sm font-medium leading-4 text-gray-500">
         {{ $label }}
     </label>
     <div class="mt-1 relative rounded-md shadow-sm">

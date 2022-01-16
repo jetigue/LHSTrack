@@ -13,7 +13,7 @@
 
     <input {{ $attributes }}
            type="text"
-           class="{{ $leadingAddOn ? 'rounded-none rounded-r-md' : 'rounded-md' }} flex-1 block w-full focus:ring-red-800 focus:border-red-800 min-w-0 sm:text-sm border-gray-300">
+           class="{{ $leadingAddOn ? 'rounded-none rounded-r-md' : 'rounded-md' }} block w-full focus:ring-red-800 focus:border-red-800 min-w-0 sm:text-sm border-gray-300">
 
         @if ($trailingDropDown)
             {{ $trailingDropDown }}
