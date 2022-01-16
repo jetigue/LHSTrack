@@ -30,51 +30,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="bg-black min-w-full min-h-screen">
-    <div class="container h-full bg-black min-w-full mx-auto">
+<body class="bg-black min-h-screen">
+    <div class="container h-full bg-black w-full mx-auto">
         <main class="min-w-full">
-{{--                @auth--}}
-{{--                <div class="flex min-w-full">--}}
-{{--                    <div>--}}
-{{--                        @include('layouts.user-sidebar-navigation')--}}
-{{--                    </div>--}}
-
-{{--                    <div class="flex flex-col w-full">--}}
-{{--                        <div class="">--}}
-{{--                            @include('layouts.navigation')--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            @if (isset($banner))--}}
-{{--                                {{ $banner }}--}}
-{{--                            @endif--}}
-{{--                        </div>--}}
-{{--                        <div class="w-full p-4 lg:px-8">--}}
-{{--                            {{ $slot }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                @endauth--}}
-{{--                @guest--}}
-                        <div class="min-w-full">
-                            <div class="w-full">
-                                @include('layouts.navigation')
-                            </div>
-                            <div>
-                                @if (isset($banner))
-                                    {{ $banner }}
-                                @endif
-                            </div>
-                            <div class="max-w-screen-xl mx-auto w-full p-4 md:p-6 lg:p-8">
-                                {{ $slot }}
-                            </div>
-                        </div>
-{{--                    @endguest--}}
-
+            <div class="w-full">
+                @include('layouts.navigation')
+            </div>
+            <div>
+                @if (isset($banner))
+                    {{ $banner }}
+                @endif
+            </div>
+            <div class="max-w-screen-xl mx-auto w-full px-2 md:px-4 md:px-6">
+                {{ $slot }}
+            </div>
         </main>
-
-
-</div>
+    </div>
 @stack('modals')
 @livewireScripts
 @livewireCalendarScripts

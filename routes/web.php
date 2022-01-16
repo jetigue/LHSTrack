@@ -57,6 +57,7 @@ Route::group(['middleware' => 'can:coach'], function () {
 
 
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');
+    Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
     Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 });
 

@@ -1,4 +1,4 @@
-<div>
+<div class="px-2 md:px-0">
 <x-headings.page>
     {{ $this->gender }} Roster
 </x-headings.page>

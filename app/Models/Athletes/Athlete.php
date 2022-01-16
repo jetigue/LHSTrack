@@ -64,6 +64,13 @@ class Athlete extends Model
                 ->where('last_name', 'like', '%' . $search . '%')
                 ->orWhere('first_name', 'like', '%' . $search . '%');
         });
+
+        $query->when($filters['status'] ?? false, fn($query, $status) =>
+            $query->whereHas('status', fn ($query) =>
+                $query->where('status', $status)
+            )
+        );
+
     }
 
     /**
@@ -143,19 +150,19 @@ class Athlete extends Model
         {
             case $m >= 6:
                 if ($gy - $y === 5)
-                { return 8; }
+                { return '8th grade'; }
 
                 else if ($gy - $y === 4)
-                { return 9; }
+                { return '9th grade'; }
 
                 elseif ($gy - $y === 3)
-                { return 10; }
+                { return '10th grade'; }
 
                 elseif ($gy - $y === 2)
-                { return 11; }
+                { return '11th grade'; }
 
                 elseif ($gy - $y === 1)
-                { return 12; }
+                { return '12th grade'; }
 
                 elseif ($gy - $y <= 0)
                 { return 'alum'; }
@@ -163,19 +170,19 @@ class Athlete extends Model
                 else { return ''; }
             case $m <= 5:
                 if ($gy - $y === 4)
-                { return 8; }
+                { return '8th grade'; }
 
                 elseif ($gy - $y === 3)
-                { return 9; }
+                { return '9th grade'; }
 
                 elseif ($gy - $y === 2)
-                { return 10; }
+                { return '10th grade'; }
 
                 elseif ($gy - $y === 1)
-                { return 11; }
+                { return '11th grade'; }
 
                 elseif ($gy - $y === 0)
-                { return 12; }
+                { return '12th grade'; }
 
                 else { return 'alum'; }
         }

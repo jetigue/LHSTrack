@@ -24,6 +24,7 @@
                 </x-slot>
                 <ul>
                     <li><a href="{{ route('Athletes') }}">Athletes</a></li>
+                    <li><a href="{{ route('Physicals') }}">Physicals</a></li>
                 </ul>
             </x-card.card-with-header>
         </div>

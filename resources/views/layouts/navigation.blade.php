@@ -1,17 +1,25 @@
-<nav x-data="{ open: false }" class="min-w-full bg-black">
-    <div class="w-full px-4">
+<nav x-cloak x-data="{ open: false }" class="w-full bg-black">
+    <div class="w-full px-2 md:px-4">
         <div class="flex items-center justify-between">
             <div class="flex h-20 items-center justify-between w-full">
-
-                <div class="flex-shrink-0">
+                <div class="flex">
                     @if (!Route::is('home'))
-                        <a href="/" class="flex h-full items-center pr-4">
+                        <a href="/" class="flex h-full w-64 items-center pr-4">
                             <x-logo class="w-12 lg:w-24" />
 
-                            <div class="hidden md:flex text-xl text-white font-bold tracking-tight -ml-4 pt-2">
-                                Lambert Track
+                            <div class="text-xl text-gray-100 font-semibold -ml-4 pt-2">
+                                <div class="flex">
+                                    Lambert Track
+                                </div>
                             </div>
                         </a>
+                    @else
+                        <div class="pl-0 lg:pl-32">
+                            <a href="/" class="flex md:hidden">
+                                <x-logo class="w-12" />
+                            </a>
+                        </div>
+
                     @endif
                 </div>
 
@@ -62,7 +70,7 @@
                     @endauth
                 </div>
             </div>
-            <div class="-mr-2 flex lg:hidden">
+            <div class="flex lg:hidden">
                 <!-- Mobile menu button -->
                 <button @click="open = !open"
                         type="button"
