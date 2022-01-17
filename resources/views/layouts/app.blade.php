@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @hasSection('title')
-
         <title>@yield('title') - {{ config('app.name') }}</title>
     @else
         <title>{{ config('app.name') }}</title>
-@endif
+    @endif
 
 <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
@@ -30,13 +29,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="bg-black min-h-screen">
-    <div class="container h-full bg-black w-full mx-auto">
+<body class="bg-black min-h-screen w-full">
         <main class="min-w-full">
             <div class="w-full">
                 @include('layouts.navigation')
             </div>
-            <div>
+            <div class="max-w-full">
                 @if (isset($banner))
                     {{ $banner }}
                 @endif
@@ -45,7 +43,6 @@
                 {{ $slot }}
             </div>
         </main>
-    </div>
 @stack('modals')
 @livewireScripts
 @livewireCalendarScripts

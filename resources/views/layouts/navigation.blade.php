@@ -23,7 +23,7 @@
                     @endif
                 </div>
 
-                <div class="hidden lg:flex min-w-full h-full items-center justify-between pt-3">
+                <div class="hidden lg:flex w-full h-full items-center justify-between pt-3">
                     <div class="flex w-full md:space-x-4 lg:space-x-6">
                         @auth
                         <x-nav-link route="Dashboard">Dashboard</x-nav-link>
