@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Properties\Meets\Track;
 
 use App\Models\Properties\Meets\Track\Venue;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,6 +18,7 @@ class TrackVenuesIndex extends Component
     public $editing = false;
     public $showFormModal = false;
     public $showConfirmModal = false;
+    public $route;
 
     protected $queryString = ['sortField', 'sortDirection', 'search'];
 
@@ -38,6 +40,11 @@ class TrackVenuesIndex extends Component
         'recordAdded',
         'recordUpdated',
     ];
+
+    public function mount()
+    {
+        $this->route = Route::currentRouteName();
+    }
 
     public function showFormModal() { $this->showFormModal = true; }
     public function hideFormModal() { $this->showFormModal = false; }
