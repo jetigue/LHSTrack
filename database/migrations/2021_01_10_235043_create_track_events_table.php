@@ -13,7 +13,7 @@ class CreateTrackEventsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('event_categories')) {
+        if (!Schema::hasTable('event_events')) {
             Schema::create('track_events', function (Blueprint $table) {
                 $table->tinyIncrements('id');
                 $table->string('name', 50);

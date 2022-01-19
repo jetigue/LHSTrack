@@ -2,6 +2,7 @@
 
 namespace App\Models\Meets;
 
+use App\Models\Properties\Events\TrackEvent;
 use App\Models\Properties\Meets\Host;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\MeetName;
@@ -11,6 +12,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TrackMeet extends Model
 {
@@ -75,5 +77,10 @@ class TrackMeet extends Model
     public function timing(): BelongsTo
     {
         return $this->belongsTo(Timing::class, 'timing_method_id');
+    }
+
+    public function trackEvents(): BelongsToMany
+    {
+        return $this->belongsToMany(TrackEvent::class, 'track_meet_events');
     }
 }

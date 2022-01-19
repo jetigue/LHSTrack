@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Lambert Track'),
+    'name' => env('APP_NAME', 'Lambert TrackTimeTrial'),
 
     /*
     |--------------------------------------------------------------------------

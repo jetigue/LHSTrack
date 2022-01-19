@@ -17,11 +17,11 @@ class Category extends Model
 
     public function trackEvents(): HasMany
     {
-        return $this->hasMany(TrackEvent::class);
+        return $this->hasMany(TrackEvent::class, 'event_category_id');
     }
 
-    public function athletes(): hasMany
-    {
-        return $this->hasMany(Athlete::class);
-    }
+//    public function athletes(): hasMany
+//    {
+//        return $this->hasMany(Athlete::class);
+//    }
 }

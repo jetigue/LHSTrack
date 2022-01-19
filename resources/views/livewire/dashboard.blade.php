@@ -55,6 +55,17 @@
         <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
             <x-card.card-with-header>
                 <x-slot name="header">
+                    Time Trials
+                </x-slot>
+                <ul>
+                    <li><a href="{{ route('Track Time Trials') }}">Track Time Trials</a></li>
+                </ul>
+            </x-card.card-with-header>
+        </div>
+
+        <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
+            <x-card.card-with-header>
+                <x-slot name="header">
                     Meet Properties
                 </x-slot>
                 <ul>

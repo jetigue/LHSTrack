@@ -30,12 +30,12 @@ class TrackEventsIndex extends Component
 
     public function recordAdded()
     {
-        session()->flash('success', 'Track Event Added');
+        session()->flash('success', 'TrackTimeTrial Event Added');
     }
 
     public function recordUpdated()
     {
-        session()->flash('success', 'Track Event Updated');
+        session()->flash('success', 'TrackTimeTrial Event Updated');
     }
 
     public function confirmDelete(TrackEvent $trackEvent)
@@ -48,7 +48,7 @@ class TrackEventsIndex extends Component
     {
         $this->trackEvent->delete();
         $this->showConfirmModal = false;
-        session()->flash('success', 'Track Event Deleted Successfully');
+        session()->flash('success', 'TrackTimeTrial Event Deleted Successfully');
     }
 
     public function cancel()

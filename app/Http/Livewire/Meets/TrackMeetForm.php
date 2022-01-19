@@ -32,7 +32,7 @@ class TrackMeetForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function editAthlete(TrackMeet $trackMeet)
+    public function editTrackMeet(TrackMeet $trackMeet)
     {
         $this->trackMeet = $trackMeet;
         $this->host_id = $this->trackMeet->host_id;

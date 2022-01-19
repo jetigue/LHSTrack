@@ -56,12 +56,12 @@ class TrackVenuesIndex extends Component
 
     public function recordAdded()
     {
-        session()->flash('success', 'Track Venue Added');
+        session()->flash('success', 'TrackTimeTrial Venue Added');
     }
 
     public function recordUpdated()
     {
-        session()->flash('success', 'Track Venue Updated');
+        session()->flash('success', 'TrackTimeTrial Venue Updated');
     }
 
     public function confirmDelete(Venue $trackVenue)
@@ -74,7 +74,7 @@ class TrackVenuesIndex extends Component
     {
         $this->trackVenue->delete();
         $this->showConfirmModal = false;
-        session()->flash('success', 'Track Venue Deleted Successfully');
+        session()->flash('success', 'TrackTimeTrial Venue Deleted Successfully');
     }
 
     public function cancel()

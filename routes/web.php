@@ -19,6 +19,9 @@ use App\Http\Livewire\Properties\Meets\Track\TrackMeetNamesIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackSeasonsIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackSurfacesIndex;
 use App\Http\Livewire\Properties\Meets\Track\TrackVenuesIndex;
+use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
+use App\Http\Livewire\TimeTrials\TrackTimeTrialEventsForm;
+use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +57,9 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track/meet-names', TrackMeetNamesIndex::class)->name('Track Meet Names');
     Route::get('/track/venues', TrackVenuesIndex::class)->name('Track Venues');
     Route::get('/meet-hosts', MeetHostsIndex::class)->name('Meet Hosts');
+
+    Route::get('/track-time-trials', TrackTimeTrialsIndex::class)->name('Track Time Trials');
+    Route::get('/track-time-trials/{timeTrial:slug}', ShowTrackTimeTrial::class);
 
 
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');

@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             CalendarSeeder::class,
             CommunicationSeeder::class,
             TrackMeetSeeder::class,
-            TrackEventSeeder::class
+            TrackEventSeeder::class,
+            TrackTimeTrialSeeder::class
         ]);
     }
 }

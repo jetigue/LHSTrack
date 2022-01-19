@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Livewire\Meets;
+namespace App\Http\Livewire\TimeTrials;
 
-use App\Models\Meets\TrackMeet;
+use App\Models\TimeTrials\TrackTimeTrial;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class TrackMeetsIndex extends Component
+class TrackTimeTrialsIndex extends Component
 {
     use WithPagination;
 
     public $search = '';
-    public $sortField = 'meet_date';
+    public $sortField = 'trial_date';
     public $sortDirection = 'desc';
-    public $trackMeet = '';
+    public $timeTrial = '';
     public $editing = false;
     public $showFormModal = false;
     public $showConfirmModal = false;
@@ -39,7 +39,7 @@ class TrackMeetsIndex extends Component
         'confirmDelete',
         'recordAdded',
         'recordUpdated',
-        'refreshTrackMeets'
+        'refreshTimeTrials'
     ];
 
     public function mount()
@@ -57,33 +57,33 @@ class TrackMeetsIndex extends Component
 
     public function recordAdded()
     {
-        session()->flash('success', 'TrackTimeTrial Meet Added');
+        session()->flash('success', 'Time Trial Added');
     }
 
     public function recordUpdated()
     {
-        session()->flash('success', 'TrackTimeTrial Meet Updated');
+        session()->flash('success', 'Time Trial Updated');
     }
 
-    public function refreshTrackMeets()
+    public function refreshTrackTimeTrials()
     {
-        session()->flash('success', 'TrackTimeTrial Meets Imported Successfully');
+        session()->flash('success', 'Time Trials Imported Successfully');
 
         $this->render();
 
     }
 
-    public function confirmDelete(TrackMeet $trackMeet)
+    public function confirmDelete(TrackTimeTrial $timeTrial)
     {
-        $this->trackMeet = $trackMeet;
+        $this->timeTrial = $timeTrial;
         $this->showConfirmModal = true;
     }
 
-    public function destroy(TrackMeet $trackMeet)
+    public function destroy(TrackTimeTrial $timeTrial)
     {
-        $this->trackMeet->delete();
+        $this->timeTrial->delete();
         $this->showConfirmModal = false;
-        session()->flash('success', 'TrackTimeTrial Meet Deleted Successfully');
+        session()->flash('success', 'Time Trial Deleted Successfully');
     }
 
     public function cancel()
@@ -94,23 +94,20 @@ class TrackMeetsIndex extends Component
         $this->emit('cancelCreate');
     }
 
-    public function editRecord(TrackMeet $trackMeet)
+    public function editRecord(TrackTimeTrial $timeTrial)
     {
         $this->showFormModal = true;
         $this->editing = true;
-        $this->emit('editTrackMeet', $trackMeet->id);
+        $this->emit('editTrackTimeTrial', $timeTrial->id);
     }
-
     public function render()
     {
-        return view('livewire.meets.track-meets-index', [
-            'trackMeets' => TrackMeet::with('meetName', 'host', 'timing', 'season', 'venue')
-//                ->where('meetName.name', 'like', '%' . $this->search . '%')
-//                ->orwhere('host.name', 'like', '%' . $this->search . '%')
+        return view('livewire.time-trials.track-time-trials-index', [
+            'timeTrials' => TrackTimeTrial::with('venue', 'timingMethod')
+                ->where('name', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->orderBy('meet_date')
+                ->orderBy('trial_date')
                 ->paginate(25)
         ]);
     }
-
 }

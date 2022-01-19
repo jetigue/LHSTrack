@@ -25,12 +25,12 @@ class TrackSurfacesIndex extends Component
 
     public function recordAdded()
     {
-        session()->flash('success', 'Track Surface Added');
+        session()->flash('success', 'TrackTimeTrial Surface Added');
     }
 
     public function recordUpdated()
     {
-        session()->flash('success', 'Track Surface Updated');
+        session()->flash('success', 'TrackTimeTrial Surface Updated');
     }
 
     public function confirmDelete(Surface $surface)
@@ -43,7 +43,7 @@ class TrackSurfacesIndex extends Component
     {
         $this->surface->delete();
         $this->showConfirmModal = false;
-        session()->flash('success', 'Track Surface Deleted Successfully');
+        session()->flash('success', 'TrackTimeTrial Surface Deleted Successfully');
     }
 
     public function cancel()
