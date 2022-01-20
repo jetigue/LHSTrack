@@ -141,7 +141,6 @@ class AthletesIndex extends Component
         return view('livewire.athletes.athletes-index', [
             'athletes' => Athlete::with('user', 'primaryTrackEvent')
                 ->orderBy($this->sortField, $this->sortDirection)
-                ->where('status', '!==', 'i')
                 ->when($this->gender, function ($query, $gender) {
                     return $query->where('sex', $gender);
                     })

@@ -27,5 +27,28 @@
             </div>
         </div>
     </div>
-    <livewire:time-trials.track-time-trial-events-form />
+
+    <div class="flex flex-col py-4">
+        <x-headings.section>
+                Events
+            <x-slot name="action">
+                <x-button.primary class="py-1">
+                    @if ( count($timeTrial->trackEvents) > 0 )
+                        Edit Events
+                    @else
+                        <x-icon.plus /> Add Events
+                    @endif
+                </x-button.primary>
+            </x-slot>
+        </x-headings.section>
+        <ol class="text-gray-300">
+            @foreach ($timeTrial->trackEvents as $event)
+                <li>{{ $event->name }}</li>
+            @endforeach
+        </ol>
+
+
+
+    </div>
+{{--    <livewire:time-trials.track-time-trial-events-form :timeTrial="$timeTrial"/>--}}
 </div>
