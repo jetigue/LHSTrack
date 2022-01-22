@@ -2,12 +2,12 @@
 
 namespace Database\Factories\Properties\Events;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CategoryFactory extends Factory
+class EventCategoryFactory extends Factory
 {
-    protected $model = Category::class;
+    protected $model = EventCategory::class;
 
     /**
      * Define the model's default state.

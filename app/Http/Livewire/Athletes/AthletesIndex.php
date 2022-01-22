@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Athletes;
 
 use App\Exports\AthletesExport;
 use App\Models\Athletes\Athlete;
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use App\Traits\withSorting;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
@@ -160,7 +160,7 @@ class AthletesIndex extends Component
                 ->orderBy('last_name')
                 ->paginate(25),
 
-            'eventCategories' => Category::all()
+            'eventCategories' => EventCategory::all()
         ]);
     }
 }

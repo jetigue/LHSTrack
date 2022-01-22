@@ -3,7 +3,7 @@
 namespace Tests\Feature\TrackMeets;
 
 use App\Models\Meets\TrackMeet;
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use App\Models\Properties\Events\TrackEvent;
 use App\Models\Properties\Meets\Host;
 use App\Models\Properties\Meets\Timing;
@@ -39,7 +39,7 @@ class TrackEventsTest extends TestCase
             'timing_method_id' => $timing->id
         ]);
 
-        $category = Category::factory()->create();
+        $category = EventCategory::factory()->create();
         $trackEvent = TrackEvent::factory()->create(['event_category_id' => $category->id]);
 
         $trackEvent->competedAt($trackMeet);

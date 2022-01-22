@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\TimeTrials;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use App\Models\Properties\Events\TrackEvent;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -49,7 +49,7 @@ public function save()
     public function render()
     {
         return view('livewire.time-trials.track-time-trial-events-form', [
-            'eventCategories' => Category::orderBy('name')->get(),
+            'eventCategories' => EventCategory::orderBy('name')->get(),
 //            'events' => TrackEvent::with('category')->orderBy('event_category_id')->get()
         ]);
     }

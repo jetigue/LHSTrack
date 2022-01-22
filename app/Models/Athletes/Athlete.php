@@ -2,7 +2,7 @@
 
 namespace App\Models\Athletes;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,7 +42,7 @@ class Athlete extends Model
 
     public function primaryTrackEvent(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'event_category_id');
+        return $this->belongsTo(EventCategory::class, 'event_category_id');
     }
 
     public function getDobForEditingAttribute()

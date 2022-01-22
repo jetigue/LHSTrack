@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Properties\Events;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use Livewire\Component;
 
 class EventCategoriesIndex extends Component
@@ -10,7 +10,7 @@ class EventCategoriesIndex extends Component
     public $category = '';
     public $editing = false;
     public $showFormModal = false;
-    public $showConfirmModal = false;
+    public bool $showConfirmModal = false;
 
     protected $listeners = [
         'hideFormModal',
@@ -25,25 +25,25 @@ class EventCategoriesIndex extends Component
 
     public function recordAdded()
     {
-        session()->flash('success', 'Category Added');
+        session()->flash('success', 'EventCategory Added');
     }
 
     public function recordUpdated()
     {
-        session()->flash('success', 'Category Updated');
+        session()->flash('success', 'EventCategory Updated');
     }
 
-    public function confirmDelete(Category $category)
+    public function confirmDelete(EventCategory $category)
     {
         $this->category = $category;
         $this->showConfirmModal = true;
     }
 
-    public function destroy(Category $category)
+    public function destroy(EventCategory $category)
     {
         $this->category->delete();
         $this->showConfirmModal = false;
-        session()->flash('success', 'Category Deleted Successfully');
+        session()->flash('success', 'EventCategory Deleted Successfully');
     }
 
     public function cancel()
@@ -54,7 +54,7 @@ class EventCategoriesIndex extends Component
         $this->emit('cancelCreate');
     }
 
-    public function editRecord(Category $category)
+    public function editRecord(EventCategory $category)
     {
         $this->showFormModal = true;
         $this->editing = true;
@@ -64,7 +64,7 @@ class EventCategoriesIndex extends Component
     public function render()
     {
         return view('livewire.properties.events.event-categories-index', [
-            'categories' => Category::all()
+            'categories' => EventCategory::all()
         ]);
     }
 }

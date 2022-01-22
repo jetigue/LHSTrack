@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Athletes;
 
 use App\Models\Athletes\Athlete;
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use Livewire\Component;
 
 class AthleteForm extends Component
@@ -101,7 +101,7 @@ class AthleteForm extends Component
     public function render()
     {
         return view('livewire.athletes.athlete-form', [
-            'categories' => Category::orderBy('name')->get()
+            'categories' => EventCategory::orderBy('name')->get()
         ]);
     }
 }

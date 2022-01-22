@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Properties\Events;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use App\Models\Properties\Events\TrackEvent;
 use Livewire\Component;
 
@@ -70,7 +70,7 @@ class TrackEventForm extends Component
     public function render()
     {
         return view('livewire.properties.events.track-event-form', [
-            'categories' => Category::all()
+            'categories' => EventCategory::all()
         ]);
     }
 }

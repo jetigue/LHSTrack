@@ -2,7 +2,8 @@
 
 namespace App\Models\TimeTrials;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Pivot\TrackTimeTrialEvent;
+use App\Models\Properties\Events\EventCategory;
 use App\Models\Properties\Events\TrackEvent;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\Venue;
@@ -11,7 +12,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class TrackTimeTrial extends Model
 {
@@ -45,13 +45,12 @@ class TrackTimeTrial extends Model
 
     public function trackEvents(): BelongsToMany
     {
-        return $this->belongsToMany(TrackEvent::class, 'track_trial_events');
+        return $this->belongsToMany(TrackEvent::class, 'track_trial_events')->using(TrackTimeTrialEvent::class);
     }
 
-//    public function eventCategories(): HasManyThrough
+//    public function eventCategories()
 //    {
-//        return $this->hasManyThrough(Category::class, TrackEvent::class,
-//            'track_time_trial_id', 'id','id', 'id');
+//        return $this->hasManyThrough(EventCategory::class, TrackTimeTrialEvent::class, 'track_event_id', 'track_event_id', 'id', 'track_event_id' );
 //    }
 
     public function getTrialDateForSlugAttribute()

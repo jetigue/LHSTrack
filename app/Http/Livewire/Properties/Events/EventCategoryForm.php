@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Properties\Events;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use Livewire\Component;
 
 class EventCategoryForm extends Component
@@ -21,7 +21,7 @@ class EventCategoryForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function editCategory(Category $category)
+    public function editCategory(EventCategory $category)
     {
         $this->category = $category;
         $this->name = $this->category->name;
@@ -43,10 +43,10 @@ class EventCategoryForm extends Component
         ];
 
         if ($this->category) {
-            Category::find($this->category->id)->update($category);
+            EventCategory::find($this->category->id)->update($category);
             $this->emit('recordUpdated');
         } else {
-            Category::create($category);
+            EventCategory::create($category);
             $this->emit('recordAdded');
         }
         $this->resetForm();

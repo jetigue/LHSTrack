@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Properties\Events;
 
-use App\Models\Properties\Events\Category;
+use App\Models\Properties\Events\EventCategory;
 use App\Models\Properties\Events\TrackEvent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +20,7 @@ class TrackEventFactory extends Factory
         return [
             'name' => $this->faker->word,
             'distance_in_meters' => $this->faker->numberBetween([100, 3200]),
-            'event_category_id' => Category::all()->random()->id,
+            'event_category_id' => EventCategory::all()->random()->id,
         ];
     }
 }
