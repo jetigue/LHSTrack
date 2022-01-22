@@ -69,7 +69,11 @@ class TrackEventsIndex extends Component
     public function render()
     {
         return view('livewire.properties.events.track-events-index', [
-            'trackEvents' => TrackEvent::orderBy('distance_in_meters')->orderBy('name')->get()
+            'trackEvents' => TrackEvent::with('category')
+                ->orderBy('event_category_id')
+                ->orderBy('distance_in_meters')
+                ->orderBy('name')
+                ->get()
         ]);
     }
 }
