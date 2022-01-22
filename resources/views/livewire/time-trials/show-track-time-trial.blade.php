@@ -58,7 +58,7 @@
         </x-headings.section>
         <div class="flex lg:justify-between flex-wrap py-4 lg:py-8">
             @foreach ($eventCategories as $category)
-                <div class="flex w-full md:w-1/3 lg:w-1/6 my-2 md:m-0 md:p-2 lg:p-0">
+                <div class="flex w-full md:w-1/3 lg:w-1/6 my-2 md:m-0 md:p-2 lg:space-x-2">
                     <x-card.card-with-header color="black" class="border border-gray-200">
                         <x-slot name="header">
                             <div class="text-red-700">
