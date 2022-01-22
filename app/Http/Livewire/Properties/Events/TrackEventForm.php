@@ -24,7 +24,7 @@ class TrackEventForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function editTrackVenue(TrackEvent $trackEvent)
+    public function editTrackEvent(TrackEvent $trackEvent)
     {
         $this->trackEvent = $trackEvent;
         $this->name = $this->trackEvent->name;
