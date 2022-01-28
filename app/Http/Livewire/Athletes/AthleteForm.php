@@ -101,7 +101,7 @@ class AthleteForm extends Component
     public function render()
     {
         return view('livewire.athletes.athlete-form', [
-            'categories' => TrackEventSubtype::orderBy('name')->get()
+            'subtypes' => TrackEventSubtype::orderBy('name')->get()
         ]);
     }
 }
