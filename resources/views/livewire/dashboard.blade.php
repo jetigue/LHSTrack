@@ -75,7 +75,8 @@
                     <li><a href="/track/seasons">Track Seasons</a></li>
                     <li><a href="/track/surfaces">Track Surfaces</a></li>
                     <li><a href="/track/venues">Track Venues</a></li>
-                    <li><a href="/track/event-categories">Track Event Categories</a></li>
+                    <li><a href="/track/event-types">Track Event Types</a></li>
+                    <li><a href="/track/event-subtypes">Track Event SubTypes</a></li>
                     <li><a href="/track/events">Track Events</a></li>
                 </ul>
             </x-card.card-with-header>

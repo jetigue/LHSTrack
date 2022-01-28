@@ -75,8 +75,8 @@ Route::group(['middleware' => 'can:admin'], function () {
     Route::get('/admin/user-roles/', UserRolesIndex::class)->name('User Roles');
 
     Route::get('/timing-methods', TimingMethodsIndex::class)->name('Timing Methods');
-    Route::get('/properties/track/event-subtypes', TrackEventSubtypesIndex::class)->name('Track Event Subtypes');
-    Route::get('/properties/track/event-types', TrackEventTypesIndex::class)->name('Track Event Types');
+    Route::get('/track/event-subtypes', TrackEventSubtypesIndex::class)->name('Track Event Subtypes');
+    Route::get('/track/event-types', TrackEventTypesIndex::class)->name('Track Event Types');
     Route::get('/track/events', TrackEventsIndex::class)->name('Track Events');
     Route::get('/track/seasons', TrackSeasonsIndex::class)->name('Track Seasons');
     Route::get('/track/surfaces', TrackSurfacesIndex::class)->name('Track Surfaces');
