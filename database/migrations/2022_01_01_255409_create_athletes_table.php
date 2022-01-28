@@ -13,7 +13,6 @@ class CreateAthletesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('athletes')) {
             Schema::create('athletes', function (Blueprint $table) {
                 $table->id();
                 $table->string('first_name', 50);
@@ -32,7 +31,6 @@ class CreateAthletesTable extends Migration
                 $table->foreign('track_event_subtype_id')->references('id')->on('track_event_subtypes');
 
             });
-        }
     }
 
     /**
