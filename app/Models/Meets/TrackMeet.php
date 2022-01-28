@@ -2,7 +2,7 @@
 
 namespace App\Models\Meets;
 
-use App\Models\Properties\Events\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Meets\Host;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\MeetName;

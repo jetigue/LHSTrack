@@ -2,9 +2,9 @@
 
 namespace App\Models\TimeTrials;
 
-use App\Models\Pivot\TrackTimeTrialEvent;
-use App\Models\Properties\Events\EventCategory;
-use App\Models\Properties\Events\TrackEvent;
+use App\Models\Pivot\BoysTrackTimeTrialEvent;
+use App\Models\Pivot\GirlsTrackTimeTrialEvent;
+use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\Venue;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -25,7 +25,7 @@ class TrackTimeTrial extends Model
 
     public function path(): string
     {
-        return '/track-time-trials/' . $this->slug;
+        return '/track/time-trials/' . $this->slug;
     }
 
     public function timingMethod(): BelongsTo
@@ -43,14 +43,19 @@ class TrackTimeTrial extends Model
         return $this->trial_date->format('m/d/Y');
     }
 
-    public function trackEvents(): BelongsToMany
+    public function boysTrackEvents(): BelongsToMany
     {
-        return $this->belongsToMany(TrackEvent::class, 'track_trial_events')->using(TrackTimeTrialEvent::class);
+        return $this->belongsToMany(TrackEvent::class, 'boys_tf_tt_events')->using(BoysTrackTimeTrialEvent::class);
+    }
+
+    public function girlsTrackEvents(): BelongsToMany
+    {
+        return $this->belongsToMany(TrackEvent::class, 'girls_tf_tt_events')->using(GirlsTrackTimeTrialEvent::class);
     }
 
 //    public function eventCategories()
 //    {
-//        return $this->hasManyThrough(EventCategory::class, TrackTimeTrialEvent::class, 'track_event_id', 'track_event_id', 'id', 'track_event_id' );
+//        return $this->hasManyThrough(TrackEventSubtype::class, TrackTimeTrialEvent::class, 'track_event_id', 'track_event_id', 'id', 'track_event_id' );
 //    }
 
     public function getTrialDateForSlugAttribute()

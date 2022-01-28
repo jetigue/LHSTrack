@@ -2,55 +2,60 @@
 
 namespace App\Http\Livewire\TimeTrials;
 
-use App\Models\Properties\Events\EventCategory;
-use App\Models\Properties\Events\TrackEvent;
-use Illuminate\Support\Str;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
+use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventType;
 use Livewire\Component;
 
 class TrackTimeTrialEventsForm extends Component
 {
     public $timeTrial;
-    public $selectGroup;
-    public $selected = [];
+    public $showEventsMenu = false;
+    public $selectedBoysEvents = [];
+    public $selectedGirlsEvents = [];
 
-    public function mount($timeTrial)
+    public function hideMenu()
     {
-        $this->selected = $timeTrial->trackEvents()
-            ->whereTrackTimeTrialId($this->timeTrial->id)
-            ->pluck('id');
+        $this->showEventsMenu = false;
+        $this->reset(['selectedBoysEvents', 'selectedGirlsEvents']);
     }
 
-//    public function updated($key, $value)
-//    {
-//        $explode = Str::of($key)->explode('.');
-//        if ($explode[0] === 'selectGroup' && is_numeric($value)) {
-//            $categoryIds = TrackEvent::where('category_id', $value)->pluck('id')->map(fn($id) => (string)$id)->toArray();
-//            $this->selected = array_values(array_unique(array_merge_recursive($this->selected, $categoryIds)));
-//        } elseif ($explode[0] === 'selectGroup' && empty($value)) {
-//            $categoryIds = TrackEvent::where('category_id', $explode[1])->pluck('id')->map(fn($id) => (string)$id)->toArray();
-//            $this->selected = array_merge(array_diff($this->selected, $categoryIds));
-//        }
-//    }
+    public function showMenu()
+    {
+        $this->showEventsMenu = true;
+
+        $this->selectedBoysEvents = $this->timeTrial->boysTrackEvents()
+            ->where('track_time_trial_id', $this->timeTrial->id)
+            ->pluck('id');
+
+        $this->selectedGirlsEvents = $this->timeTrial->girlsTrackEvents()
+            ->where('track_time_trial_id', $this->timeTrial->id)
+            ->pluck('id');
+    }
 
     public function rules()
     {
         return [
-            'selected' => 'array|numeric',
+            'selectedBoysEvents' => 'array|numeric',
+            'selectedGirlsEvents' => 'array|numeric'
         ];
     }
 
-public function save()
+public function saveChanges()
 {
-    $this->timeTrial->trackEvents()->sync($this->selected);
+    $this->timeTrial->boysTrackEvents()->sync($this->selectedBoysEvents);
+    $this->timeTrial->girlsTrackEvents()->sync($this->selectedGirlsEvents);
+    $this->hideMenu();
+    $this->emit('eventsUpdated');
 
-    $this->reset(['selected', 'selectGroup']);
+    session()->flash('success', 'Saved!');
 }
 
     public function render()
     {
         return view('livewire.time-trials.track-time-trial-events-form', [
-            'eventCategories' => EventCategory::orderBy('name')->get(),
-//            'events' => TrackEvent::with('category')->orderBy('event_category_id')->get()
+            'eventTypes' => TrackEventType::with('subTypes', 'trackEvents')
+                ->get(),
         ]);
     }
 }

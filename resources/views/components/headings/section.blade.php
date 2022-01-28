@@ -1,4 +1,4 @@
-<div class="flex items-center justify-between w-full">
+<div class="flex items-end justify-between w-full">
     <h3 class="text-lg leading-6 font-medium text-red-700">
         {{ $slot }}
     </h3>

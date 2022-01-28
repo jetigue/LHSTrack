@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto">
+<div class="max-w-7xl mx-auto mb-6 lg:mb-8">
     <div class="flex w-full items-end h-20 py-2 md:py-4 justify-between">
         <div class="flex flex-col h-full items-baseline">
             @if (isset($breadcrumbs))
@@ -18,5 +18,6 @@
             @endif
         </div>
     </div>
+    <div class="my-2 gradient-line"></div>
 </div>
 

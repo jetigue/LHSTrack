@@ -21,7 +21,7 @@ class UserRoleForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function editCategory(Role $userRole)
+    public function editUserRole(Role $userRole)
     {
         $this->userRole = $userRole;
         $this->name = $this->userRole->name;

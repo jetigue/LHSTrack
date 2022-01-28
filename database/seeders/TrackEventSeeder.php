@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Properties\Events\EventCategory;
-use App\Models\Properties\Events\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
+use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventType;
 use Illuminate\Database\Seeder;
 
 class TrackEventSeeder extends Seeder
@@ -15,7 +16,8 @@ class TrackEventSeeder extends Seeder
      */
     public function run()
     {
-        EventCategory::factory(5)->create();
-        TrackEvent::factory(16)->create();
+        TrackEventType::factory(3)->create();
+        TrackEventSubtype::factory(6)->create();
+        TrackEvent::factory(20)->create();
     }
 }

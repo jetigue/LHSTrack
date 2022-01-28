@@ -25,6 +25,7 @@ module.exports = {
     variants: {
         extend: {
             backgroundColor: ['active'],
+            opacity: ['responsive', 'hover', 'focus', 'disabled'],
         }
     },
     purge: {

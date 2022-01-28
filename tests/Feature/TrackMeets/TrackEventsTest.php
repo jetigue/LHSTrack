@@ -3,8 +3,8 @@
 namespace Tests\Feature\TrackMeets;
 
 use App\Models\Meets\TrackMeet;
-use App\Models\Properties\Events\EventCategory;
-use App\Models\Properties\Events\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
+use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Meets\Host;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\MeetName;
@@ -12,7 +12,6 @@ use App\Models\Properties\Meets\Track\Season;
 use App\Models\Properties\Meets\Track\Surface;
 use App\Models\Properties\Meets\Track\Venue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TrackEventsTest extends TestCase
@@ -39,7 +38,7 @@ class TrackEventsTest extends TestCase
             'timing_method_id' => $timing->id
         ]);
 
-        $category = EventCategory::factory()->create();
+        $category = TrackEventSubtype::factory()->create();
         $trackEvent = TrackEvent::factory()->create(['event_category_id' => $category->id]);
 
         $trackEvent->competedAt($trackMeet);

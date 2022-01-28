@@ -63,11 +63,11 @@
                                     {{ $timeTrial->venue->name }}
                                 </x-table.cell>
                                 <x-table.cell class="hidden lg:inline-block lg:w-2/12">
-                                    @if(count($timeTrial->trackEvents) >0 )
-                                        Events Attached
-                                        @else
-                                        Attach Events
-                                    @endif
+{{--                                    @if(count($timeTrial->trackEvents) >0 )--}}
+{{--                                        Events Attached--}}
+{{--                                        @else--}}
+{{--                                        Attach Events--}}
+{{--                                    @endif--}}
 
                                 </x-table.cell>
                                 <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end lg:px-2">
