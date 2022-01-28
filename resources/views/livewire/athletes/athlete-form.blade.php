@@ -43,12 +43,12 @@
             </x-input.date>
         </x-input.group>
 
-        <x-input.group for="event_category_id" label="Primary Track Events" :error="$errors->first('event_category_id')">
-           <x-input.select wire:model="event_category_id">
+        <x-input.group for="track_event_subtype_id" label="Primary Track Events" :error="$errors->first('track_event_subtype_id')">
+           <x-input.select wire:model="track_event_subtype_id">
                <option value=""></option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">
-                        {{ $category->name }}
+                @foreach($subtypes as $subtype)
+                    <option value="{{ $subtype->id }}">
+                        {{ $subtype->name }}
                     </option>
                 @endforeach
            </x-input.select>
