@@ -26,7 +26,7 @@ class Athlete extends Model
         'status',
         'dob',
         'user_id',
-        'event_category_id',
+        'track_event_subtype_id',
         'physical_expiration_date'
     ];
 
@@ -42,7 +42,7 @@ class Athlete extends Model
 
     public function primaryTrackEvent(): BelongsTo
     {
-        return $this->belongsTo(TrackEventSubtype::class, 'event_category_id');
+        return $this->belongsTo(TrackEventSubtype::class, 'track_event_subtype_id');
     }
 
     public function getDobForEditingAttribute()
