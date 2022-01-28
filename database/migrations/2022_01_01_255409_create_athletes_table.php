@@ -13,7 +13,7 @@ class CreateAthletesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('track_events')) {
+        if (!Schema::hasTable('athletes')) {
             Schema::create('athletes', function (Blueprint $table) {
                 $table->id();
                 $table->string('first_name', 50);
