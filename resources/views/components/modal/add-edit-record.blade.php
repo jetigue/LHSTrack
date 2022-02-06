@@ -1,14 +1,16 @@
+@props(['recordTitle' => 'Record'])
+
 <x-modal.dialog wire:model.defer="showFormModal">
     <x-slot name="title">
         <div x-data="{editing: @entangle('editing')}">
-            <span x-show="editing === true">Edit Track Meet</span>
-            <span x-show="editing === false">Add a Track Meet</span>
+            <span x-show="editing === true">Edit {{ $recordTitle }}</span>
+            <span x-show="editing === false">Add a {{ $recordTitle }}</span>
         </div>
 
     </x-slot>
 
     <x-slot name="content">
-        <livewire:meets.track-meet-form />
+        {{ $slot }}
     </x-slot>
 
     <x-slot name="footer">

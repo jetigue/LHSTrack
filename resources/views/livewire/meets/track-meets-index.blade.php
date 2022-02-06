@@ -38,7 +38,7 @@
                         </x-table.heading>
 
                         <x-table.heading class="w-1/12">
-                            <x-button.add />
+                            <x-button.plus />
                         </x-table.heading>
                     </x-table.header-row>
                 </x-slot>
@@ -76,10 +76,10 @@
                                         <a href="{{ $trackMeet->meet_page_url }}" class="hover:underline">Meet Info</a>
                                     @endif
                                 </x-table.cell>
-                                <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end lg:px-2">
+                                <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end">
                                     <x-dropdown.dropdown>
                                         <x-slot name="trigger">
-                                            <x-icon.dots-vertical class="text-gray-300 hover:text-indigo-500" />
+                                            <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
                                         </x-slot>
                                         <x-slot name="content">
                                             <x-dropdown.link href="{{ $trackMeet->path() }}">
@@ -151,5 +151,7 @@
         </div>
     </div>
 
-    @include('livewire.meets._track-meet-form-modal')
+    <x-modal.add-edit-record record-title="Track Meet">
+        <livewire:meets.track-meet-form />
+    </x-modal.add-edit-record>
 </div>

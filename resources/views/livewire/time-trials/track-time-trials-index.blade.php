@@ -34,7 +34,7 @@
                         </x-table.heading>
 
                         <x-table.heading class="w-1/12">
-                            <x-button.add />
+                            <x-button.plus />
                         </x-table.heading>
                     </x-table.header-row>
                 </x-slot>
@@ -63,17 +63,17 @@
                                     {{ $timeTrial->venue->name }}
                                 </x-table.cell>
                                 <x-table.cell class="hidden lg:inline-block lg:w-2/12">
-{{--                                    @if(count($timeTrial->trackEvents) >0 )--}}
-{{--                                        Events Attached--}}
-{{--                                        @else--}}
-{{--                                        Attach Events--}}
-{{--                                    @endif--}}
+                                    {{--                                    @if(count($timeTrial->trackEvents) >0 )--}}
+                                    {{--                                        Events Attached--}}
+                                    {{--                                        @else--}}
+                                    {{--                                        Attach Events--}}
+                                    {{--                                    @endif--}}
 
                                 </x-table.cell>
-                                <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end lg:px-2">
+                                <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end">
                                     <x-dropdown.dropdown>
                                         <x-slot name="trigger">
-                                            <x-icon.dots-vertical class="text-gray-300 hover:text-indigo-500" />
+                                            <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
                                         </x-slot>
                                         <x-slot name="content">
                                             <x-dropdown.link href="{{ $timeTrial->path() }}">
@@ -98,29 +98,29 @@
                             <x-slot name="expandedContent">
                                 <div class="flex text-xs px-2">
                                     <div class="flex flex-col text-gray-600">
-{{--                                        <div><span class="text-gray-400">Host: </span>{{ $trackMeet->host->name }}</div>--}}
-{{--                                        <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}</div>--}}
-{{--                                        <div><span class="text-gray-400">Season: </span>{{ $trackMeet->season->name }}</div>--}}
-{{--                                        <div><span class="text-gray-400">Timing: </span>{{ $trackMeet->timing->name }}</div>--}}
-{{--                                        @if( $trackMeet->meetResults )--}}
-{{--                                            <div>--}}
-{{--                                                <a href="{{ $trackMeet->meet_page_url }}">--}}
-{{--                                                    <span class="text-gray-400">Results: </span>Results--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        @elseif($trackMeet->meet_page_url)--}}
-{{--                                            <div>--}}
-{{--                                                <a href="{{ $trackMeet->meet_page_url }}">--}}
-{{--                                                    <span class="text-gray-400">Page: </span>Meet Info--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        @endif--}}
+                                        {{--                                        <div><span class="text-gray-400">Host: </span>{{ $trackMeet->host->name }}</div>--}}
+                                        {{--                                        <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}</div>--}}
+                                        {{--                                        <div><span class="text-gray-400">Season: </span>{{ $trackMeet->season->name }}</div>--}}
+                                        {{--                                        <div><span class="text-gray-400">Timing: </span>{{ $trackMeet->timing->name }}</div>--}}
+                                        {{--                                        @if( $trackMeet->meetResults )--}}
+                                        {{--                                            <div>--}}
+                                        {{--                                                <a href="{{ $trackMeet->meet_page_url }}">--}}
+                                        {{--                                                    <span class="text-gray-400">Results: </span>Results--}}
+                                        {{--                                                </a>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        @elseif($trackMeet->meet_page_url)--}}
+                                        {{--                                            <div>--}}
+                                        {{--                                                <a href="{{ $trackMeet->meet_page_url }}">--}}
+                                        {{--                                                    <span class="text-gray-400">Page: </span>Meet Info--}}
+                                        {{--                                                </a>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        @endif--}}
                                     </div>
                                 </div>
-                                    <div class="flex justify-end px-8 space-x-2 items-center">
-                                        <x-button.edit />
-                                        <x-button.delete />
-                                    </div>
+                                <div class="flex justify-end px-8 space-x-2 items-center">
+                                    <x-button.edit />
+                                    <x-button.delete />
+                                </div>
                             </x-slot>
 
 
@@ -143,18 +143,7 @@
 
                     @empty
                         <x-table.row class="flex w-full">
-                            <div class="flex flex-col items-center mx-auto">
-                                <x-icon.user-group />
-                                <h3 class="mt-2 text-sm font-medium text-gray-900">No Time Trials</h3>
-                                <div class="mt-6">
-                                    <button type="button"
-                                            wire:click="showFormModal"
-                                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        <x-icon.plus />
-                                        Add Time Trial
-                                    </button>
-                                </div>
-                            </div>
+                            <x-no-records missing-record="Time Trial" />
                         </x-table.row>
                     @endforelse
                 </x-slot>
@@ -162,27 +151,8 @@
         </div>
     </div>
 
-    <x-modal.dialog wire:model.defer="showFormModal">
-        <x-slot name="title">
-            <div x-data="{editing: @entangle('editing')}">
-                <span x-show="editing === true">Edit Time Trial</span>
-                <span x-show="editing === false">Add a Time Trial</span>
-            </div>
+    <x-modal.add-edit-record record-title="Time Trial">
+        <livewire:time-trials.track-time-trial-form />
+    </x-modal.add-edit-record>
 
-        </x-slot>
-
-        <x-slot name="content">
-            <livewire:time-trials.track-time-trial-form />
-        </x-slot>
-
-        <x-slot name="footer">
-            <div x-data="{editing: @entangle('editing')}" class="flex justify-end space-x-2">
-                <x-button.tertiary wire:click="cancel">Cancel</x-button.tertiary>
-                <x-button.primary wire:click="$emit('submitCreate')">
-                    <span x-show="editing === true">Save</span>
-                    <span x-show="editing === false">Create</span>
-                </x-button.primary>
-            </div>
-        </x-slot>
-    </x-modal.dialog>
 </div>

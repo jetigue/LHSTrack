@@ -28,6 +28,7 @@ class TrackEventSubtypeForm extends Component
     {
         $this->subType = $subType;
         $this->name = $this->subType->name;
+        $this->track_event_type_id = $this->subType->track_event_type_id;
     }
 
     public function rules()

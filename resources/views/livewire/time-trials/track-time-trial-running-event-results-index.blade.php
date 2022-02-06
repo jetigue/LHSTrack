@@ -1,13 +1,13 @@
 <div>
-@include('livewire.time-trials._time-trial-header')
-
+    @include('livewire.time-trials._time-trial-header')
 
 
     <div class="flex w-full justify-between">
         <div class="flex flex-col w-full lg:w-3/4">
             <x-headings.section>
                 {{ $gender->name }} {{ $trackEvent->name }} Results
-            </x-headings.section>>
+            </x-headings.section>
+            >
 
             <x-table.table class="table-fixed relative">
                 <x-slot name="head">
@@ -30,7 +30,7 @@
                         </x-table.heading>
 
                         <x-table.heading class="flex w-1/12">
-                            <x-button.add />
+                            <x-button.plus />
                         </x-table.heading>
 
                     </x-table.header-row>
@@ -50,7 +50,8 @@
                                 {{ $result->athlete->fullName }}
                             </x-table.cell>
                             <x-table.cell class="flex w-4/12 md:w-3/12 items-baseline">
-                                {{ ltrim($result->time, 0) }}.<span class="text-xs text-gray-600">{{$result->milliseconds}}</span>
+                                {{ ltrim($result->time, 0) }}.<span
+                                    class="text-xs text-gray-600">{{$result->milliseconds}}</span>
                             </x-table.cell>
                             <x-table.cell class="hidden md:flex md:w-2/12">
                                 {{ $result->heat }}
@@ -88,18 +89,7 @@
                         </x-modal.confirmation>
                     @empty
                         <x-table.row class="flex w-full">
-                            <div class="flex flex-col items-center mx-auto">
-                                <x-icon.user-group />
-                                <h3 class="mt-2 text-sm font-medium text-gray-900">No Results</h3>
-                                <div class="mt-6">
-                                    <button type="button"
-                                            wire:click="showFormModal"
-                                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700">
-                                        <x-icon.plus />
-                                        Add a Result
-                                    </button>
-                                </div>
-                            </div>
+                            <x-no-records missing-record="Result" />
                         </x-table.row>
                     @endforelse
                 </x-slot>
@@ -115,7 +105,7 @@
                         <a href="{{ $this->timeTrial->path() }}/boys/events/{{ $boysEvent->slug }}"
                            class="text-gray-500 hover:text-gray-300"
                         >
-                           Boys {{$boysEvent->name}}
+                            Boys {{$boysEvent->name}}
                         </a>
                     </li>
                 @endforeach
@@ -124,7 +114,7 @@
                         <a href="{{ $this->timeTrial->path() }}/girls/events/{{ $girlsEvent->slug }}"
                            class="text-gray-500 hover:text-gray-300"
                         >
-                           Girls {{$girlsEvent->name}}
+                            Girls {{$girlsEvent->name}}
                         </a>
                     </li>
                 @endforeach
@@ -133,27 +123,10 @@
     </div>
 
 
-    <x-modal.dialog wire:model.defer="showFormModal">
-        <x-slot name="title">
-            <div x-data="{editing: @entangle('editing')}">
-                <span x-show="editing === true">Edit Result</span>
-                <span x-show="editing === false">Add a Result</span>
-            </div>
+    <x-modal.add-edit-record record-title="Result">
+        <livewire:time-trials.track-time-trial-running-event-result-form :gender="$gender"
+                                                                         :timeTrial="$timeTrial"
+                                                                         :trackEvent="$trackEvent" />
+    </x-modal.add-edit-record>
 
-        </x-slot>
-
-        <x-slot name="content">
-            <livewire:time-trials.track-time-trial-running-event-result-form :gender="$gender" :timeTrial="$timeTrial" :trackEvent="$trackEvent" />
-        </x-slot>
-
-        <x-slot name="footer">
-            <div x-data="{editing: @entangle('editing')}" class="flex justify-end space-x-2">
-                <x-button.tertiary wire:click="cancel">Cancel</x-button.tertiary>
-                <x-button.primary wire:click="$emit('submitCreate')">
-                    <span x-show="editing === true">Save</span>
-                    <span x-show="editing === false">Create</span>
-                </x-button.primary>
-            </div>
-        </x-slot>
-    </x-modal.dialog>
 </div>

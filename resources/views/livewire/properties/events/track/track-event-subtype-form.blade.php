@@ -9,7 +9,7 @@
             </x-input.text>
         </x-input.group>
 
-        <x-input.group for="track_event_type_id" label="Categories" :error="$errors->first('track_event_type_id')">
+        <x-input.group for="track_event_type_id" label="Event Types" :error="$errors->first('track_event_type_id')">
            <x-input.select wire:model="track_event_type_id">
                <option value="">Event type...</option>
                 @foreach($eventTypes as $eventType)
