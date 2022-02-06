@@ -50,6 +50,7 @@ class TrackTimeTrialRunningEventResultForm extends Component
         $this->seconds = ~~($this->result->total_seconds % 60);
         $this->milliseconds = $this->result->milliseconds;
         $this->heat = $this->result->heat;
+        $this->gender_id = $this->result->gender_id;
     }
 
     public function rules()
@@ -92,7 +93,7 @@ class TrackTimeTrialRunningEventResultForm extends Component
 
     public function resetForm()
     {
-        $this->reset(['athlete_id', 'gender_id', 'minutes', 'seconds', 'heat', 'milliseconds', 'place']);
+        $this->reset(['athlete_id', 'minutes', 'seconds', 'heat', 'milliseconds', 'place']);
     }
 
     public function render()
