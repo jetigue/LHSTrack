@@ -1,4 +1,5 @@
 <div>
+    <x-flash />
     @include('livewire.time-trials._time-trial-header')
 
 
