@@ -10,6 +10,7 @@ use Livewire\Component;
 class TrackTimeTrialEventsForm extends Component
 {
     public $timeTrial;
+    public $gender_id = '';
     public $showEventsMenu = false;
     public $selectedBoysEvents = [];
     public $selectedGirlsEvents = [];
@@ -26,18 +27,20 @@ class TrackTimeTrialEventsForm extends Component
 
         $this->selectedBoysEvents = $this->timeTrial->boysTrackEvents()
             ->where('track_time_trial_id', $this->timeTrial->id)
-            ->pluck('id');
+            ->where('gender_id', 1)
+            ->pluck('track_event_id');
 
         $this->selectedGirlsEvents = $this->timeTrial->girlsTrackEvents()
             ->where('track_time_trial_id', $this->timeTrial->id)
-            ->pluck('id');
+            ->where('gender_id', 2)
+            ->pluck('track_event_id');
     }
 
     public function rules()
     {
         return [
             'selectedBoysEvents' => 'array|numeric',
-            'selectedGirlsEvents' => 'array|numeric'
+            'selectedGirlsEvents' => 'array|numeric',
         ];
     }
 

@@ -22,6 +22,7 @@ class CreateTrackEventsTable extends Migration
                 $table->boolean('boys_event')->default(1);
                 $table->boolean('girls_event')->default(1);
                 $table->boolean('ghsa_event')->default(1);
+                $table->string('slug')->nullable();
                 $table->timestamps();
 
                 $table->foreign('track_event_subtype_id')->references('id')->on('track_event_subtypes');

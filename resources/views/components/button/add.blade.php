@@ -1,4 +1,4 @@
-<div class="absolute z-20 lg:px-2 top-2 md:top-4 lg:top-6 right-1 md:right-3 lg:right-5">
+<div class="flex absolute z-20 lg:px-2 top-2 md:top-4 lg:top-6 right-2 md:right-3 lg:right-4">
     <button
         x-data="{show: false}"
         type="button"

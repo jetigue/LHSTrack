@@ -70,7 +70,6 @@ class TrackMeetsIndex extends Component
         session()->flash('success', 'TrackTimeTrial Meets Imported Successfully');
 
         $this->render();
-
     }
 
     public function confirmDelete(TrackMeet $trackMeet)

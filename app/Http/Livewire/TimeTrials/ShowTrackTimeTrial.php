@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\TimeTrials;
 
-use App\Models\Properties\Events\Track\TrackEventSubtype;
-use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\TimeTrials\TrackTimeTrial;
 use Livewire\Component;
 
@@ -73,9 +71,6 @@ class ShowTrackTimeTrial extends Component
     public function render()
     {
         return view('livewire.time-trials.show-track-time-trial', [
-            'eventCategories' => TrackEventSubtype::with('trackEvents')
-                ->get(),
-            'trackEvents' => TrackEvent::all()
         ]);
     }
 }

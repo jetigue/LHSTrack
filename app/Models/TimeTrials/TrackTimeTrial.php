@@ -4,14 +4,19 @@ namespace App\Models\TimeTrials;
 
 use App\Models\Pivot\BoysTrackTimeTrialEvent;
 use App\Models\Pivot\GirlsTrackTimeTrialEvent;
+use App\Models\Pivot\TrackTimeTrialEvent;
 use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\Venue;
+use App\Models\TimeTrials\Results\Track\RunningEventResult;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class TrackTimeTrial extends Model
 {
@@ -43,20 +48,42 @@ class TrackTimeTrial extends Model
         return $this->trial_date->format('m/d/Y');
     }
 
+
     public function boysTrackEvents(): BelongsToMany
     {
-        return $this->belongsToMany(TrackEvent::class, 'boys_tf_tt_events')->using(BoysTrackTimeTrialEvent::class);
+        return $this->belongsToMany(TrackEvent::class, 'boys_tf_tt_events')->using(BoysTrackTimeTrialEvent::class)->withTimestamps();
     }
+
+//    public function boysRunningEvents(): BelongsToMany
+//    {
+//        return $this->belongsToMany(TrackEvent::class, 'boys_tf_tt_events')->using(BoysTrackTimeTrialEvent::class);
+//    }
 
     public function girlsTrackEvents(): BelongsToMany
     {
         return $this->belongsToMany(TrackEvent::class, 'girls_tf_tt_events')->using(GirlsTrackTimeTrialEvent::class);
     }
 
-//    public function eventCategories()
+//    public function boysRunningEventResults(): HasMany
 //    {
-//        return $this->hasManyThrough(TrackEventSubtype::class, TrackTimeTrialEvent::class, 'track_event_id', 'track_event_id', 'id', 'track_event_id' );
+//        return $this->hasMany(BoysRunningEventResult::class);
 //    }
+
+    public function runningEventResults(): HasMany
+    {
+        return $this->hasMany(RunningEventResult::class);
+    }
+
+    public function eventSubtypes(): HasManyThrough
+    {
+        return $this->hasManyThrough(TrackEventSubtype::class, BoysTrackTimeTrialEvent::class, 'track_time_trial_id', 'id');
+    }
+
+//    public function girlsRunningEventResults(): HasMany
+//    {
+//        return $this->hasMany(RunningEventResult::class);
+//    }
+
 
     public function getTrialDateForSlugAttribute()
     {

@@ -13,6 +13,7 @@
             <x-input.text
                 wire:model.defer="distance_in_meters"
                 type="number"
+                min="0"
                 >
             </x-input.text>
         </x-input.group>

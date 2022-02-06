@@ -24,6 +24,7 @@ use App\Http\Livewire\Properties\Races\GendersIndex;
 use App\Http\Livewire\Properties\Races\LevelsIndex;
 use App\Http\Livewire\Properties\Races\TitlesIndex;
 use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
+use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
@@ -63,6 +64,8 @@ Route::group(['middleware' => 'can:coach'], function () {
 
     Route::get('/track/time-trials', TrackTimeTrialsIndex::class)->name('Track Time Trials');
     Route::get('/track/time-trials/{timeTrial:slug}', ShowTrackTimeTrial::class);
+    Route::get('/track/time-trials/{timeTrial:slug}/boys/events/{trackEvent:slug}', TrackTimeTrialRunningEventResultsIndex::class);
+    Route::get('/track/time-trials/{timeTrial:slug}/girls/events/{trackEvent:slug}', TrackTimeTrialRunningEventResultsIndex::class);
 
 
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');

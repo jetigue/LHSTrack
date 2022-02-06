@@ -4,7 +4,7 @@
 ])
 
 <div
-    {{ $attributes->merge(['class' => 'pl-2'])->only('class') }}
+    {{ $attributes->merge(['class' => ''])->only('class') }}
 >
     @unless ($sortable)
         <span class="text-left leading-4 font-semibold text-gray-500 uppercase tracking-wider">{{ $slot }}</span>

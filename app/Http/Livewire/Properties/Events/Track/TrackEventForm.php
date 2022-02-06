@@ -29,6 +29,14 @@ class TrackEventForm extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function updatedDistanceInMeters($value)
+    {
+        if ($value) {
+            return $this->distance_in_meters;
+        }
+        return $this->distance_in_meters = null;
+    }
+
     public function editTrackEvent(TrackEvent $trackEvent)
     {
         $this->trackEvent = $trackEvent;
@@ -45,7 +53,7 @@ class TrackEventForm extends Component
         return [
             'name' => 'required|string|max:50',
             'track_event_subtype_id' => 'required|integer',
-            'distance_in_meters' => 'nullable|integer',
+            'distance_in_meters' => 'integer|nullable',
             'boys_event' => 'required|boolean',
             'girls_event' => 'required|boolean',
             'ghsa_event' => 'required|boolean'

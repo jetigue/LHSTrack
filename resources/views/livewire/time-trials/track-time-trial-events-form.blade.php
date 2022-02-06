@@ -51,7 +51,7 @@
                                     <div class="w-full lg:w-1/3">
                                         <h3 class="text-red-800 font-semibold">{{ $subType->name }}</h3>
                                         <ol class="flex-col">
-                                            @foreach($subType->trackEvents->where('boys_event', 1) as $trackEvent)
+                                            @foreach($subType->trackEvents->where('boys_event', 1)->sortBy('distance_in_meters') as $trackEvent)
                                                 <li wire:key="{{ $loop->index }}" class="relative flex px-2">
                                                     <div class="flex items-center h-5">
                                                         <input id="boys-event" aria-describedby="track-event"
@@ -89,7 +89,7 @@
                                     <div class="w-full lg:w-1/3">
                                         <h3 class="text-red-800 font-semibold">{{ $subType->name }}</h3>
                                         <ol class="flex-col">
-                                            @foreach($subType->trackEvents->where('girls_event', 1) as $trackEvent)
+                                            @foreach($subType->trackEvents->where('girls_event', 1)->sortBy('distance_in_meters') as $trackEvent)
                                                 <li wire:key="{{ $loop->index }}" class="relative flex px-2">
                                                     <div class="flex items-center h-5">
                                                         <input id="girls-event" aria-describedby="track-event"

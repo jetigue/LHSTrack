@@ -1,0 +1,159 @@
+<div>
+@include('livewire.time-trials._time-trial-header')
+
+
+
+    <div class="flex w-full justify-between">
+        <div class="flex flex-col w-full lg:w-3/4">
+            <x-headings.section>
+                {{ $gender->name }} {{ $trackEvent->name }} Results
+            </x-headings.section>>
+
+            <x-table.table class="table-fixed relative">
+                <x-slot name="head">
+                    <x-table.header-row class="flex">
+
+                        <x-table.heading class="hidden md:flex md:w-2/12">
+                            Place
+                        </x-table.heading>
+
+                        <x-table.heading class="w-7/12 md:flex md:w-4/12">
+                            Athlete
+                        </x-table.heading>
+
+                        <x-table.heading class="w-4/12 md:flex md:w-3/12">
+                            Time
+                        </x-table.heading>
+
+                        <x-table.heading class="hidden md:flex md:w-2/12">
+                            Heat
+                        </x-table.heading>
+
+                        <x-table.heading class="flex w-1/12">
+                            <x-button.add />
+                        </x-table.heading>
+
+                    </x-table.header-row>
+                </x-slot>
+
+                <x-slot name="body">
+                    @forelse($results as $result)
+                        <x-table.row
+                            wire:key="{{ $loop->index }}"
+                            x-data="{ show: false }" @mouseover="show=true" @mouseleave="show=false"
+                            wire:loading.class.delay="opacity-50"
+                        >
+                            <x-table.cell class="hidden md:flex md:w-2/12">
+                                {{ $result->place_with_suffix }}
+                            </x-table.cell>
+                            <x-table.cell class="flex w-7/12 md:w-4/12">
+                                {{ $result->athlete->fullName }}
+                            </x-table.cell>
+                            <x-table.cell class="flex w-4/12 md:w-3/12 items-baseline">
+                                {{ ltrim($result->time, 0) }}.<span class="text-xs text-gray-600">{{$result->milliseconds}}</span>
+                            </x-table.cell>
+                            <x-table.cell class="hidden md:flex md:w-2/12">
+                                {{ $result->heat }}
+                            </x-table.cell>
+                            <x-table.cell class="flex w-1/12 justify-end">
+                                <x-dropdown.dropdown>
+                                    <x-slot name="trigger">
+                                        <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
+                                    </x-slot>
+                                    <x-slot name="content">
+                                        <x-dropdown.link wire:click="editRecord({{ $result->id }})">
+                                            Edit
+                                        </x-dropdown.link>
+                                        <x-dropdown.link wire:click="confirmDelete({{ $result->id }})">
+                                            Delete
+                                        </x-dropdown.link>
+                                    </x-slot>
+                                </x-dropdown.dropdown>
+                            </x-table.cell>
+                        </x-table.row>
+
+                        <x-modal.confirmation wire:model.defer="showConfirmModal">
+                            <x-slot name="title">Delete Result?</x-slot>
+                            <x-slot name="content">Are you sure you want to delete this result? This cannot be
+                                undone.
+                            </x-slot>
+                            <x-slot name="footer">
+                                <x-button.tertiary wire:click="$toggle('showConfirmModal')">
+                                    Cancel
+                                </x-button.tertiary>
+                                <x-button.danger wire:click="destroy({{ $result->id }})">
+                                    Yes, Delete Result
+                                </x-button.danger>
+                            </x-slot>
+                        </x-modal.confirmation>
+                    @empty
+                        <x-table.row class="flex w-full">
+                            <div class="flex flex-col items-center mx-auto">
+                                <x-icon.user-group />
+                                <h3 class="mt-2 text-sm font-medium text-gray-900">No Results</h3>
+                                <div class="mt-6">
+                                    <button type="button"
+                                            wire:click="showFormModal"
+                                            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700">
+                                        <x-icon.plus />
+                                        Add a Result
+                                    </button>
+                                </div>
+                            </div>
+                        </x-table.row>
+                    @endforelse
+                </x-slot>
+            </x-table.table>
+        </div>
+        <div class="flex flex-col lg:w-1/5 px-4">
+            <x-headings.section>
+                Events
+            </x-headings.section>
+            <ol class="space-y-2 mt-5">
+                @foreach($boysEvents as $boysEvent)
+                    <li>
+                        <a href="{{ $this->timeTrial->path() }}/boys/events/{{ $boysEvent->slug }}"
+                           class="text-gray-500 hover:text-gray-300"
+                        >
+                           Boys {{$boysEvent->name}}
+                        </a>
+                    </li>
+                @endforeach
+                @foreach($girlsEvents as $girlsEvent)
+                    <li>
+                        <a href="{{ $this->timeTrial->path() }}/girls/events/{{ $girlsEvent->slug }}"
+                           class="text-gray-500 hover:text-gray-300"
+                        >
+                           Girls {{$girlsEvent->name}}
+                        </a>
+                    </li>
+                @endforeach
+            </ol>
+        </div>
+    </div>
+
+
+    <x-modal.dialog wire:model.defer="showFormModal">
+        <x-slot name="title">
+            <div x-data="{editing: @entangle('editing')}">
+                <span x-show="editing === true">Edit Result</span>
+                <span x-show="editing === false">Add a Result</span>
+            </div>
+
+        </x-slot>
+
+        <x-slot name="content">
+            <livewire:time-trials.track-time-trial-running-event-result-form :gender="$gender" :timeTrial="$timeTrial" :trackEvent="$trackEvent" />
+        </x-slot>
+
+        <x-slot name="footer">
+            <div x-data="{editing: @entangle('editing')}" class="flex justify-end space-x-2">
+                <x-button.tertiary wire:click="cancel">Cancel</x-button.tertiary>
+                <x-button.primary wire:click="$emit('submitCreate')">
+                    <span x-show="editing === true">Save</span>
+                    <span x-show="editing === false">Create</span>
+                </x-button.primary>
+            </div>
+        </x-slot>
+    </x-modal.dialog>
+</div>
