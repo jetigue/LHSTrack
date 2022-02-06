@@ -85,6 +85,7 @@ class TrackTimeTrialRunningEventResultsIndex extends Component
             'results' => RunningEventResult::with('timeTrial', 'athlete', 'trackEvent')
                 ->where('track_time_trial_id', $this->timeTrial->id)
                 ->where('track_event_id', $this->trackEvent->id)
+                ->where('gender_id', $this->gender->id)
                 ->orderBy('place')
                 ->get(),
 
