@@ -5,19 +5,19 @@
     <div class="md:hidden max-h-64 overflow-y-auto">
         <ul class="divide-y divide-gray-200">
             @foreach($announcements as $announcement)
-            <li wire:key="{{ $loop->index }}">
-                <p class="text-xl font-medium text-red-900">{{ $announcement->title }}</p>
-                   <div class="py-2 h-full">{!! $announcement->body !!}</div>
-                   <p class="text-xs text-gray-400 self-end content-end">
-                       @if($announcement->updated_at > $announcement->created_at)
-                           updated
-                       @else
-                           posted
-                       @endif
-                       {{ $announcement->updated_at->diffForHumans() }}
-                       by {{ $announcement->owner->name }} </p>
+                <li wire:key="{{ $loop->index }}">
+                    <p class="text-xl font-medium text-red-900">{{ $announcement->title }}</p>
+                    <div class="py-2 h-full">{!! $announcement->body !!}</div>
+                    <p class="text-xs text-gray-400 self-end content-end">
+                        @if($announcement->updated_at > $announcement->created_at)
+                            updated
+                        @else
+                            posted
+                        @endif
+                        {{ $announcement->updated_at->diffForHumans() }}
+                        by {{ $announcement->owner->name }} </p>
+                </li>
             @endforeach
-            </li>
         </ul>
     </div>
 
@@ -50,17 +50,17 @@
             <section id="announcement-featured" class="flex flex-col w-2/3 px-6">
                 @if($displayedAnnouncement)
                     <div class="flex flex-col md:h-72 lg:h-96 overflow-y-auto">
-                <p class="text-xl font-medium text-red-900">{{ $displayedAnnouncement->title }}</p>
-                <div class="py-2 h-full no-tailwindcss-base">{!! $displayedAnnouncement->body !!}</div>
-                <div class="absolute bottom-0 right-5 text-xs text-gray-400 w-full text-right">
-                    @if($displayedAnnouncement->updated_at > $displayedAnnouncement->created_at)
-                        updated
-                    @else
-                        posted
-                    @endif
-                    {{ $displayedAnnouncement->updated_at->diffForHumans() }}
-                    by {{ $displayedAnnouncement->owner->name }} </div>
-                    @endif
+                        <p class="text-xl font-medium text-red-900">{{ $displayedAnnouncement->title }}</p>
+                        <div class="py-2 h-full no-tailwindcss-base">{!! $displayedAnnouncement->body !!}</div>
+                        <div class="absolute bottom-0 right-5 text-xs text-gray-400 w-full text-right">
+                            @if($displayedAnnouncement->updated_at > $displayedAnnouncement->created_at)
+                                updated
+                            @else
+                                posted
+                            @endif
+                            {{ $displayedAnnouncement->updated_at->diffForHumans() }}
+                            by {{ $displayedAnnouncement->owner->name }} </div>
+                        @endif
                     </div>
             </section>
         </div>

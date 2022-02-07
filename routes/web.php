@@ -77,7 +77,7 @@ Route::group(['middleware' => 'can:admin'], function () {
     Route::get('/admin/users/', UsersIndex::class)->name('Users');
     Route::get('/admin/user-roles/', UserRolesIndex::class)->name('User Roles');
 
-    Route::get('/timing-methods', TimingMethodsIndex::class)->name('Timing Methods');
+    Route::get('/properties/timing-methods', TimingMethodsIndex::class)->name('Timing Methods');
     Route::get('/track/event-subtypes', TrackEventSubtypesIndex::class)->name('Track Event Subtypes');
     Route::get('/track/event-types', TrackEventTypesIndex::class)->name('Track Event Types');
     Route::get('/track/events', TrackEventsIndex::class)->name('Track Events');
@@ -86,7 +86,7 @@ Route::group(['middleware' => 'can:admin'], function () {
 
     Route::get('/properties/genders', GendersIndex::class)->name('Genders');
     Route::get('/properties/levels', LevelsIndex::class)->name('Levels');
-    Route::get('/properties/titles', TitlesIndex::class)->name('Titles');
+    Route::get('/properties/race-titles', TitlesIndex::class)->name('Race Titles');
     Route::get('/properties/divisions', DivisionsIndex::class)->name('Divisions');
 });
 

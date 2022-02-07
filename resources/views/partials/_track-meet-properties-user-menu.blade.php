@@ -20,6 +20,6 @@
         <x-navigation.user-menu-item route="Genders">Genders</x-navigation.user-menu-item>
         <x-navigation.user-menu-item route="Levels">Levels</x-navigation.user-menu-item>
         <x-navigation.user-menu-item route="Divisions">Divisions</x-navigation.user-menu-item>
-        <x-navigation.user-menu-item route="Titles">Race Titles</x-navigation.user-menu-item>
+        <x-navigation.user-menu-item route="Race Titles">Race Titles</x-navigation.user-menu-item>
     </x-navigation.user-menu>
 </div>
