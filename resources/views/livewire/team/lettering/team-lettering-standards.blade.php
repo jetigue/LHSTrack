@@ -4,7 +4,7 @@
         Team Lettering Standards
     </x-headings.page>
 
-    <div class="w-full space-y-6">
+    <div class="w-full space-y-6 pb-10">
 
         @foreach($genders as $gender)
             <div>

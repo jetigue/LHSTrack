@@ -18,13 +18,13 @@ class CreateRunningEventLetteringTimesTable extends Migration
             $table->unsignedTinyInteger('track_event_id');
             $table->unsignedTinyInteger('gender_id');
             $table->unsignedInteger('freshman_total_seconds');
-            $table->unsignedTinyInteger('freshman_milliseconds');
+            $table->unsignedTinyInteger('freshman_milliseconds')->nullable();
             $table->unsignedInteger('sophomore_total_seconds');
-            $table->unsignedTinyInteger('sophomore_milliseconds');
+            $table->unsignedTinyInteger('sophomore_milliseconds')->nullable();
             $table->unsignedInteger('junior_total_seconds');
-            $table->unsignedTinyInteger('junior_milliseconds');
+            $table->unsignedTinyInteger('junior_milliseconds')->nullable();
             $table->unsignedInteger('senior_total_seconds');
-            $table->unsignedTinyInteger('senior_milliseconds');
+            $table->unsignedTinyInteger('senior_milliseconds')->nullable();
             $table->timestamps();
 
             $table->foreign('track_event_id')

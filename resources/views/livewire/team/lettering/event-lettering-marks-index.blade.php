@@ -1,5 +1,4 @@
 <div>
-
     <x-table.table class="table-fixed relative">
         <x-slot name="head">
             <x-table.header-row class="flex w-full items-baseline">
@@ -46,7 +45,7 @@
         </x-slot>
 
         <x-slot name="body">
-            @foreach($runningStandards->sortBy('trackEvent.distance_in_meters') as $runningStandard)
+            @foreach($runningStandards as $runningStandard)
                 <x-table.row
                     wire:key="{{ $loop->index }}"
                     x-data="{ show: false }" @mouseover="show=true" @mouseleave="show=false"
