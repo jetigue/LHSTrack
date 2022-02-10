@@ -95,13 +95,13 @@ class FieldEventLetteringMarkForm extends Component
         $mark = [
             'track_event_id' => $this->track_event_id,
             'gender_id' => $this->gender_id,
-            'freshman_total_inches' => $this->freshman_feet * 12 + $this->freshman_inches,
+            'freshman_total_inches' => ($this->freshman_feet * 12) + $this->freshman_inches,
             'freshman_quarter_inch' => $this->freshman_quarter_inch,
-            'sophomore_total_inches' => $this->sophomore_feet * 12 + $this->sophomore_inches,
+            'sophomore_total_inches' => ($this->sophomore_feet * 12) + $this->sophomore_inches,
             'sophomore_quarter_inch' => $this->sophomore_quarter_inch,
-            'junior_total_inches' => $this->junior_feet * 12 + $this->junior_inches,
+            'junior_total_inches' => ($this->junior_feet * 12) + $this->junior_inches,
             'junior_quarter_inch' => $this->junior_quarter_inch,
-            'senior_total_inches' => $this->senior_feet * 12 + $this->senior_inches,
+            'senior_total_inches' => ($this->senior_feet * 12) + $this->senior_inches,
             'senior_quarter_inch' => $this->senior_quarter_inch,
         ];
 
