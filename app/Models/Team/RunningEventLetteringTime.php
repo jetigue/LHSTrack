@@ -67,29 +67,41 @@ class RunningEventLetteringTime extends Model
 
     public function getFreshmanMillisecondsForHumansAttribute()
     {
-        $ms = $this->attributes['freshman_milliseconds'];
+        if ($this->attributes['freshman_milliseconds']) {
+            $ms = $this->attributes['freshman_milliseconds'];
 
-        return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 . $ms;
+        }
+        return null;
     }
 
     public function getSophomoreMillisecondsForHumansAttribute()
     {
-        $ms = $this->attributes['sophomore_milliseconds'];
+        if ($this->attributes['sophomore_milliseconds']) {
+            $ms = $this->attributes['sophomore_milliseconds'];
 
-        return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 . $ms;
+        }
+        return null;
     }
 
     public function getJuniorMillisecondsForHumansAttribute()
     {
-        $ms = $this->attributes['junior_milliseconds'];
+        if ($this->attributes['junior_milliseconds']) {
+            $ms = $this->attributes['junior_milliseconds'];
 
-        return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 . $ms;
+        }
+        return null;
     }
 
     public function getSeniorMillisecondsForHumansAttribute()
     {
-        $ms = $this->attributes['senior_milliseconds'];
+        if ($this->attributes['senior_milliseconds']) {
+            $ms = $this->attributes['senior_milliseconds'];
 
-        return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 . $ms;
+        }
+        return null;
     }
 }
