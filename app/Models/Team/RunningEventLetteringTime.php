@@ -72,7 +72,7 @@ class RunningEventLetteringTime extends Model
 
             return $ms > 9 ? $ms : 0 . $ms;
         }
-        return null;
+        return 0;
     }
 
     public function getSophomoreMillisecondsForHumansAttribute()
@@ -82,7 +82,7 @@ class RunningEventLetteringTime extends Model
 
             return $ms > 9 ? $ms : 0 . $ms;
         }
-        return null;
+        return 0;
     }
 
     public function getJuniorMillisecondsForHumansAttribute()
@@ -92,7 +92,7 @@ class RunningEventLetteringTime extends Model
 
             return $ms > 9 ? $ms : 0 . $ms;
         }
-        return null;
+        return 0;
     }
 
     public function getSeniorMillisecondsForHumansAttribute()
@@ -102,6 +102,6 @@ class RunningEventLetteringTime extends Model
 
             return $ms > 9 ? $ms : 0 . $ms;
         }
-        return null;
+        return 0;
     }
 }
