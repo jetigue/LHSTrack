@@ -74,17 +74,16 @@ class FieldEventLetteringMarkForm extends Component
             'track_event_id' => 'required|integer',
             'freshman_feet' => 'integer|required',
             'freshman_inches' => 'integer|nullable',
-            'freshman_quarter_inch' => 'required|in:0,1,2,3',
+            'freshman_quarter_inch' => 'nullable|integer|min:0|max:3',
             'sophomore_feet' => 'integer|required',
             'sophomore_inches' => 'integer|nullable',
-            'sophomore_quarter_inch' => 'required|in:0,1,2,3',
+            'sophomore_quarter_inch' => 'nullable|integer|min:0|max:3',
             'junior_feet' => 'integer|required',
             'junior_inches' => 'integer|nullable',
-            'junior_quarter_inch' => 'required|in:0,1,2,3',
+            'junior_quarter_inch' => 'nullable|integer|min:0|max:3',
             'senior_feet' => 'integer|required',
             'senior_inches' => 'integer|nullable',
-            'senior_quarter_inch' => 'required|in:0,1,2,3',
-
+            'senior_quarter_inch' => 'nullable|integer|min:0|max:3',
         ];
     }
 
