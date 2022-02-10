@@ -94,13 +94,13 @@ class RunningEventLetteringTimeForm extends Component
         $letteringTime = [
             'track_event_id' => $this->track_event_id,
             'gender_id' => $this->gender_id,
-            'freshman_total_seconds' => $this->freshman_minutes * 60 + $this->freshman_seconds,
+            'freshman_total_seconds' => ($this->freshman_minutes * 60) + $this->freshman_seconds,
             'freshman_milliseconds' => $this->freshman_milliseconds,
-            'sophomore_total_seconds' => $this->sophomore_minutes * 60 + $this->sophomore_seconds,
+            'sophomore_total_seconds' => ($this->sophomore_minutes * 60) + $this->sophomore_seconds,
             'sophomore_milliseconds' => $this->sophomore_milliseconds,
-            'junior_total_seconds' => $this->junior_minutes * 60 + $this->junior_seconds,
+            'junior_total_seconds' => ($this->junior_minutes * 60) + $this->junior_seconds,
             'junior_milliseconds' => $this->junior_milliseconds,
-            'senior_total_seconds' => $this->senior_minutes * 60 + $this->senior_seconds,
+            'senior_total_seconds' => ($this->senior_minutes * 60) + $this->senior_seconds,
             'senior_milliseconds' => $this->senior_milliseconds,
         ];
 
