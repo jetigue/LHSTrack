@@ -18,13 +18,13 @@ class CreateFieldEventLetteringMarksTable extends Migration
             $table->unsignedTinyInteger('track_event_id');
             $table->unsignedTinyInteger('gender_id');
             $table->unsignedInteger('freshman_total_inches');
-            $table->enum('freshman_quarter_inch', [0, 1, 2, 3])->default(0);
+            $table->unsignedTinyInteger('freshman_quarter_inch')->nullable();
             $table->unsignedInteger('sophomore_total_inches');
-            $table->enum('sophomore_quarter_inch', [0, 1, 2, 3])->default(0);
+            $table->unsignedTinyInteger('sophomore_quarter_inch')->nullable();
             $table->unsignedInteger('junior_total_inches');
-            $table->enum('junior_quarter_inch', [0, 1, 2, 3])->default(0);
+            $table->unsignedTinyInteger('junior_quarter_inch')->nullable();
             $table->unsignedInteger('senior_total_inches');
-            $table->enum('senior_quarter_inch', [0, 1, 2, 3])->default(0);
+            $table->unsignedTinyInteger('senior_quarter_inch')->nullable();
             $table->timestamps();
 
             $table->foreign('track_event_id')
