@@ -23,6 +23,7 @@ use App\Http\Livewire\Properties\Races\DivisionsIndex;
 use App\Http\Livewire\Properties\Races\GendersIndex;
 use App\Http\Livewire\Properties\Races\LevelsIndex;
 use App\Http\Livewire\Properties\Races\TitlesIndex;
+use App\Http\Livewire\Team\Lettering\TeamLetteringStandards;
 use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
@@ -71,6 +72,8 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');
     Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
     Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
+
+    Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 });
 
 Route::group(['middleware' => 'can:admin'], function () {

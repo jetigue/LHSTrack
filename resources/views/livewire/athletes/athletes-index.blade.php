@@ -98,13 +98,9 @@
                         <x-table.heading sortable
                                          wire:click="sortBy('last_name')"
                                          :direction="$sortField === 'last_name' ? $sortDirection : null"
-                                         class="w-11/12 lg:w-3/12"
+                                         class="w-11/12 lg:w-6/12"
                         >
                             Name
-                        </x-table.heading>
-
-                        <x-table.heading class="hidden lg:flex lg:w-3/12">
-                            Username
                         </x-table.heading>
 
                         @if($this->route == 'Athletes')
@@ -158,7 +154,7 @@
                             x-data="{ show: false }" @mouseover="show=true" @mouseleave="show=false"
                             wire:loading.class.delay="opacity-50"
                         >
-                            <x-table.cell class="w-11/12 lg:w-3/12">
+                            <x-table.cell class="w-11/12 lg:w-5/12">
                                 <div class="flex flex-col">
                                     <a href="{{ $athlete->path() }}"
                                        class="text-base hover:underline hover:font-bold">
@@ -170,9 +166,13 @@
                                 </div>
 
                             </x-table.cell>
-                            <x-table.cell class="hidden lg:flex lg:w-3/12">
+                            <x-table.cell class="hidden lg:flex lg:w-1/12">
                                 @if($athlete->user)
-                                    {{ $athlete->user->name }}
+                                    <a href="mailto:{{$athlete->user->email}}"
+                                       class="text-gray-400 hover:text-red-700"
+                                    >
+                                        <x-icon.mail />
+                                    </a>
                                 @endif
                             </x-table.cell>
 
@@ -193,7 +193,7 @@
                                 class="hidden lg:inline-block lg:w-2/12 text-{{ $athlete->status_color }}-500">
                                 {{ $athlete->current_status }}
                             </x-table.cell>
-                            <x-table.cell class="w-1/12 flex justify-end lg:px-2">
+                            <x-table.cell class="w-1/12 flex justify-end">
                                 <x-dropdown.dropdown>
                                     <x-slot name="trigger">
                                         <x-icon.dots-vertical class="text-gray-300 hover:text-indigo-500" />

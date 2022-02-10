@@ -61,7 +61,6 @@ class TeamEventsIndex extends Component
     {
         return view('livewire.communication.team-events-index', [
             'events' => TeamEvent::with('owner')
-                ->whereDate('event_date', '>=', Carbon::today())
                 ->orderBy('event_date')->get(),
         ]);
     }
