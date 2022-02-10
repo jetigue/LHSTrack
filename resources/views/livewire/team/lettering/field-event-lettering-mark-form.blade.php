@@ -38,10 +38,10 @@
 
                 <x-input.group for="freshman_quarter_inch" label="Fraction" :error="$errors->first('freshman_quarter_inch')">
                    <x-input.select wire:model="freshman_quarter_inch">
-                       <option value="0">0</option>
-                       <option value="1">.25</option>
-                       <option value="2">.50</option>
-                       <option value="3">.75</option>
+                       <option value=0>0</option>
+                       <option value=1>.25</option>
+                       <option value=2>.50</option>
+                       <option value=3>.75</option>
                    </x-input.select>
                 </x-input.group>
             </div>
@@ -73,10 +73,10 @@
 
                 <x-input.group for="sophomore_quarter_inch" label="Fraction" :error="$errors->first('sophomore_quarter_inch')">
                    <x-input.select wire:model="sophomore_quarter_inch">
-                       <option value="0">0</option>
-                       <option value="1">.25</option>
-                       <option value="2">.50</option>
-                       <option value="3">.75</option>
+                       <option value=0>0</option>
+                       <option value=1>.25</option>
+                       <option value=2>.50</option>
+                       <option value=3>.75</option>
                    </x-input.select>
                 </x-input.group>
             </div>
