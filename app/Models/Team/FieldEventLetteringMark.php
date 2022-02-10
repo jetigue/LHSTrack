@@ -48,8 +48,11 @@ class FieldEventLetteringMark extends Model
 
     public function getFreshmanFractionAttribute(): ?string
     {
-        $quarterInch = $this->attributes['freshman_quarter_inch'];
-        return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0) : '';
+        if ($this->attributes['freshman_quarter_inch']) {
+            $quarterInch = $this->attributes['freshman_quarter_inch'];
+            return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : null;
+        }
+        return null;
     }
 
     public function getSophomoreMarkAttribute(): string
@@ -63,8 +66,11 @@ class FieldEventLetteringMark extends Model
 
     public function getSophomoreFractionAttribute(): ?string
     {
-        $quarterInch = $this->attributes['sophomore_quarter_inch'];
-        return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2),0) : '';
+        if ($this->attributes['sophomore_quarter_inch']) {
+            $quarterInch = $this->attributes['sophomore_quarter_inch'];
+            return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : null;
+        }
+        return null;
     }
 
     public function getJuniorMarkAttribute(): string
@@ -78,8 +84,11 @@ class FieldEventLetteringMark extends Model
 
     public function getJuniorFractionAttribute(): ?string
     {
-        $quarterInch = $this->attributes['junior_quarter_inch'];
-        return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : '';
+        if ($this->attributes['junior_quarter_inch']) {
+            $quarterInch = $this->attributes['junior_quarter_inch'];
+            return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : null;
+        }
+        return null;
     }
 
     public function getSeniorMarkAttribute(): string
@@ -93,8 +102,11 @@ class FieldEventLetteringMark extends Model
 
     public function getSeniorFractionAttribute(): ?string
     {
-        $quarterInch = $this->attributes['senior_quarter_inch'];
-        return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0) : '';
+        if ($this->attributes['senior_quarter_inch']) {
+            $quarterInch = $this->attributes['senior_quarter_inch'];
+            return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : null;
+        }
+        return null;
     }
 
 
