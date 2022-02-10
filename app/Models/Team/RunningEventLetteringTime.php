@@ -65,28 +65,28 @@ class RunningEventLetteringTime extends Model
         return $seconds > 59 ? gmdate('i:s', $seconds) : gmdate('s', $seconds);
     }
 
-    public function getFreshmanMillisecondsAttribute()
+    public function getFreshmanMillisecondsForHumansAttribute()
     {
         $ms = $this->attributes['freshman_milliseconds'];
 
         return $ms > 9 ? $ms : 0 . $ms;
     }
 
-    public function getSophomoreMillisecondsAttribute()
+    public function getSophomoreMillisecondsForHumansAttribute()
     {
         $ms = $this->attributes['sophomore_milliseconds'];
 
         return $ms > 9 ? $ms : 0 . $ms;
     }
 
-    public function getJuniorMillisecondsAttribute()
+    public function getJuniorMillisecondsForHumansAttribute()
     {
         $ms = $this->attributes['junior_milliseconds'];
 
         return $ms > 9 ? $ms : 0 . $ms;
     }
 
-    public function getSeniorMillisecondsAttribute()
+    public function getSeniorMillisecondsForHumansAttribute()
     {
         $ms = $this->attributes['senior_milliseconds'];
 
