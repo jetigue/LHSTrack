@@ -2,6 +2,8 @@
 
 namespace App\Models\Meets;
 
+use App\Models\Pivot\BoysTrackMeetEvent;
+use App\Models\Pivot\GirlsTrackMeetEvent;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Meets\Host;
 use App\Models\Properties\Meets\Timing;
@@ -32,7 +34,7 @@ class TrackMeet extends Model
 
     public function path(): string
     {
-        return '/track-meets/' . $this->slug;
+        return '/track/meets/' . $this->slug;
     }
 
     public function sluggable(): array
@@ -74,7 +76,7 @@ class TrackMeet extends Model
         return $this->belongsTo(Venue::class, 'track_venue_id');
     }
 
-    public function timing(): BelongsTo
+    public function timingMethod(): BelongsTo
     {
         return $this->belongsTo(Timing::class, 'timing_method_id');
     }
@@ -82,5 +84,15 @@ class TrackMeet extends Model
     public function trackEvents(): BelongsToMany
     {
         return $this->belongsToMany(TrackEvent::class, 'track_meet_events');
+    }
+
+    public function boysTrackEvents(): BelongsToMany
+    {
+        return $this->belongsToMany(TrackEvent::class, 'boys_tf_meet_events')->using(BoysTrackMeetEvent::class)->withTimestamps();
+    }
+
+    public function girlsTrackEvents(): BelongsToMany
+    {
+        return $this->belongsToMany(TrackEvent::class, 'girls_tf_meet_events')->using(GirlsTrackMeetEvent::class);
     }
 }

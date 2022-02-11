@@ -3,7 +3,9 @@
 namespace App\Models\Properties\Events\Track;
 
 use App\Models\Meets\TrackMeet;
+use App\Models\Pivot\BoysTrackMeetEvent;
 use App\Models\Pivot\BoysTrackTimeTrialEvent;
+use App\Models\Pivot\GirlsTrackMeetEvent;
 use App\Models\Pivot\GirlsTrackTimeTrialEvent;
 use App\Models\Pivot\TrackTimeTrialEvent;
 use App\Models\TimeTrials\Results\BoysRunningEventResult;
@@ -35,11 +37,6 @@ class TrackEvent extends Model
         return $this->belongsTo(TrackEventSubtype::class, 'track_event_subtype_id');
     }
 
-//    public function competedAt(TrackMeet $trackMeet)
-//    {
-//        $this->trackMeets()->attach($trackMeet);
-//    }
-
     public function trackMeets(): BelongsToMany
     {
         return $this->belongsToMany(TrackMeet::class, 'track_meet_events');
@@ -59,10 +56,24 @@ class TrackEvent extends Model
             ->withTimestamps();
     }
 
-    public function boysRunningEventResults(): HasMany
+    public function boysTrackMeets(): BelongsToMany
     {
-        return $this->hasMany(BoysRunningEventResult::class);
+        return $this->belongsToMany(TrackMeet::class, 'boys_tf_meet_events')
+            ->using(BoysTrackMeetEvent::class)
+            ->withTimestamps();
     }
+
+    public function girlsTrackMeets(): BelongsToMany
+    {
+        return $this->belongsToMany(TrackMeet::class, 'girls_tf_meet_events')
+            ->using(GirlsTrackMeetEvent::class)
+            ->withTimestamps();
+    }
+
+//    public function boysRunningEventResults(): HasMany
+//    {
+//        return $this->hasMany(BoysRunningEventResult::class);
+//    }
 
         public function sluggable(): array
     {

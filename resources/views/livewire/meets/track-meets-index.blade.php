@@ -104,7 +104,7 @@
                                         <div><span class="text-gray-400">Host: </span>{{ $trackMeet->host->name }}</div>
                                         <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}</div>
                                         <div><span class="text-gray-400">Season: </span>{{ $trackMeet->season->name }}</div>
-                                        <div><span class="text-gray-400">Timing: </span>{{ $trackMeet->timing->name }}</div>
+                                        <div><span class="text-gray-400">Timing: </span>{{ $trackMeet->timingMethod->name }}</div>
                                         @if( $trackMeet->meetResults )
                                             <div>
                                                 <a href="{{ $trackMeet->meet_page_url }}">

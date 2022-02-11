@@ -9,6 +9,8 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Main\BoosterClubPage;
 use App\Http\Livewire\Main\TeamRoster;
 use App\Http\Livewire\Main\Welcome;
+use App\Http\Livewire\Meets\ShowTrackMeet;
+use App\Http\Livewire\Meets\TrackMeetEventResultsIndex;
 use App\Http\Livewire\Meets\TrackMeetsIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventSubtypesIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventsIndex;
@@ -58,7 +60,12 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Announcements');
     Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 
-    Route::get('/track-meets', TrackMeetsIndex::class)->name('Track Meets');
+    Route::get('/track/meets', TrackMeetsIndex::class)->name('Track Meets');
+    Route::get('/track/meets/{trackMeet:slug}', ShowTrackMeet::class);
+    Route::get('/track/meets/{trackMeet:slug}/boys/events/{trackEvent:slug}', TrackMeetEventResultsIndex::class);
+    Route::get('/track/meets/{trackMeet:slug}/girls/events/{trackEvent:slug}', TrackMeetEventResultsIndex::class);
+
+
     Route::get('/track/meet-names', TrackMeetNamesIndex::class)->name('Track Meet Names');
     Route::get('/track/venues', TrackVenuesIndex::class)->name('Track Venues');
     Route::get('/meet-hosts', MeetHostsIndex::class)->name('Meet Hosts');

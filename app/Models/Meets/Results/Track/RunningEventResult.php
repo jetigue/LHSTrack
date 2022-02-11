@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\TimeTrials\Results\Track;
+namespace App\Models\Meets\Results\Track;
 
 use App\Models\Athletes\Athlete;
+use App\Models\Meets\TrackMeet;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Races\Gender;
-use App\Models\TimeTrials\TrackTimeTrial;
 use App\Traits\ResultsTrait;
 use App\Traits\VDOTTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,20 +14,33 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RunningEventResult extends Model
 {
-    use HasFactory, ResultsTrait, VDOTTrait;
+    use HasFactory, VDOTTrait, ResultsTrait;
 
-    protected $table = 'tf_tt_running_event_results';
+    protected $table='tf_meet_running_event_results';
 
     protected $fillable = [
         'track_event_id',
-        'track_time_trial_id',
+        'track_meet_id',
         'athlete_id',
+        'gender_id',
         'total_seconds',
         'milliseconds',
         'place',
         'heat',
-        'gender_id'
+        'points'
     ];
+
+//    public function getTimeAttribute()
+//    {
+//        $seconds = $this->attributes['total_seconds'];
+//
+//        return $seconds > 59 ? gmdate('i:s', $seconds) : gmdate('s', $seconds);
+//    }
+//
+//    public function getMillisecondsAttribute()
+//    {
+//        return $this->attributes['milliseconds'] > 9 ? $this->attributes['milliseconds'] : 0 . $this->attributes['milliseconds'];
+//    }
 
     public function distance()
     {
@@ -54,8 +67,8 @@ class RunningEventResult extends Model
         return $this->belongsTo(Gender::class, 'gender_id');
     }
 
-    public function timeTrial(): BelongsTo
+    public function trackMeet(): BelongsTo
     {
-        return $this->belongsTo(TrackTimeTrial::class, 'track_time_trial_id');
+        return $this->belongsTo(TrackMeet::class, 'track_meet_id');
     }
 }

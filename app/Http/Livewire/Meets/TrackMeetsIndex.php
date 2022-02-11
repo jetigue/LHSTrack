@@ -103,7 +103,7 @@ class TrackMeetsIndex extends Component
     public function render()
     {
         return view('livewire.meets.track-meets-index', [
-            'trackMeets' => TrackMeet::with('meetName', 'host', 'timing', 'season', 'venue')
+            'trackMeets' => TrackMeet::with('meetName', 'host', 'timingMethod', 'season', 'venue')
 //                ->where('meetName.name', 'like', '%' . $this->search . '%')
 //                ->orwhere('host.name', 'like', '%' . $this->search . '%')
                 ->orderBy($this->sortField, $this->sortDirection)

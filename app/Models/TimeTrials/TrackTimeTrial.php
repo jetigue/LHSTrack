@@ -54,20 +54,10 @@ class TrackTimeTrial extends Model
         return $this->belongsToMany(TrackEvent::class, 'boys_tf_tt_events')->using(BoysTrackTimeTrialEvent::class)->withTimestamps();
     }
 
-//    public function boysRunningEvents(): BelongsToMany
-//    {
-//        return $this->belongsToMany(TrackEvent::class, 'boys_tf_tt_events')->using(BoysTrackTimeTrialEvent::class);
-//    }
-
     public function girlsTrackEvents(): BelongsToMany
     {
         return $this->belongsToMany(TrackEvent::class, 'girls_tf_tt_events')->using(GirlsTrackTimeTrialEvent::class);
     }
-
-//    public function boysRunningEventResults(): HasMany
-//    {
-//        return $this->hasMany(BoysRunningEventResult::class);
-//    }
 
     public function runningEventResults(): HasMany
     {
