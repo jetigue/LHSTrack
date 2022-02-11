@@ -41,7 +41,7 @@ class FieldEventResult extends Model
     public function getFractionAttribute(): ?string
     {
         if ($this->attributes['quarter_inch']) {
-            $quarterInch = $this->attributes['sophomore_quarter_inch'];
+            $quarterInch = $this->attributes['quarter_inch'];
             return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : null;
         }
         return null;
