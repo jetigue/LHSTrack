@@ -1,5 +1,4 @@
 <div>
-
     <div class="flex flex-col">
         <x-flash />
         <div x-cloak x-data="{ show: @entangle('showEventsMenu') }" class="">

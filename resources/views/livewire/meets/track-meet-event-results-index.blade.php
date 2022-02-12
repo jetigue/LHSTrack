@@ -15,7 +15,6 @@
         </div>
     </div>
 
-    <div class="flex flex-col w-full">
         <div class="flex flex-col">
             <div class="px-4 text-gray-100 border-t-2 border-b-2 border-red-700">
                 <div class="flex flex-wrap justify-between py-1">
@@ -46,8 +45,8 @@
             </div>
         </div>
 
-        <div class="flex w-full justify-between">
-            <div class="w-full md:w-3/4 py-4">
+        <div class="grid grid-cols-4 gap-4 lg:gap-8 py-5">
+            <div class="grid cols-span-4 md:col-span-3">
                 @if ($trackEvent->eventSubtype->eventType->name == 'Running')
                     <livewire:meets.track-meet-running-event-results-index :trackEvent="$trackEvent"
                                                                            :trackMeet="$trackMeet"
@@ -58,9 +57,8 @@
                                                                          :gender="$gender" />
                 @endif
             </div>
-            <div class="flex w-full md:w-1/4 lg:w-1/5 py-5">
+            <div class="grid cols-span-4 md:cols-span-1">
                 @include('livewire.meets._meet_event_menu')
             </div>
         </div>
-    </div>
 </div>

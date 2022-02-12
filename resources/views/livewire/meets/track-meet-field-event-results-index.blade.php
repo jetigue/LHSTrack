@@ -53,10 +53,10 @@
 
                         <x-table.cell class="flex w-4/12 md:w-3/12 lg:w-2/12 items-baseline">
                             {{ $result->mark }}
-                        <span class="text-xs">
+                            <span class="text-xs">
                                 {{$result->fraction }}
                             </span>
-                        "
+                            "
                         </x-table.cell>
                         <x-table.cell class="hidden lg:flex lg:w-2/12">
                             {{ $result->flight }}
@@ -107,7 +107,7 @@
 
     <x-modal.add-edit-record record-title="{{ $trackEvent->name }} Result">
         <livewire:meets.track-meet-field-event-result-form :gender="$gender"
-                                                             :trackMeet="$trackMeet"
-                                                             :trackEvent="$trackEvent" />
+                                                           :trackMeet="$trackMeet"
+                                                           :trackEvent="$trackEvent" />
     </x-modal.add-edit-record>
 </div>
