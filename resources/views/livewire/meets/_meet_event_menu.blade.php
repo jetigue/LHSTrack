@@ -1,8 +1,8 @@
-<div class="w-full">
+<div class="w-full flex-col">
     <x-headings.section>
         Events
     </x-headings.section>
-    <ol class="space-y-2 -mt-2">
+    <ol class="space-y-2 -mt-2 w-full">
         @foreach($boysEvents as $boysEvent)
             <li>
                 <a href="{{ $this->trackMeet->path() }}/boys/events/{{ $boysEvent->slug }}"
