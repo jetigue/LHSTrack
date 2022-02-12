@@ -28,9 +28,9 @@
                         @auth
                         <x-nav-link route="Dashboard">Dashboard</x-nav-link>
                         @endauth
-                        <x-nav-link route="Boys Roster">Boys Roster</x-nav-link>
-                        <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>
-                        <x-nav-link route="Booster Club">Booster Club</x-nav-link>
+                        <x-nav-link route="Our Team">Our Team</x-nav-link>
+{{--                        <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>--}}
+{{--                        <x-nav-link route="Booster Club">Booster Club</x-nav-link>--}}
                         <x-nav-link route="Calendar">Calendar</x-nav-link>
                     </div>
                     @guest
@@ -101,9 +101,9 @@
             @auth
             <x-navigation.mobile-link route="Dashboard">Dashboard</x-navigation.mobile-link>
             @endauth
-            <x-navigation.mobile-link route="Boys Roster">Boys Roster</x-navigation.mobile-link>
-            <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>
-            <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>
+            <x-navigation.mobile-link route="Our Team">Our Team</x-navigation.mobile-link>
+{{--            <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>--}}
+{{--            <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>--}}
             <x-navigation.mobile-link route="Calendar">Calendar</x-navigation.mobile-link>
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">

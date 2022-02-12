@@ -2,7 +2,7 @@
     <x-headings.section>
         Events
     </x-headings.section>
-    <ol class="space-y-2 -mt-2 w-full">
+    <ol class="space-y-2 -mt-2 w-full px-4 mx:px-0">
         @foreach($boysEvents as $boysEvent)
             <li>
                 <a href="{{ $this->trackMeet->path() }}/boys/events/{{ $boysEvent->slug }}"

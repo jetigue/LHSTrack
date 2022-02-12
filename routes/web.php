@@ -8,6 +8,8 @@ use App\Http\Livewire\Communication\TeamEventsIndex;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Main\BoosterClubPage;
 use App\Http\Livewire\Main\TeamRoster;
+use App\Http\Livewire\Main\OurTeam;
+use App\Http\Livewire\Main\GirlsRoster;
 use App\Http\Livewire\Main\Welcome;
 use App\Http\Livewire\Meets\ShowTrackMeet;
 use App\Http\Livewire\Meets\TrackMeetEventResultsIndex;
@@ -31,6 +33,7 @@ use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
+use App\Models\Pivot\BoysTrackMeetEvent;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
@@ -46,9 +49,11 @@ require __DIR__.'/auth.php';
 */
 
 Route::get('/', Welcome::class)->name('home');
-Route::get('/boys-roster', TeamRoster::class)->name('Boys Roster');
-Route::get('/girls-roster', TeamRoster::class)->name('Girls Roster');
-Route::get('/booster-club', BoosterClubPage::class)->name('Booster Club');
+Route::get('/our-team', OurTeam::class)->name('Our Team');
+
+//Route::get('/boys-roster', TeamRoster::class)->name('Boys Roster');
+//Route::get('/girls-roster', GirlsRoster::class)->name('Girls Roster');
+//Route::get('/booster-club', BoosterClubPage::class)->name('Booster Club');
 
 Route::get('/dashboard', Dashboard::class)->name('Dashboard')->middleware('auth');
 
