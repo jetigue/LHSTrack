@@ -19,7 +19,6 @@
                                 <x-logo class="w-12" />
                             </a>
                         </div>
-
                     @endif
                 </div>
 

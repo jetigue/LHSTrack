@@ -48,7 +48,9 @@
                         </x-table.cell>
 
                         <x-table.cell class="flex w-7/12 md:w-4/12 lg:w-3/12">
-                            {{ $result->athlete->fullName }}
+                            <a href="{{ $result->athlete->path() }}" class="hover:underline">
+                                {{ $result->athlete->fullName }}
+                            </a>
                         </x-table.cell>
 
                         <x-table.cell class="flex w-4/12 md:w-3/12 lg:w-2/12 items-baseline">
