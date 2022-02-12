@@ -1,5 +1,4 @@
 <div class="flex w-full justify-around py-8 space-x-10">
-
     <x-table.table class="table-fixed relative" color="gray-100">
         <x-slot name="head">
             <x-table.header-row class="">

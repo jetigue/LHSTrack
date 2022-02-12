@@ -1,4 +1,5 @@
 <div>
+    <x-flash />
     <div class="flex flex-col w-full">
         <x-headings.section>
             {{ $gender->name }} {{ $trackEvent->name }} Results
