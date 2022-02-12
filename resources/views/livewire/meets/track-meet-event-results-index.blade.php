@@ -1,5 +1,5 @@
 <div>
-    <div class="py-2">
+    <div class="py-2 w-full">
         <x-breadcrumb.menu>
             <x-breadcrumb.item href="{{ route('Track Meets') }}" :leadingArrow=" false ">
                 Track Meets
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-        <div class="flex flex-col">
+        <div class="flex flex-col w-full">
             <div class="px-4 text-gray-100 border-t-2 border-b-2 border-red-700">
                 <div class="flex flex-wrap justify-between py-1">
                     <div class="flex w-full md:w-1/3 md:justify-start md:items-center">
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 lg:gap-8 py-5">
+        <div class="w-full grid grid-cols-4 gap-4 lg:gap-8 py-5">
             <div class="grid cols-span-4 md:col-span-3">
                 @if ($trackEvent->eventSubtype->eventType->name == 'Running')
                     <livewire:meets.track-meet-running-event-results-index :trackEvent="$trackEvent"
