@@ -58,7 +58,7 @@
                 @endif
             </div>
             <div class="cols-span-4 md:cols-span-1">
-                <dov class="flex w-full lg:px-6"
+                <div class="flex w-full lg:px-6"
                 @include('livewire.meets._meet_event_menu')
             </div>
         </div>
