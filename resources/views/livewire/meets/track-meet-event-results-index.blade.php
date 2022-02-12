@@ -46,7 +46,7 @@
         </div>
 
         <div class="w-full grid grid-cols-4 gap-4 lg:gap-8 py-5">
-            <div class="grid cols-span-4 md:col-span-3">
+            <div class="w-full cols-span-4 md:col-span-3">
                 @if ($trackEvent->eventSubtype->eventType->name == 'Running')
                     <livewire:meets.track-meet-running-event-results-index :trackEvent="$trackEvent"
                                                                            :trackMeet="$trackMeet"
@@ -57,8 +57,8 @@
                                                                          :gender="$gender" />
                 @endif
             </div>
-            <div class="grid cols-span-4 md:cols-span-1">
-                <dov class="flex w-full justify-end"
+            <div class="cols-span-4 md:cols-span-1">
+                <dov class="flex w-full lg:px-6"
                 @include('livewire.meets._meet_event_menu')
             </div>
         </div>
