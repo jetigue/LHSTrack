@@ -58,6 +58,7 @@
                 @endif
             </div>
             <div class="grid cols-span-4 md:cols-span-1">
+                <dov class="flex w-full justify-end"
                 @include('livewire.meets._meet_event_menu')
             </div>
         </div>

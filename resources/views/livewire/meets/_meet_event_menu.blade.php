@@ -1,4 +1,4 @@
-<div class="flex flex-col px-4">
+<div class="flex flex-col">
     <x-headings.section>
         Events
     </x-headings.section>
