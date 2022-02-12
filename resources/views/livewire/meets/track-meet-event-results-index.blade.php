@@ -4,9 +4,13 @@
             <x-breadcrumb.item href="{{ route('Track Meets') }}" :leadingArrow=" false ">
                 Track Meets
             </x-breadcrumb.item>
+            <x-breadcrumb.item href="{{ $trackMeet->path() }}" :leadingArrow=" true ">
+                Meet Home
+            </x-breadcrumb.item>
         </x-breadcrumb.menu>
 
         <div class="flex h-full text-2xl md:text-3xl lg:text-4xl font-light text-gray-100 items-end">
+
             {{ $trackMeet->meetName->name }}
         </div>
     </div>
@@ -54,7 +58,7 @@
                                                                          :gender="$gender" />
                 @endif
             </div>
-            <div class="hidden md:flex md:w-1/4 lg:w-1/5 py-5">
+            <div class="flex w-full md:w-1/4 lg:w-1/5 py-5">
                 @include('livewire.meets._meet_event_menu')
             </div>
         </div>

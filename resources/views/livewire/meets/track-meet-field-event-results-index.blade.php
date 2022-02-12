@@ -13,15 +13,15 @@
                         Place
                     </x-table.heading>
 
-                    <x-table.heading class="w-7/12 md:flex md:w-3/12">
+                    <x-table.heading class="w-7/12 md:flex md:w-4/12 lg:w-3/12">
                         Athlete
                     </x-table.heading>
 
-                    <x-table.heading class="w-4/12 md:flex md:w-2/12">
+                    <x-table.heading class="w-4/12 md:flex md:w-3/12 lg:w-2/12">
                         Mark
                     </x-table.heading>
 
-                    <x-table.heading class="hidden md:flex md:w-2/12">
+                    <x-table.heading class="hidden lg:flex lg:w-2/12">
                         Flight
                     </x-table.heading>
 
@@ -46,10 +46,12 @@
                         <x-table.cell class="hidden md:flex md:w-2/12">
                             {{ $result->place_with_suffix }}
                         </x-table.cell>
+
                         <x-table.cell class="flex w-7/12 md:w-4/12 lg:w-3/12">
                             {{ $result->athlete->fullName }}
                         </x-table.cell>
-                        <x-table.cell class="flex w-4/12 md:w-4/12 lg:w-2/12items-baseline">
+
+                        <x-table.cell class="flex w-4/12 md:w-3/12 lg:w-2/12 items-baseline">
                             {{ $result->mark }}
                         <span class="text-xs">
                                 {{$result->fraction }}
@@ -59,6 +61,7 @@
                         <x-table.cell class="hidden lg:flex lg:w-2/12">
                             {{ $result->flight }}
                         </x-table.cell>
+
                         <x-table.cell class="hidden md:flex md:w-2/12">
                             {{ $result->points }}
                         </x-table.cell>
