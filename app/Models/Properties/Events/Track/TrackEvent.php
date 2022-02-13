@@ -2,6 +2,7 @@
 
 namespace App\Models\Properties\Events\Track;
 
+use App\Models\Meets\Results\Track\FieldEventResult;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Meets\TrackMeet;
 use App\Models\Pivot\BoysTrackMeetEvent;
@@ -73,7 +74,12 @@ class TrackEvent extends Model
 
     public function runningEventResults(): HasMany
     {
-        return $this->hasMany(RunningEventResult::class)->with('athlete');
+        return $this->hasMany(RunningEventResult::class);
+    }
+
+    public function fieldEventResults(): HasMany
+    {
+        return $this->hasMany(FieldEventResult::class);
     }
 
 //    public function boysRunningEventResults(): HasMany
