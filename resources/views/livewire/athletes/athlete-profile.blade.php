@@ -12,13 +12,13 @@
     </x-headings.page>
 
     <div class="w-full space-y-10">
-        @if (count($runningEventResults > 0))
+        @if ($runningEventResults != null)
             <div>
                 @include('livewire.athletes._profile-running-results')
             </div>
 
         @endif
-        @if ( count($fieldEventResults > 0) )
+        @if ($fieldEventResults != null)
             <div>
                 @include('livewire.athletes._profile-field-results')
             </div>
