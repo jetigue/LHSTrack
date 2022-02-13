@@ -55,7 +55,15 @@
                         <x-table.cell class="w-full pr-2">
                             <div class="flex justify-between">
                                 <div>{{ $event->name }}</div>
-                                <a href="{{ $this->trackMeet->path() }}/girls/events/{{ $event->slug }}">Results</a>
+                                <a href="{{ $this->trackMeet->path() }}/girls/events/{{ $event->slug }}">
+                                    @if ('runningEventResults_count' > 0)
+                                        Results
+                                    @else
+                                        @can('coach')
+                                            Add Results
+                                        @endcan
+                                    @endif
+                                </a>
                             </div>
 
                         </x-table.cell>
