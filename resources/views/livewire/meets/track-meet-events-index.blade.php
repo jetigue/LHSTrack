@@ -56,7 +56,7 @@
                             <div class="flex justify-between">
                                 <div>{{ $event->name }}</div>
                                 <a href="{{ $this->trackMeet->path() }}/girls/events/{{ $event->slug }}">
-                                    @if ('runningEventResults_count' > 0)
+                                    @if (($event->runningEventResults) or ($event->fieldEventResults))
                                         Results
                                     @else
                                         @can('coach')

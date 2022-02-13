@@ -29,12 +29,10 @@ class TrackMeetEventsIndex extends Component
     {
         return view('livewire.meets.track-meet-events-index', [
             'boysEvents' => $this->trackMeet->boysTrackEvents
-                ->withCount(['runningEventResults', 'fieldEventResults'])
                 ->sortBy('distance_in_meters')
                 ->sortBy('eventSubType.track_event_type_id'),
 
             'girlsEvents' => $this->trackMeet->girlsTrackEvents
-                ->withCount(['runningEventResults', 'fieldEventResults'])
                 ->sortBy('distance_in_meters')
                 ->sortBy('eventSubType.track_event_type_id')
         ]);
