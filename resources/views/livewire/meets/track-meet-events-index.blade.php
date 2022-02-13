@@ -56,7 +56,7 @@
                             <div class="flex justify-between">
                                 <div>{{ $event->name }}</div>
                                 <a href="{{ $this->trackMeet->path() }}/girls/events/{{ $event->slug }}">
-                                    @if ($event->has('runningEventResults'))
+                                    @if ($event->has('runningEventResults')->where('track_meet_id', $this->trackMeet->id)->where('gender_id', $event->gender_id)->where('track_event_id', $event->id))
                                         Results
                                     @else
                                         @can('coach')
