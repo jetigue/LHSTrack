@@ -12,13 +12,13 @@
     </x-headings.page>
 
     <div class="w-full space-y-10">
-        @if ($runningTrackEvents)
+        @if (!$runningEventResults->where('athlete_id', $this->athlete->id))
             <div>
                 @include('livewire.athletes._profile-running-results')
             </div>
 
         @endif
-        @if ($fieldTrackEvents)
+        @if (!$fieldEventResults->where('athlete_id', $this->athlete->id))
             <div>
                 @include('livewire.athletes._profile-field-results')
             </div>
