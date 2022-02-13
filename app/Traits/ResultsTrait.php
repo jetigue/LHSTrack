@@ -29,7 +29,7 @@ trait ResultsTrait
     {
         $seconds = $this->attributes['total_seconds'];
 
-        return $seconds > 59 ? gmdate('i:s', $seconds) : gmdate('s', $seconds);
+        return ltrim($seconds > 59 ? gmdate('i:s', $seconds) : gmdate('s', $seconds), 0);
     }
 
     public function getMillisecondsAttribute()

@@ -50,13 +50,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/', Welcome::class)->name('home');
 Route::get('/our-team', OurTeam::class)->name('Our Team');
-
-//Route::get('/boys-roster', TeamRoster::class)->name('Boys Roster');
-//Route::get('/girls-roster', GirlsRoster::class)->name('Girls Roster');
-//Route::get('/booster-club', BoosterClubPage::class)->name('Booster Club');
-
 Route::get('/dashboard', Dashboard::class)->name('Dashboard')->middleware('auth');
-
 Route::get('/calendar', MonthlyCalendar::class)->name('Calendar');
 
 

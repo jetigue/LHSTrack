@@ -2,6 +2,7 @@
 
 namespace App\Models\Properties\Events\Track;
 
+use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Meets\TrackMeet;
 use App\Models\Pivot\BoysTrackMeetEvent;
 use App\Models\Pivot\BoysTrackTimeTrialEvent;
@@ -68,6 +69,11 @@ class TrackEvent extends Model
         return $this->belongsToMany(TrackMeet::class, 'girls_tf_meet_events')
             ->using(GirlsTrackMeetEvent::class)
             ->withTimestamps();
+    }
+
+    public function runningEventResults(): HasMany
+    {
+        return $this->hasMany(RunningEventResult::class)->with('athlete');
     }
 
 //    public function boysRunningEventResults(): HasMany

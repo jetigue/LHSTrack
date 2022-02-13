@@ -150,19 +150,19 @@ class Athlete extends Model
         {
             case $m >= 6:
                 if ($gy - $y === 5)
-                { return '8th grade'; }
+                { return '8th Grade'; }
 
                 else if ($gy - $y === 4)
-                { return '9th grade'; }
+                { return '9th Grade'; }
 
                 elseif ($gy - $y === 3)
-                { return '10th grade'; }
+                { return '10th Grade'; }
 
                 elseif ($gy - $y === 2)
-                { return '11th grade'; }
+                { return '11th Grade'; }
 
                 elseif ($gy - $y === 1)
-                { return '12th grade'; }
+                { return '12th Grade'; }
 
                 elseif ($gy - $y <= 0)
                 { return 'alum'; }
@@ -170,19 +170,19 @@ class Athlete extends Model
                 else { return ''; }
             case $m <= 5:
                 if ($gy - $y === 4)
-                { return '8th grade'; }
+                { return '8th Grade'; }
 
                 elseif ($gy - $y === 3)
-                { return '9th grade'; }
+                { return '9th Grade'; }
 
                 elseif ($gy - $y === 2)
-                { return '10th grade'; }
+                { return '10th Grade'; }
 
                 elseif ($gy - $y === 1)
-                { return '11th grade'; }
+                { return '11th Grade'; }
 
                 elseif ($gy - $y === 0)
-                { return '12th grade'; }
+                { return '12th Grade'; }
 
                 else { return 'alum'; }
         }
