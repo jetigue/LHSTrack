@@ -53,11 +53,11 @@ Route::get('/our-team', OurTeam::class)->name('Our Team');
 Route::get('/dashboard', Dashboard::class)->name('Dashboard')->middleware('auth');
 Route::get('/calendar', MonthlyCalendar::class)->name('Calendar');
 
-
+Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Announcements');
+Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
+Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 
 Route::group(['middleware' => 'can:coach'], function () {
-    Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Announcements');
-    Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 
     Route::get('/track/meets', TrackMeetsIndex::class)->name('Track Meets');
     Route::get('/track/meets/{trackMeet:slug}', ShowTrackMeet::class);
@@ -79,7 +79,6 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
     Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 
-    Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 });
 
 Route::group(['middleware' => 'can:admin'], function () {

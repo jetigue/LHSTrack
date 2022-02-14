@@ -13,10 +13,10 @@
     <div class="min-h-screen">
         <div class="grid grid-cols-5 gap-4">
             <div class="hidden lg:grid lg:col-span-1">
-                <x-navigation.user-menu title="Communication">
-                    <x-navigation.user-menu-item route="Team Announcements">Team Announcements</x-navigation.user-menu-item>
-                    <x-navigation.user-menu-item route="Team Events">Team Events</x-navigation.user-menu-item>
-                </x-navigation.user-menu>
+                    <x-navigation.user-menu title="Communication">
+                        <x-navigation.user-menu-item route="Team Announcements">Team Announcements</x-navigation.user-menu-item>
+                        <x-navigation.user-menu-item route="Team Events">Team Events</x-navigation.user-menu-item>
+                    </x-navigation.user-menu>
             </div>
             <div class="col-span-5 md:col-span-2">
                 <ul class="space-y-4 w-full">

@@ -63,21 +63,22 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
 
-            <div id="booster-club" class="flex w-full items-start">
-                <div class="">
-                    @include('livewire.main._our-team-menu')
-                </div>
+{{--            <div id="booster-club" class="flex w-full items-start">--}}
+{{--                <div class="">--}}
+{{--                    @include('livewire.main._our-team-menu')--}}
+{{--                </div>--}}
 
-                <div class="flex flex-col">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-gray-500">
-                        Booster Club
-                    </h2>
+{{--                <div class="flex flex-col">--}}
+{{--                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-gray-500">--}}
+{{--                        Booster Club--}}
+{{--                    </h2>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-
-                </div>
+            <div class="flex w-full">
+                <livewire:team.lettering.team-lettering-standards />
             </div>
         </div>
     </div>

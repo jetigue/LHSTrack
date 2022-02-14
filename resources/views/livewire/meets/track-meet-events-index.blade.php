@@ -56,13 +56,7 @@
                             <div class="flex justify-between">
                                 <div>{{ $event->name }}</div>
                                 <a href="{{ $this->trackMeet->path() }}/girls/events/{{ $event->slug }}">
-                                    @if ($event->has('runningEventResults')->where('track_meet_id', $this->trackMeet->id))
-                                        Results
-                                    @else
-                                        @can('coach')
-                                            Add Results
-                                        @endcan
-                                    @endif
+                                    Results
                                 </a>
                             </div>
 
