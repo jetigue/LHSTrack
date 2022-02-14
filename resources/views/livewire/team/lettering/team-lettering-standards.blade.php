@@ -10,7 +10,7 @@
                 Lettering Policy
             </h2>
 
-            <div class="text-gray-300 leading-6 space-y-2">
+            <div class="text-gray-300 leading-6 space-y-2 py-4">
                 <p>All athletes must be in good standing with the coaching staff, meeting all academic and team
                     standards. Coaches have the right to award letters or refuse to award letters at their discretion,
                     in accordance with the criteria listed below and the guidelines of the Lambert High School Track &
