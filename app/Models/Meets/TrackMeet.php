@@ -88,7 +88,10 @@ class TrackMeet extends Model
 
     public function boysTrackEvents(): BelongsToMany
     {
-        return $this->belongsToMany(TrackEvent::class, 'boys_tf_meet_events')->using(BoysTrackMeetEvent::class)->withTimestamps();
+        return $this->belongsToMany(TrackEvent::class, 'boys_tf_meet_events')
+            ->orderBy('distance_in_meters')
+            ->using(BoysTrackMeetEvent::class)
+            ->withTimestamps();
     }
 
     public function girlsTrackEvents(): BelongsToMany

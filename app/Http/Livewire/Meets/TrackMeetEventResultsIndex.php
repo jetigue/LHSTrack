@@ -27,13 +27,12 @@ class TrackMeetEventResultsIndex extends Component
     public function render()
     {
         return view('livewire.meets.track-meet-event-results-index', [
-            'boysEvents' => $this->trackMeet->boysTrackEvents
-                ->sortBy('distance_in_meters')
-                ->sortBy('eventSubType.track_event_type_id'),
+            'boysEvents' => $this->trackMeet->boysTrackEvents,
+//                ->sortBy('distance_in_meters'),
 
-            'girlsEvents' => $this->trackMeet->girlsTrackEvents
-                ->sortBy('distance_in_meters')
-                ->sortBy('eventSubType.track_event_type_id')
+            'girlsEvents' => $this->trackMeet->girlsTrackEvents,
+//                ->sortBy('distance_in_meters'),
+
         ]);
     }
 }
