@@ -81,8 +81,6 @@
                 </x-card.card-with-header>
             </div>
 
-
-
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
                 <x-card.card-with-header>
                     <x-slot name="header">
@@ -98,8 +96,6 @@
                 </x-card.card-with-header>
             </div>
 
-
-
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
                 <x-card.card-with-header>
                     <x-slot name="header">
@@ -112,26 +108,26 @@
                     </ul>
                 </x-card.card-with-header>
             </div>
+
+
+        @elsecan('athlete')
+            <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
+                <x-card.card-with-header>
+                    <x-slot name="header">
+                        Event Pages
+                    </x-slot>
+                    <ul>
+                        {{--                    <li><a href="/track/events">Track Events</a></li>--}}
+                        {{--                    <li><a href="/track/event-types">Track Event Types</a></li>--}}
+                        {{--                    <li><a href="/track/event-subtypes">Track Event SubTypes</a></li>--}}
+                    </ul>
+                </x-card.card-with-header>
+            </div>
+
+        @else
+            <div class="text-xl text-center mx-auto text-yellow-200">
+                Check back soon for more options
+            </div>
+        @endcan
     </div>
-    @endcan
-    @can('athlete')
-        <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
-            <x-card.card-with-header>
-                <x-slot name="header">
-                    Event Pages
-                </x-slot>
-                <ul>
-{{--                    <li><a href="/track/events">Track Events</a></li>--}}
-{{--                    <li><a href="/track/event-types">Track Event Types</a></li>--}}
-{{--                    <li><a href="/track/event-subtypes">Track Event SubTypes</a></li>--}}
-                </ul>
-            </x-card.card-with-header>
-        </div>
-
-    @else
-        <div class="text-xl text-center mx-auto text-yellow-200">
-            Check back soon for more options
-        </div>
-    @endcan
-
 </div>
