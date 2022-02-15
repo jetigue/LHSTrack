@@ -31,6 +31,7 @@ use App\Http\Livewire\Team\Lettering\TeamLetteringStandards;
 use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
+use App\Http\Livewire\Training\DistanceTrainingPacesIndex;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
 use App\Models\Pivot\BoysTrackMeetEvent;
@@ -79,6 +80,7 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
     Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 
+    Route::get('/training/training-paces/distance', DistanceTrainingPacesIndex::class)->name('Distance Training Paces');
 });
 
 Route::group(['middleware' => 'can:admin'], function () {

@@ -17,6 +17,21 @@
                     </ul>
                 </x-card.card-with-header>
             </div>
+
+            <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
+                <x-card.card-with-header>
+                    <x-slot name="header">
+                        Event Properties
+                    </x-slot>
+                    <ul>
+                        <li><a href="/properties/genders">Genders</a></li>
+                        <li><a href="/properties/levels">Levels</a></li>
+                        <li><a href="/properties/division">Divisions</a></li>
+                        <li><a href="/properties/race-titles">Race Titles</a></li>
+                        <li><a href="/properties/timing-methods">Timing Methods</a></li>
+                    </ul>
+                </x-card.card-with-header>
+            </div>
         @endcan
 
         @can('coach')
@@ -66,20 +81,7 @@
                 </x-card.card-with-header>
             </div>
 
-                <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
-                    <x-card.card-with-header>
-                        <x-slot name="header">
-                            Event Properties
-                        </x-slot>
-                        <ul>
-                            <li><a href="/properties/genders">Genders</a></li>
-                            <li><a href="/properties/levels">Levels</a></li>
-                            <li><a href="/properties/division">Divisions</a></li>
-                            <li><a href="/properties/race-titles">Race Titles</a></li>
-                            <li><a href="/properties/timing-methods">Timing Methods</a></li>
-                        </ul>
-                    </x-card.card-with-header>
-                </div>
+
 
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
                 <x-card.card-with-header>
@@ -111,6 +113,21 @@
                 </x-card.card-with-header>
             </div>
     </div>
+    @endcan
+    @can('athlete')
+        <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
+            <x-card.card-with-header>
+                <x-slot name="header">
+                    Event Pages
+                </x-slot>
+                <ul>
+{{--                    <li><a href="/track/events">Track Events</a></li>--}}
+{{--                    <li><a href="/track/event-types">Track Event Types</a></li>--}}
+{{--                    <li><a href="/track/event-subtypes">Track Event SubTypes</a></li>--}}
+                </ul>
+            </x-card.card-with-header>
+        </div>
+
     @else
         <div class="text-xl text-center mx-auto text-yellow-200">
             Check back soon for more options

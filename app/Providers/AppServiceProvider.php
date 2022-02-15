@@ -38,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->role->name === 'coach';
         });
 
+        Gate::define('athlete', function (User $user) {
+            return ($user->role->name === 'athlete') or ($user->role->name === 'coach');
+        });
+
         Builder::macro('whereLike', function ($attributes, string $searchTerm) {
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {
                 foreach (Arr::wrap($attributes) as $attribute) {

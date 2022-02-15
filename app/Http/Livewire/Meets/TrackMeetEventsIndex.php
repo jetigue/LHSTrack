@@ -36,10 +36,7 @@ class TrackMeetEventsIndex extends Component
 
             'girlsEvents' => $this->trackMeet->girlsTrackEvents
                 ->sortBy('distance_in_meters')
-                ->sortBy('distance_in_meters')
                 ->sortBy('track_event_subtype_id'),
-
-
         ]);
     }
 }

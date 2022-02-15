@@ -2,12 +2,14 @@
 
 namespace App\Models\Athletes;
 
+use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Athlete extends Model
@@ -138,6 +140,7 @@ class Athlete extends Model
         if ($this->physical_expiration_date) {
             return $this->physical_expiration_date->format('M d, Y');
         }
+        return null;
     }
 
     public function getGradeAttribute()
@@ -186,6 +189,16 @@ class Athlete extends Model
 
                 else { return 'alum'; }
         }
+        return 'Grade Unknown';
+    }
 
+    public function runningEventResults(): HasMany
+    {
+        return $this->hasMany(RunningEventResult::class);
+    }
+
+    public function distanceEventResults()
+    {
+        return $this->runningEventResults->whereHas('trackEvent.distance_in_meters',  '>=', 800);
     }
 }
