@@ -108,9 +108,10 @@
                     </ul>
                 </x-card.card-with-header>
             </div>
+            @endcan
 
 
-        @elsecan('athlete')
+        @can('athlete')
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
                 <x-card.card-with-header>
                     <x-slot name="header">
