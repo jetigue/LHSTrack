@@ -111,7 +111,7 @@
             @endcan
 
 
-        @can('auth')
+        @auth
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
                 <x-card.card-with-header color="green-500">
                     <x-slot name="header">
@@ -128,10 +128,6 @@
                 </x-card.card-with-header>
             </div>
 
-        @else
-            <div class="text-xl text-center mx-auto text-yellow-200">
-                Check back soon for more options
-            </div>
-        @endcan
+        @endauth
     </div>
 </div>
