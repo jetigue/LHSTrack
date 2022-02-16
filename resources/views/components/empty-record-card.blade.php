@@ -10,9 +10,11 @@
         </p>
 
         <div class="flex w-full justify-center mt-6">
-            <x-button.primary wire:click="showFormModal">
-                <x-icon.plus class="mr-2"/> New {{ $model }}
-            </x-button.primary>
+            @can('coach')
+                <x-button.primary wire:click="showFormModal">
+                    <x-icon.plus class="mr-2"/> New {{ $model }}
+                </x-button.primary>
+            @endcan
         </div>
 
     </div>
