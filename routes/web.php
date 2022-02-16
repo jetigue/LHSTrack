@@ -64,6 +64,7 @@ Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Letteri
 Route::group(['middleware' => 'auth'], function () {
     Route::get('training/hurdles', HurdlesIndex::class)->name('Hurdles');
     Route::get('training/hurdles-calendar', HurdleCalendarContainer::class)->name('Hurdles Calendar');
+    Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 });
 
 Route::group(['middleware' => 'can:coach'], function () {
@@ -85,7 +86,7 @@ Route::group(['middleware' => 'can:coach'], function () {
 
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');
     Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
-    Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
+
 
     Route::get('/training/training-paces/distance', DistanceTrainingPacesIndex::class)->name('Distance Training Paces');
 });

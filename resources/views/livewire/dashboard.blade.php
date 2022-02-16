@@ -111,7 +111,7 @@
             @endcan
 
 
-        @can('athlete')
+        @can('auth')
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
                 <x-card.card-with-header color="green-500">
                     <x-slot name="header">
