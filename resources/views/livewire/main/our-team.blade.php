@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="">
     <x-headings.page class="">
         Our Team
     </x-headings.page>

@@ -25,11 +25,11 @@
                 <div class="hidden lg:flex w-full h-full items-center justify-between pt-3">
                     <div class="flex w-full md:space-x-4 lg:space-x-6">
                         @auth
-                        <x-nav-link route="Dashboard">Dashboard</x-nav-link>
+                            <x-nav-link route="Dashboard">Dashboard</x-nav-link>
                         @endauth
                         <x-nav-link route="Our Team">Our Team</x-nav-link>
-{{--                        <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>--}}
-{{--                        <x-nav-link route="Booster Club">Booster Club</x-nav-link>--}}
+                        {{--                        <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>--}}
+                        {{--                        <x-nav-link route="Booster Club">Booster Club</x-nav-link>--}}
                         <x-nav-link route="Calendar">Calendar</x-nav-link>
                     </div>
                     @guest
@@ -98,11 +98,11 @@
         <div class="px-2 pt-2 pb-3 space-y-1">
             <x-navigation.mobile-link route="home">Home</x-navigation.mobile-link>
             @auth
-            <x-navigation.mobile-link route="Dashboard">Dashboard</x-navigation.mobile-link>
+                <x-navigation.mobile-link route="Dashboard">Dashboard</x-navigation.mobile-link>
             @endauth
             <x-navigation.mobile-link route="Our Team">Our Team</x-navigation.mobile-link>
-{{--            <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>--}}
-{{--            <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>--}}
+            {{--            <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>--}}
+            {{--            <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>--}}
             <x-navigation.mobile-link route="Calendar">Calendar</x-navigation.mobile-link>
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">

@@ -32,6 +32,9 @@ use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
 use App\Http\Livewire\Training\DistanceTrainingPacesIndex;
+use App\Http\Livewire\Training\EventPages\HurdleCalendarContainer;
+use App\Http\Livewire\Training\EventPages\HurdlesIndex;
+use App\Http\Livewire\Training\EventPages\HurdleWorkoutCalendar;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
 use App\Models\Pivot\BoysTrackMeetEvent;
@@ -58,8 +61,12 @@ Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Ann
 Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 
-Route::group(['middleware' => 'can:coach'], function () {
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('training/hurdles', HurdlesIndex::class)->name('Hurdles');
+    Route::get('training/hurdles-calendar', HurdleCalendarContainer::class)->name('Hurdles Calendar');
+});
 
+Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track/meets', TrackMeetsIndex::class)->name('Track Meets');
     Route::get('/track/meets/{trackMeet:slug}', ShowTrackMeet::class);
     Route::get('/track/meets/{trackMeet:slug}/boys/events/{trackEvent:slug}', TrackMeetEventResultsIndex::class);

@@ -113,14 +113,17 @@
 
         @can('athlete')
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
-                <x-card.card-with-header>
+                <x-card.card-with-header color="green-500">
                     <x-slot name="header">
-                        Event Pages
+                        <div class="text-white">
+                            Hurdles
+                        </div>
+
                     </x-slot>
-                    <ul>
-                        {{--                    <li><a href="/track/events">Track Events</a></li>--}}
-                        {{--                    <li><a href="/track/event-types">Track Event Types</a></li>--}}
-                        {{--                    <li><a href="/track/event-subtypes">Track Event SubTypes</a></li>--}}
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="hover:underline"><a href="{{ route('Hurdles') }}">Hurdles</a></li>
+                        <li class="hover:underline"><a href="{{ route('Hurdles Calendar') }}">Hurdle Calendar</a></li>
+
                     </ul>
                 </x-card.card-with-header>
             </div>

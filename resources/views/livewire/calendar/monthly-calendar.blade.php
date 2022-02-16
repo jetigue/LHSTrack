@@ -1,5 +1,5 @@
-<div>
-    <div class="hidden md:flex w-full">
+<div class="flex w-full">
+    <div class="hidden md:flex w-full justify-center">
         <livewire:calendar.team-events-calendar
             before-calendar-view="livewire/calendar/_calendar-heading"
         />
@@ -26,8 +26,6 @@
                         </div>
                     </x-card.basic>
                 </li>
-
-
             @endforeach
         </ul>
 
