@@ -21,8 +21,8 @@ class TeamRoster extends Component
     {
         return view('livewire.main.team-roster', [
             'athletes' => Athlete::where('status', '!=', 'i')
-                ->orderBy('first_name')
                 ->orderBy('last_name')
+                ->orderBy('first_name')
                 ->get()
         ]);
     }

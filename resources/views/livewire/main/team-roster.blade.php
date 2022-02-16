@@ -42,7 +42,7 @@
                    <div class="col-span-1">
                        <h3 class="text-xl text-gray-200 py-2">Freshmen</h3>
                        <ul class="space-y-2.5 py-2">
-                           @foreach($athletes->where('grad_year', '==', ($this->currentYear + 1 + $this->nextSeason))->where('sex', 'm') as $freshman)
+                           @foreach($athletes->where('grad_year', '==', ($this->currentYear + 3 + $this->nextSeason))->where('sex', 'm') as $freshman)
                                <li>
                                    <a class="hover:underline" href="{{ $freshman->path() }}">{{ $freshman->fullName }}</a>
                                </li>
@@ -96,7 +96,7 @@
             <div class="col-span-1">
                 <h3 class="text-xl text-gray-200 py-2">Freshmen</h3>
                 <ul class="space-y-2.5 py-2">
-                    @foreach($athletes->where('grad_year', '==', ($this->currentYear + 1 + $this->nextSeason))->where('sex', 'f') as $freshman)
+                    @foreach($athletes->where('grad_year', '==', ($this->currentYear + 3 + $this->nextSeason))->where('sex', 'f') as $freshman)
                         <li>
                             <a class="hover:underline" href="{{ $freshman->path() }}">{{ $freshman->fullName }}</a>
                         </li>
