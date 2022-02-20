@@ -124,12 +124,8 @@
                         <li class="hover:underline"><a href="{{ route('Distance') }}">Distance</a></li>
                         <li class="hover:underline"><a href="{{ route('Hurdles') }}">Hurdles</a></li>
                         <li class="hover:underline"><a href="{{ route('Jumps') }}">Jumps</a></li>
-                        <li class="hover:underline"><a href="{{ route('Pole Vault') }}">Pole Vault</a></li>
                         <li class="hover:underline"><a href="{{ route('Sprints') }}">Sprints</a></li>
                         <li class="hover:underline"><a href="{{ route('Throws') }}">Throws</a></li>
-
-
-
                     </ul>
                 </x-card.card-with-header>
             </div>
