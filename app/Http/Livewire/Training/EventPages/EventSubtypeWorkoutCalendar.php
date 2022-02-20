@@ -2,20 +2,24 @@
 
 namespace App\Http\Livewire\Training\EventPages;
 
+use App\Models\Properties\Events\Track\TrackEventSubtype;
+use App\Models\Training\Workouts\EventSubtypeWorkout;
 use App\Models\Training\Workouts\HurdleWorkout;
 use Asantibanez\LivewireCalendar\LivewireCalendar;
 use Illuminate\Support\Collection;
 
-class HurdleWorkoutCalendar extends LivewireCalendar
+class EventSubtypeWorkoutCalendar extends LivewireCalendar
 {
+    public TrackEventSubtype $eventSubtype;
 
     public function events(): Collection
         {
-            return HurdleWorkout ::query()
+            return EventSubtypeWorkout ::query()
+                ->where('track_event_subtype_id', $this->eventSubtype->id)
                 ->whereDate('workout_date', '>=', $this->gridStartsAt)
                 ->whereDate('workout_date', '<=', $this->gridEndsAt)
                 ->get()
-                ->map(function (HurdleWorkout $workout) {
+                ->map(function (EventSubtypeWorkout $workout) {
                     return [
                         'id' => $workout->id,
                         'title' => $workout->title,

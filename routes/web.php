@@ -32,9 +32,10 @@ use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
 use App\Http\Livewire\Training\DistanceTrainingPacesIndex;
-use App\Http\Livewire\Training\EventPages\HurdleCalendarContainer;
+use App\Http\Livewire\Training\EventPages\EventPageIndex;
+use App\Http\Livewire\Training\EventPages\EventSubtypeCalendarContainer;
 use App\Http\Livewire\Training\EventPages\HurdlesIndex;
-use App\Http\Livewire\Training\EventPages\HurdleWorkoutCalendar;
+use App\Http\Livewire\Training\EventPages\EventSubtypeWorkoutCalendar;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
 use App\Models\Pivot\BoysTrackMeetEvent;
@@ -62,8 +63,19 @@ Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('training/hurdles', HurdlesIndex::class)->name('Hurdles');
-    Route::get('training/hurdles-calendar', HurdleCalendarContainer::class)->name('Hurdles Calendar');
+    Route::get('training/distance', EventPageIndex::class)->name('Distance');
+    Route::get('training/distance-calendar', EventSubtypeCalendarContainer::class)->name('Distance Calendar');
+    Route::get('training/hurdles', EventPageIndex::class)->name('Hurdles');
+    Route::get('training/hurdles-calendar', EventSubtypeCalendarContainer::class)->name('Hurdles Calendar');
+    Route::get('training/jumps', EventPageIndex::class)->name('Jumps');
+    Route::get('training/jumps-calendar', EventSubtypeCalendarContainer::class)->name('Jumps Calendar');
+    Route::get('training/pole-vault', EventPageIndex::class)->name('Pole Vault');
+    Route::get('training/pole-vault-calendar', EventSubtypeCalendarContainer::class)->name('Pole Vault Calendar');
+    Route::get('training/sprints', EventPageIndex::class)->name('Sprints');
+    Route::get('training/sprints-calendar', EventSubtypeCalendarContainer::class)->name('Sprints Calendar');
+    Route::get('training/throws', EventPageIndex::class)->name('Throws');
+    Route::get('training/throws-calendar', EventSubtypeCalendarContainer::class)->name('Throws Calendar');
+
     Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 });
 

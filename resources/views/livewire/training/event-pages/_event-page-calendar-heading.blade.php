@@ -2,12 +2,11 @@
     <x-headings.page>
         <x-slot name="breadcrumbs">
             <x-breadcrumb.menu>
-                <x-breadcrumb.item href="{{ route('Dashboard') }}" :leadingArrow="false">Dashboard</x-breadcrumb.item>
-                <x-breadcrumb.item href="{{ route('Hurdles') }}" :leadingArrow="true">Hurdles Home</x-breadcrumb.item>
+                <x-breadcrumb.item href="{{ route($eventSubtype->name) }}" :leadingArrow="false">{{$eventSubtype->name}} Home</x-breadcrumb.item>
             </x-breadcrumb.menu>
         </x-slot>
         <div>
-            Hurdler's Calendar
+            {{ $eventSubtype->name }} Calendar
         </div>
         <x-slot name="action">
             <div class="flex text-gray-200 space-x-1 bg-gray-800 rounded-md">

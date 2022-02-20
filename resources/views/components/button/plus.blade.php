@@ -1,8 +1,10 @@
+@props(['action' => 'showFormModal'])
+
 <div class="flex absolute z-20 lg:px-2 top-2 md:top-4 lg:top-6 right-2 md:right-3 lg:right-4">
     <button
         x-data="{show: false}"
         type="button"
-        wire:click="showFormModal"
+        wire:click="{{ $action }}"
         @mouseover="show=true"
         @mouseleave="show=false"
         class="relative text-red-800 text-lg"

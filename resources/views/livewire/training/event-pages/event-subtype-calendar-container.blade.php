@@ -1,13 +1,13 @@
 <div class="w-full" x-cloak x-data="{ open: false }">
     <div class="hidden md:flex w-full justify-center">
-        <livewire:training.event-pages.hurdle-workout-calendar
-            before-calendar-view="livewire/training/event-pages/_hurdle-calendar-heading"
+        <livewire:training.event-pages.event-subtype-workout-calendar :eventSubtype="$eventSubtype"
+            before-calendar-view="livewire/training/event-pages/_event-page-calendar-heading"
         />
     </div>
     <div class="flex flex-col w-full md:hidden">
         <x-headings.page>
             <div class="flex w-full justify-between">
-                Hurdler Calendar
+                {{ $eventSubtype->name }} Calendar
                 <x-slot name="action">
                     <div class="flex lg:hidden">
                         <!-- Mobile menu button -->
@@ -24,7 +24,7 @@
             </div>
         </x-headings.page>
 
-        @include('livewire.training.event-pages._hurdle-mobile-menu')
+        @include('livewire.training.event-pages._event-page-mobile-menu')
         <ul class="flex flex-col w-full space-y-2">
             @foreach($workouts as $workout)
                 <li wire:key="{{ $loop->index }}" class="w-full">

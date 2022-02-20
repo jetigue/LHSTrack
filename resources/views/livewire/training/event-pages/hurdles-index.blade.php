@@ -19,7 +19,7 @@
         </div>
     </x-headings.page>
 
-@include('livewire.training.event-pages._hurdle-mobile-menu')
+@include('livewire.training.event-pages._event-page-mobile-menu')
 
     <div class="grid grid-cols-8 gap-4">
 
@@ -138,22 +138,21 @@
         </div>
         <div class="hidden md:grid md:col-span-2 mt-5 pl-8">
             <div class="flex flex-col">
-                <div class="flex justify-between">
+                <div class="flex justify-between items-center">
                     <div class="flex w-full text-gray-500 text-2xl font-medium">
                         Links
                     </div>
 
                     @can('coach')
-                        <x-button.primary wire:click="addHurdleLink">
-                            <x-icon.plus />
-                            Add Link
-                        </x-button.primary>
+                        <button type="button" class="p-2 text-red-800 hover:text-red-600" wire:click="addHurdleLink">
+                            <x-icon.plus class="w-8 h-8" />
+                        </button>
                     @endcan
                 </div>
 
-                <ul class="flex w-full py-4 space-y-2">
+                <ul class="w-full py-2 space-y-2">
                     @foreach($hurdleLinks as $link)
-                        <li class="flex w-full justify-between">
+                        <li class="flex w-full">
                             <a class="text-gray-400 font-semibold hover:text-gray-200"
                                href="{{ $link->url }}">
                                 {{ $link->text }}
