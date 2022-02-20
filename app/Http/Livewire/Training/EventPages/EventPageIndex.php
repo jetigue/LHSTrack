@@ -26,7 +26,7 @@ class EventPageIndex extends Component
                 ->where('track_event_subtype_id', $this->eventSubtype->id)
                 ->get(),
 
-            'eventSubtypes' => TrackEventSubtype::where('name', '!=', 'Relay')->orderBy('name')->get()
+            'eventSubtypes' => TrackEventSubtype::where('name', '!=', 'Relays')->orderBy('name')->get()
         ]);
     }
 }
