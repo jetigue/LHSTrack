@@ -113,16 +113,22 @@
 
         @auth
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
-                <x-card.card-with-header color="green-500">
+                <x-card.card-with-header color="red-800">
                     <x-slot name="header">
                         <div class="text-white">
-                            Hurdles
+                            Event Pages
                         </div>
 
                     </x-slot>
                     <ul class="text-gray-300 space-y-2">
+                        <li class="hover:underline"><a href="{{ route('Distance') }}">Distance</a></li>
                         <li class="hover:underline"><a href="{{ route('Hurdles') }}">Hurdles</a></li>
-                        <li class="hover:underline"><a href="{{ route('Hurdles Calendar') }}">Hurdle Calendar</a></li>
+                        <li class="hover:underline"><a href="{{ route('Jumps') }}">Jumps</a></li>
+                        <li class="hover:underline"><a href="{{ route('Pole Vault') }}">Pole Vault</a></li>
+                        <li class="hover:underline"><a href="{{ route('Sprints') }}">Sprints</a></li>
+                        <li class="hover:underline"><a href="{{ route('Throws') }}">Throws</a></li>
+
+
 
                     </ul>
                 </x-card.card-with-header>
