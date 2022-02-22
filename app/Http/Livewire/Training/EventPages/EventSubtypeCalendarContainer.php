@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Training\EventPages;
 
 use App\Models\Communication\EventSubtypes\EventSubtypeLink;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
-use App\Models\Team\Links\HurdleLink;
+use App\Models\Training\Workouts\EventSubtypeWorkout;
 use App\Models\Training\Workouts\HurdleWorkout;
 use Livewire\Component;
 
@@ -30,7 +30,7 @@ class EventSubtypeCalendarContainer extends Component
         $this->showEventModal = true;
     }
 
-    public function showMobileModal(HurdleWorkout $workout)
+    public function showMobileModal(EventSubtypeWorkout $workout)
     {
         $this->workout = $workout;
 
