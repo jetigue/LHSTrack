@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire\Meets;
 
-use App\Models\Meets\Results\Track\FieldEventResult;
+use App\Models\Meets\Results\Track\RelayEventResult;
 use App\Models\Meets\TrackMeet;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Races\Gender;
 use Livewire\Component;
 
-class TrackMeetFieldEventResultsIndex extends Component
+class TrackMeetRelayEventResultsIndex extends Component
 {
     public TrackEvent $trackEvent;
     public TrackMeet $trackMeet;
@@ -55,14 +55,15 @@ class TrackMeetFieldEventResultsIndex extends Component
         session()->flash('success', 'Result Updated');
     }
 
-    public function confirmDelete(FieldEventResult $result)
+    public function confirmDelete(RelayEventResult $result)
     {
         $this->result = $result;
         $this->showConfirmModal = true;
     }
 
-    public function destroy(FieldEventResult $result)
+    public function destroy(RelayEventResult $result)
     {
+        $this->result = $result;
         $this->result->delete();
         $this->showConfirmModal = false;
         session()->flash('success', 'Result Deleted Successfully');
@@ -76,17 +77,17 @@ class TrackMeetFieldEventResultsIndex extends Component
         $this->emit('cancelCreate');
     }
 
-    public function editRecord(FieldEventResult $result)
+    public function editRecord(RelayEventResult $result)
     {
         $this->showFormModal = true;
         $this->editing = true;
-        $this->emit('editFieldEventResult', $result->id);
+        $this->emit('editRelayEventResult', $result->id);
     }
 
     public function render()
     {
-        return view('livewire.meets.track-meet-field-event-results-index', [
-            'results' => FieldEventResult::with('trackMeet', 'athlete', 'trackEvent')
+        return view('livewire.meets.track-meet-relay-event-results-index', [
+            'results' => RelayEventResult::with('trackMeet', 'trackEvent')
                 ->where('track_meet_id', $this->trackMeet->id)
                 ->where('track_event_id', $this->trackEvent->id)
                 ->where('gender_id', $this->gender->id)
