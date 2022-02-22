@@ -3,7 +3,6 @@
         Dashboard
     </x-headings.page>
 
-
     <div class="grid grid-cols-4 gap-4">
         @can('admin')
             <div class="grid col-span-4 md:col-span-2 lg:col-span-1">

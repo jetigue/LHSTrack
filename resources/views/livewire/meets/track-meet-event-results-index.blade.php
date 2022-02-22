@@ -48,7 +48,7 @@
     <div class="w-full grid grid-cols-4 gap-4 lg:gap-10 py-5">
         <div class="w-full col-span-4 md:col-span-3">
             @if ($trackEvent->eventSubtype->eventType->name == 'Running')
-                @if ($trackEvent->eventSubtype->name == 'Relay')
+                @if ($trackEvent->eventSubtype->name == 'Relays')
                     <livewire:meets.track-meet-relay-event-results-index :trackEvent="$trackEvent"
                                                                        :trackMeet="$trackMeet"
                                                                        :gender="$gender" />
