@@ -25,7 +25,7 @@ class EventSubtypeCalendarContainer extends Component
 
     public function showModal($workoutId)
     {
-        $this->workout = HurdleWorkout::firstWhere('id', $workoutId);
+        $this->workout = EventSubtypeWorkout::firstWhere('id', $workoutId);
 
         $this->showEventModal = true;
     }
