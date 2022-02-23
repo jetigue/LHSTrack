@@ -43,17 +43,63 @@
                         x-data="{ show: false }" @mouseover="show=true" @mouseleave="show=false"
                         wire:loading.class.delay="opacity-50"
                     >
-                        <x-table.cell class="hidden md:flex md:w-2/12">
+                        <x-table.cell class="hidden md:flex md:w-2/12 justify-start">
                             {{ $result->place_with_suffix }}
                         </x-table.cell>
                         <x-table.cell class="flex w-7/12 md:w-4/12 lg:w-3/12">
-                            <a href="{{ $result->athlete->path() }}" class="hover:underline">
-                                {{ $result->athlete->fullName }}
-                            </a>
+                            <div class="flex flex-col">
+                                <div class="">
+                                    {{ $result->relay_team }}
+                                </div>
+                                <ul class="text-gray-600 space-y-1.5 px-3 text-xs">
+                                    <li><a href="{{ $result->firstAthlete->path() }}"
+                                        class="hover:underline">{{ $result->firstAthlete->fullname }}</a></li>
+                                    <li><a href="{{ $result->secondAthlete->path() }}"
+                                        class="hover:underline">{{ $result->secondAthlete->fullname }}</a></li>
+                                    <li><a href="{{ $result->thirdAthlete->path() }}"
+                                        class="hover:underline">{{ $result->thirdAthlete->fullname }}</a></li>
+                                    <li><a href="{{ $result->fourthAthlete->path() }}"
+                                        class="hover:underline">{{ $result->fourthAthlete->fullname }}</a></li>
+                                </ul>
+                            </div>
                         </x-table.cell>
                         <x-table.cell class="flex w-4/12 w-3/12 lg:w-2/12 items-baseline">
-                            {{ ltrim($result->time, 0) }}.<span
-                                class="text-xs text-gray-600">{{$result->milliseconds}}</span>
+                            <div class="flex flex-col">
+                                <div class="">
+                                    {{ ltrim($result->time, 0) }}.<span
+                                        class="text-xs text-gray-600">{{$result->milliseconds}}</span>
+                                </div>
+                                <ul class="text-gray-600 space-y-1.5 px-3 text-xs">
+                                    @if ($result->firstLegTime)
+                                        <li>{{ ltrim($result->firstLegTime, 0) }}.
+                                            <span class="text-xs text-gray-600">
+                                            {{$result->leg_1_milliseconds}}
+                                        </span>
+                                        </li>
+                                    @endif
+                                    @if ($result->secondLegTime)
+                                        <li>{{ ltrim($result->secondLegTime, 0) }}.
+                                            <span class="text-xs text-gray-600">
+                                                {{$result->leg_2_milliseconds}}
+                                            </span>
+                                        </li>
+                                    @endif
+                                    @if ($result->thirdLegTime)
+                                        <li>{{ ltrim($result->thirdLegTime, 0) }}.
+                                            <span class="text-xs text-gray-600">
+                                                {{$result->leg_3_milliseconds}}
+                                            </span>
+                                        </li>
+                                    @endif
+                                    @if ($result->fourthLegTime)
+                                        <li>{{ ltrim($result->fourthLegTime, 0) }}.
+                                            <span class="text-xs text-gray-600">
+                                                {{$result->leg_4_milliseconds}}
+                                            </span>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
                         </x-table.cell>
                         <x-table.cell class="hidden lg:flex lg:w-2/12">
                             {{ $result->heat }}
@@ -103,7 +149,7 @@
 
     <x-modal.add-edit-record record-title="{{ $trackEvent->name }} Result">
         <livewire:meets.track-meet-relay-event-result-form :gender="$gender"
-                                                             :trackMeet="$trackMeet"
-                                                             :trackEvent="$trackEvent" />
+                                                           :trackMeet="$trackMeet"
+                                                           :trackEvent="$trackEvent" />
     </x-modal.add-edit-record>
 </div>

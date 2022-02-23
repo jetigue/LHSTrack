@@ -63,7 +63,7 @@
                                                                      :gender="$gender" />
             @endif
         </div>
-        <div class="col-span-4 md:col-span-1">
+        <div class="col-span-4 md:col-span-1 lg:pl-6">
             @include('livewire.meets._meet_event_menu')
         </div>
     </div>

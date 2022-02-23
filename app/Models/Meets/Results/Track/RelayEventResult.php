@@ -18,6 +18,7 @@ class RelayEventResult extends Model
     protected $table = 'tf_meet_relay_event_results';
 
     protected $fillable = [
+        'track_event_id',
         'track_meet_id',
         'relay_team',
         'gender_id',
