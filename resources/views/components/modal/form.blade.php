@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 text-gray-800">
             {{ $slot }}
         </div>
     </div>
