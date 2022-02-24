@@ -1,4 +1,6 @@
-<div class="bg-white overflow-hidden overflow-hidden shadow rounded-lg">
+@props(['text' => 'text-gray-800'])
+
+<div class="bg-white overflow-hidden overflow-hidden shadow rounded-lg {{ $text }}">
     <div class="px-4 py-5 sm:p-6">
         {{ $slot }}
     </div>
