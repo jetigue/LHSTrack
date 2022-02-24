@@ -39,7 +39,7 @@
                     {{ $banner }}
                 @endif
             </div>
-            <div class="max-w-screen-xl mx-auto w-full px-2 md:px-4 md:px-6">
+            <div class="max-w-screen-xl mx-auto w-full px-2 md:px-4 md:px-6 text-gray-800">
                 {{ $slot }}
             </div>
         </main>
