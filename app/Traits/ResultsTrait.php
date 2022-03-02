@@ -22,7 +22,7 @@ trait ResultsTrait
             }
             return $value.'th';
         }
-        return 'NA';
+        return '';
     }
 
     public function getTimeAttribute(): string
