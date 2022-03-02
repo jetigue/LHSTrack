@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Meets;
+namespace App\Http\Livewire\Meets\Track;
 
 use App\Models\Meets\TrackMeet;
 use Livewire\Component;
+use function view;
 
 class ShowTrackMeet extends Component
 {

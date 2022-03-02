@@ -25,6 +25,11 @@ class Division extends Model
         return $this->belongsTo(Level::class, 'level_id');
     }
 
+    public function getNameAttribute(): string
+    {
+        return $this->gender->name . ' ' . $this->level->name;
+    }
+
     public function sluggable(): array
     {
         return [

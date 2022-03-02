@@ -62,13 +62,13 @@
                 <x-input.group for="leg_1_athlete_id" label="1st Leg" :error="$errors->first('leg_1_athlete_id')">
                     <x-input.select wire:model="leg_1_athlete_id">
                         <option value=""></option>
-                        @if( $this->gender_id == 1 )
+                        @if( $this->teamResult->division->gender_id == 1 )
                             @foreach($athletes->where('sex', 'm') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
                                 </option>
                             @endforeach
-                        @elseif( $this->gender_id == 2)
+                        @elseif( $this->teamResult->division->gender_id == 2)
                             @foreach($athletes->where('sex', 'f') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
@@ -110,13 +110,13 @@
                 <x-input.group for="leg_2_athlete_id" label="2nd Leg" :error="$errors->first('leg_2_athlete_id')">
                     <x-input.select wire:model="leg_2_athlete_id">
                         <option value=""></option>
-                        @if( $this->gender_id == 1 )
+                        @if( $this->teamResult->division->gender_id == 1 )
                             @foreach($athletes->where('sex', 'm') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
                                 </option>
                             @endforeach
-                        @elseif( $this->gender_id == 2)
+                        @elseif( $this->teamResult->division->gender_id == 2)
                             @foreach($athletes->where('sex', 'f') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
@@ -157,13 +157,13 @@
                 <x-input.group for="leg_1_athlete_id" label="3rd Leg" :error="$errors->first('leg_3_athlete_id')">
                     <x-input.select wire:model="leg_3_athlete_id">
                         <option value=""></option>
-                        @if( $this->gender_id == 1 )
+                        @if( $this->teamResult->division->gender_id == 1 )
                             @foreach($athletes->where('sex', 'm') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
                                 </option>
                             @endforeach
-                        @elseif( $this->gender_id == 2)
+                        @elseif( $this->teamResult->division->gender_id == 2)
                             @foreach($athletes->where('sex', 'f') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
@@ -205,13 +205,13 @@
                 <x-input.group for="leg_4_athlete_id" label="4th Leg" :error="$errors->first('leg_4_athlete_id')">
                     <x-input.select wire:model="leg_4_athlete_id">
                         <option value=""></option>
-                        @if( $this->gender_id == 1 )
+                        @if( $this->teamResult->division->gender_id == 1 )
                             @foreach($athletes->where('sex', 'm') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}
                                 </option>
                             @endforeach
-                        @elseif( $this->gender_id == 2)
+                        @elseif( $this->teamResult->division->gender_id == 2)
                             @foreach($athletes->where('sex', 'f') as $athlete)
                                 <option value="{{ $athlete->id }}">
                                     {{ $athlete->fullName }}

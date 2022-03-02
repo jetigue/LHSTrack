@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Meets;
+namespace App\Http\Livewire\Meets\Track\Results;
 
 use App\Models\Meets\Results\Track\FieldEventResult;
-use App\Models\Meets\TrackMeet;
+use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Races\Gender;
 use Livewire\Component;
+use function session;
+use function view;
 
-class TrackMeetFieldEventResultsIndex extends Component
+class FieldEventResultsIndex extends Component
 {
     public TrackEvent $trackEvent;
-    public TrackMeet $trackMeet;
+    public TeamResult $teamResult;
     public $result = '';
     public $editing = false;
     public $showFormModal = false;
     public $showConfirmModal = false;
-    public $gender;
 
     protected $listeners = [
         'hideFormModal',
@@ -25,15 +26,6 @@ class TrackMeetFieldEventResultsIndex extends Component
         'recordAdded',
         'recordUpdated'
     ];
-
-    public function mount()
-    {
-        if (str_contains(url()->current(), 'boys')) {
-            $this->gender = Gender::firstWhere('id', 1);
-        } else {
-            $this->gender = Gender::firstWhere('id', 2);
-        }
-    }
 
     public function showFormModal()
     {
@@ -63,6 +55,7 @@ class TrackMeetFieldEventResultsIndex extends Component
 
     public function destroy(FieldEventResult $result)
     {
+        $this->result = $result;
         $this->result->delete();
         $this->showConfirmModal = false;
         session()->flash('success', 'Result Deleted Successfully');
@@ -85,11 +78,10 @@ class TrackMeetFieldEventResultsIndex extends Component
 
     public function render()
     {
-        return view('livewire.meets.track-meet-field-event-results-index', [
-            'results' => FieldEventResult::with('trackMeet', 'athlete', 'trackEvent')
-                ->where('track_meet_id', $this->trackMeet->id)
+        return view('livewire.meets.track.results.field-event-results-index', [
+            'results' => FieldEventResult::with('teamResult', 'athlete', 'trackEvent')
+                ->where('track_team_result_id', $this->teamResult->id)
                 ->where('track_event_id', $this->trackEvent->id)
-                ->where('gender_id', $this->gender->id)
                 ->orderBy('place')
                 ->get(),
         ]);

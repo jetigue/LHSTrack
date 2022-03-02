@@ -11,9 +11,10 @@ use App\Http\Livewire\Main\TeamRoster;
 use App\Http\Livewire\Main\OurTeam;
 use App\Http\Livewire\Main\GirlsRoster;
 use App\Http\Livewire\Main\Welcome;
-use App\Http\Livewire\Meets\ShowTrackMeet;
-use App\Http\Livewire\Meets\TrackMeetEventResultsIndex;
-use App\Http\Livewire\Meets\TrackMeetsIndex;
+use App\Http\Livewire\Meets\Track\ShowTrackMeet;
+use App\Http\Livewire\Meets\Track\Results\ShowTeamResult;
+use App\Http\Livewire\Meets\Track\Results\TeamResultsEventResultsIndex;
+use App\Http\Livewire\Meets\Track\TrackMeetsIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventSubtypesIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventsIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventTypesIndex;
@@ -62,6 +63,8 @@ Route::get('/team-announcements', TeamAnnouncementsIndex::class)->name('Team Ann
 Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 
+Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('training/distance', EventPageIndex::class)->name('Distance');
     Route::get('training/distance-calendar', EventSubtypeCalendarContainer::class)->name('Distance Calendar');
@@ -75,15 +78,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('training/sprints-calendar', EventSubtypeCalendarContainer::class)->name('Sprints Calendar');
     Route::get('training/throws', EventPageIndex::class)->name('Throws');
     Route::get('training/throws-calendar', EventSubtypeCalendarContainer::class)->name('Throws Calendar');
-
-    Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 });
 
 Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track/meets', TrackMeetsIndex::class)->name('Track Meets');
     Route::get('/track/meets/{trackMeet:slug}', ShowTrackMeet::class);
-    Route::get('/track/meets/{trackMeet:slug}/boys/events/{trackEvent:slug}', TrackMeetEventResultsIndex::class);
-    Route::get('/track/meets/{trackMeet:slug}/girls/events/{trackEvent:slug}', TrackMeetEventResultsIndex::class);
+    Route::get('/track/meets/team-results/{teamResult:slug}', ShowTeamResult::class);
+    Route::get('/track/meets/team-results/{teamResult:slug}/event-results/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
+    Route::get('/track/meets/{trackMeet:slug}/boys/events/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
+    Route::get('/track/meets/{trackMeet:slug}/girls/events/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
 
 
     Route::get('/track/meet-names', TrackMeetNamesIndex::class)->name('Track Meet Names');

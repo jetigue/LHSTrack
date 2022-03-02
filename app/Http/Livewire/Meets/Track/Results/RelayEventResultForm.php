@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Meets;
+namespace App\Http\Livewire\Meets\Track\Results;
 
 use App\Models\Athletes\Athlete;
 use App\Models\Meets\Results\Track\RelayEventResult;
-use App\Models\Meets\Results\Track\RunningEventResult;
+use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Properties\Events\Track\TrackEvent;
 use Livewire\Component;
+use function view;
 
-class TrackMeetRelayEventResultForm extends Component
+class RelayEventResultForm extends Component
 {
     public $relayEventResult = null;
     public $track_event_id;
-    public $track_meet_id;
-    public $gender_id;
+    public $track_team_result_id;
     public $leg_1_athlete_id;
     public $leg_2_athlete_id;
     public $leg_3_athlete_id;
@@ -43,6 +43,7 @@ class TrackMeetRelayEventResultForm extends Component
     public $leg_4_seconds;
     public $relay_team;
     public TrackEvent $trackEvent;
+    public TeamResult $teamResult;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
@@ -50,10 +51,9 @@ class TrackMeetRelayEventResultForm extends Component
         'editRelayEventResult'
     ];
 
-    public function mount($gender, $trackMeet)
+    public function mount()
     {
-        $this->gender_id = $gender->id;
-        $this->track_meet_id = $trackMeet->id;
+        $this->track_team_result_id = $this->teamResult->id;
         $this->track_event_id = $this->trackEvent->id;
     }
 
@@ -93,7 +93,6 @@ class TrackMeetRelayEventResultForm extends Component
         $this->leg_4_milliseconds = $this->relayEventResult->leg_4_milliseconds;
         $this->heat = $this->relayEventResult->heat;
         $this->points = $this->relayEventResult->points;
-        $this->gender_id = $this->relayEventResult->gender_id;
     }
 
     public function rules()
@@ -130,9 +129,8 @@ class TrackMeetRelayEventResultForm extends Component
         $this->validate();
 
         $relayEventResult = [
-            'track_meet_id' => $this->track_meet_id,
+            'track_team_result_id' => $this->track_team_result_id,
             'track_event_id' => $this->track_event_id,
-            'gender_id' => $this->gender_id,
             'leg_1_athlete_id' => $this->leg_1_athlete_id,
             'leg_2_athlete_id' => $this->leg_2_athlete_id,
             'leg_3_athlete_id' => $this->leg_3_athlete_id,
@@ -195,7 +193,7 @@ class TrackMeetRelayEventResultForm extends Component
 
     public function render()
     {
-        return view('livewire.meets.track-meet-relay-event-result-form', [
+        return view('livewire.meets.track.results.relay-event-result-form', [
             'athletes' => Athlete::where('status', '=', 'a')
                 ->orderBy('last_name')
                 ->get(),

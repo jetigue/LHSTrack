@@ -2,7 +2,7 @@
     <x-flash />
     <div class="flex flex-col w-full">
         <x-headings.section>
-            {{ $gender->name }} {{ $trackEvent->name }} Results
+            {{ $this->teamResult->division->name }} {{ $trackEvent->name }} Results
         </x-headings.section>
 
         <x-table.table class="table-fixed relative">
@@ -18,11 +18,11 @@
                     </x-table.heading>
 
                     <x-table.heading class="w-4/12 md:flex md:w-3/12 lg:w-2/12">
-                        Time
+                        Mark
                     </x-table.heading>
 
                     <x-table.heading class="hidden lg:flex lg:w-2/12">
-                        Heat
+                        Flight
                     </x-table.heading>
 
                     <x-table.heading class="hidden md:flex md:w-2/12">
@@ -46,18 +46,24 @@
                         <x-table.cell class="hidden md:flex md:w-2/12">
                             {{ $result->place_with_suffix }}
                         </x-table.cell>
+
                         <x-table.cell class="flex w-7/12 md:w-4/12 lg:w-3/12">
                             <a href="{{ $result->athlete->path() }}" class="hover:underline">
                                 {{ $result->athlete->fullName }}
                             </a>
                         </x-table.cell>
-                        <x-table.cell class="flex w-4/12 w-3/12 lg:w-2/12 items-baseline">
-                            {{ ltrim($result->time, 0) }}.<span
-                                class="text-xs text-gray-600">{{$result->milliseconds}}</span>
+
+                        <x-table.cell class="flex w-4/12 md:w-3/12 lg:w-2/12 items-baseline">
+                            {{ $result->mark }}
+                            <span class="text-xs">
+                                {{$result->fraction }}
+                            </span>
+                            "
                         </x-table.cell>
                         <x-table.cell class="hidden lg:flex lg:w-2/12">
-                            {{ $result->heat }}
+                            {{ $result->flight }}
                         </x-table.cell>
+
                         <x-table.cell class="hidden md:flex md:w-2/12">
                             {{ $result->points }}
                         </x-table.cell>
@@ -102,8 +108,8 @@
     </div>
 
     <x-modal.add-edit-record record-title="{{ $trackEvent->name }} Result">
-        <livewire:meets.track-meet-running-event-result-form :gender="$gender"
-                                                             :trackMeet="$trackMeet"
-                                                             :trackEvent="$trackEvent" />
+        <livewire:meets.track.results.field-event-result-form
+            :teamResult="$teamResult"
+            :trackEvent="$trackEvent" />
     </x-modal.add-edit-record>
 </div>

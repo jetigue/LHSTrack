@@ -3,6 +3,15 @@ namespace App\Traits;
 
 trait VDOTTrait
 {
+    public function distance()
+    {
+        $meters = $this->trackEvent->distance_in_meters;
+
+        if ($meters >= 1500) {
+            return $meters;
+        }
+        return null;
+    }
 
     /**
      * Save the VDOT value on store and update.
@@ -12,7 +21,7 @@ trait VDOTTrait
         parent::boot();
 
         static::saving(function ($result) {
-            if ($result->distance() >= 1500) {
+            if ($result->distance()) {
                 $time = $result->attributes['total_seconds'];
                 $minutes = $time / 60;
                 $distance = $result->distance();

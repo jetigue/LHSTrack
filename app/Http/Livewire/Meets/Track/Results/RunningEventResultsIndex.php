@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Meets;
+namespace App\Http\Livewire\Meets\Track\Results;
 
-use App\Models\Meets\Results\Track\RelayEventResult;
-use App\Models\Meets\TrackMeet;
+use App\Models\Meets\Results\Track\RunningEventResult;
+use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Properties\Events\Track\TrackEvent;
-use App\Models\Properties\Races\Gender;
 use Livewire\Component;
+use function session;
+use function view;
 
-class TrackMeetRelayEventResultsIndex extends Component
+class RunningEventResultsIndex extends Component
 {
+    public TeamResult $teamResult;
     public TrackEvent $trackEvent;
-    public TrackMeet $trackMeet;
+
     public $result = '';
     public $editing = false;
     public $showFormModal = false;
     public $showConfirmModal = false;
-    public $gender;
 
     protected $listeners = [
         'hideFormModal',
@@ -25,15 +26,6 @@ class TrackMeetRelayEventResultsIndex extends Component
         'recordAdded',
         'recordUpdated'
     ];
-
-    public function mount()
-    {
-        if (str_contains(url()->current(), 'boys')) {
-            $this->gender = Gender::firstWhere('id', 1);
-        } else {
-            $this->gender = Gender::firstWhere('id', 2);
-        }
-    }
 
     public function showFormModal()
     {
@@ -55,13 +47,13 @@ class TrackMeetRelayEventResultsIndex extends Component
         session()->flash('success', 'Result Updated');
     }
 
-    public function confirmDelete(RelayEventResult $result)
+    public function confirmDelete(RunningEventResult $result)
     {
         $this->result = $result;
         $this->showConfirmModal = true;
     }
 
-    public function destroy(RelayEventResult $result)
+    public function destroy(RunningEventResult $result)
     {
         $this->result = $result;
         $this->result->delete();
@@ -77,20 +69,19 @@ class TrackMeetRelayEventResultsIndex extends Component
         $this->emit('cancelCreate');
     }
 
-    public function editRecord(RelayEventResult $result)
+    public function editRecord(RunningEventResult $result)
     {
         $this->showFormModal = true;
         $this->editing = true;
-        $this->emit('editRelayEventResult', $result->id);
+        $this->emit('editRunningEventResult', $result->id);
     }
 
     public function render()
     {
-        return view('livewire.meets.track-meet-relay-event-results-index', [
-            'results' => RelayEventResult::with('trackMeet', 'trackEvent')
-                ->where('track_meet_id', $this->trackMeet->id)
+        return view('livewire.meets.track.results.running-event-results-index', [
+            'results' => RunningEventResult::with('teamResult', 'athlete', 'trackEvent')
+                ->where('track_team_result_id', $this->teamResult->id)
                 ->where('track_event_id', $this->trackEvent->id)
-                ->where('gender_id', $this->gender->id)
                 ->orderBy('place')
                 ->get(),
         ]);

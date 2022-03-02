@@ -69,7 +69,7 @@ class TeamAnnouncementsIndex extends Component
             return view('livewire.communication.team-announcements-index', [
 
                 'announcements' => TeamAnnouncement::with('owner')
-                    ->orderBy('end_date', 'desc')->get(),
+                    ->orderBy('updated_at', 'desc')->get(),
 
                 'displayedAnnouncement' => TeamAnnouncement::with('owner')
                     ->orderBy('end_date', 'desc')->first(),

@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Meets;
+namespace App\Http\Livewire\Meets\Track\Results;
 
 use App\Models\Athletes\Athlete;
 use App\Models\Meets\Results\Track\FieldEventResult;
+use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Properties\Events\Track\TrackEvent;
 use Livewire\Component;
+use function view;
 
-class TrackMeetFieldEventResultForm extends Component
+class FieldEventResultForm extends Component
 {
     public $eventResult = null;
     public $track_event_id;
     public $track_meet_id;
-    public $gender_id;
     public $athlete_id;
     public $place;
     public $total_inches;
@@ -21,7 +22,9 @@ class TrackMeetFieldEventResultForm extends Component
     public $points;
     public $feet;
     public $inches;
+    public $track_team_result_id;
     public TrackEvent $trackEvent;
+    public TeamResult $teamResult;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
@@ -29,10 +32,9 @@ class TrackMeetFieldEventResultForm extends Component
         'editFieldEventResult'
     ];
 
-    public function mount($gender, $trackMeet)
+    public function mount()
     {
-        $this->gender_id = $gender->id;
-        $this->track_meet_id = $trackMeet->id;
+        $this->track_team_result_id = $this->teamResult->id;
         $this->track_event_id = $this->trackEvent->id;
     }
 
@@ -52,7 +54,6 @@ class TrackMeetFieldEventResultForm extends Component
         $this->quarter_inch = $this->eventResult->quarter_inch;
         $this->flight = $this->eventResult->flight;
         $this->points = $this->eventResult->points;
-        $this->gender_id = $this->eventResult->gender_id;
     }
 
     public function rules()
@@ -73,9 +74,8 @@ class TrackMeetFieldEventResultForm extends Component
         $this->validate();
 
         $eventResult = [
-            'track_meet_id' => $this->track_meet_id,
+            'track_team_result_id' => $this->track_team_result_id,
             'track_event_id' => $this->track_event_id,
-            'gender_id' => $this->gender_id,
             'athlete_id' => $this->athlete_id,
             'place' => $this->place,
             'total_inches' => ($this->feet * 12) + $this->inches,
@@ -102,7 +102,7 @@ class TrackMeetFieldEventResultForm extends Component
 
     public function render()
     {
-        return view('livewire.meets.track-meet-field-event-result-form', [
+        return view('livewire.meets.track.results.field-event-result-form', [
             'athletes' => Athlete::where('status', '=', 'a')
                 ->orderBy('last_name')
                 ->get(),

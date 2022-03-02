@@ -2,6 +2,7 @@
 
 namespace App\Models\Meets;
 
+use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Pivot\BoysTrackMeetEvent;
 use App\Models\Pivot\GirlsTrackMeetEvent;
 use App\Models\Properties\Events\Track\TrackEvent;
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TrackMeet extends Model
 {
@@ -97,5 +99,10 @@ class TrackMeet extends Model
     public function girlsTrackEvents(): BelongsToMany
     {
         return $this->belongsToMany(TrackEvent::class, 'girls_tf_meet_events')->using(GirlsTrackMeetEvent::class);
+    }
+
+    public function teamResults(): HasMany
+    {
+        return $this->hasMany(TeamResult::class);
     }
 }

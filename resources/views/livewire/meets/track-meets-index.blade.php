@@ -20,25 +20,15 @@
                         <x-table.heading sortable
                                          wire:click="sortBy('meet_date')"
                                          :direction="$sortField === 'meet_date' ? $sortDirection : null"
-                                         class="w-11/12 lg:w-4/12"
+                                         class="w-11/12"
                         >
                             Date
                         </x-table.heading>
 
-                        <x-table.heading class="hidden lg:inline-block lg:w-3/12">
-                            Host
-                        </x-table.heading>
-
-                        <x-table.heading class="hidden lg:inline-block lg:w-3/12">
-                            Venue
-                        </x-table.heading>
-
-                        <x-table.heading class="hidden lg:inline-block lg:w-1/12">
-                            Page
-                        </x-table.heading>
-
                         <x-table.heading class="w-1/12">
-                            <x-button.plus />
+                            @can('coach')
+                                <x-button.plus />
+                            @endcan
                         </x-table.heading>
                     </x-table.header-row>
                 </x-slot>
@@ -58,53 +48,55 @@
                                             {{ $trackMeet->meetName->name }}
                                         </a>
                                     </div>
-                                    <div class="text-xs px-2 font-semibold text-gray-500">
-                                        {{ $trackMeet->meet_date->format('n-d-Y') }}
+                                    <div class="text-sm px-4 text-gray-500">
+                                        {{ $trackMeet->meet_date->format('M d, Y') }}
                                     </div>
 
                                 </x-table.cell>
-                                <x-table.cell class="hidden lg:inline-block lg:w-3/12">
-                                    {{ $trackMeet->host->name }}
+                                <x-table.cell class="hidden lg:inline-block lg:w-5/12 text-sm">
+                                    <div><span class="text-gray-400">Host: </span>{{ $trackMeet->host->name }}</div>
+                                    <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}</div>
                                 </x-table.cell>
-                                <x-table.cell class="hidden lg:inline-block lg:w-3/12">
-                                    {{ $trackMeet->venue->name }}
+
+                                <x-table.cell class="hidden lg:inline-block lg:w-2/12">
+                                    <a href="{{ $trackMeet->meet_page_url }}" class="hover:underline text-blue-600">Meet
+                                        Page</a>
                                 </x-table.cell>
-                                <x-table.cell class="hidden lg:inline-block lg:w-1/12">
-                                    @if($trackMeet->teamResults)
-                                        <a href="{{ $trackMeet->meet_page_url }}" class="hover:underline">Results</a>
-                                    @elseif($trackMeet->meet_page_url)
-                                        <a href="{{ $trackMeet->meet_page_url }}" class="hover:underline">Meet Info</a>
-                                    @endif
-                                </x-table.cell>
-                                <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end">
-                                    <x-dropdown.dropdown>
-                                        <x-slot name="trigger">
-                                            <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
-                                        </x-slot>
-                                        <x-slot name="content">
-                                            <x-dropdown.link href="{{ $trackMeet->path() }}">
-                                                View Meet
-                                            </x-dropdown.link>
-                                            <div class="px-2">
-                                                <hr>
-                                            </div>
-                                            <x-dropdown.link wire:click="editRecord({{ $trackMeet->id }})">
-                                                Edit
-                                            </x-dropdown.link>
-                                            <x-dropdown.link wire:click="confirmDelete({{ $trackMeet->id }})">
-                                                Delete
-                                            </x-dropdown.link>
-                                        </x-slot>
-                                    </x-dropdown.dropdown>
+                                <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end lg:pr-2">
+                                    @can('coach')
+                                        <x-dropdown.dropdown>
+                                            <x-slot name="trigger">
+                                                <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
+                                            </x-slot>
+                                            <x-slot name="content">
+                                                <x-dropdown.link href="{{ $trackMeet->path() }}">
+                                                    View Meet
+                                                </x-dropdown.link>
+                                                <div class="px-2">
+                                                    <hr>
+                                                </div>
+                                                <x-dropdown.link wire:click="editRecord({{ $trackMeet->id }})">
+                                                    Edit
+                                                </x-dropdown.link>
+                                                <x-dropdown.link wire:click="confirmDelete({{ $trackMeet->id }})">
+                                                    Delete
+                                                </x-dropdown.link>
+                                            </x-slot>
+                                        </x-dropdown.dropdown>
+                                    @endcan
                                 </x-table.cell>
                             </x-slot>
                             <x-slot name="expandedContent">
                                 <div class="flex text-xs px-2">
                                     <div class="flex flex-col text-gray-600">
                                         <div><span class="text-gray-400">Host: </span>{{ $trackMeet->host->name }}</div>
-                                        <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}</div>
-                                        <div><span class="text-gray-400">Season: </span>{{ $trackMeet->season->name }}</div>
-                                        <div><span class="text-gray-400">Timing: </span>{{ $trackMeet->timingMethod->name }}</div>
+                                        <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}
+                                        </div>
+                                        <div><span class="text-gray-400">Season: </span>{{ $trackMeet->season->name }}
+                                        </div>
+                                        <div><span
+                                                class="text-gray-400">Timing: </span>{{ $trackMeet->timingMethod->name }}
+                                        </div>
                                         @if( $trackMeet->meetResults )
                                             <div>
                                                 <a href="{{ $trackMeet->meet_page_url }}">
@@ -120,10 +112,12 @@
                                         @endif
                                     </div>
                                 </div>
-                                    <div class="flex justify-end px-8 space-x-2 items-center">
+                                <div class="flex justify-end px-8 space-x-2 items-center">
+                                    @can('coach')
                                         <x-button.edit />
                                         <x-button.delete />
-                                    </div>
+                                    @endcan
+                                </div>
                             </x-slot>
 
 

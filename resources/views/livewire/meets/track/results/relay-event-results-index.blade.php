@@ -2,7 +2,7 @@
     <x-flash />
     <div class="flex flex-col w-full">
         <x-headings.section>
-            {{ $gender->name }} {{ $trackEvent->name }} Results
+            {{ $this->teamResult->division->name }} {{ $trackEvent->name }} Results
         </x-headings.section>
 
         <x-table.table class="table-fixed relative">
@@ -148,8 +148,8 @@
     </div>
 
     <x-modal.add-edit-record record-title="{{ $trackEvent->name }} Result">
-        <livewire:meets.track-meet-relay-event-result-form :gender="$gender"
-                                                           :trackMeet="$trackMeet"
-                                                           :trackEvent="$trackEvent" />
+        <livewire:meets.track.results.relay-event-result-form
+               :teamResult="$teamResult"
+               :trackEvent="$trackEvent" />
     </x-modal.add-edit-record>
 </div>

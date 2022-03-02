@@ -35,11 +35,11 @@
                         <div class="w-2/12">
                         </div>
                         <div class="w-2/12">
-                            {{ $result->trackMeet->meet_date->format('M j, Y')}}
+                            {{ $result->teamResult->trackMeet->meet_date->format('M j, Y')}}
                         </div>
                         <div class="w-4/12 truncate">
-                            <a href="{{ $result->trackMeet->path() }}" class="hover:underline">
-                                {{ $result->trackMeet->meetName->name}}
+                            <a href="{{ $result->teamResult->trackMeet->path() }}" class="hover:underline">
+                                {{ $result->teamResult->trackMeet->meetName->name}}
                             </a>
                         </div>
                         <div class="w-2/12">

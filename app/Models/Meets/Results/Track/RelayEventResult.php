@@ -15,13 +15,12 @@ class RelayEventResult extends Model
 {
     use HasFactory, ResultsTrait;
 
-    protected $table = 'tf_meet_relay_event_results';
+    protected $table = 'tf_relay_event_results';
 
     protected $fillable = [
         'track_event_id',
-        'track_meet_id',
+        'track_team_result_id',
         'relay_team',
-        'gender_id',
         'place',
         'total_seconds',
         'milliseconds',
@@ -46,14 +45,9 @@ class RelayEventResult extends Model
         return $this->belongsTo(TrackEvent::class, 'track_event_id');
     }
 
-    public function gender(): BelongsTo
+    public function teamResult(): BelongsTo
     {
-        return $this->belongsTo(Gender::class, 'gender_id');
-    }
-
-    public function trackMeet(): BelongsTo
-    {
-        return $this->belongsTo(TrackMeet::class, 'track_meet_id');
+        return $this->belongsTo(TeamResult::class, 'track_team_result_id');
     }
 
     public function firstAthlete(): BelongsTo

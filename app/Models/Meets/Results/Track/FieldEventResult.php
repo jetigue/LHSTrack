@@ -15,13 +15,12 @@ class FieldEventResult extends Model
 {
     use HasFactory, ResultsTrait;
 
-    protected $table='tf_meet_field_event_results';
+    protected $table='tf_field_event_results';
 
     protected $fillable = [
+        'track_team_result_id',
         'track_event_id',
-        'track_meet_id',
         'athlete_id',
-        'gender_id',
         'total_inches',
         'quarter_inch',
         'place',
@@ -57,13 +56,8 @@ class FieldEventResult extends Model
         return $this->belongsTo(TrackEvent::class, 'track_event_id');
     }
 
-    public function gender(): BelongsTo
+    public function teamResult(): BelongsTo
     {
-        return $this->belongsTo(Gender::class, 'gender_id');
-    }
-
-    public function trackMeet(): BelongsTo
-    {
-        return $this->belongsTo(TrackMeet::class, 'track_meet_id');
+        return $this->belongsTo(TeamResult::class, 'track_team_result_id');
     }
 }

@@ -13,13 +13,13 @@
         <x-input.group for="athlete_id" label="Athlete" :error="$errors->first('athlete_id')">
             <x-input.select wire:model="athlete_id">
                 <option value="">Name...</option>
-                @if( $this->gender_id == 1 )
+                @if( $this->teamResult->division->gender_id == 1 )
                     @foreach($athletes->where('sex', 'm') as $athlete)
                         <option value="{{ $athlete->id }}">
                             {{ $athlete->fullName }}
                         </option>
                     @endforeach
-                @elseif( $this->gender_id == 2)
+                @elseif( $this->teamResult->division->gender_id == 2)
                     @foreach($athletes->where('sex', 'f') as $athlete)
                         <option value="{{ $athlete->id }}">
                             {{ $athlete->fullName }}

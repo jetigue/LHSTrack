@@ -6,8 +6,17 @@
             </x-breadcrumb.item>
         </x-breadcrumb.menu>
 
-        <div class="flex h-full text-2xl md:text-3xl lg:text-4xl font-light text-gray-100 items-end">
-            {{ $trackMeet->meetName->name }}
+        <div class="flex h-full justify-between text-2xl md:text-3xl lg:text-4xl font-light text-gray-100 items-end">
+            <div>
+                {{ $trackMeet->meetName->name }}
+            </div>
+            @if ($trackMeet->meet_page_url)
+                <a href="{{ $trackMeet->meet_page_url }}"
+                   class="hidden md:flex text-sm text-gray-500 hover:text-red-700 font-semibold">
+                    Meet Page
+                </a>
+            @endif
+
         </div>
     </div>
 
@@ -38,13 +47,20 @@
                             <li>{{ $trackMeet->timingMethod->name }}</li>
                         </ul>
                     </div>
+                    <div class="md:hidden text-gray-300 hover:text-red-700 py-1">
+                        <a href="{{ $trackMeet->meet_page_url }}"
+                        >
+                            Meet Page
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="py-4">
-            <livewire:meets.track-meet-events-form :trackMeet="$trackMeet" />
-            <livewire:meets.track-meet-events-index :trackMeet="$trackMeet" />
+            <livewire:meets.track.results.team-results-index :trackMeet="$trackMeet" />
+            {{--            <livewire:meets.track-meet-events-form :trackMeet="$trackMeet" />--}}
+            {{--            <livewire:meets.track-meet-events-index :trackMeet="$trackMeet" />--}}
         </div>
     </div>
 </div>
