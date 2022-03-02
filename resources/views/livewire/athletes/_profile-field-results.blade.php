@@ -12,8 +12,8 @@
             <div class="w-4/12">
                 Meet
             </div>
-            <div class="w-2/12">
-                Time
+            <div class="w-2/12 text-center">
+                Mark
             </div>
             <div class="w-1/12 text-center">
                 Place
@@ -42,7 +42,7 @@
                                 {{ $result->teamResult->trackMeet->meetName->name}}
                             </a>
                         </div>
-                        <div class="w-2/12">
+                        <div class="w-2/12 text-center">
                             {{ $result->mark}}<span
                                 class="text-gray-500 text-sm">{{ $result->fraction }}</span>
                             "
