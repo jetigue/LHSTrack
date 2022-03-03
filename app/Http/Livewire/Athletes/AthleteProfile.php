@@ -31,8 +31,7 @@ class AthleteProfile extends Component
             })->get(),
 
             'runningEventResults' => RunningEventResult::query()
-                ->where('athlete_id', $this->athlete->id)
-                ->orderBy('teamResult.trackMeet.meet_date')->get(),
+                ->where('athlete_id', $this->athlete->id)->get(),
 
             'fieldEventResults' => FieldEventResult::query()
                 ->where('athlete_id', $this->athlete->id)->get()
