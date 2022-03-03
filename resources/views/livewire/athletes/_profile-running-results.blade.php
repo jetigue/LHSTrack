@@ -30,7 +30,7 @@
                         {{$runningTrackEvent->name}}
                     </div>
                 </div>
-                @foreach($runningEventResults->where('track_event_id', '=', $runningTrackEvent->id)->sortBy('trackMeet.meet_date') as $result)
+                @foreach($runningEventResults->where('track_event_id', '==', $runningTrackEvent->id)->sortByDesc('teamResult.trackMeet.meet_date') as $result)
                     <div class="flex space-y-4">
                         <div class="w-2/12">
                         </div>
