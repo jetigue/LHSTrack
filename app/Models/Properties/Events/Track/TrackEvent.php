@@ -3,6 +3,7 @@
 namespace App\Models\Properties\Events\Track;
 
 use App\Models\Meets\Results\Track\FieldEventResult;
+use App\Models\Meets\Results\Track\RelayEventResult;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Meets\TrackMeet;
@@ -89,6 +90,11 @@ class TrackEvent extends Model
     public function fieldEventResults(): HasMany
     {
         return $this->hasMany(FieldEventResult::class);
+    }
+
+    public function relayEventResults(): HasMany
+    {
+        return $this->hasMany(RelayEventResult::class);
     }
 
 //    public function boysRunningEventResults(): HasMany
