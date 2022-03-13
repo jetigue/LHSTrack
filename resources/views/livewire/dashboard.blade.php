@@ -107,7 +107,7 @@
                     </ul>
                 </x-card.card-with-header>
             </div>
-            @endcan
+        @endcan
 
 
         @auth
@@ -129,6 +129,22 @@
                 </x-card.card-with-header>
             </div>
 
+            <div class="grid col-span-4 md:col-span-2 lg:col-span-1">
+                <x-card.card-with-header color="blue-800">
+                    <x-slot name="header">
+                        <div class="text-white">
+                            Training Paces
+                        </div>
+
+                    </x-slot>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="hover:underline"><a href="{{ route('Distance Training Paces') }}">Distance</a>
+                        </li>
+                    </ul>
+                </x-card.card-with-header>
+            </div>
+
         @endauth
+
     </div>
 </div>

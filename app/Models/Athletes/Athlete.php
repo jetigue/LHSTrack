@@ -5,16 +5,20 @@ namespace App\Models\Athletes;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Users\User;
+use App\Traits\TrainingPacesTrait;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class Athlete extends Model
 {
-    use HasFactory;
+    use HasFactory, TrainingPacesTrait;
 
     protected $dates = ['dob', 'physical_expiration_date'];
 
@@ -197,8 +201,13 @@ class Athlete extends Model
         return $this->hasMany(RunningEventResult::class);
     }
 
-    public function distanceEventResults()
+    public function bestPerformance(): HasOne
     {
-        return $this->runningEventResults->whereHas('trackEvent.distance_in_meters',  '>=', 800);
+        return $this->hasOne(RunningEventResult::class)->ofMany('vdot', 'max');
+    }
+
+    public function latestPerformance(): HasOne
+    {
+        return $this->hasOne(RunningEventResult::class)->oldestOfMany();
     }
 }
