@@ -6,6 +6,7 @@ use App\Models\Athletes\Athlete;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Traits\ResultsTrait;
 use App\Traits\VDOTTrait;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,6 +27,10 @@ class RunningEventResult extends Model
         'heat',
         'points'
     ];
+
+//    protected $casts=['total_time' => 'float'];
+
+//    protected $appends=['total_time'];
 
 //    public function getTimeAttribute()
 //    {
@@ -53,4 +58,9 @@ class RunningEventResult extends Model
     {
         return $this->belongsTo(TeamResult::class, 'track_team_result_id');
     }
+//
+//    public function getTotalTimeAttribute(): Attribute
+//    {
+//        return $this->attributes['total_seconds'] + ($this->attributes['milliseconds'] / 100);
+//    }
 }

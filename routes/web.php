@@ -29,6 +29,7 @@ use App\Http\Livewire\Properties\Races\GendersIndex;
 use App\Http\Livewire\Properties\Races\LevelsIndex;
 use App\Http\Livewire\Properties\Races\TitlesIndex;
 use App\Http\Livewire\Team\Lettering\TeamLetteringStandards;
+use App\Http\Livewire\Team\TrackRankings;
 use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialRunningEventResultsIndex;
 use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
@@ -78,6 +79,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('training/sprints-calendar', EventSubtypeCalendarContainer::class)->name('Sprints Calendar');
     Route::get('training/throws', EventPageIndex::class)->name('Throws');
     Route::get('training/throws-calendar', EventSubtypeCalendarContainer::class)->name('Throws Calendar');
+
+    Route::get('track/rankings', TrackRankings::class)->name('Track Rankings');
 });
 
 Route::group(['middleware' => 'can:coach'], function () {

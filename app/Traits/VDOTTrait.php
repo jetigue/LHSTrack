@@ -21,6 +21,9 @@ trait VDOTTrait
         parent::boot();
 
         static::saving(function ($result) {
+
+            $result->total_time = $result->attributes['total_seconds'] + ($result->attributes['milliseconds'] / 100);
+
             if ($result->distance()) {
                 $time = $result->attributes['total_seconds'];
                 $minutes = $time / 60;

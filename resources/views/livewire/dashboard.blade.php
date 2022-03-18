@@ -42,6 +42,7 @@
                     <ul>
                         <li><a href="{{ route('Athletes') }}">Athletes</a></li>
                         <li><a href="{{ route('Physicals') }}">Physicals</a></li>
+                        <li><a href="{{ route('Track Rankings') }}">Track Rankings</a></li>
                     </ul>
                 </x-card.card-with-header>
             </div>

@@ -147,7 +147,7 @@ class Athlete extends Model
         return null;
     }
 
-    public function getGradeAttribute()
+    public function getGradeAttribute(): string
     {
         $m = Carbon::now()->month;
         $y = Carbon::now()->year;
@@ -204,6 +204,11 @@ class Athlete extends Model
     public function bestPerformance(): HasOne
     {
         return $this->hasOne(RunningEventResult::class)->ofMany('vdot', 'max');
+    }
+
+    public function bestTime(): HasOne
+    {
+        return $this->hasOne(RunningEventResult::class)->ofMany('total_time', 'min');
     }
 
     public function latestPerformance(): HasOne

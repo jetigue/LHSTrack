@@ -21,6 +21,7 @@ class CreateTfRunningEventResultsTable extends Migration
             $table->unsignedSmallInteger('place');
             $table->unsignedInteger('total_seconds');
             $table->unsignedTinyInteger('milliseconds')->nullable();
+            $table->float('total_time')->nullable();
             $table->unsignedTinyInteger('points')->nullable();
             $table->float('vdot', 3,1)->nullable();
             $table->unsignedTinyInteger('heat')->nullable();
