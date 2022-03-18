@@ -89,14 +89,16 @@ class TrackRankings extends Component
                     'athletes.sex as sex',
                     'athletes.grad_year as grad_year',
                     'track_events.slug as event',
-                    'track_events.name as eventName'
+                    'track_events.name as eventName',
+                    'track_meet_names.name as trackMeet',
+                    'track_meets.meet_date as meetDate'
                 )
-                ->groupBy('athlete_id', 'track_event_id')
-                ->addSelect(
+                ->groupBy('athlete_id', 'track_event_id', 'trackMeet', 'meetDate')
+//                ->addSelect(
 //                    DB::raw('min(total_seconds) as total_seconds'),
 //                    DB::raw('min(milliseconds) as milliseconds'),
-                    DB::raw('min(track_meet_names.name) as trackMeet'),
-                    DB::raw('min(track_meets.meet_date) as meetDate'))
+//                    DB::raw('min(track_meet_names.name) as trackMeet'),
+//                    DB::raw('min(track_meets.meet_date) as meetDate'))
                 ->orderBy('total_time')
                 ->when($this->sex, function ($query, $sex) {
                     return $query->where('sex', $sex);
