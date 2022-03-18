@@ -42,14 +42,16 @@
                                 {{ $rank++ }}
                             </x-table.cell>
                             <x-table.cell class="flex w-4/12 lg:w-3/12 items-baseline text-sm md:text-base justify-center">
-                                {{ ltrim($bestTime->total_seconds > 59 ? gmdate('i:s', $bestTime->total_seconds) : gmdate('s', $bestTime->total_seconds), 0) }}
-                                <span class="text-xs">.{{ $bestTime->milliseconds }}</span>
+{{--                                {{ ltrim($bestTime->total_seconds > 59 ? gmdate('i:s', $bestTime->total_seconds) : gmdate('s', $bestTime->total_seconds), 0) }}--}}
+{{--                                <span class="text-xs">.{{ $bestTime->milliseconds }}</span>--}}
+                                {{ ltrim(floor($bestTime->total_time) > 59 ? gmdate('i:s', floor($bestTime->total_time)) : gmdate('s', floor($bestTime->total_time)), 0) }}
+                                <span class="text-xs">.{{ explode('.', number_format($bestTime->total_time, 2))[1]}}</span>
                             </x-table.cell>
                             <x-table.cell class="flex w-6/12 lg:w-4/12 text-sm md:text-base">
                                 {{ $bestTime->last_name }}, {{ $bestTime->first_name }}
                             </x-table.cell>
 
-                            <x-table.cell class="hidden lg:flex flex-col lg:w-4/12 text-sm">
+                            <x-table.cell class="hidden lg:flex flex-col lg:w-4/12 text-sm truncate">
                                 <div class="">{{ $bestTime->trackMeet }}</div>
                                 <div class="pl-4 text-xs">{{ Carbon\Carbon::createFromFormat('Y-m-d', $bestTime->meetDate)->format('F j, Y') }}</div>
                             </x-table.cell>
