@@ -34,9 +34,9 @@
                         </x-table.heading>
                     </x-table.header-row>
                 </x-slot>
-
+{{--{{ dd($bestTimes->unique('athlete_id')) }}--}}
                 <x-slot name="body">
-                    @foreach($bestTimes as $bestTime)
+                    @foreach($bestTimes->unique('athlete_id') as $bestTime)
                         <x-table.row class="flex justify-between ">
                             <x-table.cell class="flex w-2/12 md:w-1/12 text-sm md:text-base justify-center">
                                 {{ $rank++ }}
@@ -48,12 +48,12 @@
                                 <span class="text-xs">.{{ explode('.', number_format($bestTime->total_time, 2))[1]}}</span>
                             </x-table.cell>
                             <x-table.cell class="flex w-6/12 lg:w-4/12 text-sm md:text-base">
-                                {{ $bestTime->last_name }}, {{ $bestTime->first_name }}
+                                {{ $bestTime->athlete->last_name }}, {{ $bestTime->athlete->first_name }}
                             </x-table.cell>
 
                             <x-table.cell class="hidden lg:flex flex-col lg:w-4/12 text-sm truncate">
-                                <div class="">{{ $bestTime->trackMeet }}</div>
-                                <div class="pl-4 text-xs">{{ Carbon\Carbon::createFromFormat('Y-m-d', $bestTime->meetDate)->format('F j, Y') }}</div>
+                                <div class="">{{ $bestTime->teamresult->trackMeet->meetName->name }}</div>
+{{--                                <div class="pl-4 text-xs">{{ Carbon\Carbon::createFromFormat('Y-m-d', $bestTime->meetDate)->format('F j, Y') }}</div>--}}
                             </x-table.cell>
                             <x-table.cell class="absolute lg:hidden right-1 md:right-2 lg:right-4">
                                 <x-dropdown.dropdown width="72">
@@ -62,9 +62,9 @@
                                     </x-slot>
                                     <x-slot name="content">
                                         <div class="flex flex-col p-4 space-y-2">
-                                            <div>{{ $bestTime->trackMeet }}</div>
-                                            <div>{{ Carbon\Carbon::createFromFormat('Y-m-d', $bestTime->meetDate)->format('F j, Y') }}</div>
-                                            <div>Grad year: {{ $bestTime->grad_year }}</div>
+                                            <div>{{ $bestTime->teamresult->trackMeet->meetName->name }}</div>
+{{--                                            <div>{{ Carbon\Carbon::createFromFormat('Y-m-d', $bestTime->meetDate)->format('F j, Y') }}</div>--}}
+                                            <div>Grad year: {{ $bestTime->athlete->grad_year }}</div>
                                         </div>
                                     </x-slot>
                                 </x-dropdown.dropdown>
@@ -90,7 +90,7 @@
                 <x-input.select wire:model="event">
                     <option value="">All</option>
                     @foreach($runningEvents as $runningEvent)
-                        <option value="{{ $runningEvent->slug }}">{{$runningEvent->name}}</option>
+                        <option value="{{ $runningEvent->id }}">{{$runningEvent->name}}</option>
                     @endforeach
                 </x-input.select>
             </x-input.group>
