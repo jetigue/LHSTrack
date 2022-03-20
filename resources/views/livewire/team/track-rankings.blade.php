@@ -36,7 +36,7 @@
                 </x-slot>
 {{--{{ dd($bestTimes->unique('athlete_id')) }}--}}
                 <x-slot name="body">
-                    @foreach($bestTimes->unique('athlete_id') as $bestTime)
+                    @foreach($this->performance == 'perAthlete' ? $bestTimes->unique('athlete_id') : $bestTimes as $bestTime)
                         <x-table.row class="flex justify-between ">
                             <x-table.cell class="flex w-2/12 md:w-1/12 text-sm md:text-base justify-center">
                                 {{ $rank++ }}
@@ -75,6 +75,9 @@
                     @endforeach
                 </x-slot>
             </x-table.table>
+            <div class="text-gray-300">
+                {{ $bestTimes->links() }}
+            </div>
         </div>
         <div class="grid col-span-6 md:col-span-2 order-1 md:order-2">
             <div class="flex justify-between items-baseline">
@@ -110,6 +113,13 @@
                     <option value="{{ $this->year + 1 }}">Juniors</option>
                     <option value="{{ $this->year + 2 }}">Sophomores</option>
                     <option value="{{ $this->year + 3 }}">Freshmen</option>
+                </x-input.select>
+            </x-input.group>
+
+            <x-input.group for="performance" label="Performances">
+                <x-input.select wire:model="performance">
+                    <option value="perAthlete">Best per Athlete</option>
+                    <option value="perEvent">Best per Event</option>
                 </x-input.select>
             </x-input.group>
         </div>

@@ -8,14 +8,18 @@ use App\Models\Properties\Events\Track\TrackEvent;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TrackRankings extends Component
 {
+    use WithPagination;
+
     public $rank = 1;
     public $sex = '';
     public $grade = '';
     public $event = '';
     public $year;
+    public $performance = 'perAthlete';
     public string $showingSex = 'All';
     public string $showingGrade = 'All';
     public string $showingEvent = 'All';
@@ -70,6 +74,7 @@ class TrackRankings extends Component
         $this->showingSex = 'All';
         $this->showingGrade = 'All';
         $this->showingEvent = 'All';
+        $this->performance = 'perAthlete';
     }
 
     public function render()
@@ -91,7 +96,7 @@ class TrackRankings extends Component
                     return $query->where('track_event_id', $event);
                 })
                 ->orderBy('total_time')
-                ->get(),
+                ->paginate(50),
 
 //            'bestTimes' => RunningEventResult::with('athlete', 'trackEvent', 'teamResult')
 //                ->join('athletes', 'tf_running_event_results.athlete_id', '=', 'athletes.id')
@@ -129,6 +134,7 @@ class TrackRankings extends Component
 //            ->get(),
 
             'runningEvents' => TrackEvent::with('eventSubType', 'runningEventResults')
+                ->has('runningEventResults')
                 ->whereHas('eventSubtype', function ($query) {
                     $query->whereIn('name', ['Distance', 'Sprints', 'Hurdles'])->orderBy('distance_in_meters');
                 })
