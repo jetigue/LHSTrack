@@ -96,7 +96,7 @@ class TrackRankings extends Component
                     return $query->where('track_event_id', $event);
                 })
                 ->orderBy('total_time')
-                ->paginate(50),
+                ->get(),
 
 //            'bestTimes' => RunningEventResult::with('athlete', 'trackEvent', 'teamResult')
 //                ->join('athletes', 'tf_running_event_results.athlete_id', '=', 'athletes.id')
