@@ -20,6 +20,7 @@ class CreateTfFieldEventResultsTable extends Migration
             $table->unsignedBigInteger('athlete_id');
             $table->unsignedSmallInteger('place');
             $table->unsignedInteger('total_inches');
+            $table->float('total_distance', 7, 2)->nullable();
             $table->unsignedTinyInteger('quarter_inch')->nullable();
             $table->unsignedTinyInteger('points')->nullable();
             $table->unsignedTinyInteger('flight')->nullable();

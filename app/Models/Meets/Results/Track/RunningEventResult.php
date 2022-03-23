@@ -28,22 +28,6 @@ class RunningEventResult extends Model
         'points'
     ];
 
-//    protected $casts=['total_time' => 'float'];
-
-//    protected $appends=['total_time'];
-
-//    public function getTimeAttribute()
-//    {
-//        $seconds = $this->attributes['total_seconds'];
-//
-//        return $seconds > 59 ? gmdate('i:s', $seconds) : gmdate('s', $seconds);
-//    }
-//
-//    public function getMillisecondsAttribute()
-//    {
-//        return $this->attributes['milliseconds'] > 9 ? $this->attributes['milliseconds'] : 0 . $this->attributes['milliseconds'];
-//    }
-
     public function trackEvent(): BelongsTo
     {
         return $this->belongsTo(TrackEvent::class, 'track_event_id');
@@ -58,9 +42,5 @@ class RunningEventResult extends Model
     {
         return $this->belongsTo(TeamResult::class, 'track_team_result_id');
     }
-//
-//    public function getTotalTimeAttribute(): Attribute
-//    {
-//        return $this->attributes['total_seconds'] + ($this->attributes['milliseconds'] / 100);
-//    }
+
 }

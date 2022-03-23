@@ -60,4 +60,34 @@ class FieldEventResult extends Model
     {
         return $this->belongsTo(TeamResult::class, 'track_team_result_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($result) {
+
+            switch($result->attributes['quarter_inch'])
+            {
+                case(1):
+                    $fraction = 25;
+                    break;
+                case(2):
+                    $fraction = 50;
+                    break;
+                case(3):
+                    $fraction = 75;
+                    break;
+                default:
+                    $fraction = null;
+            }
+
+            if ($fraction != null) {
+                $result->total_distance = $result->attributes['total_inches'] + ($result->attributes['quarter_inch'] / 100);
+            } else {
+                $result->total_distance = $result->attributes['total_inches'];
+            }
+
+        });
+    }
 }

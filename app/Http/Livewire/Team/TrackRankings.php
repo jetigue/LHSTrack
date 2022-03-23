@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire\Team;
 
-use App\Models\Athletes\Athlete;
+use App\Models\Meets\Results\Track\FieldEventResult;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Properties\Events\Track\TrackEvent;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,13 +21,16 @@ class TrackRankings extends Component
     public $performance = 'perAthlete';
     public string $showingSex = 'All';
     public string $showingGrade = 'All';
-    public string $showingEvent = 'All';
+    public string $showingEvent = 'None';
+    public bool $showRunningEvent = false;
+    public bool $showFieldEvent = false;
 
     protected $queryString = ['event', 'grade', 'sex'];
 
     public function mount()
     {
         $this->year = Carbon::now()->year;
+        $this->event = '';
     }
 
     public function updatedSex()
@@ -60,10 +62,27 @@ class TrackRankings extends Component
     public function updatedEvent()
     {
         if ($this->event != '') {
-            $this->showingEvent = TrackEvent::where('id', $this->event)->value('name');
+            $this->rank = 1;
+            $trackEvent = TrackEvent::firstWhere('id', $this->event);
+
+            $this->showingEvent = $trackEvent->name;
+
+            if (in_array($trackEvent->eventSubtype->name, ['Distance', 'Sprints', 'Hurdles'])) {
+                $this->showFieldEvent = false;
+                $this->showRunningEvent = true;
+            } elseif (in_array($trackEvent->eventSubtype->name, ['Throws', 'Jumps'])) {
+                $this->showRunningEvent = false;
+                $this->showFieldEvent = true;
+            }
+
+
         } else {
-            $this->showingEvent = 'All';
+            $this->showingEvent = 'None';
+            $this->showFieldEvent = false;
+            $this->showRunningEvent = false;
         }
+
+
     }
 
     public function clearFilters()
@@ -75,13 +94,16 @@ class TrackRankings extends Component
         $this->showingGrade = 'All';
         $this->showingEvent = 'All';
         $this->performance = 'perAthlete';
+        $this->showFieldEvent = false;
+        $this->showRunningEvent = false;
+        $this->rank = 1;
     }
 
     public function render()
     {
         return view('livewire.team.track-rankings', [
 
-            'bestTimes' => RunningEventResult::with('athlete', 'trackEvent', 'teamResult')
+            'bestTimes' => RunningEventResult::with('athlete', 'trackEvent', 'teamResult.trackMeet')
                 ->when($this->sex, function ($query) {
                     return $query->whereHas('athlete', function ($q) {
                         $q->where('sex', $this->sex);
@@ -96,6 +118,23 @@ class TrackRankings extends Component
                     return $query->where('track_event_id', $event);
                 })
                 ->orderBy('total_time')
+                ->get(),
+
+            'bestMarks' => FieldEventResult::with('athlete', 'trackEvent', 'teamResult.trackMeet')
+                ->when($this->sex, function ($query) {
+                    return $query->whereHas('athlete', function ($q) {
+                        $q->where('sex', $this->sex);
+                    });
+                })
+                ->when($this->grade, function ($query) {
+                    return $query->whereHas('athlete', function ($q) {
+                        $q->where('grad_year', $this->grade);
+                    });
+                })
+                ->when($this->event, function ($query, $event) {
+                    return $query->where('track_event_id', $event);
+                })
+                ->orderByDesc('total_distance')
                 ->get(),
 
 //            'bestTimes' => RunningEventResult::with('athlete', 'trackEvent', 'teamResult')
@@ -138,7 +177,15 @@ class TrackRankings extends Component
                 ->whereHas('eventSubtype', function ($query) {
                     $query->whereIn('name', ['Distance', 'Sprints', 'Hurdles'])->orderBy('distance_in_meters');
                 })
+                ->get(),
+
+            'fieldEvents' => TrackEvent::with('eventSubType', 'fieldEventResults')
+                ->has('fieldEventResults')
+                ->whereHas('eventSubtype', function ($query) {
+                    $query->whereIn('name', ['Jumps', 'Throws']);
+                })
                 ->get()
+
 
         ]);
     }
