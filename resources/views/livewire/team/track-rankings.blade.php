@@ -54,7 +54,7 @@
                             </div>
                         </x-table.row>
                     @else
-                        
+
                         @if ($this->showRunningEvent == true)
                             @foreach($this->performance == 'perAthlete' ? $bestTimes->unique('athlete_id') : $bestTimes as $bestTime)
                                 @include('livewire.team._rankings-table-body')
