@@ -2,6 +2,7 @@
 
 namespace App\Models\Athletes;
 
+use App\Models\Meets\Results\Track\FieldEventResult;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Users\User;
@@ -214,5 +215,10 @@ class Athlete extends Model
     public function latestPerformance(): HasOne
     {
         return $this->hasOne(RunningEventResult::class)->oldestOfMany();
+    }
+
+    public function bestDistance(): HasOne
+    {
+        return $this->hasOne(FieldEventResult::class)->ofMany('total_time', 'max');
     }
 }

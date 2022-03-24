@@ -28,9 +28,10 @@
                             <x-nav-link route="Dashboard">Dashboard</x-nav-link>
                         @endauth
                         <x-nav-link route="Our Team">Our Team</x-nav-link>
-                        {{--                        <x-nav-link route="Girls Roster">Girls Roster</x-nav-link>--}}
-                        {{--                        <x-nav-link route="Booster Club">Booster Club</x-nav-link>--}}
                         <x-nav-link route="Calendar">Calendar</x-nav-link>
+                        @auth
+                            <x-nav-link route="Track Rankings">Rankings</x-nav-link>
+                        @endauth
                     </div>
                     @guest
                         <div class="hidden lg:flex flex-shrink-0 pt-3 justify-end">
@@ -101,9 +102,10 @@
                 <x-navigation.mobile-link route="Dashboard">Dashboard</x-navigation.mobile-link>
             @endauth
             <x-navigation.mobile-link route="Our Team">Our Team</x-navigation.mobile-link>
-            {{--            <x-navigation.mobile-link route="Girls Roster">Girls Roster</x-navigation.mobile-link>--}}
-            {{--            <x-navigation.mobile-link route="Booster Club">Booster Club</x-navigation.mobile-link>--}}
             <x-navigation.mobile-link route="Calendar">Calendar</x-navigation.mobile-link>
+            @auth
+                <x-navigation.mobile-link route="Track Rankings">Rankings</x-navigation.mobile-link>
+            @endauth
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">
             <div class="px-2">
