@@ -202,6 +202,11 @@ class Athlete extends Model
         return $this->hasMany(RunningEventResult::class);
     }
 
+    public function fieldEventResults(): HasMany
+    {
+        return $this->hasMany(FieldEventResult::class);
+    }
+
     public function bestPerformance(): HasOne
     {
         return $this->hasOne(RunningEventResult::class)->ofMany('vdot', 'max');

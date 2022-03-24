@@ -83,7 +83,7 @@ class FieldEventResult extends Model
             }
 
             if ($fraction != null) {
-                $result->total_distance = $result->attributes['total_inches'] + ($result->attributes['quarter_inch'] / 100);
+                $result->total_distance = $result->attributes['total_inches'] + ($result->attributes['quarter_inch'] / 4);
             } else {
                 $result->total_distance = $result->attributes['total_inches'];
             }
