@@ -31,25 +31,28 @@
                     </div>
                 </div>
                 @foreach($runningEventResults->where('track_event_id', '==', $runningTrackEvent->id)->sortByDesc('teamResult.trackMeet.meet_date') as $result)
-                    <div class="flex space-y-4">
-                        <div class="w-2/12">
+                    <div class="flex space-y-4 items-center @if($result->total_seconds + ($result->milliseconds/100) == $result->athlete->runningEventResults->where('track_event_id', $result->track_event_id)->min('total_time')) text-purple-400 @endif">
+                        <div class=" flex w-2/12 justify-center pt-4 items-center">
+                            @if ($result->total_seconds + ($result->milliseconds/100) == $result->athlete->runningEventResults->where('track_event_id', $result->track_event_id)->min('total_time'))
+                                    PR
+                            @endif
                         </div>
-                        <div class="w-2/12">
+                        <div class="flex w-2/12">
                             {{ $result->teamResult->trackMeet->meet_date->format('M j, Y')}}
                         </div>
-                        <div class="w-4/12 truncate">
+                        <div class="flex w-4/12 truncate">
                             <a href="{{ $result->teamResult->trackMeet->path() }}" class="hover:underline">
                                 {{ $result->teamResult->trackMeet->meetName->name}}
                             </a>
                         </div>
-                        <div class="w-2/12 text-center">
+                        <div class="flex w-2/12 justify-center items-baseline">
                             {{ $result->time}}<span
-                                class="text-gray-500 text-sm">.{{ $result->milliseconds }}</span>
+                                class="text-sm">.{{ $result->milliseconds }}</span>
                         </div>
-                        <div class="w-1/12 text-center text-sm">
+                        <div class="flex w-1/12 justify-center text-sm">
                             {{ $result->place_with_suffix}}
                         </div>
-                        <div class="w-1/12 text-center">
+                        <div class="flex w-1/12 justify-center">
                             {{ $result->points}}
                         </div>
                     </div>

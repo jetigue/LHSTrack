@@ -24,15 +24,18 @@
             </div>
         </div>
         <div class="py-4">
-            @foreach($fieldTrackEvents->sortby('distance_in_meters') as $fieldTrackEvent)
+            @foreach($fieldTrackEvents as $fieldTrackEvent)
                 <div class="w-full border-b border-gray-800">
                     <div class="w-2/12 text-lg font-semibold text-gray-500">
                         {{$fieldTrackEvent->name}}
                     </div>
                 </div>
-                @foreach($fieldEventResults->where('track_event_id', '=', $fieldTrackEvent->id)->sortBy('trackMeet.meet_date') as $result)
-                    <div class="flex space-y-4">
-                        <div class="w-2/12">
+                @foreach($fieldEventResults->where('track_event_id', '=', $fieldTrackEvent->id)->sortByDesc('trackMeet.meet_date') as $result)
+                    <div class="flex space-y-4 items-center @if($result->total_inches + ($result->quarter_inch/4) == $result->athlete->fieldEventResults->where('track_event_id', $result->track_event_id)->max('total_distance')) text-purple-400 @endif">
+                        <div class=" flex w-2/12 justify-center pt-4 items-center">
+                            @if ($result->total_inches + ($result->quarter_inch/4) == $result->athlete->fieldEventResults->where('track_event_id', $result->track_event_id)->max('total_distance'))
+                                    PR
+                            @endif
                         </div>
                         <div class="w-2/12">
                             {{ $result->teamResult->trackMeet->meet_date->format('M j, Y')}}
@@ -46,6 +49,9 @@
                             {{ $result->mark}}<span
                                 class="text-gray-500 text-sm">{{ $result->fraction }}</span>
                             "
+                            @if (floatval($result->mark + ($result->quarter_inch/4)) === $result->athlete->fieldEventResults->max('total_distance'))
+                                PR
+                                @endif
                         </div>
                         <div class="w-1/12 text-center text-sm">
                             {{ $result->place_with_suffix}}

@@ -12,6 +12,7 @@ class AthleteProfile extends Component
 {
     public Athlete $athlete;
 
+
     public function render()
     {
         return view('livewire.athletes.athlete-profile', [
