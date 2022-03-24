@@ -42,6 +42,8 @@ class TrackRankings extends Component
         } else {
             $this->showingSex = 'All';
         }
+
+        $this->rank = 1;
     }
 
     public function updatedGrade()
@@ -57,6 +59,8 @@ class TrackRankings extends Component
         } else {
             $this->showingGrade = 'All';
         }
+
+        $this->rank = 1;
     }
 
     public function updatedEvent()
