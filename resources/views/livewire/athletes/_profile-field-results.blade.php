@@ -34,9 +34,9 @@
 {{--                    <div class="flex space-y-4 items-center @if(floatval($result->total_inches + ($result->quarter_inch != null ? ($result->quarter_inch/4) : 0)) == $result->athlete->fieldEventResults->where('track_event_id', $result->track_event_id)->max('total_distance')) text-purple-400 @endif">--}}
                 <div class="flex space-y-4 items-center">
                         <div class=" flex w-2/12 justify-center pt-4 items-center">
-                            @if (($result->total_inches) + (($result->quarter_inch != null) ? ($result->quarter_inch/4) : .0)) == $result->athlete->fieldEventResults->where('track_event_id', $result->track_event_id)->max('total_distance'))
-                                    PR
-                            @endif
+{{--                            @if (($result->total_inches) + (($result->quarter_inch != null) ? ($result->quarter_inch/4) : .0)) == $result->athlete->fieldEventResults->where('track_event_id', $result->track_event_id)->max('total_distance'))--}}
+{{--                                    PR--}}
+{{--                            @endif--}}
                         </div>
                         <div class="w-2/12">
                             {{ $result->teamResult->trackMeet->meet_date->format('M j, Y')}}
