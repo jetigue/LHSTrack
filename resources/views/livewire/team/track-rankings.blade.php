@@ -9,10 +9,6 @@
         </x-slot>
         Track Rankings
     </x-headings.page>
-    <div class="text-white">
-        {{ $this->showRunningEvent }} Running Event
-            {{ $this->showFieldEvent }} Field Event
-    </div>
 
     <div class="grid grid-cols-6 gap-4 md:gap-6 lg:gap-8 items-start">
         <div class="grid col-span-6 md:col-span-4 order-2 md:order-1 space-y-2">
@@ -58,6 +54,7 @@
                             </div>
                         </x-table.row>
                     @else
+                        
                         @if ($this->showRunningEvent == true)
                             @foreach($this->performance == 'perAthlete' ? $bestTimes->unique('athlete_id') : $bestTimes as $bestTime)
                                 @include('livewire.team._rankings-table-body')

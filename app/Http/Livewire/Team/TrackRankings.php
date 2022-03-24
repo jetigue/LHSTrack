@@ -49,7 +49,7 @@ class TrackRankings extends Component
     public function updatedGrade()
     {
         $this->rank = 1;
-        
+
         if ($this->grade == $this->year) {
             $this->showingGrade = 'Seniors';
         } elseif ($this->grade == $this->year + 1) {
