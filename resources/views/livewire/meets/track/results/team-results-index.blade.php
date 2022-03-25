@@ -92,8 +92,9 @@
                                         </x-dropdown.link>
                                     </x-slot>
                                 </x-dropdown.dropdown>
+                            @endcan
                         </x-table.cell>
-                        @endcan
+
                     </x-table.row>
 
                     <x-modal.confirmation wire:model.defer="showConfirmModal">
