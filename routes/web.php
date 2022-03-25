@@ -81,17 +81,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('training/throws-calendar', EventSubtypeCalendarContainer::class)->name('Throws Calendar');
 
     Route::get('track/rankings', TrackRankings::class)->name('Track Rankings');
-});
 
-Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track/meets', TrackMeetsIndex::class)->name('Track Meets');
     Route::get('/track/meets/{trackMeet:slug}', ShowTrackMeet::class);
     Route::get('/track/meets/team-results/{teamResult:slug}', ShowTeamResult::class);
     Route::get('/track/meets/team-results/{teamResult:slug}/event-results/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
     Route::get('/track/meets/{trackMeet:slug}/boys/events/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
     Route::get('/track/meets/{trackMeet:slug}/girls/events/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
+});
 
-
+Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track/meet-names', TrackMeetNamesIndex::class)->name('Track Meet Names');
     Route::get('/track/venues', TrackVenuesIndex::class)->name('Track Venues');
     Route::get('/meet-hosts', MeetHostsIndex::class)->name('Meet Hosts');
