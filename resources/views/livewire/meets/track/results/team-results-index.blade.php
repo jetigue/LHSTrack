@@ -57,17 +57,21 @@
                             </span>
                             <div x-show="expand" class="flex flex-col justify-start">
                                 {{ $result->notes }}
-                            <button
-                                type="button"
-                                @click="expand = false"
-                                class="text-sm text-gray-400 text-left hover:text-red-700 font-semibold"
-                            >
-                                Hide
-                            </button>
+                                <button
+                                    type="button"
+                                    @click="expand = false"
+                                    class="text-sm text-gray-400 text-left hover:text-red-700 font-semibold"
+                                >
+                                    Hide
+                                </button>
                             </div>
                         </x-table.cell>
-                        <x-table.cell class="hidden md:inline-block md:w-2/12 text-center">
-                            <a href="{{ $result->path() }}">Results</a>
+                        <x-table.cell class="hidden md:flex items-center md:w-2/12 justify-center">
+
+                                <a href="{{ $result->path() }}"
+                                   class="flex hover:underline hover:text-blue-600 items-center">
+                                    <x-icon.document-text class="h-6 w-6 pr-2 text-blue-600" />
+                                    Results</a>
                         </x-table.cell>
                         <x-table.cell class="flex w-1/12 justify-end">
                             <x-dropdown.dropdown>

@@ -53,14 +53,24 @@
                                     </div>
 
                                 </x-table.cell>
-                                <x-table.cell class="hidden lg:inline-block lg:w-5/12 text-sm">
+                                <x-table.cell class="hidden lg:flex flex-col lg:w-5/12 text-sm">
                                     <div><span class="text-gray-400">Host: </span>{{ $trackMeet->host->name }}</div>
                                     <div><span class="text-gray-400">Venue: </span>{{ $trackMeet->venue->name }}</div>
                                 </x-table.cell>
 
-                                <x-table.cell class="hidden lg:inline-block lg:w-2/12">
-                                    <a href="{{ $trackMeet->meet_page_url }}" class="hover:underline text-blue-600">Meet
-                                        Page</a>
+                                <x-table.cell class="hidden lg:flex lg:w-2/12 items-center text-base text-gray-500">
+                                    @if(count($trackMeet->teamResults) > 0)
+                                        <a href="{{ $trackMeet->path() }}"
+                                           class="flex text-center hover:underline hover:text-blue-600">
+                                            <x-icon.document-text class="h-6 w-6 pr-2"/> Team  Results
+                                        </a>
+                                    @else
+                                        <a href="{{ $trackMeet->meet_page_url }}"
+                                           class="flex text-center hover:underline hover:text-blue-600">
+                                            <x-icon.external-link class="h-6 w-6 pr-2"/> Meet Info
+                                        </a>
+                                    @endif
+
                                 </x-table.cell>
                                 <x-table.cell class="hidden lg:flex lg:w-1/12 justify-end lg:pr-2">
                                     @can('coach')
@@ -97,9 +107,9 @@
                                         <div><span
                                                 class="text-gray-400">Timing: </span>{{ $trackMeet->timingMethod->name }}
                                         </div>
-                                        @if( $trackMeet->meetResults )
+                                        @if( $trackMeet->teamResults )
                                             <div>
-                                                <a href="{{ $trackMeet->meet_page_url }}">
+                                                <a href="{{ $trackMeet->path() }}">
                                                     <span class="text-gray-400">Results: </span>Results
                                                 </a>
                                             </div>

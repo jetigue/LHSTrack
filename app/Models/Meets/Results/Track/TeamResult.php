@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TeamResult extends Model
 {
@@ -48,6 +49,16 @@ class TeamResult extends Model
         return $this->belongsToMany(TrackEvent::class, 'tf_meet_events', 'track_team_result_id')
             ->using(TrackMeetEvent::class)
             ->withTimestamps();
+    }
+
+    public function runningEventResults(): HasMany
+    {
+        return $this->hasMany(RunningEventResult::class);
+    }
+
+    public function fieldEventResults(): HasMany
+    {
+        return $this->hasMany(FieldEventResult::class);
     }
 
     public function sluggable(): array
