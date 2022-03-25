@@ -30,7 +30,9 @@
                     </x-table.heading>
 
                     <x-table.heading class="flex w-1/12">
-                        <x-button.plus />
+                        @can('coach')
+                            <x-button.plus />
+                        @endcan
                     </x-table.heading>
 
                 </x-table.header-row>
@@ -68,19 +70,21 @@
                             {{ $result->points }}
                         </x-table.cell>
                         <x-table.cell class="flex w-1/12 justify-end">
-                            <x-dropdown.dropdown>
-                                <x-slot name="trigger">
-                                    <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
-                                </x-slot>
-                                <x-slot name="content">
-                                    <x-dropdown.link wire:click="editRecord({{ $result->id }})">
-                                        Edit
-                                    </x-dropdown.link>
-                                    <x-dropdown.link wire:click="confirmDelete({{ $result->id }})">
-                                        Delete
-                                    </x-dropdown.link>
-                                </x-slot>
-                            </x-dropdown.dropdown>
+                            @can('coach')
+                                <x-dropdown.dropdown>
+                                    <x-slot name="trigger">
+                                        <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
+                                    </x-slot>
+                                    <x-slot name="content">
+                                        <x-dropdown.link wire:click="editRecord({{ $result->id }})">
+                                            Edit
+                                        </x-dropdown.link>
+                                        <x-dropdown.link wire:click="confirmDelete({{ $result->id }})">
+                                            Delete
+                                        </x-dropdown.link>
+                                    </x-slot>
+                                </x-dropdown.dropdown>
+                            @endcan
                         </x-table.cell>
                     </x-table.row>
 
