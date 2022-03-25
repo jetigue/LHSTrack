@@ -32,7 +32,6 @@ class TrackMeetEventsIndex extends Component
 
             'trackEvents' => $this->teamResult->trackEvents
                 ->sortBy('name')
-                ->sortBy('distance_in_meters'),
         ]);
     }
 }
