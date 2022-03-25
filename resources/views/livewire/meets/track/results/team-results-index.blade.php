@@ -25,7 +25,9 @@
                     </x-table.heading>
 
                     <x-table.heading class="flex w-1/12">
-                        <x-button.plus />
+                        @can('coach')
+                            <x-button.plus />
+                        @endcan
                     </x-table.heading>
 
                 </x-table.header-row>
@@ -39,7 +41,9 @@
                         wire:loading.class.delay="opacity-50"
                     >
                         <x-table.cell class="w-11/12 md:w-3/12">
-                            {{ $result->division->name }}
+                             <a href="{{ $result->path() }}">
+                                {{ $result->division->name }}
+                             </a>
                         </x-table.cell>
                         <x-table.cell class="hidden md:inline-block md:w-2/12">
                             {{ $result->place_with_suffix }} <span class="text-gray-400 text-xs pl-2"> ({{ $result->number_teams }} Teams)</span>
@@ -68,26 +72,28 @@
                         </x-table.cell>
                         <x-table.cell class="hidden md:flex items-center md:w-2/12 justify-center">
 
-                                <a href="{{ $result->path() }}"
-                                   class="flex hover:underline hover:text-blue-600 items-center">
-                                    <x-icon.document-text class="h-6 w-6 pr-2 text-blue-600" />
-                                    Results</a>
+                            <a href="{{ $result->path() }}"
+                               class="flex hover:underline hover:text-blue-600 items-center">
+                                <x-icon.document-text class="h-6 w-6 pr-2 text-blue-600" />
+                                Results</a>
                         </x-table.cell>
                         <x-table.cell class="flex w-1/12 justify-end">
-                            <x-dropdown.dropdown>
-                                <x-slot name="trigger">
-                                    <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
-                                </x-slot>
-                                <x-slot name="content">
-                                    <x-dropdown.link wire:click="editRecord({{ $result->id }})">
-                                        Edit
-                                    </x-dropdown.link>
-                                    <x-dropdown.link wire:click="confirmDelete({{ $result->id }})">
-                                        Delete
-                                    </x-dropdown.link>
-                                </x-slot>
-                            </x-dropdown.dropdown>
+                            @can('coach')
+                                <x-dropdown.dropdown>
+                                    <x-slot name="trigger">
+                                        <x-icon.dots-vertical class="text-gray-300 hover:text-red-700" />
+                                    </x-slot>
+                                    <x-slot name="content">
+                                        <x-dropdown.link wire:click="editRecord({{ $result->id }})">
+                                            Edit
+                                        </x-dropdown.link>
+                                        <x-dropdown.link wire:click="confirmDelete({{ $result->id }})">
+                                            Delete
+                                        </x-dropdown.link>
+                                    </x-slot>
+                                </x-dropdown.dropdown>
                         </x-table.cell>
+                        @endcan
                     </x-table.row>
 
                     <x-modal.confirmation wire:model.defer="showConfirmModal">
