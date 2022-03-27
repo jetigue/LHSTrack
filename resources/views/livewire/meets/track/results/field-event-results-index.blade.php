@@ -61,6 +61,9 @@
                                 {{$result->fraction }}
                             </span>
                             "
+                            @if ($result->total_inches + (($result->quarter_inch >= 1) ? ($result->quarter_inch / 4) : .0) == $result->athlete->fieldEventResults->where('track_event_id', $result->track_event_id)->max('total_distance'))
+                                <span class="text-xs text-red-500 font-semibold px-2">PR</span>
+                            @endif
                         </x-table.cell>
                         <x-table.cell class="hidden lg:flex lg:w-2/12">
                             {{ $result->flight }}

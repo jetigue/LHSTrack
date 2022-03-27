@@ -56,6 +56,9 @@
                         <x-table.cell class="flex w-4/12 w-3/12 lg:w-2/12 items-baseline">
                             {{ ltrim($result->time, 0) }}.<span
                                 class="text-xs text-gray-600">{{$result->milliseconds}}</span>
+                            @if ($result->total_seconds + ($result->milliseconds/100) == $result->athlete->runningEventResults->where('track_event_id', $result->track_event_id)->min('total_time'))
+                                <span class="text-xs text-red-500 font-semibold px-2">PR</span>
+                            @endif
                         </x-table.cell>
                         <x-table.cell class="hidden lg:flex lg:w-2/12">
                             {{ $result->heat }}
