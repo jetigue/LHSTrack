@@ -34,7 +34,7 @@ class AthleteProfile extends Component
 
             'relayTrackEvents' => TrackEvent::query()
                 ->whereHas('eventSubtype', function ($query) {
-                return $query->where('name', '=', 'Relay');
+                return $query->where('name', '=', 'Relays');
             })->whereHas('relayEventResults', function ($query) {
                 return $query->where('leg_1_athlete_id', '=', $this->athlete->id)
                     ->orWhere('leg_2_athlete_id', '=', $this->athlete->id)
