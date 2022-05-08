@@ -3,6 +3,7 @@
 namespace App\Models\Athletes;
 
 use App\Models\Meets\Results\Track\FieldEventResult;
+use App\Models\Meets\Results\Track\RelayEventResult;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Users\User;
@@ -205,6 +206,11 @@ class Athlete extends Model
     public function fieldEventResults(): HasMany
     {
         return $this->hasMany(FieldEventResult::class);
+    }
+
+    public function relayEventResults(): HasMany
+    {
+        return $this->hasMany(RelayEventResult::class, 'leg_1_athlete_id');
     }
 
     public function bestPerformance(): HasOne

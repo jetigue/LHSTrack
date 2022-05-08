@@ -8,7 +8,7 @@
             <livewire:main.welcome-page-announcements />
         </div>
 
-        <div class="gird col-span-6 md:col-span-2">
+        <div class="grid col-span-6 md:col-span-2">
             <livewire:main.welcome-page-team-events />
         </div>
     </div>
