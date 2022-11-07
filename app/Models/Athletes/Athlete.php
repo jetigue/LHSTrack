@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 class Athlete extends Model
 {
     use HasFactory, TrainingPacesTrait;
+
     protected $casts = [
         'dob' => 'datetime',
         'physical_expiration_date' => 'datetime',

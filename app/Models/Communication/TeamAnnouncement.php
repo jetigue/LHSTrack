@@ -15,6 +15,7 @@ class TeamAnnouncement extends Model
     protected $guarded = [];
 
     protected $table = 'team_announcements';
+
     protected $casts = [
         'begin_date' => 'datetime',
         'end_date' => 'datetime',

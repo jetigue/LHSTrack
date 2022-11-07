@@ -13,6 +13,7 @@ class EventSubtypeWorkout extends Model
     use HasFactory;
 
     protected $table = 'event_subtype_workouts';
+
     protected $casts = [
         'workout_date' => 'datetime',
     ];

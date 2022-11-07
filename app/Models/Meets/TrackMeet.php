@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TrackMeet extends Model
 {
     use HasFactory, Sluggable;
+
     protected $casts = [
         'meet_date' => 'datetime',
     ];

@@ -15,6 +15,7 @@ class EventSubtypeAnnouncement extends Model
     protected $guarded = [];
 
     protected $table = 'event_subtype_announcements';
+
     protected $casts = [
         'begin_date' => 'datetime',
         'end_date' => 'datetime',

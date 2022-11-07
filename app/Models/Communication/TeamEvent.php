@@ -14,6 +14,7 @@ class TeamEvent extends Model
     protected $table = 'team_events';
 
     protected $fillable = ['user_id', 'title', 'description', 'event_date'];
+
     protected $casts = [
         'event_date' => 'datetime',
     ];
