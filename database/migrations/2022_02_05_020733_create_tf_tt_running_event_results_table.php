@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTfTtRunningEventResultsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -49,4 +49,4 @@ class CreateTfTtRunningEventResultsTable extends Migration
     {
         Schema::dropIfExists('tf_tt_running_event_results');
     }
-}
+};

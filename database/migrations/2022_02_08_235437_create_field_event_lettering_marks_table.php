@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFieldEventLetteringMarksTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -46,4 +46,4 @@ class CreateFieldEventLetteringMarksTable extends Migration
     {
         Schema::dropIfExists('field_event_lettering_marks');
     }
-}
+};
