@@ -24,8 +24,9 @@ class TrackTimeTrial extends Model
     protected $table = 'track_time_trials';
 
     protected $fillable = ['name', 'trial_date', 'track_venue_id', 'timing_method_id'];
-
-    protected $dates = ['trial_date'];
+    protected $casts = [
+        'trial_date' => 'datetime',
+    ];
 
     public function path(): string
     {

@@ -12,8 +12,9 @@ class HurdleWorkout extends Model
     use HasFactory;
 
     protected $table = 'hurdle_workouts';
-
-    protected $dates = ['workout_date'];
+    protected $casts = [
+        'workout_date' => 'datetime',
+    ];
 
     protected $fillable = [
         'title', 'workout_date', 'description', 'user_id',

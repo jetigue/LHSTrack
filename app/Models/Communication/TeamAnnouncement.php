@@ -15,8 +15,10 @@ class TeamAnnouncement extends Model
     protected $guarded = [];
 
     protected $table = 'team_announcements';
-
-    protected $dates = ['begin_date', 'end_date'];
+    protected $casts = [
+        'begin_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
 
     public function getBeginDateForEditingAttribute()
     {

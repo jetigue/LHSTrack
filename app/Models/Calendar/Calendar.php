@@ -18,8 +18,9 @@ class Calendar extends Model
     public $incrementing = false;
 
     protected $keyType = 'date';
-
-    protected $dates = ['calendar_date'];
+    protected $casts = [
+        'calendar_date' => 'datetime',
+    ];
 
     public function teamEvents(): HasMany
     {
