@@ -18,7 +18,7 @@ class TrackEventFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
+            'name' => $this->faker->word(),
             'distance_in_meters' => $this->faker->numberBetween([100, 3200]),
             'track_event_subtype_id' => TrackEventSubtype::all()->random()->id,
         ];

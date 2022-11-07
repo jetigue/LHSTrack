@@ -17,7 +17,7 @@ class HostFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->lastName.' '.'High School',
+            'name' => $this->faker->lastName().' '.'High School',
         ];
     }
 }

@@ -24,7 +24,7 @@ class TeamAnnouncementFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'begin_date' => $this->faker->date,
+            'begin_date' => $this->faker->date(),
             'end_date' => '2022-01-31',
             'title' => $this->faker->sentence($nbWords = 4, $variableNbWords = true),
             'body' => $this->faker->paragraph($nbSentences = 10, $variableNbSentences = true),

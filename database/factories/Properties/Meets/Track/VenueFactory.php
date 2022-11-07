@@ -18,7 +18,7 @@ class VenueFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->lastName.' '.'Stadium',
+            'name' => $this->faker->lastName().' '.'Stadium',
             'track_surface_id' => Surface::all()->random()->id,
         ];
     }

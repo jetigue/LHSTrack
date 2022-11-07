@@ -28,7 +28,7 @@ class TrackMeetFactory extends Factory
             'host_id' => Host::all()->random()->id,
             'track_venue_id' => Venue::all()->random()->id,
             'timing_method_id' => Timing::all()->random()->id,
-            'meet_page_url' => $this->faker->url,
+            'meet_page_url' => $this->faker->url(),
         ];
     }
 }
