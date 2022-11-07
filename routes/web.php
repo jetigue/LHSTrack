@@ -60,7 +60,7 @@ Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Letteri
 
 Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware('auth')->group(function () {
     Route::get('training/distance', EventPageIndex::class)->name('Distance');
     Route::get('training/distance-calendar', EventSubtypeCalendarContainer::class)->name('Distance Calendar');
     Route::get('training/hurdles', EventPageIndex::class)->name('Hurdles');
@@ -84,7 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/track/meets/{trackMeet:slug}/girls/events/{trackEvent:slug}', TeamResultsEventResultsIndex::class);
 });
 
-Route::group(['middleware' => 'can:coach'], function () {
+Route::middleware('can:coach')->group(function () {
     Route::get('/track/meet-names', TrackMeetNamesIndex::class)->name('Track Meet Names');
     Route::get('/track/venues', TrackVenuesIndex::class)->name('Track Venues');
     Route::get('/meet-hosts', MeetHostsIndex::class)->name('Meet Hosts');
@@ -100,7 +100,7 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/training/paces/distance', DistanceTrainingPacesIndex::class)->name('Distance Training Paces');
 });
 
-Route::group(['middleware' => 'can:admin'], function () {
+Route::middleware('can:admin')->group(function () {
     Route::get('/admin/users/', UsersIndex::class)->name('Users');
     Route::get('/admin/user-roles/', UserRolesIndex::class)->name('User Roles');
 
