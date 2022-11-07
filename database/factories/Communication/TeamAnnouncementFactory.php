@@ -27,7 +27,7 @@ class TeamAnnouncementFactory extends Factory
             'begin_date' => $this->faker->date,
             'end_date' => '2022-01-31',
             'title' => $this->faker->sentence($nbWords = 4, $variableNbWords = true),
-            'body'  => $this->faker->paragraph($nbSentences = 10, $variableNbSentences = true),
+            'body' => $this->faker->paragraph($nbSentences = 10, $variableNbSentences = true),
         ];
     }
 }

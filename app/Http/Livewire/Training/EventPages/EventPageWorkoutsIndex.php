@@ -10,12 +10,19 @@ use Livewire\Component;
 class EventPageWorkoutsIndex extends Component
 {
     public TrackEventSubtype $eventSubtype;
+
     public $showFormModal = false;
+
     public $editing = false;
+
     public $workout;
+
     public $showConfirmModal = false;
+
     public $timeFrame = '>=';
+
     public $whichWorkouts = 'Upcoming';
+
     public $viewWorkout = false;
 
     protected $listeners = [
@@ -23,7 +30,7 @@ class EventPageWorkoutsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()
@@ -63,11 +70,12 @@ class EventPageWorkoutsIndex extends Component
     public function updatedTimeFrame(): string
     {
         if ($this->timeFrame == '>=') {
-            return $this->whichWorkouts = "Upcoming";
+            return $this->whichWorkouts = 'Upcoming';
         } elseif ($this->timeFrame == '<') {
-            return $this->whichWorkouts = "Past";
+            return $this->whichWorkouts = 'Past';
         }
-        return $this->whichWorkouts = "All";
+
+        return $this->whichWorkouts = 'All';
     }
 
     public function cancel()

@@ -8,8 +8,11 @@ use Livewire\Component;
 class TrackSurfacesIndex extends Component
 {
     public $surface = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -17,11 +20,18 @@ class TrackSurfacesIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -64,7 +74,7 @@ class TrackSurfacesIndex extends Component
     public function render()
     {
         return view('livewire.properties.meets.track.track-surfaces-index', [
-            'surfaces' => Surface::orderBy('name')->get()
+            'surfaces' => Surface::orderBy('name')->get(),
         ]);
     }
 }

@@ -3,9 +3,7 @@
 namespace App\Models\Meets\Results\Track;
 
 use App\Models\Athletes\Athlete;
-use App\Models\Meets\TrackMeet;
 use App\Models\Properties\Events\Track\TrackEvent;
-use App\Models\Properties\Races\Gender;
 use App\Traits\ResultsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +13,7 @@ class FieldEventResult extends Model
 {
     use HasFactory, ResultsTrait;
 
-    protected $table='tf_field_event_results';
+    protected $table = 'tf_field_event_results';
 
     protected $fillable = [
         'track_team_result_id',
@@ -25,24 +23,26 @@ class FieldEventResult extends Model
         'quarter_inch',
         'place',
         'flight',
-        'points'
+        'points',
     ];
 
     public function getMarkAttribute(): string
     {
         $inches = $this->attributes['total_inches'];
-        $feet = floor($inches/12);
-        $inches = ($inches%12);
+        $feet = floor($inches / 12);
+        $inches = ($inches % 12);
 
-        return  $feet . "' " . $inches;
+        return  $feet."' ".$inches;
     }
 
     public function getFractionAttribute(): ?string
     {
         if ($this->attributes['quarter_inch']) {
             $quarterInch = $this->attributes['quarter_inch'];
-            return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0)  : null;
+
+            return ($quarterInch > 0) ? ltrim(number_format($quarterInch / 4, 2), 0) : null;
         }
+
         return null;
     }
 
@@ -66,16 +66,14 @@ class FieldEventResult extends Model
         parent::boot();
 
         static::saving(function ($result) {
-
-            switch($result->attributes['quarter_inch'])
-            {
-                case(1):
+            switch ($result->attributes['quarter_inch']) {
+                case 1:
                     $fraction = 25;
                     break;
-                case(2):
+                case 2:
                     $fraction = 50;
                     break;
-                case(3):
+                case 3:
                     $fraction = 75;
                     break;
                 default:
@@ -87,7 +85,6 @@ class FieldEventResult extends Model
             } else {
                 $result->total_distance = $result->attributes['total_inches'];
             }
-
         });
     }
 }

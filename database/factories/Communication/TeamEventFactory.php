@@ -24,9 +24,9 @@ class TeamEventFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'event_date' => '2022-01-'.$this->faker->numberBetween(1,30),
+            'event_date' => '2022-01-'.$this->faker->numberBetween(1, 30),
             'title' => $this->faker->sentence($nbWords = 2, $variableNbWords = true),
-            'description'  => $this->faker->sentence($nbSentences = 7, $variableNbSentences = true),
+            'description' => $this->faker->sentence($nbSentences = 7, $variableNbSentences = true),
         ];
     }
 }

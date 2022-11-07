@@ -9,9 +9,13 @@ use Livewire\Component;
 class EventPageLinksIndex extends Component
 {
     public TrackEventSubtype $eventSubtype;
+
     public $showFormModal = false;
+
     public $editing = false;
+
     public $link;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -19,7 +23,7 @@ class EventPageLinksIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()
@@ -44,7 +48,6 @@ class EventPageLinksIndex extends Component
         $this->showConfirmModal = false;
         session()->flash('success', 'Link Deleted Successfully');
         $this->render();
-
     }
 
     public function recordAdded()

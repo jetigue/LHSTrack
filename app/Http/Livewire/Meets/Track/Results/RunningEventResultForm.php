@@ -12,17 +12,29 @@ use function view;
 class RunningEventResultForm extends Component
 {
     public $eventResult = null;
+
     public $track_event_id;
+
     public $track_team_result_id;
+
     public $athlete_id;
+
     public $place;
+
     public $total_seconds;
+
     public $milliseconds;
+
     public $heat;
+
     public $points;
+
     public $minutes;
+
     public $seconds;
+
     public TrackEvent $trackEvent;
+
     public TeamResult $teamResult;
 
     public function mount()
@@ -34,7 +46,7 @@ class RunningEventResultForm extends Component
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editRunningEventResult'
+        'editRunningEventResult',
     ];
 
     public function updated($propertyName)
@@ -64,7 +76,7 @@ class RunningEventResultForm extends Component
             'seconds' => 'required|integer',
             'milliseconds' => 'nullable|integer',
             'heat' => 'nullable|integer',
-            'points' => 'nullable|integer|min:0'
+            'points' => 'nullable|integer|min:0',
         ];
     }
 
@@ -80,7 +92,7 @@ class RunningEventResultForm extends Component
             'total_seconds' => $this->minutes * 60 + $this->seconds,
             'milliseconds' => $this->milliseconds,
             'heat' => $this->heat,
-            'points' => $this->points
+            'points' => $this->points,
         ];
 
         if ($this->eventResult) {

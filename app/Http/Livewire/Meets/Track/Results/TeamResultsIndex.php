@@ -9,10 +9,15 @@ use Livewire\Component;
 class TeamResultsIndex extends Component
 {
     public TrackMeet $trackMeet;
+
     public $teamResult = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $division;
 
     protected $listeners = [
@@ -20,7 +25,7 @@ class TeamResultsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()
@@ -71,12 +76,13 @@ class TeamResultsIndex extends Component
         $this->editing = true;
         $this->emit('editTeamResult', $teamResult->id);
     }
+
     public function render()
     {
         return view('livewire.meets.track.results.team-results-index', [
-            'teamResults'=> TeamResult::with('trackMeet', 'division')
+            'teamResults' => TeamResult::with('trackMeet', 'division')
                 ->where('track_meet_id', $this->trackMeet->id)
-                ->get()
+                ->get(),
         ]);
     }
 }

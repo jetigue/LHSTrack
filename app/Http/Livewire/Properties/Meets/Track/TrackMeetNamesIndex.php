@@ -12,12 +12,19 @@ class TrackMeetNamesIndex extends Component
     use WithPagination;
 
     public $search = '';
+
     public $sortField = 'name';
+
     public $sortDirection = 'asc';
+
     public $meetName = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $route;
 
     protected $queryString = ['sortField', 'sortDirection', 'search'];
@@ -39,7 +46,7 @@ class TrackMeetNamesIndex extends Component
         'confirmDelete',
         'recordAdded',
         'recordUpdated',
-        'refreshMeetNames'
+        'refreshMeetNames',
     ];
 
     public function mount()
@@ -47,8 +54,15 @@ class TrackMeetNamesIndex extends Component
         $this->route = Route::currentRouteName();
     }
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function clearSearch()
     {
@@ -97,10 +111,10 @@ class TrackMeetNamesIndex extends Component
     {
         return view('livewire.properties.meets.track.track-meet-names-index', [
             'meetNames' => MeetName::query()
-                ->where('name', 'like', '%' . $this->search . '%')
+                ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->orderBy('name')
-                ->paginate(25)
+                ->paginate(25),
         ]);
     }
 }

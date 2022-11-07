@@ -9,12 +9,13 @@ use function view;
 class LevelForm extends Component
 {
     public $level = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editLevel'
+        'editLevel',
     ];
 
     public function updated($propertyName)

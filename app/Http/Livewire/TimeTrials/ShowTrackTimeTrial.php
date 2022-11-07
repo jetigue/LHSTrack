@@ -8,12 +8,19 @@ use Livewire\Component;
 class ShowTrackTimeTrial extends Component
 {
     public TrackTimeTrial $timeTrial;
+
     public $addOrEditBoysEvents = false;
+
     public $addOrEditGirlsEvents = false;
+
     public $isDisabledBoys = false;
+
     public $isDisabledGirls = false;
+
     public $selectedBoysEvents = [];
+
     public $selectedGirlsEvents = [];
+
     public $selected = [];
 
     public function rules()

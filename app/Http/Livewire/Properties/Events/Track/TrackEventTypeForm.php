@@ -8,12 +8,13 @@ use Livewire\Component;
 class TrackEventTypeForm extends Component
 {
     public $eventType = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editEventType'
+        'editEventType',
     ];
 
     public function updated($propertyName)

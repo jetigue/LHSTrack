@@ -10,15 +10,19 @@ use Livewire\Component;
 class TrackTimeTrialForm extends Component
 {
     public $trackTimeTrial = null;
+
     public $name;
+
     public $trial_date_for_editing;
+
     public $timing_method_id;
+
     public $track_venue_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTrackTimeTrial'
+        'editTrackTimeTrial',
     ];
 
     public function updated($propertyName)
@@ -41,7 +45,7 @@ class TrackTimeTrialForm extends Component
             'name' => 'required|string',
             'trial_date_for_editing' => 'required|date',
             'timing_method_id' => 'required|integer',
-            'track_venue_id' => 'required|integer'
+            'track_venue_id' => 'required|integer',
         ];
     }
 

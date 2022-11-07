@@ -20,8 +20,10 @@ trait ResultsTrait
                         return $value.'rd';
                 }
             }
+
             return $value.'th';
         }
+
         return '';
     }
 
@@ -34,7 +36,7 @@ trait ResultsTrait
 
     public function getMillisecondsAttribute()
     {
-        return $this->attributes['milliseconds'] > 9 ? $this->attributes['milliseconds'] : 0 . $this->attributes['milliseconds'];
+        return $this->attributes['milliseconds'] > 9 ? $this->attributes['milliseconds'] : 0 .$this->attributes['milliseconds'];
     }
 
     public function getFirstLegTimeAttribute(): string
@@ -46,7 +48,7 @@ trait ResultsTrait
 
     public function getFirstLegMillisecondsAttribute()
     {
-        return $this->attributes['leg_1_milliseconds'] > 9 ? $this->attributes['leg_1_milliseconds'] : 0 . $this->attributes['leg_1_milliseconds'];
+        return $this->attributes['leg_1_milliseconds'] > 9 ? $this->attributes['leg_1_milliseconds'] : 0 .$this->attributes['leg_1_milliseconds'];
     }
 
     public function getSecondLegTimeAttribute(): string
@@ -58,7 +60,7 @@ trait ResultsTrait
 
     public function getSecondLegMillisecondsAttribute()
     {
-        return $this->attributes['leg_2_milliseconds'] > 9 ? $this->attributes['leg_2_milliseconds'] : 0 . $this->attributes['leg_1_milliseconds'];
+        return $this->attributes['leg_2_milliseconds'] > 9 ? $this->attributes['leg_2_milliseconds'] : 0 .$this->attributes['leg_1_milliseconds'];
     }
 
     public function getThirdLegTimeAttribute(): string
@@ -70,7 +72,7 @@ trait ResultsTrait
 
     public function getThirdLegMillisecondsAttribute()
     {
-        return $this->attributes['leg_3_milliseconds'] > 9 ? $this->attributes['leg_3_milliseconds'] : 0 . $this->attributes['leg_1_milliseconds'];
+        return $this->attributes['leg_3_milliseconds'] > 9 ? $this->attributes['leg_3_milliseconds'] : 0 .$this->attributes['leg_1_milliseconds'];
     }
 
     public function getFourthLegTimeAttribute(): string
@@ -82,6 +84,6 @@ trait ResultsTrait
 
     public function getFourthLegMillisecondsAttribute()
     {
-        return $this->attributes['leg_4_milliseconds'] > 9 ? $this->attributes['leg_4_milliseconds'] : 0 . $this->attributes['leg_1_milliseconds'];
+        return $this->attributes['leg_4_milliseconds'] > 9 ? $this->attributes['leg_4_milliseconds'] : 0 .$this->attributes['leg_1_milliseconds'];
     }
 }

@@ -10,5 +10,6 @@ class Surface extends Model
     use HasFactory;
 
     protected $table = 'track_surfaces';
+
     protected $fillable = ['name'];
 }

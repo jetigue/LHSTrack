@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class TrackEventTypeFactory extends Factory
 {
     protected $model = TrackEventType::class;
+
     /**
      * Define the model's default state.
      *

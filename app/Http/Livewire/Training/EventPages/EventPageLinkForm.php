@@ -10,14 +10,17 @@ use Livewire\Component;
 class EventPageLinkForm extends Component
 {
     public TrackEventSubtype $eventSubtype;
+
     public $link = null;
+
     public $text;
+
     public $url;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editLink'
+        'editLink',
     ];
 
     public function updated($propertyName)
@@ -48,7 +51,7 @@ class EventPageLinkForm extends Component
             'text' => $this->text,
             'url' => $this->url,
             'user_id' => Auth::user()->id,
-            'track_event_subtype_id' => $this->eventSubtype->id
+            'track_event_subtype_id' => $this->eventSubtype->id,
         ];
 
         if ($this->link) {
@@ -70,6 +73,7 @@ class EventPageLinkForm extends Component
             'url',
         ]);
     }
+
     public function render()
     {
         return view('livewire.training.event-pages.event-page-link-form');

@@ -17,7 +17,5 @@ class TrackEventTypeTest extends TestCase
         $this->signInAdmin();
 
         $this->get('/track/event-types')->assertSeeLivewire(TrackEventTypesIndex::class);
-
-
     }
 }

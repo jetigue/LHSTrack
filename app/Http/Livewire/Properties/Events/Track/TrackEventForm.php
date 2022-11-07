@@ -2,26 +2,31 @@
 
 namespace App\Http\Livewire\Properties\Events\Track;
 
-use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
 use Livewire\Component;
 use function view;
 
 class TrackEventForm extends Component
 {
     public $trackEvent = null;
-    public $name;
-    public $track_event_subtype_id;
-    public $distance_in_meters;
-    public $boys_event;
-    public $girls_event;
-    public $ghsa_event;
 
+    public $name;
+
+    public $track_event_subtype_id;
+
+    public $distance_in_meters;
+
+    public $boys_event;
+
+    public $girls_event;
+
+    public $ghsa_event;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTrackEvent'
+        'editTrackEvent',
     ];
 
     public function updated($propertyName)
@@ -34,6 +39,7 @@ class TrackEventForm extends Component
         if ($value) {
             return $this->distance_in_meters;
         }
+
         return $this->distance_in_meters = null;
     }
 
@@ -56,7 +62,7 @@ class TrackEventForm extends Component
             'distance_in_meters' => 'integer|nullable',
             'boys_event' => 'required|boolean',
             'girls_event' => 'required|boolean',
-            'ghsa_event' => 'required|boolean'
+            'ghsa_event' => 'required|boolean',
         ];
     }
 
@@ -70,7 +76,7 @@ class TrackEventForm extends Component
             'distance_in_meters' => $this->distance_in_meters,
             'boys_event' => $this->boys_event,
             'girls_event' => $this->girls_event,
-            'ghsa_event' => $this->ghsa_event
+            'ghsa_event' => $this->ghsa_event,
         ];
 
         if ($this->trackEvent) {
@@ -92,14 +98,14 @@ class TrackEventForm extends Component
             'distance_in_meters',
             'boys_event',
             'girls_event',
-            'ghsa_event'
+            'ghsa_event',
         ]);
     }
 
     public function render()
     {
         return view('livewire.properties.events.track.track-event-form', [
-            'trackSubTypes' => TrackEventSubtype::all()
+            'trackSubTypes' => TrackEventSubtype::all(),
         ]);
     }
 }

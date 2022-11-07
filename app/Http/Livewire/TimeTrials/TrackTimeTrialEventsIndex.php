@@ -7,11 +7,13 @@ use Livewire\Component;
 class TrackTimeTrialEventsIndex extends Component
 {
     public $timeTrial;
+
     public $editing = false;
+
     public $showFormModal = false;
 
     protected $listeners = [
-        'eventsUpdated' => '$refresh'
+        'eventsUpdated' => '$refresh',
     ];
 
     public function addBoysRunningEventResults()
@@ -36,7 +38,7 @@ class TrackTimeTrialEventsIndex extends Component
 
             'girlsEvents' => $this->timeTrial->girlsTrackEvents
                 ->sortBy('distance_in_meters')
-                ->sortBy('eventSubType.track_event_type_id')
+                ->sortBy('eventSubType.track_event_type_id'),
         ]);
     }
 }

@@ -36,15 +36,15 @@ class TrackMeet extends Model
 
     public function path(): string
     {
-        return '/track/meets/' . $this->slug;
+        return '/track/meets/'.$this->slug;
     }
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => ['meetName.name',  'meetYear']
-            ]
+                'source' => ['meetName.name',  'meetYear'],
+            ],
         ];
     }
 

@@ -16,7 +16,7 @@ class HurdleWorkout extends Model
     protected $dates = ['workout_date'];
 
     protected $fillable = [
-        'title', 'workout_date', 'description', 'user_id'
+        'title', 'workout_date', 'description', 'user_id',
     ];
 
     public function getWorkoutDateForEditingAttribute()

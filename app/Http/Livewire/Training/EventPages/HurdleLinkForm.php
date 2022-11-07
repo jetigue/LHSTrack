@@ -9,13 +9,15 @@ use Livewire\Component;
 class HurdleLinkForm extends Component
 {
     public $link = null;
+
     public $text;
+
     public $url;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editLink'
+        'editLink',
     ];
 
     public function updated($propertyName)
@@ -45,7 +47,7 @@ class HurdleLinkForm extends Component
         $link = [
             'text' => $this->text,
             'url' => $this->url,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
         ];
 
         if ($this->link) {

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-if(\Illuminate\Support\Facades\App::environment('production')) {
+if (\Illuminate\Support\Facades\App::environment('production')) {
     \Illuminate\Support\Facades\URL::forceScheme('https');
 }
 

@@ -17,7 +17,7 @@ class EventSubtypeWorkout extends Model
     protected $dates = ['workout_date'];
 
     protected $fillable = [
-        'title', 'workout_date', 'description', 'user_id', 'track_event_subtype_id'
+        'title', 'workout_date', 'description', 'user_id', 'track_event_subtype_id',
     ];
 
     public function getWorkoutDateForEditingAttribute()

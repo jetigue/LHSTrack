@@ -6,17 +6,14 @@ use App\Http\Livewire\Calendar\MonthlyCalendar;
 use App\Http\Livewire\Communication\TeamAnnouncementsIndex;
 use App\Http\Livewire\Communication\TeamEventsIndex;
 use App\Http\Livewire\Dashboard;
-use App\Http\Livewire\Main\BoosterClubPage;
-use App\Http\Livewire\Main\TeamRoster;
 use App\Http\Livewire\Main\OurTeam;
-use App\Http\Livewire\Main\GirlsRoster;
 use App\Http\Livewire\Main\Welcome;
-use App\Http\Livewire\Meets\Track\ShowTrackMeet;
 use App\Http\Livewire\Meets\Track\Results\ShowTeamResult;
 use App\Http\Livewire\Meets\Track\Results\TeamResultsEventResultsIndex;
+use App\Http\Livewire\Meets\Track\ShowTrackMeet;
 use App\Http\Livewire\Meets\Track\TrackMeetsIndex;
-use App\Http\Livewire\Properties\Events\Track\TrackEventSubtypesIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventsIndex;
+use App\Http\Livewire\Properties\Events\Track\TrackEventSubtypesIndex;
 use App\Http\Livewire\Properties\Events\Track\TrackEventTypesIndex;
 use App\Http\Livewire\Properties\Meets\MeetHostsIndex;
 use App\Http\Livewire\Properties\Meets\TimingMethodsIndex;
@@ -36,11 +33,8 @@ use App\Http\Livewire\TimeTrials\TrackTimeTrialsIndex;
 use App\Http\Livewire\Training\DistanceTrainingPacesIndex;
 use App\Http\Livewire\Training\EventPages\EventPageIndex;
 use App\Http\Livewire\Training\EventPages\EventSubtypeCalendarContainer;
-use App\Http\Livewire\Training\EventPages\HurdlesIndex;
-use App\Http\Livewire\Training\EventPages\EventSubtypeWorkoutCalendar;
 use App\Http\Livewire\Users\UserRolesIndex;
 use App\Http\Livewire\Users\UsersIndex;
-use App\Models\Pivot\BoysTrackMeetEvent;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
@@ -100,10 +94,8 @@ Route::group(['middleware' => 'can:coach'], function () {
     Route::get('/track/time-trials/{timeTrial:slug}/boys/events/{trackEvent:slug}', TrackTimeTrialRunningEventResultsIndex::class);
     Route::get('/track/time-trials/{timeTrial:slug}/girls/events/{trackEvent:slug}', TrackTimeTrialRunningEventResultsIndex::class);
 
-
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');
     Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
-
 
     Route::get('/training/paces/distance', DistanceTrainingPacesIndex::class)->name('Distance Training Paces');
 });
@@ -124,4 +116,3 @@ Route::group(['middleware' => 'can:admin'], function () {
     Route::get('/properties/race-titles', TitlesIndex::class)->name('Race Titles');
     Route::get('/properties/divisions', DivisionsIndex::class)->name('Divisions');
 });
-

@@ -20,7 +20,6 @@ class TrackMeetSeeder extends Seeder
      */
     public function run()
     {
-
         Season::factory(2)->create();
         Timing::factory(2)->create();
         Host::factory(20)->create();

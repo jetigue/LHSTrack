@@ -9,13 +9,15 @@ use Livewire\Component;
 class TrackVenueForm extends Component
 {
     public $trackVenue = null;
+
     public $name;
+
     public $track_surface_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTrackVenue'
+        'editTrackVenue',
     ];
 
     public function updated($propertyName)
@@ -34,7 +36,7 @@ class TrackVenueForm extends Component
     {
         return [
             'name' => 'required|string|max:50',
-            'track_surface_id' => 'required|integer'
+            'track_surface_id' => 'required|integer',
         ];
     }
 
@@ -44,7 +46,7 @@ class TrackVenueForm extends Component
 
         $trackVenue = [
             'name' => $this->name,
-            'track_surface_id' => $this->track_surface_id
+            'track_surface_id' => $this->track_surface_id,
         ];
 
         if ($this->trackVenue) {
@@ -66,7 +68,7 @@ class TrackVenueForm extends Component
     public function render()
     {
         return view('livewire.properties.meets.track.track-venue-form', [
-            'trackSurfaces' => Surface::orderBy('name')->get()
+            'trackSurfaces' => Surface::orderBy('name')->get(),
         ]);
     }
 }

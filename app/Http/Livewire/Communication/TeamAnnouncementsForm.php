@@ -9,17 +9,20 @@ use Mews\Purifier\Facades\Purifier;
 
 class TeamAnnouncementsForm extends Component
 {
-
     public $announcement = null;
+
     public $title;
+
     public $begin_date_for_editing;
+
     public $end_date_for_editing;
+
     public $body;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editAnnouncement' => 'edit'
+        'editAnnouncement' => 'edit',
     ];
 
     public function mount()
@@ -38,7 +41,7 @@ class TeamAnnouncementsForm extends Component
             'title' => 'required',
             'begin_date_for_editing' => 'required|date',
             'end_date_for_editing' => 'required|date|after:begin_date',
-            'body' => 'required'
+            'body' => 'required',
         ];
     }
 
@@ -60,15 +63,13 @@ class TeamAnnouncementsForm extends Component
             'end_date' => $this->end_date_for_editing,
             'title' => $this->title,
             'body' => Purifier::clean($this->body),
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
         ];
 
         if ($this->announcement) {
             TeamAnnouncement::find($this->announcement->id)->update($announcement);
-
         } else {
             $announcement = TeamAnnouncement::create($announcement);
-
         }
         $this->resetForm();
         $this->emit('hideModal');

@@ -12,12 +12,19 @@ class TrackTimeTrialsIndex extends Component
     use WithPagination;
 
     public $search = '';
+
     public $sortField = 'trial_date';
+
     public $sortDirection = 'desc';
+
     public $timeTrial = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $route;
 
     protected $queryString = ['sortField', 'sortDirection', 'search'];
@@ -39,7 +46,7 @@ class TrackTimeTrialsIndex extends Component
         'confirmDelete',
         'recordAdded',
         'recordUpdated',
-        'refreshTimeTrials'
+        'refreshTimeTrials',
     ];
 
     public function mount()
@@ -47,8 +54,15 @@ class TrackTimeTrialsIndex extends Component
         $this->route = Route::currentRouteName();
     }
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function clearSearch()
     {
@@ -70,7 +84,6 @@ class TrackTimeTrialsIndex extends Component
         session()->flash('success', 'Time Trials Imported Successfully');
 
         $this->render();
-
     }
 
     public function confirmDelete(TrackTimeTrial $timeTrial)
@@ -100,14 +113,15 @@ class TrackTimeTrialsIndex extends Component
         $this->editing = true;
         $this->emit('editTrackTimeTrial', $timeTrial->id);
     }
+
     public function render()
     {
         return view('livewire.time-trials.track-time-trials-index', [
             'timeTrials' => TrackTimeTrial::with('venue', 'timingMethod')
-                ->where('name', 'like', '%' . $this->search . '%')
+                ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->orderBy('trial_date')
-                ->paginate(25)
+                ->paginate(25),
         ]);
     }
 }

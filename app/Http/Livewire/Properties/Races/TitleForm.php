@@ -9,12 +9,13 @@ use function view;
 class TitleForm extends Component
 {
     public $title = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTitle'
+        'editTitle',
     ];
 
     public function updated($propertyName)

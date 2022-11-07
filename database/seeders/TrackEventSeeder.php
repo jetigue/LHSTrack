@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Events\Track\TrackEventType;
 use Illuminate\Database\Seeder;
 

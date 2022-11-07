@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Athletes\Athlete;
-use App\Models\Communication\TeamAnnouncement;
-use App\Models\Communication\TeamEvent;
 use App\Models\Users\Role;
 use App\Models\Users\User;
 use Illuminate\Database\Seeder;
@@ -27,7 +25,7 @@ class DatabaseSeeder extends Seeder
             CommunicationSeeder::class,
             TrackMeetSeeder::class,
             TrackEventSeeder::class,
-            TrackTimeTrialSeeder::class
+            TrackTimeTrialSeeder::class,
         ]);
     }
 }

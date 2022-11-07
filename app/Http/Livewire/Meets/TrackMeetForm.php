@@ -13,18 +13,25 @@ use Livewire\Component;
 class TrackMeetForm extends Component
 {
     public $trackMeet = null;
+
     public $host_id;
+
     public $meet_date_for_editing;
+
     public $meet_page_url;
+
     public $timing_method_id;
+
     public $track_meet_name_id;
+
     public $track_season_id;
+
     public $track_venue_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTrackMeet'
+        'editTrackMeet',
     ];
 
     public function updated($propertyName)
@@ -53,7 +60,7 @@ class TrackMeetForm extends Component
             'timing_method_id' => 'required|integer',
             'track_meet_name_id' => 'required|integer',
             'track_season_id' => 'required|integer',
-            'track_venue_id' => 'required|integer'
+            'track_venue_id' => 'required|integer',
         ];
     }
 

@@ -9,8 +9,11 @@ use function view;
 class TitlesIndex extends Component
 {
     public $title = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -18,11 +21,18 @@ class TitlesIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -65,7 +75,7 @@ class TitlesIndex extends Component
     public function render()
     {
         return view('livewire.properties.races.titles-index', [
-            'titles' => Title::orderBy('name')->get()
+            'titles' => Title::orderBy('name')->get(),
         ]);
     }
 }

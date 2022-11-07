@@ -7,18 +7,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory
 {
-
     protected $model = Role::class;
 
     public function definition(): array
     {
         return [
             'name' => $this->faker->randomElement([
-                'athlete', 'coach', 'admin', 'parent', 'booster', 'viewer'
-            ])
+                'athlete', 'coach', 'admin', 'parent', 'booster', 'viewer',
+            ]),
         ];
     }
-
 
     public function admin()
     {
@@ -30,10 +28,10 @@ class RoleFactory extends Factory
     }
 
     /**
- * Indicate that the user is suspended.
- *
- * @return Factory
- */
+     * Indicate that the user is suspended.
+     *
+     * @return Factory
+     */
     public function isCoach(): Factory
     {
         return $this->state(function () {

@@ -3,13 +3,11 @@
 namespace App\Models\Users;
 
 use App\Models\Athletes\Athlete;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -48,7 +46,7 @@ class User extends Authenticatable
 
     public function path(): string
     {
-        return '/users/' . $this->slug;
+        return '/users/'.$this->slug;
     }
 
     public function athlete()
@@ -60,8 +58,8 @@ class User extends Authenticatable
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query
-                ->where('name', 'like', '%' . $search . '%')
-                ->orWhere('email', 'like', '%' . $search . '%');
+                ->where('name', 'like', '%'.$search.'%')
+                ->orWhere('email', 'like', '%'.$search.'%');
         });
     }
 
@@ -74,12 +72,13 @@ class User extends Authenticatable
     {
         $words = explode(' ', $this->name);
         if (count($words) >= 2) {
-            return strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
+            return strtoupper(substr($words[0], 0, 1).substr(end($words), 0, 1));
         }
         preg_match_all('#([A-Z]+)#', $this->name, $capitals);
         if (count($capitals[1]) >= 2) {
             return substr(implode('', $capitals[1]), 0, 2);
         }
+
         return strtoupper(substr($this->name, 0, 2));
     }
 }

@@ -9,8 +9,11 @@ use function view;
 class GendersIndex extends Component
 {
     public $gender = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -18,11 +21,18 @@ class GendersIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -65,7 +75,7 @@ class GendersIndex extends Component
     public function render()
     {
         return view('livewire.properties.races.genders-index', [
-            'genders' => Gender::orderBy('name')->get()
+            'genders' => Gender::orderBy('name')->get(),
         ]);
     }
 }

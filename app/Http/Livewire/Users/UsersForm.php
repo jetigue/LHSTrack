@@ -9,12 +9,13 @@ use Livewire\Component;
 class UsersForm extends Component
 {
     public $user = null;
+
     public $user_role_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editUser'
+        'editUser',
     ];
 
     public function updated($propertyName)
@@ -39,7 +40,7 @@ class UsersForm extends Component
     {
         $this->validate();
 
-        $user= [
+        $user = [
             'user_role_id' => $this->user_role_id,
         ];
 
@@ -60,7 +61,7 @@ class UsersForm extends Component
     public function render()
     {
         return view('livewire.users.users-form', [
-            'userRoles' => Role::all()
+            'userRoles' => Role::all(),
         ]);
     }
 }

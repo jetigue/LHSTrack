@@ -11,6 +11,7 @@ class Venue extends Model
     use HasFactory;
 
     protected $table = 'track_venues';
+
     protected $fillable = ['name', 'track_surface_id'];
 
     public function surface(): BelongsTo
@@ -20,6 +21,6 @@ class Venue extends Model
 
     public function path(): string
     {
-        return '/track/venues/' . $this->slug;
+        return '/track/venues/'.$this->slug;
     }
 }

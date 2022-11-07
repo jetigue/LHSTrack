@@ -10,9 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 class GirlsRoster extends Component
 {
     public $freshmen;
+
     public $sophomores;
+
     public $juniors;
+
     public $seniors;
+
     public $gender;
 
     public function mount(Request $request)
@@ -21,7 +25,10 @@ class GirlsRoster extends Component
 
         $nextSeason = Carbon::now()->month >= 6 ? 1 : 0;
 
-        if ($sex == 'm') { $this->gender = 'Boys\''; } $this->gender = 'Girls\'';
+        if ($sex == 'm') {
+            $this->gender = 'Boys\'';
+        }
+        $this->gender = 'Girls\'';
 
         $athletes = Athlete::query()
             ->where('status', '!=', 'i')

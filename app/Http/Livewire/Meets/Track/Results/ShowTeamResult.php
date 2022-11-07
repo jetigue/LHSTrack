@@ -17,7 +17,7 @@ class ShowTeamResult extends Component
             'otherTeamResults' => TeamResult::query()
                 ->where('track_meet_id', $this->teamResult->trackMeet->id)
                 ->where('id', '!=', $this->teamResult->id)
-                ->get()
+                ->get(),
         ]);
     }
 }

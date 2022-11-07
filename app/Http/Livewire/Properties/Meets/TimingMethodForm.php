@@ -8,12 +8,13 @@ use Livewire\Component;
 class TimingMethodForm extends Component
 {
     public $timingMethod = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTimingMethod'
+        'editTimingMethod',
     ];
 
     public function updated($propertyName)

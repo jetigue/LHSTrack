@@ -11,13 +11,15 @@ use function view;
 class DivisionForm extends Component
 {
     public $division = null;
+
     public $gender_id;
+
     public $level_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editDivision'
+        'editDivision',
     ];
 
     public function updated($propertyName)
@@ -69,7 +71,7 @@ class DivisionForm extends Component
     {
         return view('livewire.properties.races.division-form', [
             'genders' => Gender::all(),
-            'levels' => Level::all()
+            'levels' => Level::all(),
         ]);
     }
 }

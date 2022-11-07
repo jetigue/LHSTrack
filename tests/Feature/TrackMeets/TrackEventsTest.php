@@ -3,8 +3,8 @@
 namespace Tests\Feature\TrackMeets;
 
 use App\Models\Meets\TrackMeet;
-use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Meets\Host;
 use App\Models\Properties\Meets\Timing;
 use App\Models\Properties\Meets\Track\MeetName;
@@ -35,7 +35,7 @@ class TrackEventsTest extends TestCase
             'track_venue_id' => $venue->id,
             'track_meet_name_id' => $name->id,
             'host_id' => $host->id,
-            'timing_method_id' => $timing->id
+            'timing_method_id' => $timing->id,
         ]);
 
         $category = TrackEventSubtype::factory()->create();

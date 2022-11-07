@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Meets\Track\Results;
 use App\Models\Meets\Results\Track\FieldEventResult;
 use App\Models\Meets\Results\Track\TeamResult;
 use App\Models\Properties\Events\Track\TrackEvent;
-use App\Models\Properties\Races\Gender;
 use Livewire\Component;
 use function session;
 use function view;
@@ -13,10 +12,15 @@ use function view;
 class FieldEventResultsIndex extends Component
 {
     public TrackEvent $trackEvent;
+
     public TeamResult $teamResult;
+
     public $result = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -24,7 +28,7 @@ class FieldEventResultsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()

@@ -7,14 +7,22 @@ use Illuminate\View\Component;
 
 class TrainingPace extends Component
 {
-    Public Athlete $athlete;
+    public Athlete $athlete;
+
     public float $distance;
+
     public float $percentVO2;
+
     public float $a = 29.54;
+
     public float $b = 5.000663;
+
     public float $c = 0.007546;
+
     public float $x;
+
     public float $seconds;
+
     public string $pace;
 
     /**

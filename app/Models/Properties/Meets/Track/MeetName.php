@@ -13,25 +13,25 @@ class MeetName extends Model
     use HasFactory, Sluggable;
 
     protected $table = 'track_meet_names';
+
     protected $fillable = ['name'];
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
     public function path(): string
     {
-        return '/track/meet-names/' . $this->slug;
+        return '/track/meet-names/'.$this->slug;
     }
 
     public function trackMeets(): HasMany
     {
         return $this->hasMany(TrackMeet::class);
     }
-
 }

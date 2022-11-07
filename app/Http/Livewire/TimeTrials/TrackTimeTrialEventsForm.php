@@ -2,17 +2,19 @@
 
 namespace App\Http\Livewire\TimeTrials;
 
-use App\Models\Properties\Events\Track\TrackEventSubtype;
-use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Events\Track\TrackEventType;
 use Livewire\Component;
 
 class TrackTimeTrialEventsForm extends Component
 {
     public $timeTrial;
+
     public $gender_id = '';
+
     public $showEventsMenu = false;
+
     public $selectedBoysEvents = [];
+
     public $selectedGirlsEvents = [];
 
     public function hideMenu()
@@ -44,15 +46,15 @@ class TrackTimeTrialEventsForm extends Component
         ];
     }
 
-public function saveChanges()
-{
-    $this->timeTrial->boysTrackEvents()->sync($this->selectedBoysEvents);
-    $this->timeTrial->girlsTrackEvents()->sync($this->selectedGirlsEvents);
-    $this->hideMenu();
-    $this->emit('eventsUpdated');
+    public function saveChanges()
+    {
+        $this->timeTrial->boysTrackEvents()->sync($this->selectedBoysEvents);
+        $this->timeTrial->girlsTrackEvents()->sync($this->selectedGirlsEvents);
+        $this->hideMenu();
+        $this->emit('eventsUpdated');
 
-    session()->flash('success', 'Saved!');
-}
+        session()->flash('success', 'Saved!');
+    }
 
     public function render()
     {

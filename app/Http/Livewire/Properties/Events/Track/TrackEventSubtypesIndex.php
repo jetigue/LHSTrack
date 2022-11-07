@@ -10,8 +10,11 @@ use function view;
 class TrackEventSubtypesIndex extends Component
 {
     public $subType = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public bool $showConfirmModal = false;
 
     protected $listeners = [
@@ -19,11 +22,18 @@ class TrackEventSubtypesIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -66,7 +76,7 @@ class TrackEventSubtypesIndex extends Component
     public function render()
     {
         return view('livewire.properties.events.track.track-event-subtypes-index', [
-            'subTypes' => TrackEventSubtype::with('eventType', 'trackEvents')->get()
+            'subTypes' => TrackEventSubtype::with('eventType', 'trackEvents')->get(),
         ]);
     }
 }

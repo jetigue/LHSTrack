@@ -9,6 +9,7 @@ use Livewire\Component;
 class TeamRoster extends Component
 {
     public $nextSeason;
+
     public $currentYear;
 
     public function mount()
@@ -23,7 +24,7 @@ class TeamRoster extends Component
             'athletes' => Athlete::where('status', '!=', 'i')
                 ->orderBy('last_name')
                 ->orderBy('first_name')
-                ->get()
+                ->get(),
         ]);
     }
 }

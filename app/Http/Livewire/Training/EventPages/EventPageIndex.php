@@ -4,13 +4,12 @@ namespace App\Http\Livewire\Training\EventPages;
 
 use App\Models\Communication\EventSubtypes\EventSubtypeLink;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
-
 use Livewire\Component;
-
 
 class EventPageIndex extends Component
 {
     public $event;
+
     public $eventSubtype;
 
     public function mount()
@@ -26,7 +25,7 @@ class EventPageIndex extends Component
                 ->where('track_event_subtype_id', $this->eventSubtype->id)
                 ->get(),
 
-            'eventSubtypes' => TrackEventSubtype::where('name', '!=', 'Relays')->orderBy('name')->get()
+            'eventSubtypes' => TrackEventSubtype::where('name', '!=', 'Relays')->orderBy('name')->get(),
         ]);
     }
 }

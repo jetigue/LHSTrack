@@ -11,19 +11,20 @@ class Host extends Model
     use HasFactory, Sluggable;
 
     protected $table = 'hosts';
+
     protected $fillable = ['name'];
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
     public function path(): string
     {
-        return '/meet-hosts/' . $this->slug;
+        return '/meet-hosts/'.$this->slug;
     }
 }

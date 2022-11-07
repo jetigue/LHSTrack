@@ -9,8 +9,11 @@ use function view;
 class DivisionsIndex extends Component
 {
     public $division = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -18,11 +21,18 @@ class DivisionsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -65,7 +75,7 @@ class DivisionsIndex extends Component
     public function render()
     {
         return view('livewire.properties.races.divisions-index', [
-            'divisions' => Division::all()
+            'divisions' => Division::all(),
         ]);
     }
 }

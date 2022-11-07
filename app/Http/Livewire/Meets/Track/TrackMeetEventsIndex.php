@@ -8,11 +8,13 @@ use Livewire\Component;
 class TrackMeetEventsIndex extends Component
 {
     public TeamResult $teamResult;
+
     public $editing = false;
+
     public $showFormModal = false;
 
     protected $listeners = [
-        'eventsUpdated' => '$refresh'
+        'eventsUpdated' => '$refresh',
     ];
 
     public function addResults()
@@ -33,7 +35,7 @@ class TrackMeetEventsIndex extends Component
             'trackEvents' => $this->teamResult->trackEvents
                 ->sortBy('distance_in_meters')
                 ->sortBy('eventSubtype.id')
-                ->sortBy('eventSubtype.eventType.id')
+                ->sortBy('eventSubtype.eventType.id'),
         ]);
     }
 }

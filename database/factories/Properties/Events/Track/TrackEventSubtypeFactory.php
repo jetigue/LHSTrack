@@ -19,7 +19,7 @@ class TrackEventSubtypeFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'track_event_type_id' => TrackEventType::all()->random()->id
+            'track_event_type_id' => TrackEventType::all()->random()->id,
         ];
     }
 }

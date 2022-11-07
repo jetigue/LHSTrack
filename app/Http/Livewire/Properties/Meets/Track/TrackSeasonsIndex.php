@@ -8,8 +8,11 @@ use Livewire\Component;
 class TrackSeasonsIndex extends Component
 {
     public $season = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -17,11 +20,18 @@ class TrackSeasonsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -60,10 +70,11 @@ class TrackSeasonsIndex extends Component
         $this->editing = true;
         $this->emit('editSeason', $season->id);
     }
+
     public function render()
     {
         return view('livewire.properties.meets.track.track-seasons-index', [
-            'seasons' => Season::orderBy('name')->get()
+            'seasons' => Season::orderBy('name')->get(),
         ]);
     }
 }

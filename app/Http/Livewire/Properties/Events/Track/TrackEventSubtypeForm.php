@@ -10,13 +10,15 @@ use function view;
 class TrackEventSubtypeForm extends Component
 {
     public $subType = null;
+
     public $name;
+
     public $track_event_type_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editSubType'
+        'editSubType',
     ];
 
     public function updated($propertyName)
@@ -35,7 +37,7 @@ class TrackEventSubtypeForm extends Component
     {
         return [
             'name' => 'required|string|max:50',
-            'track_event_type_id' => 'required|integer'
+            'track_event_type_id' => 'required|integer',
         ];
     }
 
@@ -67,7 +69,7 @@ class TrackEventSubtypeForm extends Component
     public function render()
     {
         return view('livewire.properties.events.track.track-event-subtype-form', [
-            'eventTypes' => TrackEventType::with('subTypes', 'trackEvents')->get()
+            'eventTypes' => TrackEventType::with('subTypes', 'trackEvents')->get(),
         ]);
     }
 }

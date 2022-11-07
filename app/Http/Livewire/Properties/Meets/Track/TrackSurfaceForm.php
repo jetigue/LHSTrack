@@ -8,12 +8,13 @@ use Livewire\Component;
 class TrackSurfaceForm extends Component
 {
     public $surface = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editSurface'
+        'editSurface',
     ];
 
     public function updated($propertyName)

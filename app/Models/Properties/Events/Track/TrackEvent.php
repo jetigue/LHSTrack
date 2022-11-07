@@ -12,7 +12,6 @@ use App\Models\Pivot\BoysTrackTimeTrialEvent;
 use App\Models\Pivot\GirlsTrackMeetEvent;
 use App\Models\Pivot\GirlsTrackTimeTrialEvent;
 use App\Models\Pivot\TrackMeetEvent;
-use App\Models\Pivot\TrackTimeTrialEvent;
 //use App\Models\TimeTrials\Results\BoysRunningEventResult;
 use App\Models\TimeTrials\TrackTimeTrial;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -102,12 +101,12 @@ class TrackEvent extends Model
 //        return $this->hasMany(BoysRunningEventResult::class);
 //    }
 
-        public function sluggable(): array
+    public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 }

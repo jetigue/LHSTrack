@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire\Calendar;
 
-use App\Models\Calendar\Calendar;
 use App\Models\Communication\TeamEvent;
-use Carbon\Carbon;
 use Livewire\Component;
 
 class MonthlyCalendar extends Component
 {
     public $teamEvent;
+
     public bool $showEventModal = false;
 
     protected $listeners = ['showEventModal' => 'showModal'];
@@ -38,7 +37,7 @@ class MonthlyCalendar extends Component
         return view('livewire.calendar.monthly-calendar', [
             'events' => TeamEvent::query()
                 ->orderBy('event_date')
-                ->get()
+                ->get(),
         ]);
     }
 }

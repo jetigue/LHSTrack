@@ -4,7 +4,6 @@ namespace App\Models\TimeTrials;
 
 use App\Models\Pivot\BoysTrackTimeTrialEvent;
 use App\Models\Pivot\GirlsTrackTimeTrialEvent;
-use App\Models\Pivot\TrackTimeTrialEvent;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Properties\Meets\Timing;
@@ -22,7 +21,7 @@ class TrackTimeTrial extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $table = "track_time_trials";
+    protected $table = 'track_time_trials';
 
     protected $fillable = ['name', 'trial_date', 'track_venue_id', 'timing_method_id'];
 
@@ -30,24 +29,23 @@ class TrackTimeTrial extends Model
 
     public function path(): string
     {
-        return '/track/time-trials/' . $this->slug;
+        return '/track/time-trials/'.$this->slug;
     }
 
     public function timingMethod(): BelongsTo
     {
-        return $this-> belongsTo(Timing::class, 'timing_method_id');
+        return $this->belongsTo(Timing::class, 'timing_method_id');
     }
 
     public function venue(): BelongsTo
     {
-        return $this-> belongsTo(Venue::class, 'track_venue_id');
+        return $this->belongsTo(Venue::class, 'track_venue_id');
     }
 
     public function getTrialDateForEditingAttribute()
     {
         return $this->trial_date->format('m/d/Y');
     }
-
 
     public function boysTrackEvents(): BelongsToMany
     {
@@ -74,7 +72,6 @@ class TrackTimeTrial extends Model
 //        return $this->hasMany(RunningEventResult::class);
 //    }
 
-
     public function getTrialDateForSlugAttribute()
     {
         return $this->trial_date->format('m-d-Y');
@@ -84,8 +81,8 @@ class TrackTimeTrial extends Model
     {
         return [
             'slug' => [
-                'source' => ['name',  'trialDateForSlug']
-            ]
+                'source' => ['name',  'trialDateForSlug'],
+            ],
         ];
     }
 }

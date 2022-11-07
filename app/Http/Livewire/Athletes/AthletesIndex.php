@@ -15,19 +15,33 @@ class AthletesIndex extends Component
     use WithPagination;
 
     public $search = '';
+
     public $sortField = 'last_name';
+
     public $sortDirection = 'asc';
+
     public $athlete = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $showLinkModal = false;
+
     public $clearFilters;
+
     public $status = '';
+
     public $event = '';
+
     public $gender = '';
+
     public $grade = '';
+
     public $user = '';
+
     public $route;
 
     protected $queryString = ['status', 'sortField', 'sortDirection', 'search', 'event', 'grade', 'gender', 'user'];
@@ -50,7 +64,7 @@ class AthletesIndex extends Component
         'recordAdded',
         'recordUpdated',
         'refreshAthletes',
-        'hideLinkModal'
+        'hideLinkModal',
     ];
 
     public function mount()
@@ -58,9 +72,20 @@ class AthletesIndex extends Component
         $this->route = Route::currentRouteName();
     }
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
-    public function hideLinkModal() { $this->showLinkModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
+
+    public function hideLinkModal()
+    {
+        $this->showLinkModal = false;
+    }
 
     public function clearSearch()
     {
@@ -82,7 +107,6 @@ class AthletesIndex extends Component
         session()->flash('success', 'Athletes Imported Successfully');
 
         $this->render();
-
     }
 
     public function confirmDelete(Athlete $athlete)
@@ -142,24 +166,24 @@ class AthletesIndex extends Component
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->when($this->gender, function ($query, $gender) {
                     return $query->where('sex', $gender);
-                    })
+                })
                 ->when($this->grade, function ($query, $grade) {
                     return $query->where('grad_year', $grade);
-                    })
+                })
                 ->when($this->status, function ($query, $status) {
                     return $query->where('status', $status);
-                    })
+                })
                 ->when($this->event, function ($query, $event) {
                     return $query->where('event_category_id', $event);
-                    })
-                ->when($this->user == "true", function ($query) {
+                })
+                ->when($this->user == 'true', function ($query) {
                     return $query->whereNotNull('user_id');
-                    })
+                })
                 ->whereLike(['last_name', 'first_name'], $this->search ?? '')
                 ->orderBy('last_name')
                 ->paginate(25),
 
-            'eventCategories' => TrackEventSubtype::all()
+            'eventCategories' => TrackEventSubtype::all(),
         ]);
     }
 }

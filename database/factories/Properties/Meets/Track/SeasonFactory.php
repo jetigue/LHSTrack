@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class SeasonFactory extends Factory
 {
     protected $model = Season::class;
+
     /**
      * Define the model's default state.
      *

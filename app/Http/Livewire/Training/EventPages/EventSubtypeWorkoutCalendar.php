@@ -13,8 +13,8 @@ class EventSubtypeWorkoutCalendar extends LivewireCalendar
     public TrackEventSubtype $eventSubtype;
 
     public function events(): Collection
-        {
-            return EventSubtypeWorkout ::query()
+    {
+        return EventSubtypeWorkout::query()
                 ->where('track_event_subtype_id', $this->eventSubtype->id)
                 ->whereDate('workout_date', '>=', $this->gridStartsAt)
                 ->whereDate('workout_date', '<=', $this->gridEndsAt)
@@ -27,7 +27,7 @@ class EventSubtypeWorkoutCalendar extends LivewireCalendar
                         'date' => $workout->workout_date,
                     ];
                 });
-        }
+    }
 
     public function onEventClick($eventId)
     {
@@ -36,7 +36,6 @@ class EventSubtypeWorkoutCalendar extends LivewireCalendar
 
     public function onEventDropped($eventId, $year, $month, $day)
     {
-        HurdleWorkout::where('id', $eventId)->update(['workout_date' => $year . '-' . $month . '-' . $day]);
+        HurdleWorkout::where('id', $eventId)->update(['workout_date' => $year.'-'.$month.'-'.$day]);
     }
-
 }

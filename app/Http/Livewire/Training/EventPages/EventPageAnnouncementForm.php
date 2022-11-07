@@ -11,16 +11,21 @@ use Mews\Purifier\Facades\Purifier;
 class EventPageAnnouncementForm extends Component
 {
     public TrackEventSubtype $eventSubtype;
+
     public $announcement = '';
+
     public $title;
+
     public $begin_date_for_editing;
+
     public $end_date_for_editing;
+
     public $body;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editAnnouncement'
+        'editAnnouncement',
     ];
 
     public function mount()
@@ -39,7 +44,7 @@ class EventPageAnnouncementForm extends Component
             'title' => 'required',
             'begin_date_for_editing' => 'required|date',
             'end_date_for_editing' => 'required|date|after:begin_date',
-            'body' => 'required'
+            'body' => 'required',
         ];
     }
 
@@ -62,7 +67,7 @@ class EventPageAnnouncementForm extends Component
             'title' => $this->title,
             'body' => Purifier::clean($this->body),
             'user_id' => Auth::user()->id,
-            'track_event_subtype_id' => $this->eventSubtype->id
+            'track_event_subtype_id' => $this->eventSubtype->id,
         ];
 
         if ($this->announcement) {
@@ -71,7 +76,6 @@ class EventPageAnnouncementForm extends Component
         } else {
             EventSubtypeAnnouncement::create($announcement);
             $this->emit('recordAdded');
-
         }
         $this->resetForm();
         $this->emit('hideFormModal');

@@ -11,16 +11,21 @@ use Mews\Purifier\Facades\Purifier;
 class EventPageWorkoutForm extends Component
 {
     public $workout = null;
+
     public $title;
+
     public $workout_date_for_editing;
+
     public $track_event_subtype_id;
+
     public $description;
+
     public TrackEventSubtype $eventSubtype;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editWorkout'
+        'editWorkout',
     ];
 
     public function updated($propertyName)
@@ -33,7 +38,7 @@ class EventPageWorkoutForm extends Component
         return [
             'title' => 'required',
             'workout_date_for_editing' => 'required|date',
-            'description' => 'required'
+            'description' => 'required',
         ];
     }
 
@@ -54,7 +59,7 @@ class EventPageWorkoutForm extends Component
             'title' => $this->title,
             'description' => Purifier::clean($this->description),
             'user_id' => Auth::user()->id,
-            'track_event_subtype_id' => $this->eventSubtype->id
+            'track_event_subtype_id' => $this->eventSubtype->id,
         ];
 
         if ($this->workout) {

@@ -10,17 +10,23 @@ use Livewire\Component;
 class TeamResultForm extends Component
 {
     public $division_id;
+
     public $notes;
+
     public $number_teams;
+
     public $place;
+
     public $points;
+
     public $teamResult = null;
+
     public TrackMeet $trackMeet;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editTeamResult'
+        'editTeamResult',
     ];
 
     public function updated($propertyName)
@@ -87,7 +93,7 @@ class TeamResultForm extends Component
     public function render()
     {
         return view('livewire.meets.track.results.team-result-form', [
-            'divisions' => Division::all()
+            'divisions' => Division::all(),
         ]);
     }
 }

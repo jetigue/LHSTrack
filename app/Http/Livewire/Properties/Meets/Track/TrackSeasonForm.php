@@ -8,12 +8,13 @@ use Livewire\Component;
 class TrackSeasonForm extends Component
 {
     public $season = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editSeason'
+        'editSeason',
     ];
 
     public function updated($propertyName)

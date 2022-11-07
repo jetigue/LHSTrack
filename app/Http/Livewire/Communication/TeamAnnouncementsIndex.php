@@ -3,26 +3,35 @@
 namespace App\Http\Livewire\Communication;
 
 use App\Models\Communication\TeamAnnouncement;
-use Carbon\Carbon;
 use Livewire\Component;
 
 class TeamAnnouncementsIndex extends Component
 {
     public $showFormModal = false;
+
     public $editing = false;
+
     public $announcement;
+
     public $showConfirmModal = false;
+
     public $borderColor = 'white';
 
     protected $listeners = [
         'hideModal',
         'showFormModal',
-        'confirmDelete'
+        'confirmDelete',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
 
-    public function hideModal() { $this->showFormModal = false; }
+    public function hideModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function previewAnnouncement(TeamAnnouncement $announcement): TeamAnnouncement
     {
@@ -40,7 +49,6 @@ class TeamAnnouncementsIndex extends Component
         $this->announcement->delete();
         $this->showConfirmModal = false;
         $this->updated();
-
     }
 
     public function updated()
@@ -64,15 +72,15 @@ class TeamAnnouncementsIndex extends Component
         $this->emit('editAnnouncement', $announcement->id);
     }
 
-        public function render()
-        {
-            return view('livewire.communication.team-announcements-index', [
+    public function render()
+    {
+        return view('livewire.communication.team-announcements-index', [
 
-                'announcements' => TeamAnnouncement::with('owner')
-                    ->orderBy('updated_at', 'desc')->get(),
+            'announcements' => TeamAnnouncement::with('owner')
+                ->orderBy('updated_at', 'desc')->get(),
 
-                'displayedAnnouncement' => TeamAnnouncement::with('owner')
-                    ->orderBy('end_date', 'desc')->first(),
-            ]);
-        }
+            'displayedAnnouncement' => TeamAnnouncement::with('owner')
+                ->orderBy('end_date', 'desc')->first(),
+        ]);
+    }
 }

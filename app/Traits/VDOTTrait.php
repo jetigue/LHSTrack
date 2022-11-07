@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Traits;
 
 trait VDOTTrait
@@ -10,6 +11,7 @@ trait VDOTTrait
         if ($meters >= 1500) {
             return $meters;
         }
+
         return null;
     }
 
@@ -21,7 +23,6 @@ trait VDOTTrait
         parent::boot();
 
         static::saving(function ($result) {
-
             $result->total_time = $result->attributes['total_seconds'] + ($result->attributes['milliseconds'] / 100);
 
             if ($result->distance()) {
@@ -31,7 +32,7 @@ trait VDOTTrait
                 $velocity = $distance / $minutes;
                 $v2 = $velocity * $velocity;
                 $percentVO2max = (.8 + .189439 * exp(-.01278 * $minutes)) + (.2989558 * exp(-.1932605 * $minutes));
-                $result->vdot = round((-4.6 + .182258 * $velocity + .000104 * $v2)/$percentVO2max, 1);
+                $result->vdot = round((-4.6 + .182258 * $velocity + .000104 * $v2) / $percentVO2max, 1);
             }
         });
     }

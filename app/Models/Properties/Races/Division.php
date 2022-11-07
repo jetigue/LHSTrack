@@ -13,7 +13,7 @@ class Division extends Model
 
     protected $table = 'divisions';
 
-    protected $fillable = ['gender_id', 'level_id' ];
+    protected $fillable = ['gender_id', 'level_id'];
 
     public function gender(): BelongsTo
     {
@@ -27,15 +27,15 @@ class Division extends Model
 
     public function getNameAttribute(): string
     {
-        return $this->gender->name . ' ' . $this->level->name;
+        return $this->gender->name.' '.$this->level->name;
     }
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => ['gender.name',  'level.name']
-            ]
+                'source' => ['gender.name',  'level.name'],
+            ],
         ];
     }
 }

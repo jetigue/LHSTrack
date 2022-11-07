@@ -9,30 +9,47 @@ use Livewire\Component;
 class FieldEventLetteringMarkForm extends Component
 {
     public $mark = null;
+
     public $track_event_id;
 
     public $freshman_feet;
+
     public $freshman_inches;
+
     public $freshman_quarter_inch;
+
     public $freshman_total_inches;
+
     public $gender_id;
+
     public $junior_feet;
+
     public $junior_inches;
+
     public $junior_quarter_inch;
+
     public $junior_total_inches;
+
     public $senior_feet;
+
     public $senior_inches;
+
     public $senior_quarter_inch;
+
     public $senior_total_inches;
+
     public $sophomore_feet;
+
     public $sophomore_inches;
+
     public $sophomore_quarter_inch;
+
     public $sophomore_total_inches;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editMark'
+        'editMark',
     ];
 
     public function mount($gender)
@@ -134,10 +151,10 @@ class FieldEventLetteringMarkForm extends Component
         ]);
     }
 
-    function render()
+    public function render()
     {
         return view('livewire.team.lettering.field-event-lettering-mark-form', [
-            'fieldEvents' => TrackEvent::where('distance_in_meters', '=', null)->get()
+            'fieldEvents' => TrackEvent::where('distance_in_meters', '=', null)->get(),
         ]);
     }
 }

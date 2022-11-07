@@ -10,5 +10,6 @@ class Timing extends Model
     use HasFactory;
 
     protected $table = 'timing_methods';
+
     protected $fillable = ['name'];
 }

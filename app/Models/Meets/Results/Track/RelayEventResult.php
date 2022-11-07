@@ -3,9 +3,7 @@
 namespace App\Models\Meets\Results\Track;
 
 use App\Models\Athletes\Athlete;
-use App\Models\Meets\TrackMeet;
 use App\Models\Properties\Events\Track\TrackEvent;
-use App\Models\Properties\Races\Gender;
 use App\Traits\ResultsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,7 +35,7 @@ class RelayEventResult extends Model
         'leg_4_total_seconds',
         'leg_4_milliseconds',
         'points',
-        'heat'
+        'heat',
     ];
 
     public function trackEvent(): BelongsTo

@@ -8,12 +8,13 @@ use Livewire\Component;
 class UserRoleForm extends Component
 {
     public $userRole = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editUserRole'
+        'editUserRole',
     ];
 
     public function updated($propertyName)

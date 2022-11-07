@@ -6,7 +6,6 @@ use App\Models\Athletes\Athlete;
 use App\Models\Properties\Events\Track\TrackEvent;
 use App\Traits\ResultsTrait;
 use App\Traits\VDOTTrait;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,7 +14,7 @@ class RunningEventResult extends Model
 {
     use HasFactory, VDOTTrait, ResultsTrait;
 
-    protected $table='tf_running_event_results';
+    protected $table = 'tf_running_event_results';
 
     protected $fillable = [
         'track_event_id',
@@ -25,7 +24,7 @@ class RunningEventResult extends Model
         'milliseconds',
         'place',
         'heat',
-        'points'
+        'points',
     ];
 
     public function trackEvent(): BelongsTo
@@ -42,5 +41,4 @@ class RunningEventResult extends Model
     {
         return $this->belongsTo(TeamResult::class, 'track_team_result_id');
     }
-
 }

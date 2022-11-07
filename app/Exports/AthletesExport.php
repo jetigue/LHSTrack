@@ -9,8 +9,8 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class AthletesExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return Athlete::pluck('fullName');
@@ -19,7 +19,7 @@ class AthletesExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Name'
+            'Name',
         ];
     }
 }

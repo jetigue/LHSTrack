@@ -38,7 +38,7 @@ class TeamAnnouncement extends Model
         return [
             true => 'gray-200',
             false => 'white',
-        ][$this->expired() ] ?? 'white';
+        ][$this->expired()] ?? 'white';
     }
 
     public function expired(): bool

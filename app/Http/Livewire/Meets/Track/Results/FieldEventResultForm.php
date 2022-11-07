@@ -12,24 +12,37 @@ use function view;
 class FieldEventResultForm extends Component
 {
     public $eventResult = null;
+
     public $track_event_id;
+
     public $track_meet_id;
+
     public $athlete_id;
+
     public $place;
+
     public $total_inches;
+
     public $quarter_inch;
+
     public $flight;
+
     public $points;
+
     public $feet;
+
     public $inches;
+
     public $track_team_result_id;
+
     public TrackEvent $trackEvent;
+
     public TeamResult $teamResult;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editFieldEventResult'
+        'editFieldEventResult',
     ];
 
     public function mount()
@@ -65,7 +78,7 @@ class FieldEventResultForm extends Component
             'inches' => 'nullable|integer|max:11',
             'quarter_inch' => 'nullable|integer|min:0|max:3',
             'flight' => 'nullable|integer',
-            'points' => 'nullable|integer|min:0'
+            'points' => 'nullable|integer|min:0',
         ];
     }
 
@@ -81,7 +94,7 @@ class FieldEventResultForm extends Component
             'total_inches' => ($this->feet * 12) + $this->inches,
             'quarter_inch' => $this->quarter_inch,
             'flight' => $this->flight,
-            'points' => $this->points
+            'points' => $this->points,
         ];
 
         if ($this->eventResult) {

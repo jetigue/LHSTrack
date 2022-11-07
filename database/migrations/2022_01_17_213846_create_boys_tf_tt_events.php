@@ -13,7 +13,7 @@ class CreateBoysTfTtEvents extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('boys_tf_tt_events')) {
+        if (! Schema::hasTable('boys_tf_tt_events')) {
             Schema::create('boys_tf_tt_events', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('track_time_trial_id');

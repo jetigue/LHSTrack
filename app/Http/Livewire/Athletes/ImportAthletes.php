@@ -2,19 +2,22 @@
 
 namespace App\Http\Livewire\Athletes;
 
-use Livewire\Component;
 use App\Csv;
-use Validator;
 use App\Models\Athletes\Athlete;
+use Livewire\Component;
 use Livewire\WithFileUploads;
+use Validator;
 
 class ImportAthletes extends Component
 {
     use WithFileUploads;
 
     public $showImportModal = false;
+
     public $upload;
+
     public $columns;
+
     public $fieldColumnMap = [
         'first_name' => '',
         'last_name' => '',
@@ -108,9 +111,11 @@ class ImportAthletes extends Component
         ];
 
         foreach ($this->columns as $column) {
-            $match = collect($guesses)->search(fn($options) => in_array(strtolower($column), $options));
+            $match = collect($guesses)->search(fn ($options) => in_array(strtolower($column), $options));
 
-            if ($match) $this->fieldColumnMap[$match] = $column;
+            if ($match) {
+                $this->fieldColumnMap[$match] = $column;
+            }
         }
     }
 }

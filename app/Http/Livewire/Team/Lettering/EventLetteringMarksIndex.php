@@ -10,12 +10,19 @@ use Livewire\Component;
 class EventLetteringMarksIndex extends Component
 {
     public Gender $gender;
+
     public $runningStandard = '';
+
     public $fieldEventStandard = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $addingRunningEvent = true;
+
     public $addingFieldEvent = false;
 
     protected $listeners = [
@@ -23,20 +30,27 @@ class EventLetteringMarksIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
 
-    Public function addRunningEventStandard()
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
+
+    public function addRunningEventStandard()
     {
         $this->addingRunningEvent = true;
         $this->addingFieldEvent = false;
         $this->showFormModal = true;
     }
 
-    Public function addFieldEventStandard()
+    public function addFieldEventStandard()
     {
         $this->addingRunningEvent = false;
         $this->addingFieldEvent = true;
@@ -115,7 +129,7 @@ class EventLetteringMarksIndex extends Component
 
             'fieldEventStandards' => FieldEventLetteringMark::with('trackEvent', 'gender')
                 ->where('gender_id', $this->gender->id)
-                ->get()
+                ->get(),
         ]);
     }
 }

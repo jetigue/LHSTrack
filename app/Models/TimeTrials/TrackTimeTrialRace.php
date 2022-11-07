@@ -15,6 +15,6 @@ class TrackTimeTrialRace extends Model
         'track_time_trial_id',
         'gender_id',
         'track_event_id',
-        'notes'
+        'notes',
     ];
 }

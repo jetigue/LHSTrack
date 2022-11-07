@@ -10,22 +10,33 @@ use Livewire\Component;
 class TrackTimeTrialRunningEventResultForm extends Component
 {
     public $result = null;
+
     public $track_event_id;
+
     public $track_time_trial_id;
+
     public $gender_id;
+
     public $athlete_id;
+
     public $place;
+
     public $total_seconds;
+
     public $milliseconds;
+
     public $heat;
+
     public $minutes;
+
     public $seconds;
+
     public TrackEvent $trackEvent;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editResult'
+        'editResult',
     ];
 
     public function mount($gender, $timeTrial)
@@ -77,7 +88,7 @@ class TrackTimeTrialRunningEventResultForm extends Component
             'place' => $this->place,
             'total_seconds' => $this->minutes * 60 + $this->seconds,
             'milliseconds' => $this->milliseconds,
-            'heat' => $this->heat
+            'heat' => $this->heat,
         ];
 
         if ($this->result) {

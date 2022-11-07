@@ -9,14 +9,17 @@ use Livewire\Component;
 class LinkAthleteForm extends Component
 {
     public $athlete = null;
+
     public $first_name;
+
     public $last_name;
+
     public $user_id;
 
     protected $listeners = [
         'linkAthlete' => 'editAthlete',
         'cancelLink' => '$refresh',
-        'linkSubmitted'
+        'linkSubmitted',
     ];
 
     public function updated($propertyName)
@@ -65,7 +68,7 @@ class LinkAthleteForm extends Component
     public function render()
     {
         return view('livewire.athletes.link-athlete-form', [
-            'users' => User::orderBy('name')->get()
+            'users' => User::orderBy('name')->get(),
         ]);
     }
 }

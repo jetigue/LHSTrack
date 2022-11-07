@@ -9,12 +9,13 @@ use function view;
 class GenderForm extends Component
 {
     public $gender = null;
+
     public $name;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editGender'
+        'editGender',
     ];
 
     public function updated($propertyName)

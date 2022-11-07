@@ -6,13 +6,20 @@ class Csv
 {
     public $file;
 
-    public function __construct($file) { $this->file = $file; }
-    public static function from($file) { return new static($file); }
+    public function __construct($file)
+    {
+        $this->file = $file;
+    }
+
+    public static function from($file)
+    {
+        return new static($file);
+    }
 
     public function columns()
     {
         return $this->openFile(function ($handle) {
-            return array_filter(fgetcsv($handle, 1000, ","));
+            return array_filter(fgetcsv($handle, 1000, ','));
         });
     }
 
@@ -25,7 +32,9 @@ class Csv
                 $row = [];
 
                 for ($i = 0; $i < count($data); $i++) {
-                    if (! isset($columns[$i])) continue;
+                    if (! isset($columns[$i])) {
+                        continue;
+                    }
 
                     $row[$columns[$i]] = $data[$i];
                 }
@@ -39,7 +48,7 @@ class Csv
 
     protected function openFile($callback)
     {
-        $handle = fopen($this->file->getRealPath(), "r");
+        $handle = fopen($this->file->getRealPath(), 'r');
 
         return $callback($handle);
 

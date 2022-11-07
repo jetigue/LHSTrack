@@ -13,14 +13,23 @@ class HurdlesIndex extends Component
     use WithPagination;
 
     public $workout = '';
+
     public $link = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $viewWorkout = false;
+
     public $timeFrame = '>=';
+
     public $whichWorkouts = 'Upcoming';
+
     public $addingEditingWorkout = false;
+
     public $addingEditingLink = false;
 
     protected $listeners = [
@@ -28,7 +37,7 @@ class HurdlesIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()
@@ -58,11 +67,12 @@ class HurdlesIndex extends Component
     public function updatedTimeFrame(): string
     {
         if ($this->timeFrame === '>=') {
-            return $this->whichWorkouts = "Upcoming";
+            return $this->whichWorkouts = 'Upcoming';
         } elseif ($this->timeFrame === '<') {
-            return $this->whichWorkouts= "Past";
+            return $this->whichWorkouts = 'Past';
         }
-        return $this->whichWorkouts = "All";
+
+        return $this->whichWorkouts = 'All';
     }
 
     public function addHurdleLink()
@@ -143,11 +153,11 @@ class HurdlesIndex extends Component
             'workouts' => HurdleWorkout::query()
                 ->when($this->timeFrame, function ($query, $timeFrame) {
                     return $query->where('workout_date', $timeFrame, Carbon::now());
-                    })
+                })
                 ->orderBy('workout_date')
                 ->paginate(25),
 
-            'hurdleLinks' => HurdleLink::all()
+            'hurdleLinks' => HurdleLink::all(),
         ]);
     }
 }

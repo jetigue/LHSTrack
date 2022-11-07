@@ -10,11 +10,17 @@ use Livewire\Component;
 class EventPageAnnouncementsIndex extends Component
 {
     public TrackEventSubtype $eventSubtype;
+
     public $showFormModal = false;
+
     public $editing = false;
+
     public $announcement;
+
     public $showConfirmModal = false;
+
     public $timeFrame = '>=';
+
     public $whichAnnouncements = 'Upcoming';
 
     protected $listeners = [
@@ -22,7 +28,7 @@ class EventPageAnnouncementsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()
@@ -38,11 +44,12 @@ class EventPageAnnouncementsIndex extends Component
     public function updatedTimeFrame(): string
     {
         if ($this->timeFrame == '>=') {
-            return $this->whichAnnouncements = "Upcoming";
+            return $this->whichAnnouncements = 'Upcoming';
         } elseif ($this->timeFrame == '<') {
-            return $this->whichAnnouncements = "Past";
+            return $this->whichAnnouncements = 'Past';
         }
-        return $this->whichAnnouncements = "All";
+
+        return $this->whichAnnouncements = 'All';
     }
 
     public function displayAnnouncement(EventSubtypeAnnouncement $announcement): EventSubtypeAnnouncement

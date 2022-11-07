@@ -9,30 +9,47 @@ use Livewire\Component;
 class RunningEventLetteringTimeForm extends Component
 {
     public $letteringTime = null;
+
     public $track_event_id;
 
     public $freshman_total_seconds;
+
     public $freshman_milliseconds;
+
     public $sophomore_total_seconds;
+
     public $sophomore_milliseconds;
+
     public $junior_total_seconds;
+
     public $junior_milliseconds;
+
     public $senior_total_seconds;
+
     public $senior_milliseconds;
+
     public $freshman_minutes;
+
     public $freshman_seconds;
+
     public $sophomore_minutes;
+
     public $sophomore_seconds;
+
     public $junior_minutes;
+
     public $junior_seconds;
+
     public $senior_minutes;
+
     public $senior_seconds;
+
     public $gender_id;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editRunningStandard'
+        'editRunningStandard',
     ];
 
     public function mount($gender)
@@ -137,7 +154,7 @@ class RunningEventLetteringTimeForm extends Component
     public function render()
     {
         return view('livewire.team.lettering.running-event-lettering-time-form', [
-            'trackEvents' => TrackEvent::where('distance_in_meters', '>', 0)->orderBy('distance_in_meters')->get()
+            'trackEvents' => TrackEvent::where('distance_in_meters', '>', 0)->orderBy('distance_in_meters')->get(),
         ]);
     }
 }

@@ -26,7 +26,7 @@ class RunningEventResult extends Model
         'milliseconds',
         'place',
         'heat',
-        'gender_id'
+        'gender_id',
     ];
 
     public function distance()
@@ -36,6 +36,7 @@ class RunningEventResult extends Model
         if ($meters >= 1600) {
             return $meters;
         }
+
         return null;
     }
 

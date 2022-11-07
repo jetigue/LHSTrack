@@ -12,43 +12,75 @@ use function view;
 class RelayEventResultForm extends Component
 {
     public $relayEventResult = null;
+
     public $track_event_id;
+
     public $track_team_result_id;
+
     public $leg_1_athlete_id;
+
     public $leg_2_athlete_id;
+
     public $leg_3_athlete_id;
+
     public $leg_4_athlete_id;
+
     public $place;
+
     public $total_seconds;
+
     public $milliseconds;
+
     public $leg_1_total_seconds;
+
     public $leg_1_milliseconds;
+
     public $leg_2_total_seconds;
+
     public $leg_2_milliseconds;
+
     public $leg_3_total_seconds;
+
     public $leg_3_milliseconds;
+
     public $leg_4_total_seconds;
+
     public $leg_4_milliseconds;
+
     public $heat;
+
     public $points;
+
     public $minutes;
+
     public $seconds;
+
     public $leg_1_minutes;
+
     public $leg_1_seconds;
+
     public $leg_2_minutes;
+
     public $leg_2_seconds;
+
     public $leg_3_minutes;
+
     public $leg_3_seconds;
+
     public $leg_4_minutes;
+
     public $leg_4_seconds;
+
     public $relay_team;
+
     public TrackEvent $trackEvent;
+
     public TeamResult $teamResult;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editRelayEventResult'
+        'editRelayEventResult',
     ];
 
     public function mount()
@@ -148,7 +180,7 @@ class RelayEventResultForm extends Component
             'leg_4_milliseconds' => $this->leg_4_milliseconds,
             'heat' => $this->heat,
             'relay_team' => $this->relay_team,
-            'points' => $this->points
+            'points' => $this->points,
         ];
 
         if ($this->relayEventResult) {
@@ -187,7 +219,7 @@ class RelayEventResultForm extends Component
             'place',
             'points',
             'heat',
-            'relay_team'
+            'relay_team',
         ]);
     }
 

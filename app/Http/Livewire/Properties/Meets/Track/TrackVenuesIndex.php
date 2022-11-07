@@ -12,12 +12,19 @@ class TrackVenuesIndex extends Component
     use WithPagination;
 
     public $search = '';
+
     public $sortField = 'name';
+
     public $sortDirection = 'asc';
+
     public $trackVenue = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $route;
 
     protected $queryString = ['sortField', 'sortDirection', 'search'];
@@ -46,8 +53,15 @@ class TrackVenuesIndex extends Component
         $this->route = Route::currentRouteName();
     }
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function clearSearch()
     {
@@ -96,10 +110,10 @@ class TrackVenuesIndex extends Component
     {
         return view('livewire.properties.meets.track.track-venues-index', [
             'trackVenues' => Venue::query()
-                ->where('name', 'like', '%' . $this->search . '%')
+                ->where('name', 'like', '%'.$this->search.'%')
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->orderBy('name')
-                ->paginate(25)
+                ->paginate(25),
         ]);
     }
 }

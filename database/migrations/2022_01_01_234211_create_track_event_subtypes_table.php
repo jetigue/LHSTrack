@@ -13,7 +13,7 @@ class CreateTrackEventSubtypesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('track_event_subtypes')) {
+        if (! Schema::hasTable('track_event_subtypes')) {
             Schema::create('track_event_subtypes', function (Blueprint $table) {
                 $table->tinyIncrements('id');
                 $table->string('name', 50);

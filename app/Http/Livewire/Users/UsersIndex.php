@@ -11,97 +11,111 @@ class UsersIndex extends Component
 {
     use WithPagination;
 
-        public $search = '';
-        public $sortField = 'name';
-        public $sortDirection = 'asc';
-        public $user = '';
-        public $editing = false;
-        public $showFormModal = false;
-        public $showConfirmModal = false;
-        public $route;
+    public $search = '';
 
-        protected $queryString = ['sortField', 'sortDirection', 'search'];
+    public $sortField = 'name';
 
-        public function sortBy($field)
-        {
-            if ($this->sortField === $field) {
-                $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
-            } else {
-                $this->sortDirection = 'asc';
-            }
+    public $sortDirection = 'asc';
 
-            $this->sortField = $field;
+    public $user = '';
+
+    public $editing = false;
+
+    public $showFormModal = false;
+
+    public $showConfirmModal = false;
+
+    public $route;
+
+    protected $queryString = ['sortField', 'sortDirection', 'search'];
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
         }
 
-        protected $listeners = [
-            'hideFormModal',
-            'showFormModal',
-            'confirmDelete',
-            'recordAdded',
-            'recordUpdated'
-        ];
+        $this->sortField = $field;
+    }
 
-        public function mount()
-        {
-            $this->route = Route::currentRouteName();
-        }
+    protected $listeners = [
+        'hideFormModal',
+        'showFormModal',
+        'confirmDelete',
+        'recordAdded',
+        'recordUpdated',
+    ];
 
-        public function showFormModal() { $this->showFormModal = true; }
-        public function hideFormModal() { $this->showFormModal = false; }
+    public function mount()
+    {
+        $this->route = Route::currentRouteName();
+    }
 
-        public function clearSearch()
-        {
-            $this->reset('search');
-        }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
 
-        public function recordAdded()
-        {
-            session()->flash('success', 'User Added');
-        }
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
-        public function recordUpdated()
-        {
-            session()->flash('success', 'User Updated');
-        }
+    public function clearSearch()
+    {
+        $this->reset('search');
+    }
 
-        public function confirmDelete(User $user)
-        {
-            $this->user = $user;
-            $this->showConfirmModal = true;
-            $this->user = $user;
-        }
+    public function recordAdded()
+    {
+        session()->flash('success', 'User Added');
+    }
 
-        public function destroy(User $user)
-        {
-            $this->user->delete();
-            $this->showConfirmModal = false;
-            session()->flash('success', 'User Deleted Successfully');
-        }
+    public function recordUpdated()
+    {
+        session()->flash('success', 'User Updated');
+    }
 
-        public function cancel()
-        {
-            $this->showFormModal = false;
-            $this->editing = false;
+    public function confirmDelete(User $user)
+    {
+        $this->user = $user;
+        $this->showConfirmModal = true;
+        $this->user = $user;
+    }
 
-            $this->emit('cancelCreate');
-        }
+    public function destroy(User $user)
+    {
+        $this->user->delete();
+        $this->showConfirmModal = false;
+        session()->flash('success', 'User Deleted Successfully');
+    }
 
-        public function editRecord(User $user)
-        {
-            $this->showFormModal = true;
-            $this->editing = true;
-            $this->emit('editUser', $user->id);
-        }
+    public function cancel()
+    {
+        $this->showFormModal = false;
+        $this->editing = false;
 
-        public function render()
-        {
-            return view('livewire.users.users-index', [
-                'users' => User::query()
-                    ->where('name', 'like', '%' . $this->search . '%')
-                    ->orwhere('email', 'like', '%' . $this->search . '%')
-                    ->orderBy($this->sortField, $this->sortDirection)
-                    ->orderBy('name')
-                    ->paginate(25)
-            ]);
-        }
+        $this->emit('cancelCreate');
+    }
+
+    public function editRecord(User $user)
+    {
+        $this->showFormModal = true;
+        $this->editing = true;
+        $this->emit('editUser', $user->id);
+    }
+
+    public function render()
+    {
+        return view('livewire.users.users-index', [
+            'users' => User::query()
+                ->where('name', 'like', '%'.$this->search.'%')
+                ->orwhere('email', 'like', '%'.$this->search.'%')
+                ->orderBy($this->sortField, $this->sortDirection)
+                ->orderBy('name')
+                ->paginate(25),
+        ]);
+    }
 }

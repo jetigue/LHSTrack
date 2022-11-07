@@ -10,14 +10,17 @@ use Mews\Purifier\Facades\Purifier;
 class TeamEventForm extends Component
 {
     public $event = null;
+
     public $title;
+
     public $event_date_for_editing;
+
     public $description;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editEvent' => 'edit'
+        'editEvent' => 'edit',
     ];
 
     public function updated($propertyName)
@@ -30,7 +33,7 @@ class TeamEventForm extends Component
         return [
             'title' => 'required',
             'event_date_for_editing' => 'required|date',
-            'description' => 'required'
+            'description' => 'required',
         ];
     }
 
@@ -50,7 +53,7 @@ class TeamEventForm extends Component
             'event_date' => $this->event_date_for_editing,
             'title' => $this->title,
             'description' => Purifier::clean($this->description),
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
         ];
 
         if ($this->event) {
@@ -70,6 +73,7 @@ class TeamEventForm extends Component
             'description',
         ]);
     }
+
     public function render()
     {
         return view('livewire.communication.team-event-form');

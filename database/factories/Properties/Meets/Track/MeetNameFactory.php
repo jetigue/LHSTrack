@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class MeetNameFactory extends Factory
 {
     protected $model = MeetName::class;
+
     /**
      * Define the model's default state.
      *
@@ -16,7 +17,7 @@ class MeetNameFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name . ' ' . 'Invitational'
+            'name' => $this->faker->name.' '.'Invitational',
         ];
     }
 }

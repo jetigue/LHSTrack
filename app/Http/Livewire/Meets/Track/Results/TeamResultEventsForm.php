@@ -10,8 +10,11 @@ use function view;
 class TeamResultEventsForm extends Component
 {
     public $teamResult;
+
     public $gender_id = '';
+
     public $showEventsMenu = false;
+
     public $selectedEvents = [];
 //    public $selectedBoysEvents = [];
 //    public $selectedGirlsEvents = [];
@@ -46,21 +49,21 @@ class TeamResultEventsForm extends Component
     {
         return [
             'selectedEvents' => 'array|numeric',
-//            'selectedBoysEvents' => 'array|numeric',
-//            'selectedGirlsEvents' => 'array|numeric',
+            //            'selectedBoysEvents' => 'array|numeric',
+            //            'selectedGirlsEvents' => 'array|numeric',
         ];
     }
 
-public function saveChanges()
-{
-    $this->teamResult->trackEvents()->sync($this->selectedEvents);
+    public function saveChanges()
+    {
+        $this->teamResult->trackEvents()->sync($this->selectedEvents);
 //    $this->trackMeet->boysTrackEvents()->sync($this->selectedBoysEvents);
 //    $this->trackMeet->girlsTrackEvents()->sync($this->selectedGirlsEvents);
-    $this->hideMenu();
-    $this->emit('eventsUpdated');
+        $this->hideMenu();
+        $this->emit('eventsUpdated');
 
-    session()->flash('success', 'Saved!');
-}
+        session()->flash('success', 'Saved!');
+    }
 
     public function render()
     {

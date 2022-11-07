@@ -23,7 +23,7 @@ class CreateTfMeetRunningEventResultsTable extends Migration
             $table->unsignedInteger('total_seconds');
             $table->unsignedTinyInteger('milliseconds')->nullable();
             $table->unsignedTinyInteger('points')->nullable();
-            $table->float('vdot', 3,1)->nullable();
+            $table->float('vdot', 3, 1)->nullable();
             $table->unsignedTinyInteger('heat')->nullable();
             $table->timestamps();
 

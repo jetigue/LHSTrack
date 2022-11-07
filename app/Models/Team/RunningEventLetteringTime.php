@@ -24,7 +24,7 @@ class RunningEventLetteringTime extends Model
         'junior_total_seconds',
         'junior_milliseconds',
         'senior_total_seconds',
-        'senior_milliseconds'
+        'senior_milliseconds',
     ];
 
     public function trackEvent(): BelongsTo
@@ -70,8 +70,9 @@ class RunningEventLetteringTime extends Model
         if ($this->attributes['freshman_milliseconds']) {
             $ms = $this->attributes['freshman_milliseconds'];
 
-            return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 .$ms;
         }
+
         return 00;
     }
 
@@ -80,8 +81,9 @@ class RunningEventLetteringTime extends Model
         if ($this->attributes['sophomore_milliseconds']) {
             $ms = $this->attributes['sophomore_milliseconds'];
 
-            return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 .$ms;
         }
+
         return 00;
     }
 
@@ -90,8 +92,9 @@ class RunningEventLetteringTime extends Model
         if ($this->attributes['junior_milliseconds']) {
             $ms = $this->attributes['junior_milliseconds'];
 
-            return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 .$ms;
         }
+
         return 00;
     }
 
@@ -100,8 +103,9 @@ class RunningEventLetteringTime extends Model
         if ($this->attributes['senior_milliseconds']) {
             $ms = $this->attributes['senior_milliseconds'];
 
-            return $ms > 9 ? $ms : 0 . $ms;
+            return $ms > 9 ? $ms : 0 .$ms;
         }
+
         return 00;
     }
 }

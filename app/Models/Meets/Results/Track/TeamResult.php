@@ -31,7 +31,7 @@ class TeamResult extends Model
 
     public function path(): string
     {
-        return '/track/meets/team-results/' . $this->slug;
+        return '/track/meets/team-results/'.$this->slug;
     }
 
     public function trackMeet(): BelongsTo
@@ -65,8 +65,8 @@ class TeamResult extends Model
     {
         return [
             'slug' => [
-                'source' => ['trackMeet.meetName.name',  'trackMeet.meetYear', 'division.level.name', 'division.gender.name']
-            ]
+                'source' => ['trackMeet.meetName.name',  'trackMeet.meetYear', 'division.level.name', 'division.gender.name'],
+            ],
         ];
     }
 }

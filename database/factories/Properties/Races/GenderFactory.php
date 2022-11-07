@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class GenderFactory extends Factory
 {
     protected $model = Gender::class;
+
     /**
      * Define the model's default state.
      *

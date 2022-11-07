@@ -8,8 +8,11 @@ use Livewire\Component;
 class UserRolesIndex extends Component
 {
     public $userRole = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -17,11 +20,18 @@ class UserRolesIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -64,7 +74,7 @@ class UserRolesIndex extends Component
     public function render()
     {
         return view('livewire.users.user-roles-index', [
-            'userRoles' => Role::all()
+            'userRoles' => Role::all(),
         ]);
     }
 }

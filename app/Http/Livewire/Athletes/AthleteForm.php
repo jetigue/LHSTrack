@@ -9,20 +9,29 @@ use Livewire\Component;
 class AthleteForm extends Component
 {
     public $athlete = null;
+
     public $first_name;
+
     public $last_name;
+
     public $sex;
+
     public $dob_for_editing;
+
     public $grad_year;
+
     public $status;
+
     public $user_id;
+
     public $track_event_subtype_id;
+
     public $physical_expiration_date_for_editing;
 
     protected $listeners = [
         'cancelCreate' => 'resetForm',
         'submitCreate' => 'submitForm',
-        'editAthlete'
+        'editAthlete',
     ];
 
     public function updated($propertyName)
@@ -54,7 +63,7 @@ class AthleteForm extends Component
             'dob_for_editing' => 'nullable|date',
             'status' => 'required|in:a,i,e',
             'physical_expiration_date_for_editing' => 'nullable|date',
-            'track_event_subtype_id' => 'nullable|integer'
+            'track_event_subtype_id' => 'nullable|integer',
         ];
     }
 
@@ -94,14 +103,14 @@ class AthleteForm extends Component
             'dob_for_editing',
             'status',
             'physical_expiration_date_for_editing',
-            'track_event_subtype_id'
+            'track_event_subtype_id',
         ]);
     }
 
     public function render()
     {
         return view('livewire.athletes.athlete-form', [
-            'subtypes' => TrackEventSubtype::orderBy('name')->get()
+            'subtypes' => TrackEventSubtype::orderBy('name')->get(),
         ]);
     }
 }

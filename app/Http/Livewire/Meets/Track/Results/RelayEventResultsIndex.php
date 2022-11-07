@@ -4,22 +4,25 @@ namespace App\Http\Livewire\Meets\Track\Results;
 
 use App\Models\Meets\Results\Track\RelayEventResult;
 use App\Models\Meets\Results\Track\TeamResult;
-use App\Models\Meets\TrackMeet;
 use App\Models\Properties\Events\Track\TrackEvent;
-use App\Models\Properties\Races\Gender;
 use Livewire\Component;
-use function App\Http\Livewire\Meets\str_contains;
 use function session;
 use function view;
 
 class RelayEventResultsIndex extends Component
 {
     public TrackEvent $trackEvent;
+
     public TeamResult $teamResult;
+
     public $result = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $gender;
 
     protected $listeners = [
@@ -27,7 +30,7 @@ class RelayEventResultsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()

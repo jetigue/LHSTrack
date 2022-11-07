@@ -12,11 +12,15 @@ use function view;
 class RunningEventResultsIndex extends Component
 {
     public TeamResult $teamResult;
+
     public TrackEvent $trackEvent;
 
     public $result = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -24,7 +28,7 @@ class RunningEventResultsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function showFormModal()

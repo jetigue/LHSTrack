@@ -8,8 +8,11 @@ use Livewire\Component;
 class TimingMethodsIndex extends Component
 {
     public $timingMethod = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -17,11 +20,18 @@ class TimingMethodsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -64,7 +74,7 @@ class TimingMethodsIndex extends Component
     public function render()
     {
         return view('livewire.properties.meets.timing-methods-index', [
-            'timingMethods' => Timing::orderBy('name')->get()
+            'timingMethods' => Timing::orderBy('name')->get(),
         ]);
     }
 }

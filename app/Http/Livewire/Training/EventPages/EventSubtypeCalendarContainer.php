@@ -11,13 +11,16 @@ use Livewire\Component;
 class EventSubtypeCalendarContainer extends Component
 {
     public $workout;
+
     public bool $showEventModal = false;
+
     public $event;
+
     public $eventSubtype;
 
     public function mount()
     {
-        $this->event = str_ireplace(" Calendar", "",\Route::currentRouteName());
+        $this->event = str_ireplace(' Calendar', '', \Route::currentRouteName());
         $this->eventSubtype = TrackEventSubtype::firstWhere('name', 'LIKE', "%$this->event%");
     }
 
@@ -41,6 +44,7 @@ class EventSubtypeCalendarContainer extends Component
     {
         $this->showEventModal = false;
     }
+
     public function render()
     {
         return view('livewire.training.event-pages.event-subtype-calendar-container', [
@@ -49,7 +53,7 @@ class EventSubtypeCalendarContainer extends Component
             'links' => EventSubtypeLink::where('track_event_subtype_id', $this->eventSubtype->id)
                 ->get(),
 
-            'eventSubtypes' => TrackEventSubtype::where('name', '!=', 'Relays')->orderBy('name')->get()
+            'eventSubtypes' => TrackEventSubtype::where('name', '!=', 'Relays')->orderBy('name')->get(),
         ]);
     }
 }

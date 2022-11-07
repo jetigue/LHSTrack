@@ -14,12 +14,19 @@ class TrackMeetsIndex extends Component
     use WithPagination;
 
     public $search = '';
+
     public $sortField = 'meet_date';
+
     public $sortDirection = 'desc';
+
     public $trackMeet = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $route;
 
     protected $queryString = ['sortField', 'sortDirection', 'search'];
@@ -41,7 +48,7 @@ class TrackMeetsIndex extends Component
         'confirmDelete',
         'recordAdded',
         'recordUpdated',
-        'refreshTrackMeets'
+        'refreshTrackMeets',
     ];
 
     public function mount()
@@ -114,15 +121,14 @@ class TrackMeetsIndex extends Component
         return view('livewire.meets.track-meets-index', [
             'trackMeets' => TrackMeet::with('meetName', 'host', 'timingMethod', 'season', 'venue')
                 ->whereHas('meetName', function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%');
+                    $q->where('name', 'like', '%'.$this->search.'%');
                 })
                 ->orWhereHas('host', function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%');
+                    $q->where('name', 'like', '%'.$this->search.'%');
                 })
                 ->orderBy($this->sortField, $this->sortDirection)
                 ->orderBy('meet_date')
-                ->paginate(25)
+                ->paginate(25),
         ]);
     }
-
 }

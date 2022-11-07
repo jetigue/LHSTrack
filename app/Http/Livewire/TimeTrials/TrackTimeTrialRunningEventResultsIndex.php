@@ -2,22 +2,26 @@
 
 namespace App\Http\Livewire\TimeTrials;
 
-use App\Models\Properties\Races\Gender;
-use App\Models\TimeTrials\TrackTimeTrial;
 use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Properties\Races\Gender;
 use App\Models\TimeTrials\Results\Track\RunningEventResult;
-
+use App\Models\TimeTrials\TrackTimeTrial;
 use Livewire\Component;
 
 class TrackTimeTrialRunningEventResultsIndex extends Component
 {
     public TrackEvent $trackEvent;
+
     public TrackTimeTrial $timeTrial;
 
     public $result = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
+
     public $gender;
 
     protected $listeners = [
@@ -25,21 +29,27 @@ class TrackTimeTrialRunningEventResultsIndex extends Component
         'showFormModal',
         'confirmDelete',
         'recordAdded',
-        'recordUpdated'
+        'recordUpdated',
     ];
 
     public function mount()
     {
-        if (str_contains(url()->current(), 'boys'))
-        {
+        if (str_contains(url()->current(), 'boys')) {
             $this->gender = Gender::firstWhere('id', 1);
         } else {
             $this->gender = Gender::firstWhere('id', 2);
         }
     }
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function recordAdded()
     {
@@ -95,7 +105,7 @@ class TrackTimeTrialRunningEventResultsIndex extends Component
 
             'girlsEvents' => $this->timeTrial->girlsTrackEvents
                 ->sortBy('distance_in_meters')
-                ->sortBy('eventSubType.track_event_type_id')
+                ->sortBy('eventSubType.track_event_type_id'),
         ]);
     }
 }

@@ -10,8 +10,11 @@ use function view;
 class TrackEventsIndex extends Component
 {
     public $trackEvent = '';
+
     public $editing = false;
+
     public $showFormModal = false;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
@@ -22,8 +25,15 @@ class TrackEventsIndex extends Component
         'recordUpdated',
     ];
 
-    public function showFormModal() { $this->showFormModal = true; }
-    public function hideFormModal() { $this->showFormModal = false; }
+    public function showFormModal()
+    {
+        $this->showFormModal = true;
+    }
+
+    public function hideFormModal()
+    {
+        $this->showFormModal = false;
+    }
 
     public function clearSearch()
     {
@@ -75,7 +85,7 @@ class TrackEventsIndex extends Component
                 ->orderBy('track_event_subtype_id')
                 ->orderBy('distance_in_meters')
                 ->orderBy('name')
-                ->get()
+                ->get(),
         ]);
     }
 }

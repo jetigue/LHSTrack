@@ -11,7 +11,7 @@ class TrackEventSubtype extends Model
 {
     use HasFactory;
 
-    protected $table='track_event_subtypes';
+    protected $table = 'track_event_subtypes';
 
     protected $fillable = ['name', 'track_event_type_id'];
 

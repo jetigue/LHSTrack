@@ -3,21 +3,22 @@
 namespace App\Http\Livewire\Communication;
 
 use App\Models\Communication\TeamEvent;
-use Carbon\Carbon;
 use Livewire\Component;
-
 
 class TeamEventsIndex extends Component
 {
     public $showFormModal = false;
+
     public $editing = false;
+
     public $event;
+
     public $showConfirmModal = false;
 
     protected $listeners = [
         'hideModal',
         'showFormModal',
-        'confirmDelete'
+        'confirmDelete',
     ];
 
     public function showFormModal()
@@ -52,7 +53,7 @@ class TeamEventsIndex extends Component
 
     public function editEvent(TeamEvent $event)
     {
-        $this->showFormModal =true;
+        $this->showFormModal = true;
         $this->editing = true;
         $this->emit('editEvent', $event->id);
     }

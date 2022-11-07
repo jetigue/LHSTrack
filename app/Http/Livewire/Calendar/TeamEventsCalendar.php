@@ -32,13 +32,13 @@ class TeamEventsCalendar extends LivewireCalendar
 //            // You will be given the $year, $month and $day for that day
 //        }
 
-        public function onEventClick($eventId)
-        {
-            $this->emit('showEventModal', $eventId);
-        }
+    public function onEventClick($eventId)
+    {
+        $this->emit('showEventModal', $eventId);
+    }
 
-        public function onEventDropped($eventId, $year, $month, $day)
-        {
-            TeamEvent::where('id', $eventId)->update(['event_date' => $year . '-' . $month . '-' . $day]);
-        }
+    public function onEventDropped($eventId, $year, $month, $day)
+    {
+        TeamEvent::where('id', $eventId)->update(['event_date' => $year.'-'.$month.'-'.$day]);
+    }
 }

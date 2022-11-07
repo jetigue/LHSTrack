@@ -9,14 +9,12 @@ use App\Models\Properties\Events\Track\TrackEventSubtype;
 use App\Models\Users\User;
 use App\Traits\TrainingPacesTrait;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class Athlete extends Model
 {
@@ -35,12 +33,12 @@ class Athlete extends Model
         'dob',
         'user_id',
         'track_event_subtype_id',
-        'physical_expiration_date'
+        'physical_expiration_date',
     ];
 
     public function path(): string
     {
-        return '/athletes/' . $this->slug;
+        return '/athletes/'.$this->slug;
     }
 
     public function user(): BelongsTo
@@ -69,16 +67,13 @@ class Athlete extends Model
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query
-                ->where('last_name', 'like', '%' . $search . '%')
-                ->orWhere('first_name', 'like', '%' . $search . '%');
+                ->where('last_name', 'like', '%'.$search.'%')
+                ->orWhere('first_name', 'like', '%'.$search.'%');
         });
 
-        $query->when($filters['status'] ?? false, fn($query, $status) =>
-            $query->whereHas('status', fn ($query) =>
-                $query->where('status', $status)
+        $query->when($filters['status'] ?? false, fn ($query, $status) => $query->whereHas('status', fn ($query) => $query->where('status', $status)
             )
         );
-
     }
 
     /**
@@ -90,10 +85,10 @@ class Athlete extends Model
 
         static::saving(function ($athlete) {
             $athlete->slug = Str::slug(
-                $athlete->first_name .
-                    '-' .
-                    $athlete->last_name .
-                    '-' .
+                $athlete->first_name.
+                    '-'.
+                    $athlete->last_name.
+                    '-'.
                     $athlete->grad_year
             );
         });
@@ -101,7 +96,7 @@ class Athlete extends Model
 
     public function getFullNameAttribute(): string
     {
-        return $this->last_name . ', ' . $this->first_name;
+        return $this->last_name.', '.$this->first_name;
     }
 
     public function getStatusColorAttribute(): string
@@ -109,7 +104,7 @@ class Athlete extends Model
         return [
             'a' => 'green',
             'i' => 'gray',
-            'e' => 'red'
+            'e' => 'red',
         ][$this->status] ?? 'gray';
     }
 
@@ -117,7 +112,7 @@ class Athlete extends Model
     {
         return [
             'm' => 'Male',
-            'f' => 'Female'
+            'f' => 'Female',
         ][$this->sex] ?? '';
     }
 
@@ -126,7 +121,7 @@ class Athlete extends Model
         return [
             'a' => 'Active',
             'i' => 'Inactive',
-            'e' => 'Ineligible'
+            'e' => 'Ineligible',
         ][$this->status] ?? 'Undeclared';
     }
 
@@ -146,6 +141,7 @@ class Athlete extends Model
         if ($this->physical_expiration_date) {
             return $this->physical_expiration_date->format('M d, Y');
         }
+
         return null;
     }
 
@@ -155,46 +151,39 @@ class Athlete extends Model
         $y = Carbon::now()->year;
         $gy = $this->grad_year;
 
-        switch($m)
-        {
+        switch ($m) {
             case $m >= 6:
-                if ($gy - $y === 5)
-                { return '8th Grade'; }
-
-                else if ($gy - $y === 4)
-                { return '9th Grade'; }
-
-                elseif ($gy - $y === 3)
-                { return '10th Grade'; }
-
-                elseif ($gy - $y === 2)
-                { return '11th Grade'; }
-
-                elseif ($gy - $y === 1)
-                { return '12th Grade'; }
-
-                elseif ($gy - $y <= 0)
-                { return 'alum'; }
-
-                else { return ''; }
+                if ($gy - $y === 5) {
+                    return '8th Grade';
+                } elseif ($gy - $y === 4) {
+                    return '9th Grade';
+                } elseif ($gy - $y === 3) {
+                    return '10th Grade';
+                } elseif ($gy - $y === 2) {
+                    return '11th Grade';
+                } elseif ($gy - $y === 1) {
+                    return '12th Grade';
+                } elseif ($gy - $y <= 0) {
+                    return 'alum';
+                } else {
+                    return '';
+                }
             case $m <= 5:
-                if ($gy - $y === 4)
-                { return '8th Grade'; }
-
-                elseif ($gy - $y === 3)
-                { return '9th Grade'; }
-
-                elseif ($gy - $y === 2)
-                { return '10th Grade'; }
-
-                elseif ($gy - $y === 1)
-                { return '11th Grade'; }
-
-                elseif ($gy - $y === 0)
-                { return '12th Grade'; }
-
-                else { return 'alum'; }
+                if ($gy - $y === 4) {
+                    return '8th Grade';
+                } elseif ($gy - $y === 3) {
+                    return '9th Grade';
+                } elseif ($gy - $y === 2) {
+                    return '10th Grade';
+                } elseif ($gy - $y === 1) {
+                    return '11th Grade';
+                } elseif ($gy - $y === 0) {
+                    return '12th Grade';
+                } else {
+                    return 'alum';
+                }
         }
+
         return 'Grade Unknown';
     }
 
