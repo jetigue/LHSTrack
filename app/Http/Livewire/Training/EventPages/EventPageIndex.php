@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Training\EventPages;
 
+use Illuminate\Support\Facades\Route;
 use App\Models\Communication\EventSubtypes\EventSubtypeLink;
 use App\Models\Properties\Events\Track\TrackEventSubtype;
 use Livewire\Component;
