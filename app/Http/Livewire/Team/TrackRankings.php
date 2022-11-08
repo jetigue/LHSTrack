@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Team;
 use App\Models\Meets\Results\Track\FieldEventResult;
 use App\Models\Meets\Results\Track\RunningEventResult;
 use App\Models\Properties\Events\Track\TrackEvent;
+use App\Models\Team\RunningEventLetteringTime;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;

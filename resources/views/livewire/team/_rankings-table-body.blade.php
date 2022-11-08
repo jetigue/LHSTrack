@@ -2,10 +2,18 @@
     <x-table.cell class="flex w-2/12 md:w-1/12 text-sm md:text-base justify-center">
         {{ $this->rank++ }}
     </x-table.cell>
-    <x-table.cell class="flex w-4/12 lg:w-2/12 items-baseline text-sm md:text-base justify-center">
+    <x-table.cell class="flex-col w-4/12 lg:w-2/12 items-baseline text-sm md:text-base justify-center">
         @if ($this->showRunningEvent)
             {{ ltrim(floor($bestTime->total_time) > 59 ? gmdate('i:s', floor($bestTime->total_time)) : gmdate('s', floor($bestTime->total_time)), 0) }}
             <span class="text-xs">.{{ explode('.', number_format($bestTime->total_time, 2))[1]}}</span>
+            @switch($bestTime->athlete->grad_year - $this->year)
+                @case(0)
+                    @if($bestTime->total_time < 13.00)
+                        <div class="text-xs font-semibold text-green-500 -mt-1">Lettered</div>
+                        @endif
+            @break
+            @endswitch
+
         @elseif ($this->showFieldEvent)
             {{ $bestTime->mark }}
             <span class="text-xs">

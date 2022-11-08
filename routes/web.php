@@ -25,6 +25,7 @@ use App\Http\Livewire\Properties\Races\DivisionsIndex;
 use App\Http\Livewire\Properties\Races\GendersIndex;
 use App\Http\Livewire\Properties\Races\LevelsIndex;
 use App\Http\Livewire\Properties\Races\TitlesIndex;
+use App\Http\Livewire\Team\Lettering\LetteringAthletesIndex;
 use App\Http\Livewire\Team\Lettering\TeamLetteringStandards;
 use App\Http\Livewire\Team\TrackRankings;
 use App\Http\Livewire\TimeTrials\ShowTrackTimeTrial;
@@ -59,6 +60,7 @@ Route::get('/team-events', TeamEventsIndex::class)->name('Team Events');
 Route::get('/lettering-standards', TeamLetteringStandards::class)->name('Lettering Standards');
 
 Route::get('/athletes/{athlete:slug}', AthleteProfile::class)->name('athlete');
+Route::get('/athletes-lettering', LetteringAthletesIndex::class)->name('Lettering Athletes');
 
 Route::middleware('auth')->group(function () {
     Route::get('training/distance', EventPageIndex::class)->name('Distance');
@@ -95,7 +97,8 @@ Route::middleware('can:coach')->group(function () {
     Route::get('/track/time-trials/{timeTrial:slug}/girls/events/{trackEvent:slug}', TrackTimeTrialRunningEventResultsIndex::class);
 
     Route::get('/athletes', AthletesIndex::class)->name('Athletes');
-    Route::get('/athletes/physicals', AthletesIndex::class)->name('Physicals');
+    Route::get('/athletes-physicals', AthletesIndex::class)->name('Physicals');
+
 
     Route::get('/training/paces/distance', DistanceTrainingPacesIndex::class)->name('Distance Training Paces');
 });
